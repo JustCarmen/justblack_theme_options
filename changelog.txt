@@ -1,0 +1,19 @@
+20-10-2013 - Version 1.0.3 for webtrees 1.4.2/1.4.3
+* Bug fix: When the compact menu is activated with the reports menu included, a fatal error occurred when the access level of all reports is higher then the access level of the visitor/member currently active.
+=========================================================================================================
+
+01-07-2013 - Version 1.0.2 for webtrees 1.4.2/1.4.3
+* Due to a change in the previous version an error occured on the configuration page. The compact menu wasn't showing up anymore when ticking the compact menu box.
+  Fixed in this version.
+=========================================================================================================
+ 
+28-06-2013 - Version 1.0.1 for webtrees 1.4.2/1.4.3
+
+* Removed third parameter ($type) from function searchArray. It is no longer needed.
+* Bug solved: When activating a menu-module after theme options are set, the menu won't show up. Fixed.
+* Bug solved: Fixed wrong parameter in function getStatus. Calling for menu-name in stead of menu-label caused instability in different languages.
+* Added: French Language files - thanks to Philippe.
+=========================================================================================================
+
+25-06-2013 - Version 1.0 for webtrees 1.4.2/1.4.3
+First release
