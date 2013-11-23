@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// $Id: module.php 13838 2013-07-01 v1.0.2 JustCarmen$
+// $Id: module.php 13838 2013-07-01 v1.1 JustCarmen$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -73,7 +73,10 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		$JB_FLAGS					= get_module_setting($module, 'JB_FLAGS');		
 		$JB_COMPACT_MENU 			= get_module_setting($module, 'JB_COMPACT_MENU');
 		$JB_COMPACT_MENU_REPORTS 	= get_module_setting($module, 'JB_COMPACT_MENU_REPORTS');
-		$JB_MENU_ORDER				= unserialize(get_module_setting($module, 'JB_MENU_ORDER'));
+		$JB_MEDIA_MENU				= get_module_setting($module, 'JB_MEDIA_MENU');
+		$JB_MEDIA_MENU_LINK			= get_module_setting($module, 'JB_MEDIA_MENU_LINK');
+		$JB_GVIEWER_PDF				= get_module_setting($module, 'JB_GVIEWER_PDF');
+		$JB_MENU_ORDER				= unserialize(get_module_setting($module, 'JB_MENU_ORDER'));		
 			
 		// get defaults if there are no settings
 		if (!isset($JB_TREETITLE)) 				$JB_TREETITLE 				= '1';
@@ -85,6 +88,9 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		if (!isset($JB_FLAGS)) 					$JB_FLAGS 					= '0';
 		if (!isset($JB_COMPACT_MENU)) 			$JB_COMPACT_MENU 			= '0';
 		if (!isset($JB_COMPACT_MENU_REPORTS)) 	$JB_COMPACT_MENU_REPORTS 	= '1';
+		if (!isset($JB_MEDIA_MENU)) 			$JB_MEDIA_MENU			 	= '0';
+		if (!isset($JB_MEDIA_MENU_LINK)) 		$JB_MEDIA_MENU_LINK		 	= '';
+		if (!isset($JB_GVIEWER_PDF)) 			$JB_GVIEWER_PDF		 		= '0';
 		if (empty($JB_MENU_ORDER)) 				$JB_MENU_ORDER				= $this->getMenuOrder();
 						
 		$JB_SETTINGS = array(
@@ -97,6 +103,9 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			'FLAGS'					=> $JB_FLAGS,
 			'COMPACT_MENU'			=> $JB_COMPACT_MENU,
 			'COMPACT_MENU_REPORTS'	=> $JB_COMPACT_MENU_REPORTS,
+			'MEDIA_MENU'			=> $JB_MEDIA_MENU,
+			'MEDIA_MENU_LINK'		=> $JB_MEDIA_MENU_LINK,
+			'GVIEWER_PDF'			=> $JB_GVIEWER_PDF,
 			'MENU_ORDER'			=> $JB_MENU_ORDER
 		);
 		
@@ -168,6 +177,12 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				'sort' 		=> '0',
 				'function' 	=> 'getCompactMenu'
 			),
+			array(
+				'title'		=> WT_I18N::translate('Media'),
+				'label'		=> 'media',
+				'sort' 		=> '0',
+				'function' 	=> 'getMediaMenu'
+			),
 			array(			
 				'title'		=> WT_I18N::translate('Home page'),
 				'label'		=> 'homepage',
@@ -213,7 +228,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		);
 		
 		$modules=WT_Module::getActiveMenus();
-		// don't list known fakemenus but put them in the database with a sort-orde of 99 
+		// don't list known fakemenus but put them in the database with a sort-order of 99 
 		$fakeMenus 	= array('custom_js', 'fancy_imagebar', 'simpl_branches');
 		$i = 8;
 		foreach ($modules as $module) {
@@ -238,8 +253,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		$indi_xref=$controller->getSignificantIndividual()->getXref();		
 		$menu = new WT_Menu(WT_I18N::translate('View'), 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-view');
 		
-		$active_reports=WT_Module::getActiveReports();
-		if ($this->getSettings('compact_menu_reports') == 1 && $active_reports) {
+		if ($this->getSettings('compact_menu_reports') == 1) {
 			$submenu_items = array(
 				WT_MenuBar::getChartsMenu(),
 				WT_MenuBar::getListsMenu(),
@@ -261,6 +275,29 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			$submenu->id = $new_id;	
 			$submenu->label = '<span>'.$submenu->label.'</span>';	
 			$menu->addSubmenu($submenu);		
+		};	
+		return $menu;
+	}
+	
+	// get the media Menu as Main menu item with folders as submenu-items
+	public function getMediaMenu() {
+		global $controller, $SEARCH_SPIDER, $MEDIA_DIRECTORY;
+		
+		if ($SEARCH_SPIDER) return null;
+		
+		$menulink = $this->getSettings('media_menu_link');
+		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=yes&amp;folder='.urlencode(rtrim($menulink, "/")).'&amp;sortby=title&amp;max=20&amp;filter=&amp;columns=2', 'menu-media');		
+		
+		$folders = array_values(WT_Query_Media::folderList());
+		foreach ($folders as $key => $folder) {
+			$medialist = WT_Query_Media::mediaList($folder, 'exclude', 'file', '');
+			if(count($medialist) > 0) {
+				$name = substr($folder, 0, -1);
+				if(empty($name)) $name = WT_I18N::translate('Media');
+				$title = ucfirst($name);
+				$submenu = new WT_Menu($title, 'medialist.php?action=filter&amp;search=yes&amp;folder='.urlencode(rtrim($folder, "/")).'&amp;sortby=title&amp;max=20&amp;filter=&amp;columns=2', 'menu-media-folder'.$key);
+				$menu->addSubmenu($submenu);
+			}
 		};	
 		return $menu;
 	}
@@ -305,6 +342,8 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			$status = ' menu_extended menu_reports';
 		} elseif ($label == 'compact') {
 			$status = ' menu_compact';
+		} elseif ($label == 'media') {
+			$status = ' menu_media';
 		} else {
 			$status = '';
 		}
@@ -406,16 +445,16 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							if ((checkbox).is(":checked")) field.show();
 							else field.hide();							
 							checkbox.click(function(){
-								if (this.checked) field.show("normal");
-								else field.hide("normal");															    
+								if (this.checked) field.show();
+								else field.hide();															    
 							});	
 						}
 						else {
 							if ((checkbox).is(":checked")) field.hide();
 							else field.show();							
 							checkbox.click(function(){
-								if (this.checked) field.hide("normal");
-								else field.show("normal");															    
+								if (this.checked) field.hide();
+								else field.show();															    
 							});	
 						}
 					}						
@@ -423,6 +462,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 					toggleFields("#treetitle", ".titlepos, .titlesize");
 					toggleFields("#resize", ".headerheight", true);
 					toggleFields("#compact_menu", ".reports");
+					toggleFields("#media_menu", ".media_link");
 										
 					jQuery("#header option").each(function() {
 						if(jQuery(this).val() == "'.$this->getOptionValue('header', 'selectbox').'") {
@@ -464,6 +504,22 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						jQuery("#sortMenu, #trashMenu").trigger("sortupdate")					
 					});
 					
+					jQuery("#media_menu").click(function() {						
+						if (this.checked) {
+							jQuery(".menu_media").appendTo(jQuery("#sortMenu")).show();
+						}
+						else {
+							jQuery(".menu_media").appendTo(jQuery("#trashMenu")).hide();
+						}
+						jQuery("#sortMenu, #trashMenu").trigger("sortupdate")					
+					});
+					
+					jQuery("#media_menu_link option").each(function() {
+						if(jQuery(this).val() == "'.$this->getOptionValue('media_menu_link', 'selectbox').'") {
+							jQuery(this).prop("selected", true);
+						}						
+					});
+					
 					 jQuery("#sortMenu").sortable({
 						items: "li:not(.ui-state-disabled)"
 					}).disableSelection();
@@ -476,11 +532,11 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							}
 						);
 						jQuery("#trashMenu input[id^=menu_order_sort]").attr("value", "0");
-					});						
+					}); 
 				');	
 						
-			$update = safe_POST('update');
-			$reset = safe_POST('reset');
+			$update = WT_Filter::postBool('update');
+			$reset = WT_Filter::postBool('reset');
 			
 			if (isset($update)) {				
 				$path = WT_STATIC_URL.'themes/justblack/css/images/';
@@ -496,7 +552,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 					else { // process image
 						$type = strtolower(substr(strrchr($_FILES['JB_HEADERIMG']['name'], '.'), 1));
 						$serverFileName = $path.'custom_header.'.$type;
-						if(safe_POST('resize') == true)	$this->resizeHeader($_FILES['JB_HEADERIMG']['tmp_name'], $type, '800', '150');
+						if(WT_Filter::postBool('resize') == true)	$this->resizeHeader($_FILES['JB_HEADERIMG']['tmp_name'], $type, '800', '150');
 						
 						if (move_uploaded_file($_FILES['JB_HEADERIMG']['tmp_name'], $serverFileName)) {
 							chmod($serverFileName, WT_PERM_FILE);							
@@ -521,11 +577,14 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 					set_module_setting($this->getName(), 'JB_HEADER',				$this->getOptionValue('header', 'selectbox'));													
 					set_module_setting($this->getName(), 'JB_FLAGS',				$this->getOptionValue('flags', 'checkbox'));		
 					set_module_setting($this->getName(), 'JB_COMPACT_MENU',			$this->getOptionValue('compact_menu', 'checkbox'));	
-					set_module_setting($this->getName(), 'JB_COMPACT_MENU_REPORTS',	$this->getOptionValue('compact_menu_reports', 'checkbox'));					
+					set_module_setting($this->getName(), 'JB_COMPACT_MENU_REPORTS',	$this->getOptionValue('compact_menu_reports', 'checkbox'));
+					set_module_setting($this->getName(), 'JB_MEDIA_MENU',			$this->getOptionValue('media_menu', 'checkbox'));
+					set_module_setting($this->getName(), 'JB_MEDIA_MENU_LINK',		$this->getOptionValue('media_menu_link', 'selectbox'));
+					set_module_setting($this->getName(), 'JB_GVIEWER_PDF',			$this->getOptionValue('gviewer_pdf', 'checkbox'));					
 					set_module_setting($this->getName(), 'JB_MENU_ORDER',			$this->getOptionValue('menu_order', 'sortable'));
 					
 					// Only set headerheight when 'custom' or 'none' is chosen from selectbox
-					if($this->getOptionValue('header', 'selectbox') == 'default' || safe_POST('resize') == true) {
+					if($this->getOptionValue('header', 'selectbox') == 'default' || WT_Filter::postBool('resize') == true) {
 						WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name = 'JB_HEADERHEIGHT'")->execute();
 					}
 					else {
@@ -606,6 +665,24 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<div class="field reports">
 								<label for="compact_menu_reports">'.WT_I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?').'</label>
 								<input type="checkbox" id="compact_menu_reports" name="JB_COMPACT_MENU_REPORTS" '.$this->getChecked($JB_SETTINGS['COMPACT_MENU_REPORTS']).' />
+							</div>	
+							<div class="field">
+								<label for="media_menu">'.WT_I18N::translate('Media menu in topmenu?').help_link('media_menu', $this->getName()).'</label>
+								<input type="checkbox" id="media_menu" name="JB_MEDIA_MENU" '.$this->getChecked($JB_SETTINGS['MEDIA_MENU']).' />
+							</div>	
+							<div class="field media_link">								
+								<label for="media_menu_link">'.WT_I18N::translate('Choose a folder as default for the main menu link').help_link('media_folder', $this->getName()).'</label>								
+								<select id="media_menu_link" name="JB_MEDIA_MENU_LINK">';
+								$folders = WT_Query_Media::folderList();
+									foreach ($folders as $folder) {
+										if(empty($folder)) $folder = WT_I18N::translate('Media').'/';
+				$html .=				'<option value="'.$folder.'">'.ucfirst($folder).'</option>';
+									}
+				$html .=		'</select>
+							</div>	
+							<div class="field">
+								<label for="gviewer_pdf">'.WT_I18N::translate('Use google docs viewer for pdf\'s?').help_link('gviewer', $this->getName()).'</label>
+								<input type="checkbox" id="gviewer_pdf" name="JB_GVIEWER_PDF" '.$this->getChecked($JB_SETTINGS['GVIEWER_PDF']).' />
 							</div>														
 							<div id="buttons">
 								<input type="submit" name="update" value="'.WT_I18N::translate('Save').'" />&nbsp;&nbsp;
@@ -659,7 +736,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 								}
 				$html .= '</div>				
 					</form>
-				</div>';		
+				</div>';               
 				
 			// output
 			ob_start();			
