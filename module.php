@@ -227,8 +227,8 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		
 		$modules=WT_Module::getActiveMenus();
 		// don't list known fakemenus but put them in the database with a sort-order of 99 
-		$fakeMenus 	= array('custom_js', 'fancy_imagebar', 'simpl_branches');
-		$i = 8;
+		$fakeMenus 	= array('custom_js', 'fancy_imagebar', 'fancy_branches');
+		$i = 9;
 		foreach ($modules as $module) {
 			$sort = in_array($module->getName(), $fakeMenus) ? '99' : $i;		
 			$menulist[] = array(					
