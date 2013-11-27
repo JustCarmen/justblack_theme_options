@@ -533,11 +533,8 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						jQuery("#trashMenu input[id^=menu_order_sort]").attr("value", "0");
 					}); 
 				');	
-						
-			$update = WT_Filter::postBool('update');
-			$reset = WT_Filter::postBool('reset');
 			
-			if (isset($update)) {				
+			if (WT_Filter::post('update')) {				
 				$path = WT_STATIC_URL.'themes/justblack/css/images/';
 				// Check if the custom header option is set and if we are dealing with a valid image
 				if ($this->getOptionValue('header', 'selectbox') == 'custom') {
@@ -593,7 +590,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				AddToLog($this->getTitle().' updated', 'settings');
 			}
 			
-			if (isset($reset)) {				
+			if (WT_Filter::post('reset')) {				
 				WT_DB::prepare(
 				"DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'"
 			)->execute();
