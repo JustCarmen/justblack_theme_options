@@ -1,10 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: justblack theme options 1.5.0\n"
-"POT-Creation-Date: 2013-11-10 08:46+0100\n"
+"POT-Creation-Date: 2013-12-01 16:54+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -45,15 +46,15 @@ msgstr "<p>Vous pouvez utiliser les drapeaux dans la barre située au-dessus du 
 msgid "Choose a default media folder"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:673
+#: modules_v3/justblack_theme_options/module.php:670
 msgid "Choose a folder as default for the main menu link"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:635
+#: modules_v3/justblack_theme_options/module.php:632
 msgid "Current custom header-image"
 msgstr "Image d'en-tête personnalisée"
 
-#: modules_v3/justblack_theme_options/module.php:548
+#: modules_v3/justblack_theme_options/module.php:545
 msgid "Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved."
 msgstr "Erreur : Vous n'avez pas téléchargé d'image ou l'image que vous avez téléchargée n'est pas une image valide ! Vos réglages ne sont pas sauvegardés."
 
@@ -61,14 +62,15 @@ msgstr "Erreur : Vous n'avez pas téléchargé d'image ou l'image que vous avez 
 msgid "Flags"
 msgstr "Drapeaux"
 
-#: modules_v3/justblack_theme_options/module.php:653
+#: modules_v3/justblack_theme_options/module.php:650
 msgid "Height of the header area"
 msgstr "Hauteur de la zone d'en-tête"
 
-#: modules_v3/justblack_theme_options/module.php:665
+#: modules_v3/justblack_theme_options/module.php:662
 msgid "Include the reports topmenu in the compact 'View' topmenu?"
 msgstr "Inclure le menu rapports dans le menu compact ?"
 
+#. I18N: Name of a module
 #: modules_v3/justblack_theme_options/module.php:54
 msgid "JustBlack Theme Options"
 msgstr "Options du thème JustBlack"
@@ -77,7 +79,7 @@ msgstr "Options du thème JustBlack"
 msgid "Media icon in topmenu"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:669
+#: modules_v3/justblack_theme_options/module.php:666
 msgid "Media menu in topmenu?"
 msgstr ""
 
@@ -86,11 +88,11 @@ msgid "Options for the JustBlack theme"
 msgstr "Options pour le thème JustBlack"
 
 #: modules_v3/justblack_theme_options/help_text.php:39
-#: modules_v3/justblack_theme_options/module.php:619
+#: modules_v3/justblack_theme_options/module.php:616
 msgid "Position of the Family tree title"
 msgstr "Position du titre de l'arbre"
 
-#: modules_v3/justblack_theme_options/module.php:650
+#: modules_v3/justblack_theme_options/module.php:647
 msgid "Resize (800x150px)"
 msgstr "Redimensionner (800x150px)"
 
@@ -98,11 +100,11 @@ msgstr "Redimensionner (800x150px)"
 msgid "Set options for the JustBlack theme within the admin interface"
 msgstr "Définir les options du thème JustBlack dans l'interface d'administration"
 
-#: modules_v3/justblack_theme_options/module.php:623
+#: modules_v3/justblack_theme_options/module.php:620
 msgid "Size of the Family tree title"
 msgstr "Taille du titre de l'arbre"
 
-#: modules_v3/justblack_theme_options/module.php:693
+#: modules_v3/justblack_theme_options/module.php:690
 msgid "Sort Topmenu items"
 msgstr "Tri des items du menu"
 
@@ -110,27 +112,27 @@ msgstr "Tri des items du menu"
 msgid "Sorting the topmenu"
 msgstr "Tri du menu"
 
-#: modules_v3/justblack_theme_options/module.php:648
+#: modules_v3/justblack_theme_options/module.php:645
 msgid "Upload a (new) custom header image"
 msgstr "Téléverser une (nouvelle) image d'en-tête"
 
-#: modules_v3/justblack_theme_options/module.php:683
+#: modules_v3/justblack_theme_options/module.php:680
 msgid "Use Google Docs Viewer for pdf's?"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:661
+#: modules_v3/justblack_theme_options/module.php:658
 msgid "Use a compact menu?"
 msgstr "Utiliser le menu compact ?"
 
-#: modules_v3/justblack_theme_options/module.php:657
+#: modules_v3/justblack_theme_options/module.php:654
 msgid "Use flags in header bar as language menu?"
 msgstr "Utiliser les drapeaux de langage dans la barre d'en-tête ?"
 
-#: modules_v3/justblack_theme_options/module.php:627
+#: modules_v3/justblack_theme_options/module.php:624
 msgid "Use header image?"
 msgstr "Utiliser une image d'en-tête ?"
 
-#: modules_v3/justblack_theme_options/module.php:615
+#: modules_v3/justblack_theme_options/module.php:612
 msgid "Use the Family tree title in the header?"
 msgstr "Utiliser le nom de l'arbre dans l'en-tête ?"
 
@@ -138,7 +140,7 @@ msgstr "Utiliser le nom de l'arbre dans l'en-tête ?"
 msgid "Use the Google Docs Viewer"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:558
+#: modules_v3/justblack_theme_options/module.php:555
 msgid "Your custom header image is succesfully saved."
 msgstr "Votre image d'en-tête a été sauvegardée"
 
