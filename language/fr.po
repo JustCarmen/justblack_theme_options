@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: justblack theme options 1.5.0\n"
 "POT-Creation-Date: 2013-12-01 16:54+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
+"Last-Translator: phicome <phicome@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: modules_v3/justblack_theme_options/help_text.php:65
@@ -24,15 +24,15 @@ msgstr "<p>Ici, vous pouvez choisir l'emplacement pour le titre de l'arbre dans 
 
 #: modules_v3/justblack_theme_options/help_text.php:50
 msgid "<p>If this option is set the Media Menu will be moved to the topmenu. The names of the media folders will appear as submenu of the new Media Menu.</p><p>Warning: these submenu links are not translated automatically. If you want your submenu's to be translated you will have to do it manually with the instructions in the webrees WIKI.</p>"
-msgstr ""
+msgstr "<p>Si cette option est activée, un nouveau menu Média sera ajouté aux menus principaux. Le nom des dossiers de médias apparaitront comme sous-menu du nouveau menu Média.</p><p>Attention : Ces liens de sous-menu ne sont pas traduits automatiquement. Pour les traduire, il faut le faire manuellement (voir les instructions dans le WIKI de webtrees).</p>"
 
 #: modules_v3/justblack_theme_options/help_text.php:59
 msgid "<p>The Google Docs Viewer is a way to present pdf files in a consistant way across all browsers. You are no longer dependent on the user's own PDF viewer.</p><p>A second advantage of using the Google Docs Viewer is that it now is possible to place watermarks on pdf files. If you have set the option to use watermarks for images in your tree settings, the watermarks will now be placed on pdf-files too.</p><p>You and your users don't need a google account to use the Google Docs Viewer.</p>"
-msgstr ""
+msgstr "<p>Google Docs Viewer permet de présenter les fichiers PDF de manière identique dans tous les navigateurs. Vous n'êtes plus dépendant de la visionneuse PDF de l'utilisateur.</p><p>Autre avantage : Il est maintenant possible de placer des filigranes sur les fichiers pdf. Si cette option est activée pour les images dans vos paramètres d'arbres, les filigranes seront aussi placés sur les fichiers PDF.</p><p>Google Docs Viewer ne nécessite pas de compte Google pour être utilisé.</p>"
 
 #: modules_v3/justblack_theme_options/help_text.php:55
 msgid "<p>The default media folder will be used as link on the main media menu icon. If you click on this icon the medialist page for this folder appears.</p>"
-msgstr ""
+msgstr "<p>Le dossier de médias par défaut sera utilisé comme lien dans le menu Média principal. Si vous cliquez sur cette icône, la page de liste des médias de ce dossier apparaîtra.</p>"
 
 #: modules_v3/justblack_theme_options/help_text.php:35
 msgid "<p>Uncheck this box if you already use the Family tree title in the header image. Otherwise leave the checkbox checked.</p>"
@@ -44,11 +44,11 @@ msgstr "<p>Vous pouvez utiliser les drapeaux dans la barre située au-dessus du 
 
 #: modules_v3/justblack_theme_options/help_text.php:54
 msgid "Choose a default media folder"
-msgstr ""
+msgstr "Choisir un dossier de médias"
 
 #: modules_v3/justblack_theme_options/module.php:670
 msgid "Choose a folder as default for the main menu link"
-msgstr ""
+msgstr "Choisir un dossier de médias comme lien du menu principal"
 
 #: modules_v3/justblack_theme_options/module.php:632
 msgid "Current custom header-image"
@@ -77,11 +77,11 @@ msgstr "Options du thème JustBlack"
 
 #: modules_v3/justblack_theme_options/help_text.php:49
 msgid "Media icon in topmenu"
-msgstr ""
+msgstr "Icône du menu Média"
 
 #: modules_v3/justblack_theme_options/module.php:666
 msgid "Media menu in topmenu?"
-msgstr ""
+msgstr "Nouveau Menu Média ?"
 
 #: modules_v3/justblack_theme_options/module.php:437
 msgid "Options for the JustBlack theme"
@@ -118,7 +118,7 @@ msgstr "Téléverser une (nouvelle) image d'en-tête"
 
 #: modules_v3/justblack_theme_options/module.php:680
 msgid "Use Google Docs Viewer for pdf's?"
-msgstr ""
+msgstr "Utiliser Google Docs Viewer pour les PDF ?"
 
 #: modules_v3/justblack_theme_options/module.php:658
 msgid "Use a compact menu?"
@@ -138,7 +138,7 @@ msgstr "Utiliser le nom de l'arbre dans l'en-tête ?"
 
 #: modules_v3/justblack_theme_options/help_text.php:58
 msgid "Use the Google Docs Viewer"
-msgstr ""
+msgstr "Utiliser Google Docs Viewer"
 
 #: modules_v3/justblack_theme_options/module.php:555
 msgid "Your custom header image is succesfully saved."
