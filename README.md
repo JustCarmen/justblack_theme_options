@@ -16,7 +16,6 @@ Features of the JustBlack Theme Options Module:
 
 This module can only be used in conjunction with the <a href="https://github.com/JustCarmen/justblack">JustBlack Theme</a>.
 
-Download the JustBlack Theme here: https://github.com/JustCarmen/justblack/releases
-Pick the version number that correspondents with the version number of the JustBlack Theme Options Module.
+Download the JustBlack Theme here: https://github.com/JustCarmen/justblack/releases. Pick the version number that correspondents with the version number of the JustBlack Theme Options Module.
 
 Read the readme files in the folder for installation instructions and usage.
