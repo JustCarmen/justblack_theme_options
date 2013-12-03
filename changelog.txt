@@ -1,3 +1,13 @@
+03-12-2013 Version 1.5.1 for webtrees 1.5.1
+* Changes made to save function for compatibility with webtrees 1.5.1
+
+=========================================================================================================
+
+24-11-2013 Version 1.5.0.1 for webtrees 1.5.0
+* Bugfix: Wrong counter when new module menu was added.
+
+=========================================================================================================
+
 10-11-2013 Version 1.5.0 for webtrees 1.5.0
 
 * Updated several functions in order to use this module with webtrees 1.5.0
