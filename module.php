@@ -293,7 +293,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			if(count($medialist) > 0) {
 				$name = substr($folder, 0, -1);
 				if(empty($name)) $name = WT_I18N::translate('Media');
-				$title = ucfirst($name);
+				$title = ucfirst(WT_I18N::translate($name));
 				$submenu = new WT_Menu($title, 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($folder), 'menu-media-folder-'.$key);
 				$menu->addSubmenu($submenu);
 			}
