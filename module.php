@@ -535,7 +535,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				');	
 			
 			if (WT_Filter::post('update')) {				
-				$path = WT_STATIC_URL.'themes/justblack/css/images/';
+				$path = WT_STATIC_URL.'themes/justblack/'.basename(WT_CSS_URL).'/images/';
 				// Check if the custom header option is set and if we are dealing with a valid image
 				if ($this->getOptionValue('header', 'selectbox') == 'custom') {
 					if (empty($_FILES['JB_HEADERIMG']['name']) || !preg_match('/^image\/(png|gif|jpeg)/', $_FILES['JB_HEADERIMG']['type'])){
