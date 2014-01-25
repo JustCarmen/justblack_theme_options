@@ -3,7 +3,18 @@ JustBlack Theme Options Module
 
 Theme options module for the JustBlack theme in webtrees.
 
-Features of the JustBlack Theme Options Module:
+The development version of this module requires webtrees 1.5.2 or later but it might work on webtrees 1.5.0 or 1.5.1 as well.
+
+Download the latest stable release for webtrees 1.5.1 here: https://github.com/JustCarmen/justblack_theme_options/releases/tag/1.5.1.1
+
+Download the latest stable relase for webtrees 1.4.x here: https://github.com/JustCarmen/justblack_theme_options/releases/tag/1.4.4
+
+This module can only be used in conjunction with the [JustBlack Theme](https://github.com/JustCarmen/justblack).
+Download the JustBlack Theme [here](https://github.com/JustCarmen/justblack/releases). Pick the version number that correspondents with the version number of the JustBlack Theme Options Module.
+
+Description
+-----------
+On the JustBlack Theme Options configuration page you can set the following options:
 * Set position and size of the Tree title;
 * Use the default header image, upload a custom one or opt for no header image.
 * It is possible to resize the newly uploaded header image to the default values of the JustBlack Theme (800x150px).
@@ -14,8 +25,10 @@ Features of the JustBlack Theme Options Module:
 * Use Google Docs Viewer for pdf display.
 * Order the main menu items. Ordering menu items here is more flexible then the sort option webtrees offers by default. Here you can shuffle ALL main menu items (except the homepage and my page menu). 
 
-This module can only be used in conjunction with the <a href="https://github.com/JustCarmen/justblack">JustBlack Theme</a>.
+Installation, upgrading and translations
+----------------------------------------
+For more information about these subjects go to the JustCarmen help pages: http://www.justcarmen.nl/help. You will find there other tips as well.
 
-Download the JustBlack Theme here: https://github.com/JustCarmen/justblack/releases. Pick the version number that correspondents with the version number of the JustBlack Theme Options Module.
-
-Read the readme files in the folder for installation instructions and usage.
+Bugs and feature requests
+-------------------------
+If you experience any bugs or have a feature request for this theme you can [create a new issue](https://github.com/JustCarmen/justblack_theme_options/issues?state=open) or [use the webtrees subforum 'customising'](http://www.webtrees.net/index.php/en/forum/4-customising) to contact me.
