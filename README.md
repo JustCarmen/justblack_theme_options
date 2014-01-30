@@ -3,9 +3,9 @@ JustBlack Theme Options Module
 
 Theme options module for the JustBlack theme in webtrees.
 
-The development version of this module requires webtrees 1.5.2 or later but it might work on webtrees 1.5.0 or 1.5.1 as well.
+The development version of this module requires [webtrees 1.5.3](https://github.com/fisharebest/webtrees) or later.
 
-Download the latest stable release for webtrees 1.5.1 here: https://github.com/JustCarmen/justblack_theme_options/releases/tag/1.5.1.1
+Download the latest stable release for webtrees 1.5.2 here: https://github.com/JustCarmen/justblack_theme_options/releases/tag/1.5.2
 
 Download the latest stable relase for webtrees 1.4.x here: https://github.com/JustCarmen/justblack_theme_options/releases/tag/1.4.4
 
