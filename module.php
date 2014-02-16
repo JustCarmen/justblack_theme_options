@@ -584,66 +584,63 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 					<input type="hidden" name="save" value="1">
 					<div class="block_left">
 						<div class="field">
-							<label for="treetitle">'.WT_I18N::translate('Use the Family tree title in the header?').help_link('treetitle', $this->getName()).'</label>
-							<input type="checkbox" id="treetitle" name="JB_TREETITLE" '.$this->getChecked($JB_SETTINGS['TREETITLE']).' />
+							<label class="label">'.WT_I18N::translate('Use the Family tree title in the header?').help_link('treetitle', $this->getName()).'</label>'.
+							two_state_checkbox('NEW_JB_OPTIONS[TREETITLE]', $this->options('treetitle')).'
 						</div>
 						<div class="field titlepos">
-							<label for="titlepos">'.WT_I18N::translate('Position of the Family tree title').help_link('treetitle_position', $this->getName()).'</label>
-							<input type="textbox" id="titlepos" name="JB_TITLEPOS" value="'.$JB_SETTINGS['TITLEPOS'].'" />								
+							<label class="label">'.WT_I18N::translate('Position of the Family tree title').help_link('treetitle_position', $this->getName()).'</label>
+							<input type="text" name="NEW_JB_OPTIONS[TITLEPOS]" size="10" value="'.$this->options('titlepos').'">
 						</div>
 						<div class="field titlesize">
-							<label for="titlesize">'.WT_I18N::translate('Size of the Family tree title').'</label>
-							<input type="textbox" id="titlesize" name="JB_TITLESIZE" size="2" value="'.$JB_SETTINGS['TITLESIZE'].'" /> px								
+							<label class="label">'.WT_I18N::translate('Size of the Family tree title').'</label>
+							<input type="text" name="NEW_JB_OPTIONS[TITLESIZE]" size="2" value="'.$this->options('titlesize').'"> px								
 						</div>
 						<div class="field">
-							<label for="header">'.WT_I18N::translate('Use header image?').'</label>
-							<select id="header" name="JB_HEADER">
-								<option class="default" value="default">'.WT_I18N::translate('Default').'</option>
-								<option value="custom">'.WT_I18N::translate('Custom').'</option>
-								<option value="none">'.WT_I18N::translate('None').'</option>
-							</select>
+							<label class="label">'.WT_I18N::translate('Use header image?').'</label>'.
+							select_edit_control('NEW_JB_OPTIONS[HEADER]', array(WT_I18N::translate('Default'), WT_I18N::translate('Custom'), WT_I18N::translate('None')), null, $this->options('header')).'
 						</div>
 						<div class="field upload title">
 							<label for="current_headerimg">'.WT_I18N::translate('Current custom header-image').'</label>';
-							$ext = strtolower(substr(strrchr($JB_SETTINGS['HEADERIMG'], '.'), 1));
+							$ext = strtolower(substr(strrchr($this->options['headerimg'], '.'), 1));
 							if(file_exists(WT_STATIC_URL.'themes/justblack/css/images/custom_header.'.$ext)){
 									$ext == 'jpg' ? $type = 'image/jpeg' : $type = 'image/'.$ext;
 									$html .= '	<a class="gallery" type="'.$type.'" href="'.WT_STATIC_URL.'themes/justblack/css/images/custom_header.'.$ext.'">
-													<span class="current_headerimg">'.$JB_SETTINGS['HEADERIMG'].'</span>
+													<span class="current_headerimg">'.$this->options['headerimg'].'</span>
 												</a>';																			
 							}	
 							else {
-									$html .= '	<span class="current_headerimg">'.$JB_SETTINGS['HEADERIMG'].'</span>';
+									$html .= '	<span class="current_headerimg">'.$this->options['headerimg'].'</span>';
 							}
 			$html .= '	</div>
 						<div class="field upload">
-							<label for="headerimg">'.WT_I18N::translate('Upload a (new) custom header image').'</label>
-							<input type="file" id="headerimg" name="JB_HEADERIMG" /><br/>'.
+							<label class="label">'.WT_I18N::translate('Upload a (new) custom header image').'</label>
+							<input type="file" name="NEW_JB_OPTIONS[HEADERIMG]" /><br/>'.
 							checkbox('resize', false, 'id="resize"').'<label for="resize">'.WT_I18N::translate('Resize (800x150px)').'</label>
 						</div>
 						<div class="field headerheight">
-							<label for="headerheight">'.WT_I18N::translate('Height of the header area').'</label>
-							<input type="textbox" id="headerheight" name="JB_HEADERHEIGHT" size="2" value="'.$JB_SETTINGS['HEADERHEIGHT'].'" /> px
+							<label class="label">'.WT_I18N::translate('Height of the header area').'</label>
+							<input type="text" name="NEW_JB_OPTIONS[HEADERHEIGHT]" size="2" value="'.$this->options['headerheight'].'" /> px
 						</div>
 						<div class="field">
-							<label for="flags">'.WT_I18N::translate('Use flags in header bar as language menu?').help_link('flags', $this->getName()).'</label>
-							<input type="checkbox" id="flags" name="JB_FLAGS" '.$this->getChecked($JB_SETTINGS['FLAGS']).' />
+							<label class="label">'.WT_I18N::translate('Use flags in header bar as language menu?').help_link('flags', $this->getName()).'</label>'.
+							two_state_checkbox('NEW_JB_OPTIONS[FLAGS]', $this->options('flags')).'
 						</div>
 						<div class="field">
-							<label for="compact_menu">'.WT_I18N::translate('Use a compact menu?').'</label>
-							<input type="checkbox" id="compact_menu" name="JB_COMPACT_MENU" '.$this->getChecked($JB_SETTINGS['COMPACT_MENU']).' />
+							<label class="label">'.WT_I18N::translate('Use a compact menu?').'</label>'.
+							two_state_checkbox('NEW_JB_OPTIONS[COMPACT_MENU]', $this->options('compact_menu')).'
 						</div>
 						<div class="field reports">
-							<label for="compact_menu_reports">'.WT_I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?').'</label>
-							<input type="checkbox" id="compact_menu_reports" name="JB_COMPACT_MENU_REPORTS" '.$this->getChecked($JB_SETTINGS['COMPACT_MENU_REPORTS']).' />
+							<label class="label">'.WT_I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?').'</label>'.
+							two_state_checkbox('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', $this->options('compact_menu_reports')).'
 						</div>	
 						<div class="field">
-							<label for="media_menu">'.WT_I18N::translate('Media menu in topmenu?').help_link('media_menu', $this->getName()).'</label>
-							<input type="checkbox" id="media_menu" name="JB_MEDIA_MENU" '.$this->getChecked($JB_SETTINGS['MEDIA_MENU']).' />
+							<label class="label">'.WT_I18N::translate('Media menu in topmenu?').help_link('media_menu', $this->getName()).'</label>'.
+							two_state_checkbox('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu')).'
 						</div>	
 						<div class="field media_link">								
-							<label for="media_menu_link">'.WT_I18N::translate('Choose a folder as default for the main menu link').help_link('media_folder', $this->getName()).'</label>								
+							<label class="label">'.WT_I18N::translate('Choose a folder as default for the main menu link').help_link('media_folder', $this->getName()).'</label>								
 							<select id="media_menu_link" name="JB_MEDIA_MENU_LINK">';
+							// todo: use select_edit_control
 							$folders = WT_Query_Media::folderList();
 								foreach ($folders as $folder) {
 									if(empty($folder)) $folder = WT_I18N::translate('Media').'/';
@@ -652,8 +649,8 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			$html .=		'</select>
 						</div>	
 						<div class="field">
-							<label for="gviewer_pdf">'.WT_I18N::translate('Use Google Docs Viewer for pdf\'s?').help_link('gviewer', $this->getName()).'</label>
-							<input type="checkbox" id="gviewer_pdf" name="JB_GVIEWER_PDF" '.$this->getChecked($JB_SETTINGS['GVIEWER_PDF']).' />
+							<label class="label">'.WT_I18N::translate('Use Google Docs Viewer for pdf\'s?').help_link('gviewer', $this->getName()).'</label>'.
+							two_state_checkbox('NEW_JB_OPTIONS[GVIEWER_PDF]', $this->options('gviewer_pdf')).'
 						</div>														
 						<div id="buttons">
 							<input type="submit" name="update" value="'.WT_I18N::translate('Save').'" />&nbsp;&nbsp;
