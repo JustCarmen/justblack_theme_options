@@ -427,104 +427,111 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		$controller
 			->requireAdminLogin()
 			->setPageTitle(WT_I18N::translate('Options for the JustBlack theme'))
-			->pageHeader()
-			->addInlineJavaScript ('
-				function toggleFields(checkbox, field, reverse) {
-					var checkbox = jQuery(checkbox)
-					var field = jQuery(field)
-					if(!reverse) {
-						if ((checkbox).is(":checked")) field.show();
-						else field.hide();							
-						checkbox.click(function(){
-							if (this.checked) field.show();
-							else field.hide();															    
-						});	
-					}
-					else {
-						if ((checkbox).is(":checked")) field.hide();
-						else field.show();							
-						checkbox.click(function(){
-							if (this.checked) field.hide();
-							else field.show();															    
-						});	
-					}
+			->pageHeader();
+		
+		if (WT_Filter::postBool('save')) {
+			$NEW_JB_OPTIONS = WT_Filter::postArray('NEW_JB_OPTIONS');
+			set_module_setting($this->getName(), 'JB_OPTIONS',  serialize($NEW_JB_OPTIONS));
+			AddToLog($this->getTitle().' config updated', 'config');
+		}
+		
+		$controller->addInlineJavaScript ('
+			function toggleFields(checkbox, field, reverse) {
+				var checkbox = jQuery(checkbox)
+				var field = jQuery(field)
+				if(!reverse) {
+					if ((checkbox).is(":checked")) field.show();
+					else field.hide();							
+					checkbox.click(function(){
+						if (this.checked) field.show();
+						else field.hide();															    
+					});	
+				}
+				else {
+					if ((checkbox).is(":checked")) field.hide();
+					else field.show();							
+					checkbox.click(function(){
+						if (this.checked) field.hide();
+						else field.show();															    
+					});	
+				}
+			}						
+			
+			toggleFields("#treetitle", ".titlepos, .titlesize");
+			toggleFields("#resize", ".headerheight", true);
+			toggleFields("#compact_menu", ".reports");
+			toggleFields("#media_menu", ".media_link");
+								
+			jQuery("#header option").each(function() {
+				if(jQuery(this).val() == "'.$this->getOptionValue('header', 'selectbox').'") {
+					jQuery(this).prop("selected", true);
 				}						
+			});
+			
+			jQuery("#header").each(function(){
+				if(jQuery(this).val() == "custom") jQuery(".upload").show();
+				else jQuery(".upload").hide();
+				if(jQuery(this).val() !== "default") jQuery(".headerheight").show();
+				else jQuery(".headerheight").hide();		
+			});
+			jQuery("#header").change(function(){
+				if(jQuery(this).val() == "custom") jQuery(".upload").show();
+				else jQuery(".upload").hide();
+				if(jQuery(this).val() !== "default") jQuery(".headerheight").show();
+				else jQuery(".headerheight").hide();						
+			});
 				
-				toggleFields("#treetitle", ".titlepos, .titlesize");
-				toggleFields("#resize", ".headerheight", true);
-				toggleFields("#compact_menu", ".reports");
-				toggleFields("#media_menu", ".media_link");
-									
-				jQuery("#header option").each(function() {
-					if(jQuery(this).val() == "'.$this->getOptionValue('header', 'selectbox').'") {
-						jQuery(this).prop("selected", true);
-					}						
-				});
+			jQuery("#compact_menu").click(function() {
+				if (jQuery("#compact_menu_reports").is(":checked")) var menu_extended = jQuery(".menu_extended");
+				else var menu_extended = jQuery(".menu_extended:not(.menu_reports)");
 				
-				jQuery("#header").each(function(){
-					if(jQuery(this).val() == "custom") jQuery(".upload").show();
-					else jQuery(".upload").hide();
-					if(jQuery(this).val() !== "default") jQuery(".headerheight").show();
-					else jQuery(".headerheight").hide();		
-				});
-				jQuery("#header").change(function(){
-					if(jQuery(this).val() == "custom") jQuery(".upload").show();
-					else jQuery(".upload").hide();
-					if(jQuery(this).val() !== "default") jQuery(".headerheight").show();
-					else jQuery(".headerheight").hide();						
-				});
-					
-				jQuery("#compact_menu").click(function() {
-					if (jQuery("#compact_menu_reports").is(":checked")) var menu_extended = jQuery(".menu_extended");
-					else var menu_extended = jQuery(".menu_extended:not(.menu_reports)");
-					
-					if (this.checked) {
-						jQuery(menu_extended).appendTo(jQuery("#trashMenu")).hide();
-						jQuery(".menu_compact").insertAfter(jQuery(".ui-state-disabled:last")).show();
+				if (this.checked) {
+					jQuery(menu_extended).appendTo(jQuery("#trashMenu")).hide();
+					jQuery(".menu_compact").insertAfter(jQuery(".ui-state-disabled:last")).show();
+				}
+				else {
+					jQuery(".menu_compact").appendTo(jQuery("#trashMenu")).hide();
+					jQuery(menu_extended).insertAfter(jQuery(".ui-state-disabled:last")).show();
+				}
+				jQuery("#sortMenu, #trashMenu").trigger("sortupdate")					
+			});
+			
+			jQuery("#compact_menu_reports").click(function() {
+				if (this.checked) jQuery(".menu_reports").appendTo(jQuery("#trashMenu")).hide();
+				else jQuery(".menu_reports").insertAfter(jQuery(".menu_compact")).show();
+				jQuery("#sortMenu, #trashMenu").trigger("sortupdate")					
+			});
+			
+			jQuery("#media_menu").click(function() {						
+				if (this.checked) {
+					jQuery(".menu_media").appendTo(jQuery("#sortMenu")).show();
+				}
+				else {
+					jQuery(".menu_media").appendTo(jQuery("#trashMenu")).hide();
+				}
+				jQuery("#sortMenu, #trashMenu").trigger("sortupdate")					
+			});
+			
+			jQuery("#media_menu_link option").each(function() {
+				if(jQuery(this).val() == "'.$this->getOptionValue('media_menu_link', 'selectbox').'") {
+					jQuery(this).prop("selected", true);
+				}						
+			});
+			
+			 jQuery("#sortMenu").sortable({
+				items: "li:not(.ui-state-disabled)"
+			}).disableSelection();
+			
+			//-- update the order numbers after drag-n-drop sorting is complete
+			jQuery("#sortMenu").bind("sortupdate", function(event, ui) {
+				jQuery("#"+jQuery(this).attr("id")+" input[id^=menu_order_sort]").each(
+					function (index, value) {
+						value.value = index+1;
 					}
-					else {
-						jQuery(".menu_compact").appendTo(jQuery("#trashMenu")).hide();
-						jQuery(menu_extended).insertAfter(jQuery(".ui-state-disabled:last")).show();
-					}
-					jQuery("#sortMenu, #trashMenu").trigger("sortupdate")					
-				});
-				
-				jQuery("#compact_menu_reports").click(function() {
-					if (this.checked) jQuery(".menu_reports").appendTo(jQuery("#trashMenu")).hide();
-					else jQuery(".menu_reports").insertAfter(jQuery(".menu_compact")).show();
-					jQuery("#sortMenu, #trashMenu").trigger("sortupdate")					
-				});
-				
-				jQuery("#media_menu").click(function() {						
-					if (this.checked) {
-						jQuery(".menu_media").appendTo(jQuery("#sortMenu")).show();
-					}
-					else {
-						jQuery(".menu_media").appendTo(jQuery("#trashMenu")).hide();
-					}
-					jQuery("#sortMenu, #trashMenu").trigger("sortupdate")					
-				});
-				
-				jQuery("#media_menu_link option").each(function() {
-					if(jQuery(this).val() == "'.$this->getOptionValue('media_menu_link', 'selectbox').'") {
-						jQuery(this).prop("selected", true);
-					}						
-				});
-				
-				 jQuery("#sortMenu").sortable({
-					items: "li:not(.ui-state-disabled)"
-				}).disableSelection();
-				
-				//-- update the order numbers after drag-n-drop sorting is complete
-				jQuery("#sortMenu").bind("sortupdate", function(event, ui) {
-					jQuery("#"+jQuery(this).attr("id")+" input[id^=menu_order_sort]").each(
-						function (index, value) {
-							value.value = index+1;
-						}
-					);
-					jQuery("#trashMenu input[id^=menu_order_sort]").attr("value", "0");
-				}); 
-			');	
+				);
+				jQuery("#trashMenu input[id^=menu_order_sort]").attr("value", "0");
+			}); 
+		');	
 		
 		if (WT_Filter::post('update')) {				
 			$path = WT_STATIC_URL.'themes/justblack/'.basename(WT_CSS_URL).'/images/';
@@ -591,6 +598,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				<div id="error" style="display:none"></div>				
 				<h2>'.$controller->getPageTitle().'</h2>
 				<form method="post" name="JustBlack Theme Options" action="'.$this->getConfigLink().'" enctype="multipart/form-data">
+					<input type="hidden" name="save" value="1">
 					<div class="block_left">
 						<div class="field">
 							<label for="treetitle">'.WT_I18N::translate('Use the Family tree title in the header?').help_link('treetitle', $this->getName()).'</label>
