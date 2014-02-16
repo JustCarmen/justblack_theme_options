@@ -224,6 +224,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	}
 	
 	// get the media Menu as Main menu item with folders as submenu-items
+	// needs refactoring. This function is causing a huge amount of queries.
 	public function getMediaMenu() {
 		global $controller, $SEARCH_SPIDER, $MEDIA_DIRECTORY;
 		
