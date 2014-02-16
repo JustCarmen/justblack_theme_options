@@ -468,6 +468,16 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		}
 		
 		$controller->addInlineJavaScript ('
+			function include_css(css_file) {
+				var html_doc = document.getElementsByTagName("head")[0];
+				var css = document.createElement("link");
+				css.setAttribute("rel", "stylesheet");
+				css.setAttribute("type", "text/css");
+				css.setAttribute("href", css_file);
+				html_doc.appendChild(css);
+			}
+			include_css("'.WT_MODULES_DIR.$this->getName().'/style.css");
+			
 			function toggleFields(checkbox, field, reverse) {
 				var checkbox = jQuery(checkbox)
 				var field = jQuery(field)
@@ -569,8 +579,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		$error = '';	
 		
 		// Admin page content
-		$html = '<link rel="stylesheet" href="'.WT_MODULES_DIR.$this->getName().'/style.css" type="text/css">
-			<div id="jb_options">	
+		$html = '<div id="jb_options">	
 				<div id="error" style="display:none"></div>				
 				<h2>'.$controller->getPageTitle().'</h2>
 				<form method="post" name="JustBlack Theme Options" action="'.$this->getConfigLink().'" enctype="multipart/form-data">
