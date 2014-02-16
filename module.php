@@ -477,7 +477,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			toggleFields("#media_menu", ".media_link");
 								
 			jQuery("#header option").each(function() {
-				if(jQuery(this).val() == "'.$this->getOptionValue('header', 'selectbox').'") {
+				if(jQuery(this).val() == "'.$this->options('header').'") {
 					jQuery(this).prop("selected", true);
 				}						
 			});
@@ -527,7 +527,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			});
 			
 			jQuery("#media_menu_link option").each(function() {
-				if(jQuery(this).val() == "'.$this->getOptionValue('media_menu_link', 'selectbox').'") {
+				if(jQuery(this).val() == "'.$this->options('media_menu_link').'") {
 					jQuery(this).prop("selected", true);
 				}						
 			});
@@ -546,9 +546,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				jQuery("#trashMenu input[id^=menu_order_sort]").attr("value", "0");
 			}); 
 		');
-		
-		$JB_SETTINGS = $this->getSettings();
-		$error = '';	
 		
 		// Admin page content
 		$html = '<div id="jb_options"><div id="error" style="display:none"></div><h2>'.$this->getTitle().'</h2>
