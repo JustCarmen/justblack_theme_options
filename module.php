@@ -84,29 +84,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		else return $JB_OPTIONS;
 	}
 	
-	private function getOptionValue($key, $type) {			
-		$pkey = 'JB_'.strtoupper($key);
-		switch($type) {
-			case('checkbox'):
-				isset($_POST[$pkey]) ? $value = '1' : $value = '0';
-			break;
-			case('textbox'):
-				is_array($_POST[$pkey]) ? $value = serialize($_POST[$pkey]) : $value = $_POST[$pkey];
-			break;
-			case ('selectbox'):
-				$current = $this->getSettings($key);
-				isset($_POST[$pkey]) ? $value = $_POST[$pkey] : $value = $current;
-			break;
-			case('sortable'):
-				if ($key == 'menu_order') {		
-					$MENU_ORDER = $this->sortArray($_POST[$pkey], 'sort');					
-					$value = serialize($MENU_ORDER);
-				}				
-			break;			
-		}		
-		return $value;	
-	}
-	
 	// Search within a multiple dimensional array	
 	private function searchArray($array, $key, $value) {
 		$results = array();
@@ -134,11 +111,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		}
 		return $return_array;
     }
-	
-	private function getChecked($value) {
-		$value == 1 ? $checked = 'checked="checked"' : $checked = "";	
-		return $checked;
-	}
 	
 	private function getMenuOrder() {
 		$menulist = array(
