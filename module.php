@@ -58,57 +58,31 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		return /* I18N: Description of the module */ WT_I18N::translate('Set options for the JustBlack theme within the admin interface');
 	}
 	
-	public function getSettings($key = '') {
-		// get module settings
-		$module = $this->getName();
-		$JB_TREETITLE 				= get_module_setting($module, 'JB_TREETITLE');
-		$JB_TITLEPOS				= get_module_setting($module, 'JB_TITLEPOS');
-		$JB_TITLESIZE				= get_module_setting($module, 'JB_TITLESIZE');
-		$JB_HEADER 					= get_module_setting($module, 'JB_HEADER');
-		$JB_HEADERIMG				= get_module_setting($module, 'JB_HEADERIMG');
-		$JB_HEADERHEIGHT			= get_module_setting($module, 'JB_HEADERHEIGHT');
-		$JB_FLAGS					= get_module_setting($module, 'JB_FLAGS');		
-		$JB_COMPACT_MENU 			= get_module_setting($module, 'JB_COMPACT_MENU');
-		$JB_COMPACT_MENU_REPORTS 	= get_module_setting($module, 'JB_COMPACT_MENU_REPORTS');
-		$JB_MEDIA_MENU				= get_module_setting($module, 'JB_MEDIA_MENU');
-		$JB_MEDIA_MENU_LINK			= get_module_setting($module, 'JB_MEDIA_MENU_LINK');
-		$JB_GVIEWER_PDF				= get_module_setting($module, 'JB_GVIEWER_PDF');
-		$JB_MENU_ORDER				= unserialize(get_module_setting($module, 'JB_MENU_ORDER'));		
-			
-		// get defaults if there are no settings
-		if (!isset($JB_TREETITLE)) 				$JB_TREETITLE 				= '1';
-		if (empty($JB_TITLEPOS)) 				$JB_TITLEPOS	 			= '110px,0,0,52%';
-		if (empty($JB_TITLESIZE)) 				$JB_TITLESIZE	 			= '20';
-		if (!isset($JB_HEADER)) 				$JB_HEADER 					= 'default';
-		if (!isset($JB_HEADERIMG)) 				$JB_HEADERIMG 				= WT_I18N::translate('no custom header image set');
-		if (!isset($JB_HEADERHEIGHT)) 			$JB_HEADERHEIGHT			= '150';
-		if (!isset($JB_FLAGS)) 					$JB_FLAGS 					= '0';
-		if (!isset($JB_COMPACT_MENU)) 			$JB_COMPACT_MENU 			= '0';
-		if (!isset($JB_COMPACT_MENU_REPORTS)) 	$JB_COMPACT_MENU_REPORTS 	= '1';
-		if (!isset($JB_MEDIA_MENU)) 			$JB_MEDIA_MENU			 	= '0';
-		if (!isset($JB_MEDIA_MENU_LINK)) 		$JB_MEDIA_MENU_LINK		 	= '';
-		if (!isset($JB_GVIEWER_PDF)) 			$JB_GVIEWER_PDF		 		= '0';
-		if (empty($JB_MENU_ORDER)) 				$JB_MENU_ORDER				= $this->getMenuOrder();
-						
-		$JB_SETTINGS = array(
-			'TREETITLE'				=> $JB_TREETITLE,
-			'TITLEPOS'				=> $JB_TITLEPOS,
-			'TITLESIZE'				=> $JB_TITLESIZE,
-			'HEADER'				=> $JB_HEADER,
-			'HEADERIMG'				=> $JB_HEADERIMG,
-			'HEADERHEIGHT'			=> $JB_HEADERHEIGHT,
-			'FLAGS'					=> $JB_FLAGS,
-			'COMPACT_MENU'			=> $JB_COMPACT_MENU,
-			'COMPACT_MENU_REPORTS'	=> $JB_COMPACT_MENU_REPORTS,
-			'MEDIA_MENU'			=> $JB_MEDIA_MENU,
-			'MEDIA_MENU_LINK'		=> $JB_MEDIA_MENU_LINK,
-			'GVIEWER_PDF'			=> $JB_GVIEWER_PDF,
-			'MENU_ORDER'			=> $JB_MENU_ORDER
-		);
-		
-		if($key) return($JB_SETTINGS[strtoupper($key)]);
-		else return $JB_SETTINGS;		
-	}	
+	// Get module options
+	private function options($value = '') {
+		$JB_OPTIONS = unserialize(get_module_setting($this->getName(), 'JB_OPTIONS'));
+
+		if (empty($JB_OPTIONS)) {
+			$JB_OPTIONS = array(
+				'TREETITLE'				=> '1',
+				'TITLEPOS'				=> '110px,0,0,52%',
+				'TITLESIZE'				=> '20',
+				'HEADER'				=> 'default',
+				'HEADERIMG'				=> WT_I18N::translate('no custom header image set'),
+				'HEADERHEIGHT'			=> '150',
+				'FLAGS'					=> '0',
+				'COMPACT_MENU'			=> '0',
+				'COMPACT_MENU_REPORTS'	=> '1',
+				'MEDIA_MENU'			=> '0',
+				'MEDIA_MENU_LINK'		=> '',
+				'GVIEWER_PDF'			=> '0',
+				'MENU_ORDER'			=> $this->getMenuOrder()
+			);
+		};
+
+		if($value) return($JB_OPTIONS[strtoupper($value)]);
+		else return $JB_OPTIONS;
+	}
 	
 	private function getOptionValue($key, $type) {			
 		$pkey = 'JB_'.strtoupper($key);
