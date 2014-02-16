@@ -563,34 +563,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				);
 				jQuery("#trashMenu input[id^=menu_order_sort]").attr("value", "0");
 			}); 
-		');	
-		
-		if (WT_Filter::post('update')) {			
-			
-			if (!isset($error)) {			
-				// Put new values into the database
-				set_module_setting($this->getName(), 'JB_TREETITLE', 			$this->getOptionValue('treetitle', 'checkbox'));
-				set_module_setting($this->getName(), 'JB_TITLEPOS',		 		$this->getOptionValue('titlepos', 'textbox'));
-				set_module_setting($this->getName(), 'JB_TITLESIZE',		 	$this->getOptionValue('titlesize', 'textbox'));
-				set_module_setting($this->getName(), 'JB_HEADER',				$this->getOptionValue('header', 'selectbox'));													
-				set_module_setting($this->getName(), 'JB_FLAGS',				$this->getOptionValue('flags', 'checkbox'));		
-				set_module_setting($this->getName(), 'JB_COMPACT_MENU',			$this->getOptionValue('compact_menu', 'checkbox'));	
-				set_module_setting($this->getName(), 'JB_COMPACT_MENU_REPORTS',	$this->getOptionValue('compact_menu_reports', 'checkbox'));
-				set_module_setting($this->getName(), 'JB_MEDIA_MENU',			$this->getOptionValue('media_menu', 'checkbox'));
-				set_module_setting($this->getName(), 'JB_MEDIA_MENU_LINK',		$this->getOptionValue('media_menu_link', 'selectbox'));
-				set_module_setting($this->getName(), 'JB_GVIEWER_PDF',			$this->getOptionValue('gviewer_pdf', 'checkbox'));					
-				set_module_setting($this->getName(), 'JB_MENU_ORDER',			$this->getOptionValue('menu_order', 'sortable'));
-				
-				// Only set headerheight when 'custom' or 'none' is chosen from selectbox
-				if($this->getOptionValue('header', 'selectbox') == 'default' || WT_Filter::postBool('resize') == true) {
-					WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name = 'JB_HEADERHEIGHT'")->execute();
-				}
-				else {
-					set_module_setting($this->getName(), 'JB_HEADERHEIGHT',	$this->getOptionValue('headerheight', 'textbox'));	
-				}
-			}			
-			AddToLog($this->getTitle().' updated', 'settings');
-		}		
+		');
 		
 		$JB_SETTINGS = $this->getSettings();
 		$error = '';	
