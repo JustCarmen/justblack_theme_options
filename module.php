@@ -579,9 +579,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		$error = '';	
 		
 		// Admin page content
-		$html = '<div id="jb_options">	
-				<div id="error" style="display:none"></div>				
-				<h2>'.$controller->getPageTitle().'</h2>
+		$html = '<div id="jb_options"><div id="error" style="display:none"></div><h2>'.$this->getTitle().'</h2>
 				<form method="post" name="JustBlack Theme Options" action="'.$this->getConfigLink().'" enctype="multipart/form-data">
 					<input type="hidden" name="save" value="1">
 					<div class="block_left">
