@@ -461,30 +461,30 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			include_css("'.WT_MODULES_DIR.$this->getName().'/style.css");
 			
 			function toggleFields(checkbox, field, reverse) {
-				var checkbox = jQuery(checkbox)
+				var checkbox = jQuery(checkbox).find("input[type=checkbox]");
 				var field = jQuery(field)
 				if(!reverse) {
-					if ((checkbox).is(":checked")) field.show();
-					else field.hide();							
+					if ((checkbox).is(":checked")) field.show("slow");
+					else field.hide("slow");
 					checkbox.click(function(){
-						if (this.checked) field.show();
-						else field.hide();															    
-					});	
+						if (this.checked) field.show("slow");
+						else field.hide("slow");
+					});
 				}
 				else {
-					if ((checkbox).is(":checked")) field.hide();
-					else field.show();							
+					if ((checkbox).is(":checked")) field.hide("slow");
+					else field.show("slow");
 					checkbox.click(function(){
-						if (this.checked) field.hide();
-						else field.show();															    
-					});	
+						if (this.checked) field.hide("slow");
+						else field.show("slow");
+					});
 				}
-			}						
+			}		
 			
-			toggleFields("#treetitle", ".titlepos, .titlesize");
-			toggleFields("#resize", ".headerheight", true);
-			toggleFields("#compact_menu", ".reports");
-			toggleFields("#media_menu", ".media_link");
+			toggleFields("#treetitle", "#titlepos, #titlesize");
+			toggleFields("#resize", "#headerheight", true);
+			toggleFields("#compact_menu", "#reports");
+			toggleFields("#media_menu", "#media_link");
 								
 			jQuery("#header option").each(function() {
 				if(jQuery(this).val() == "'.$this->options('header').'") {
@@ -492,21 +492,21 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				}						
 			});
 			
-			jQuery("#header").each(function(){
-				if(jQuery(this).val() == "custom") jQuery(".upload").show();
-				else jQuery(".upload").hide();
-				if(jQuery(this).val() !== "default") jQuery(".headerheight").show();
-				else jQuery(".headerheight").hide();		
+			jQuery("#header select").each(function(){
+				if(jQuery(this).val() == 1) jQuery("#header_title, #upload").show();
+				else jQuery("#header_title, #upload").hide();
+				if(jQuery(this).val() > 0) jQuery("#header_height").show();
+				else jQuery("#header_height").hide();		
 			});
-			jQuery("#header").change(function(){
-				if(jQuery(this).val() == "custom") jQuery(".upload").show();
-				else jQuery(".upload").hide();
-				if(jQuery(this).val() !== "default") jQuery(".headerheight").show();
-				else jQuery(".headerheight").hide();						
+			jQuery("#header select").change(function(){
+				if(jQuery(this).val() == 1) jQuery("#header_title, #upload").show();
+				else jQuery("#header_title, #upload").hide();
+				if(jQuery(this).val() > 0) jQuery("#header_height").show();
+				else jQuery("#header_height").hide();						
 			});
 				
-			jQuery("#compact_menu").click(function() {
-				if (jQuery("#compact_menu_reports").is(":checked")) var menu_extended = jQuery(".menu_extended");
+			jQuery("#compact_menu input[type=checkbox]").click(function() {
+				if (jQuery("#reports input[type=checkbox]").is(":checked")) var menu_extended = jQuery(".menu_extended");
 				else var menu_extended = jQuery(".menu_extended:not(.menu_reports)");
 				
 				if (this.checked) {
@@ -520,13 +520,13 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				jQuery("#sortMenu, #trashMenu").trigger("sortupdate")					
 			});
 			
-			jQuery("#compact_menu_reports").click(function() {
+			jQuery("#reports input[type=checkbox]").click(function() {
 				if (this.checked) jQuery(".menu_reports").appendTo(jQuery("#trashMenu")).hide();
 				else jQuery(".menu_reports").insertAfter(jQuery(".menu_compact")).show();
 				jQuery("#sortMenu, #trashMenu").trigger("sortupdate")					
 			});
 			
-			jQuery("#media_menu").click(function() {						
+			jQuery("#media_menu input[type=checkbox]").click(function() {						
 				if (this.checked) {
 					jQuery(".menu_media").appendTo(jQuery("#sortMenu")).show();
 				}
@@ -548,12 +548,12 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			
 			//-- update the order numbers after drag-n-drop sorting is complete
 			jQuery("#sortMenu").bind("sortupdate", function(event, ui) {
-				jQuery("#"+jQuery(this).attr("id")+" input[id^=menu_order_sort]").each(
+				jQuery("#"+jQuery(this).attr("id")+" input[id^=menu_sort]").each(
 					function (index, value) {
 						value.value = index+1;
 					}
 				);
-				jQuery("#trashMenu input[id^=menu_order_sort]").attr("value", "0");
+				jQuery("#trashMenu input[id^=menu_sort]").attr("value", "0");
 			}); 
 		');
 		
@@ -562,24 +562,24 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				<form method="post" name="configform" action="'.$this->getConfigLink().'">
 					<input type="hidden" name="save" value="1">
 					<div class="block_left">
-						<div class="field">
+						<div id="treetitle" class="field">
 							<label class="label">'.WT_I18N::translate('Use the Family tree title in the header?').help_link('treetitle', $this->getName()).'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[TREETITLE]', $this->options('treetitle')).'
 						</div>
-						<div class="field titlepos">
+						<div id="titlepos" class="field">
 							<label class="label">'.WT_I18N::translate('Position of the Family tree title').help_link('treetitle_position', $this->getName()).'</label>
 							<input type="text" name="NEW_JB_OPTIONS[TITLEPOS]" size="10" value="'.$this->options('titlepos').'">
 						</div>
-						<div class="field titlesize">
+						<div id="titlesize" class="field">
 							<label class="label">'.WT_I18N::translate('Size of the Family tree title').'</label>
 							<input type="text" name="NEW_JB_OPTIONS[TITLESIZE]" size="2" value="'.$this->options('titlesize').'"> px								
 						</div>
-						<div class="field">
+						<div id="header" class="field">
 							<label class="label">'.WT_I18N::translate('Use header image?').'</label>'.
 							select_edit_control('NEW_JB_OPTIONS[HEADER]', array(WT_I18N::translate('Default'), WT_I18N::translate('Custom'), WT_I18N::translate('None')), null, $this->options('header')).'
 						</div>
-						<div class="field upload title">
-							<label for="current_headerimg">'.WT_I18N::translate('Current custom header-image').'</label>';
+						<div id="header_title" class="field">
+							<label class="label">'.WT_I18N::translate('Current custom header-image').'</label>';
 							$ext = strtolower(substr(strrchr($this->options('headerimg'), '.'), 1));
 							if(file_exists(WT_STATIC_URL.'themes/justblack/css/images/custom_header.'.$ext)){
 									$ext == 'jpg' ? $type = 'image/jpeg' : $type = 'image/'.$ext;
@@ -591,12 +591,12 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 									$html .= '	<span class="current_headerimg">'.$this->options('headerimg').'</span>';
 							}
 			$html .= '	</div>
-						<div class="field upload">
+						<div id="upload" class="field">
 							<label class="label">'.WT_I18N::translate('Upload a (new) custom header image').'</label>
 							<input type="file" name="NEW_JB_OPTIONS[HEADERIMG]" /><br/>'.
 							checkbox('resize', false, 'id="resize"').'<label for="resize">'.WT_I18N::translate('Resize (800x150px)').'</label>
 						</div>
-						<div class="field headerheight">
+						<div id="header_height" class="field">
 							<label class="label">'.WT_I18N::translate('Height of the header area').'</label>
 							<input type="text" name="NEW_JB_OPTIONS[HEADERHEIGHT]" size="2" value="'.$this->options('headerheight').'" /> px
 						</div>
@@ -604,19 +604,19 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<label class="label">'.WT_I18N::translate('Use flags in header bar as language menu?').help_link('flags', $this->getName()).'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[FLAGS]', $this->options('flags')).'
 						</div>
-						<div class="field">
+						<div id="compact_menu" class="field">
 							<label class="label">'.WT_I18N::translate('Use a compact menu?').'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[COMPACT_MENU]', $this->options('compact_menu')).'
 						</div>
-						<div class="field reports">
+						<div id="reports" class="field">
 							<label class="label">'.WT_I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?').'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', $this->options('compact_menu_reports')).'
 						</div>	
-						<div class="field">
+						<div id="media_menu" class="field">
 							<label class="label">'.WT_I18N::translate('Media menu in topmenu?').help_link('media_menu', $this->getName()).'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu')).'
 						</div>	
-						<div class="field media_link">								
+						<div id="media_link" class="field">								
 							<label class="label">'.WT_I18N::translate('Choose a folder as default for the main menu link').help_link('media_folder', $this->getName()).'</label>								
 							<select id="media_menu_link" name="JB_MEDIA_MENU_LINK">';
 							// todo: use select_edit_control
