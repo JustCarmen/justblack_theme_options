@@ -62,7 +62,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	private function setDefault($key) {
 		$JB_DEFAULT = array(
 			'TREETITLE'				=> '1',
-			'TITLEPOS'				=> '110px,0,0,52%',
+			'TITLEPOS'				=> array('110', WT_I18N::translate('left'), '52'),
 			'TITLESIZE'				=> '20',
 			'HEADER'				=> 'default',
 			'HEADERIMG'				=> WT_I18N::translate('no custom header image set'),
@@ -579,8 +579,11 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							two_state_checkbox('NEW_JB_OPTIONS[TREETITLE]', $this->options('treetitle')).'
 						</div>
 						<div id="titlepos" class="field">
-							<label class="label">'.WT_I18N::translate('Position of the Family tree title').help_link('treetitle_position', $this->getName()).'</label>
-							<input type="text" name="NEW_JB_OPTIONS[TITLEPOS]" size="10" value="'.$this->options('titlepos').'">
+							<label class="label">'.WT_I18N::translate('Position of the Family tree title').help_link('treetitle_position', $this->getName()).'</label>';
+							$titlepos = $this->options('titlepos');
+			$html .= '		<span>'.WT_I18N::Translate('top').' </span><input type="text" name="NEW_JB_OPTIONS[TITLEPOS][0]" size="2" value="'.$titlepos[0].'">px<br>'.
+							select_edit_control('NEW_JB_OPTIONS[TITLEPOS][1]', array(WT_I18N::translate('left'), WT_I18N::translate('right')), null, $titlepos[1]).'
+							<input type="text" name="NEW_JB_OPTIONS[TITLEPOS][2]" size="2" value="'.$titlepos[2].'">%		
 						</div>
 						<div id="titlesize" class="field">
 							<label class="label">'.WT_I18N::translate('Size of the Family tree title').'</label>
