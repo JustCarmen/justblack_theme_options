@@ -177,20 +177,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			),
 		);
 		
-		$modules=WT_Module::getActiveMenus();
-		// don't list known fakemenus but put them in the database with a sort-order of 99 
-		$fakeMenus 	= array('custom_js', 'fancy_imagebar', 'fancy_branches');
-		$i = 9;
-		foreach ($modules as $module) {
-			$sort = in_array($module->getName(), $fakeMenus) ? '99' : $i;		
-			$menulist[] = array(					
-				'title'		=> $module->getTitle(),
-				'label'		=> $module->getName(),
-				'sort' 		=> $sort,
-				'function' 	=> 'getModuleMenu'
-			);
-			$i++;	
-		}
+		$menulist = array_merge($menulist, $this->getActiveMenu(8));
 		return $menulist;
 	}	
 	
@@ -254,31 +241,45 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		return $menu;
 	}
 	
+	private function getActiveMenu($sort) {
+		$modules=WT_Module::getActiveMenus();
+		$fakeMenus 	= array('custom_js', 'fancy_imagebar', 'fancy_branches');
+		
+		foreach ($modules as $module) {
+			if(!in_array($module->getName(), $fakeMenus)) {
+				$menulist[] = array(					
+					'title'		=> $module->getTitle(),
+					'label'		=> $module->getName(),
+					'sort' 		=> $sort,
+					'function' 	=> 'getModuleMenu'
+				);
+				$sort++;	
+			}
+		}		
+		return $menulist;
+	}
+	
 	// function to check if a module menu is still active (after options are set)
 	private function checkModule($menulist) {
-		$modules=WT_Module::getActiveMenus();		
-		
+		$lastItem = end($menulist);
+		$sort = $lastItem['sort'] + 1;
+		$modules=$this->getActiveMenu($sort);
+				
 		// delete deactivated modules from the list
 		foreach ($menulist as $menu) {
 			if	($menu['function'] == 'getModuleMenu') {
-				if (array_key_exists($menu['label'], $modules)) {
+				if ($this->searchArray($modules, 'label', $menu['label'])) {
 					$new_list[] = $menu;
 				}
-			}							
-			else {
+			} else {
 				$new_list[] = $menu;
 			}
 		}	
 		
 		// add newly activated modules to the list
 		foreach ($modules as $module) {			
-			if(!$this->searchArray($menulist, 'label', $module->getName())) {
-				$new_list[] = array(					
-					'title'		=> $module->getTitle(),
-					'label'		=> $module->getName(),
-					'sort' 		=> '49', // can not be 0 (=trashmenu), can not be 99 (=fakemenu)
-					'function' 	=> 'getModuleMenu'
-				);	
+			if(!$this->searchArray($menulist, 'label', $module['label'])) {
+				$new_list[] = $module;
 			}
 		}		
 		return $new_list;
@@ -669,16 +670,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 										$i++;
 									}			
 			$html .= '			</ul>';
-							}
-							if (isset($fakeMenu)) {
-			$html .= '			<div id="fakeMenu">';
-									foreach ($fakeMenu as $menu) {
-										foreach ($menu as $key => $val) {
-											$html .= '<input type="hidden" id="menu_order_'.$key.'_'.$i.'" name="JB_MENU_ORDER['.$i.']['.$key.']" value="'.$val.'"/>';
-										}									
-										$i++;
-									}			
-			$html .= '			</div>';
 							}
 			$html .= '</div>				
 				</form>
