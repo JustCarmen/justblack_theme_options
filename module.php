@@ -580,7 +580,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						</div>
 						<div class="field upload title">
 							<label for="current_headerimg">'.WT_I18N::translate('Current custom header-image').'</label>';
-							$ext = strtolower(substr(strrchr($this->options['headerimg'], '.'), 1));
+							$ext = strtolower(substr(strrchr($this->options('headerimg'), '.'), 1));
 							if(file_exists(WT_STATIC_URL.'themes/justblack/css/images/custom_header.'.$ext)){
 									$ext == 'jpg' ? $type = 'image/jpeg' : $type = 'image/'.$ext;
 									$html .= '	<a class="gallery" type="'.$type.'" href="'.WT_STATIC_URL.'themes/justblack/css/images/custom_header.'.$ext.'">
@@ -588,7 +588,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 												</a>';																			
 							}	
 							else {
-									$html .= '	<span class="current_headerimg">'.$this->options['headerimg'].'</span>';
+									$html .= '	<span class="current_headerimg">'.$this->options('headerimg').'</span>';
 							}
 			$html .= '	</div>
 						<div class="field upload">
@@ -598,7 +598,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						</div>
 						<div class="field headerheight">
 							<label class="label">'.WT_I18N::translate('Height of the header area').'</label>
-							<input type="text" name="NEW_JB_OPTIONS[HEADERHEIGHT]" size="2" value="'.$this->options['headerheight'].'" /> px
+							<input type="text" name="NEW_JB_OPTIONS[HEADERHEIGHT]" size="2" value="'.$this->options('headerheight').'" /> px
 						</div>
 						<div class="field">
 							<label class="label">'.WT_I18N::translate('Use flags in header bar as language menu?').help_link('flags', $this->getName()).'</label>'.
