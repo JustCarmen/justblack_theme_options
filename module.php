@@ -58,30 +58,37 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		return /* I18N: Description of the module */ WT_I18N::translate('Set options for the JustBlack theme within the admin interface');
 	}
 	
+	// Set default module options
+	private function setDefault($key) {
+		$JB_DEFAULT = array(
+			'TREETITLE'				=> '1',
+			'TITLEPOS'				=> '110px,0,0,52%',
+			'TITLESIZE'				=> '20',
+			'HEADER'				=> 'default',
+			'HEADERIMG'				=> WT_I18N::translate('no custom header image set'),
+			'HEADERHEIGHT'			=> '150',
+			'FLAGS'					=> '0',
+			'COMPACT_MENU'			=> '0',
+			'COMPACT_MENU_REPORTS'	=> '1',
+			'MEDIA_MENU'			=> '0',
+			'MEDIA_MENU_LINK'		=> '',
+			'GVIEWER_PDF'			=> '0'
+		);
+		return $JB_DEFAULT[$key];
+	
+	}
+	
 	// Get module options
-	private function options($value = '') {
+	private function options($key) {
 		$JB_OPTIONS = unserialize(get_module_setting($this->getName(), 'JB_OPTIONS'));
-
-		if (empty($JB_OPTIONS)) {
-			$JB_OPTIONS = array(
-				'TREETITLE'				=> '1',
-				'TITLEPOS'				=> '110px,0,0,52%',
-				'TITLESIZE'				=> '20',
-				'HEADER'				=> 'default',
-				'HEADERIMG'				=> WT_I18N::translate('no custom header image set'),
-				'HEADERHEIGHT'			=> '150',
-				'FLAGS'					=> '0',
-				'COMPACT_MENU'			=> '0',
-				'COMPACT_MENU_REPORTS'	=> '1',
-				'MEDIA_MENU'			=> '0',
-				'MEDIA_MENU_LINK'		=> '',
-				'GVIEWER_PDF'			=> '0',
-				'MENU'					=> $this->getMenu()
-			);
-		};
-
-		if($value) return($JB_OPTIONS[strtoupper($value)]);
-		else return $JB_OPTIONS;
+		
+		$key = strtoupper($key);
+		if(empty($JB_OPTIONS) || (is_array($JB_OPTIONS) && !array_key_exists($key, $JB_OPTIONS))) {
+			$key == 'MENU' ? $value = $this->getMenu() : $value = $this->setDefault($key);
+			return $value;
+		} else {
+			return $JB_OPTIONS[$key];
+		}
 	}
 	
 	// Search within a multiple dimensional array	
