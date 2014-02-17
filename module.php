@@ -594,16 +594,15 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							select_edit_control('NEW_JB_OPTIONS[HEADER]', array(WT_I18N::translate('Default'), WT_I18N::translate('Custom'), WT_I18N::translate('None')), null, $this->options('header')).'
 						</div>
 						<div id="header_title" class="field">
-							<label class="label">'.WT_I18N::translate('Current custom header-image').'</label>';
-							$ext = strtolower(substr(strrchr($this->options('headerimg'), '.'), 1));
-							if(file_exists(WT_STATIC_URL.'themes/justblack/css/images/custom_header.'.$ext)){
-									$ext == 'jpg' ? $type = 'image/jpeg' : $type = 'image/'.$ext;
-									$html .= '	<a class="gallery" type="'.$type.'" href="'.WT_STATIC_URL.'themes/justblack/css/images/custom_header.'.$ext.'">
-													<span class="current_headerimg">'.$this->options['headerimg'].'</span>
-												</a>';																			
-							}	
-							else {
-									$html .= '	<span class="current_headerimg">'.$this->options('headerimg').'</span>';
+							<label class="label">'.WT_I18N::translate('Current header-image').'</label>';
+							$filename = WT_DATA_DIR.$this->options('headerimg');
+							if(file_exists($filename)){
+								$image = getimagesize($file); $type = $image['mime'];
+			$html .= '			<a class="gallery" type="'.$type.'" href="'.$filename.'">
+									<span class="current_headerimg">'.$this->options['headerimg'].'</span>
+								</a>';																			
+							} else {
+			$html .= '			<span class="current_headerimg">'.$this->options('headerimg').'</span>';
 							}
 			$html .= '	</div>
 						<div id="upload" class="field">
