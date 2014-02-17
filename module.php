@@ -560,12 +560,12 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			
 			//-- update the order numbers after drag-n-drop sorting is complete
 			jQuery("#sortMenu").bind("sortupdate", function(event, ui) {
-				jQuery("#"+jQuery(this).attr("id")+" input[id^=menu_sort]").each(
+				jQuery("#"+jQuery(this).attr("id")+" input[id*=sort]").each(
 					function (index, value) {
 						value.value = index+1;
 					}
 				);
-				jQuery("#trashMenu input[id^=menu_sort]").attr("value", "0");
+				jQuery("#trashMenu input[id*=sort]").attr("value", "0");
 			}); 
 		');
 		
@@ -630,7 +630,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						<div id="media_menu" class="field">
 							<label class="label">'.WT_I18N::translate('Media menu in topmenu?').help_link('media_menu', $this->getName()).'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu')).'
-						</div>	
+						</div>
 						<div id="media_link" class="field">								
 							<label class="label">'.WT_I18N::translate('Choose a folder as default for the main menu link').help_link('media_folder', $this->getName()).'</label>'.								
 							select_edit_control('NEW_JB_OPTIONS[MEDIA_LINK]', $this->getFolderList(), null, $this->options('media_link')).'						
@@ -644,39 +644,33 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<input type="submit" name="reset" value="'.WT_I18N::translate('Reset').'" />
 						</div>
 					</div>
-					<div class="block_right">';							
+					<div class="block_right">';
 			$html .= '	<div class="block_left">
 							<h3>'.WT_I18N::translate('Sort Topmenu items').help_link('sort_topmenu', $this->getName()).'</h3>';
 							$menulist 	= $this->checkModule($this->options('menu'));
 							foreach($menulist as $menu) {																		
-								if($menu['sort'] == 0) $trashMenu[] = $menu;
-								elseif ($menu['sort'] == 99) $fakeMenu[] = $menu;
-								else $activeMenu[] = $menu;
+								$menu['sort'] == 0 ? $trashMenu[] = $menu : $activeMenu[] = $menu;
 							}
-							$i=1;
 							if (isset($activeMenu)) {
-								$html .= '
-								<ul id="sortMenu">';										
-									foreach ($activeMenu as $menu) {
-										$html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
-										foreach ($menu as $key => $val) {
-											$html .= '<input type="hidden" id="menu_order_'.$key.'_'.$i.'" name="JB_MENU_ORDER['.$i.']['.$key.']" value="'.$val.'"/>';
-										}
-										$html .= '<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';
-										$i++;
-									}								
+			$html .= '			<ul id="sortMenu">';
+								foreach ($activeMenu as $mkey => $menu) {
+									$html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
+									foreach ($menu as $key => $val) {
+										$html .= '<input type="hidden" id="jb_menu['.$mkey.']['.$key.']" name="NEW_JB_MENU['.$mkey.']['.$key.']" value="'.$val.'"/>';
+									}
+			$html .= '				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';
+								}								
 			$html .= '			</ul>';
 							}
 							if (isset($trashMenu)) {
 			$html .= '			<ul id="trashMenu">'; // trashcan for toggling the compact menu.
-									foreach ($trashMenu as $menu) {
-										$html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
-										foreach ($menu as $key => $val) {
-											$html .= '<input type="hidden" id="menu_order_'.$key.'_'.$i.'" name="JB_MENU_ORDER['.$i.']['.$key.']" value="'.$val.'"/>';
-										}
-										$html .= '<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';										
-										$i++;
-									}			
+								foreach ($trashMenu as $mkey => $menu) {
+									$html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
+									foreach ($menu as $key => $val) {
+										$html .= '<input type="hidden" id="jb_menu['.$mkey.']['.$key.']" name="NEW_JB_MENU['.$mkey.']['.$key.']" value="'.$val.'"/>';
+									}
+			$html .= '				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';	
+								}			
 			$html .= '			</ul>';
 							}
 			$html .= '</div>				
