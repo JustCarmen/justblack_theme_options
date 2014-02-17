@@ -188,7 +188,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	}	
 	
 	// get our own Compact Menu
-	public function getCompactMenu() {
+	private function getCompactMenu() {
 		global $controller, $SEARCH_SPIDER;
 		
 		if ($SEARCH_SPIDER) return null;
@@ -225,7 +225,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	
 	// get the media Menu as Main menu item with folders as submenu-items
 	// needs refactoring. This function is causing a huge amount of queries.
-	public function getMediaMenu() {
+	private function getMediaMenu() {
 		global $controller, $SEARCH_SPIDER, $MEDIA_DIRECTORY;
 		
 		if ($SEARCH_SPIDER) return null;
@@ -248,7 +248,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	}
 	
 	// function to check if a module menu is still active (after options are set)
-	public function checkModule($menulist) {
+	private function checkModule($menulist) {
 		$modules=WT_Module::getActiveMenus();		
 		
 		// delete deactivated modules from the list
