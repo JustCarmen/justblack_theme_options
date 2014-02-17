@@ -91,34 +91,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		}
 	}
 	
-	// Search within a multiple dimensional array	
-	private function searchArray($array, $key, $value) {
-		$results = array();
-		if (is_array($array)) {
-			if (isset($array[$key]) && $array[$key] == $value)
-				$results[] = $array;	
-			foreach ($array as $subarray)
-				$results = array_merge($results, $this->searchArray($subarray, $key, $value));
-		}	
-		return $results;
-	}
-	
-	// Sort the array according to the $key['SORT'] input.
-	private function sortArray($array, $sort_by){
-		foreach ($array as $pos =>  $val) {
-			$tmp_array[$pos] = $val[$sort_by];
-		}
-		asort($tmp_array);
-	   
-		foreach ($tmp_array as $pos =>  $val){
-			$return_array[$pos]['title'] = $array[$pos]['title'];
-			$return_array[$pos]['label'] = $array[$pos]['label'];
-			$return_array[$pos]['sort'] = $array[$pos]['sort'];
-			$return_array[$pos]['function'] = $array[$pos]['function'];
-		}
-		return $return_array;
-    }
-	
 	private function getMenu() {
 		$menulist = array(
 			array(
@@ -284,6 +256,34 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		}		
 		return $new_list;
 	}
+	
+	// Search within a multiple dimensional array	
+	private function searchArray($array, $key, $value) {
+		$results = array();
+		if (is_array($array)) {
+			if (isset($array[$key]) && $array[$key] == $value)
+				$results[] = $array;	
+			foreach ($array as $subarray)
+				$results = array_merge($results, $this->searchArray($subarray, $key, $value));
+		}	
+		return $results;
+	}
+	
+	// Sort the array according to the $key['SORT'] input.
+	private function sortArray($array, $sort_by){
+		foreach ($array as $pos =>  $val) {
+			$tmp_array[$pos] = $val[$sort_by];
+		}
+		asort($tmp_array);
+	   
+		foreach ($tmp_array as $pos =>  $val){
+			$return_array[$pos]['title'] = $array[$pos]['title'];
+			$return_array[$pos]['label'] = $array[$pos]['label'];
+			$return_array[$pos]['sort'] = $array[$pos]['sort'];
+			$return_array[$pos]['function'] = $array[$pos]['function'];
+		}
+		return $return_array;
+    }
 	
 	// set an extra class for some menuitems
 	private function getStatus($label) {
