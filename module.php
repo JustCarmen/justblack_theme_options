@@ -71,7 +71,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			'COMPACT_MENU'			=> '0',
 			'COMPACT_MENU_REPORTS'	=> '1',
 			'MEDIA_MENU'			=> '0',
-			'MEDIA_MENU_LINK'		=> '',
+			'MEDIA_LINK'			=> WT_I18N::translate('Media'),
 			'GVIEWER_PDF'			=> '0'
 		);
 		return $JB_DEFAULT[$key];
@@ -401,6 +401,18 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		}	
 	}
 	
+	private function getFolderList() {
+		$folders = WT_Query_Media::folderList();
+		foreach ($folders as $key => $value) {
+			if($key == null && empty($value)) {
+				$folderlist[WT_I18N::translate('Media')] = strtoupper(WT_I18N::translate('Media'));
+			} else {
+				$folderlist[$key] = substr($value, 0, -1);
+			}
+		}
+		return $folderlist;	
+	}
+	
 	private function addMessage($controller, $type, $msg) {
 		if ($type == "success") $class = "ui-state-highlight";
 		if ($type == "error") $class = "ui-state-error";		
@@ -536,8 +548,8 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				jQuery("#sortMenu, #trashMenu").trigger("sortupdate")					
 			});
 			
-			jQuery("#media_menu_link option").each(function() {
-				if(jQuery(this).val() == "'.$this->options('media_menu_link').'") {
+			jQuery("#media_link select").each(function() {
+				if(jQuery(this).val() == "'.$this->options('media_link').'") {
 					jQuery(this).prop("selected", true);
 				}						
 			});
@@ -617,15 +629,8 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							two_state_checkbox('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu')).'
 						</div>	
 						<div id="media_link" class="field">								
-							<label class="label">'.WT_I18N::translate('Choose a folder as default for the main menu link').help_link('media_folder', $this->getName()).'</label>								
-							<select id="media_menu_link" name="JB_MEDIA_MENU_LINK">';
-							// todo: use select_edit_control
-							$folders = WT_Query_Media::folderList();
-								foreach ($folders as $folder) {
-									if(empty($folder)) $folder = WT_I18N::translate('Media').'/';
-			$html .=				'<option value="'.$folder.'">'.ucfirst($folder).'</option>';
-								}
-			$html .=		'</select>
+							<label class="label">'.WT_I18N::translate('Choose a folder as default for the main menu link').help_link('media_folder', $this->getName()).'</label>'.								
+							select_edit_control('NEW_JB_OPTIONS[MEDIA_LINK]', $this->getFolderList(), null, $this->options('media_link')).'						
 						</div>	
 						<div class="field">
 							<label class="label">'.WT_I18N::translate('Use Google Docs Viewer for pdf\'s?').help_link('gviewer', $this->getName()).'</label>'.
