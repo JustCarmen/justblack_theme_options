@@ -76,7 +76,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				'MEDIA_MENU'			=> '0',
 				'MEDIA_MENU_LINK'		=> '',
 				'GVIEWER_PDF'			=> '0',
-				'MENU_ORDER'			=> $this->getMenuOrder()
+				'MENU'					=> $this->getMenu()
 			);
 		};
 
@@ -112,7 +112,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		return $return_array;
     }
 	
-	private function getMenuOrder() {
+	private function getMenu() {
 		$menulist = array(
 			array(
 				'title'		=> WT_I18N::translate('View'),
@@ -436,6 +436,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		
 		if (WT_Filter::postBool('save')) {
 			$NEW_JB_OPTIONS = WT_Filter::postArray('NEW_JB_OPTIONS');
+			$NEW_JB_OPTIONS['MENU'] = $this->sortArray(WT_Filter::postArray('NEW_JB_MENU'), 'sort');
 			set_module_setting($this->getName(), 'JB_OPTIONS',  serialize($NEW_JB_OPTIONS));
 			AddToLog($this->getTitle().' config updated', 'config');
 		}
@@ -630,7 +631,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 					<div class="block_right">';							
 			$html .= '	<div class="block_left">
 							<h3>'.WT_I18N::translate('Sort Topmenu items').help_link('sort_topmenu', $this->getName()).'</h3>';
-							$menulist 	= $this->checkModule($JB_SETTINGS['MENU_ORDER']);
+							$menulist 	= $this->checkModule($this->options('menu'));
 							foreach($menulist as $menu) {																		
 								if($menu['sort'] == 0) $trashMenu[] = $menu;
 								elseif ($menu['sort'] == 99) $fakeMenu[] = $menu;
