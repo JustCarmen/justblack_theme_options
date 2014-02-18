@@ -571,7 +571,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		
 		// Admin page content
 		$html = '<div id="jb_options"><div id="error" style="display:none"></div><h2>'.$this->getTitle().'</h2>
-				<form method="post" name="configform" action="'.$this->getConfigLink().'">
+				<form method="post" name="configform" action="'.$this->getConfigLink().'" enctype="multipart/form-data>
 					<input type="hidden" name="save" value="1">
 					<div class="block_left">
 						<div id="treetitle" class="field">
