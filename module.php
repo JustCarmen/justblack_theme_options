@@ -454,7 +454,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			->setPageTitle(WT_I18N::translate('Options for the JustBlack theme'))
 			->pageHeader();
 		
-		if (WT_Filter::postBool('save')) {
+		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			$NEW_JB_OPTIONS = WT_Filter::postArray('NEW_JB_OPTIONS');
 			$NEW_JB_OPTIONS['MENU'] = $this->sortArray(WT_Filter::postArray('NEW_JB_MENU'), 'sort');
 			set_module_setting($this->getName(), 'JB_OPTIONS',  serialize($NEW_JB_OPTIONS));
@@ -572,7 +572,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		// Admin page content
 		$html = '<div id="jb_options"><div id="error" style="display:none"></div><h2>'.$this->getTitle().'</h2>
 				<form method="post" name="configform" action="'.$this->getConfigLink().'" enctype="multipart/form-data>
-					<input type="hidden" name="save" value="1">
+					<input type="hidden" name="save" value="1">'.WT_Filter::getCsrf().'
 					<div class="block_left">
 						<div id="treetitle" class="field">
 							<label class="label">'.WT_I18N::translate('Use the Family tree title in the header?').help_link('treetitle', $this->getName()).'</label>'.
