@@ -65,7 +65,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			'TITLEPOS'				=> array('110', WT_I18N::translate('left'), '52'),
 			'TITLESIZE'				=> '20',
 			'HEADER'				=> 'default',
-			'HEADERIMG'				=> WT_I18N::translate('no custom header image set'),
+			'IMAGE'					=> WT_I18N::translate('no custom header image set'),
 			'HEADERHEIGHT'			=> '150',
 			'FLAGS'					=> '0',
 			'COMPACT_MENU'			=> '0',
@@ -315,35 +315,22 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		return $status;
 	}
 	
-	private function uploadHeader() {
-		$path = WT_STATIC_URL.'themes/justblack/'.basename(WT_CSS_URL).'/images/';
-		// Check if the custom header option is set and if we are dealing with a valid image
-		if ($this->getOptionValue('header', 'selectbox') == 'custom') {
-			if (empty($_FILES['JB_HEADERIMG']['name']) || !preg_match('/^image\/(png|gif|jpeg)/', $_FILES['JB_HEADERIMG']['type'])){
-				// suppress error message if there is already a header set
-				if($this->getSettings('header') != 'custom') {
-					$error = true;
-					$this->addMessage($controller, 'error', WT_I18N::translate('Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved.'));
-				}
-			}
-			else { // process image
-				$type = strtolower(substr(strrchr($_FILES['JB_HEADERIMG']['name'], '.'), 1));
-				$serverFileName = $path.'custom_header.'.$type;
-				if(WT_Filter::postBool('resize') == true)	$this->resizeHeader($_FILES['JB_HEADERIMG']['tmp_name'], $type, '800', '150');
-				
-				if (move_uploaded_file($_FILES['JB_HEADERIMG']['tmp_name'], $serverFileName)) {
-					chmod($serverFileName, WT_PERM_FILE);							
-					$this->addMessage($controller, 'success', WT_I18N::translate('Your custom header image is succesfully saved.'));
-					
-					// remove old header images from the server							
-					$this->deleteCustomHeader($path, $type); //$type here is the extension to keep.
-				} 
-				set_module_setting($this->getName(), 'JB_HEADERIMG', $_FILES['JB_HEADERIMG']['name']);	
-			}
+	private function upload($image) {
+		// Check if we are dealing with a valid image
+		if (empty($image['name']) || !preg_match('/^image\/(png|gif|jpeg)/', $image['type'])){
+			return false;
 		}
-		else { // no custom header
-			$this->deleteCustomHeader($path);
-			WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name = 'JB_HEADERIMG'")->execute();
+		else { // process image
+			$type = strtolower(substr(strrchr($image['name'], '.'), 1));
+			$serverFileName = WT_DATA_DIR.'justblack_'.$image['name'];
+			if(WT_Filter::postBool('resize') == true)	$this->resizeHeader($image['tmp_name'], $type, '800', '150');
+			
+			if (move_uploaded_file($image['tmp_name'], $serverFileName)) {
+				return true;
+				
+				// remove old header images from the server							
+				//$this->deleteCustomHeader($path, $type); //$type here is the extension to keep.
+			}
 		}
 	}
 	
@@ -457,6 +444,15 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			$NEW_JB_OPTIONS = WT_Filter::postArray('NEW_JB_OPTIONS');
 			$NEW_JB_OPTIONS['MENU'] = $this->sortArray(WT_Filter::postArray('NEW_JB_MENU'), 'sort');
+			if($NEW_JB_OPTIONS['HEADER'] == 1) {
+				if($this->upload($_FILES['NEW_JB_IMAGE'])) {			
+					$NEW_JB_OPTIONS['IMAGE'] = 'justblack_'.$_FILES['NEW_JB_IMAGE']['name'];
+					$this->addMessage($controller, 'success', WT_I18N::translate('Your custom header image is succesfully saved.'));
+				}
+				else {			
+					$this->addMessage($controller, 'error', WT_I18N::translate('Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved.'));
+				}
+			}	
 			set_module_setting($this->getName(), 'JB_OPTIONS',  serialize($NEW_JB_OPTIONS));
 			AddToLog($this->getTitle().' config updated', 'config');
 		}
@@ -571,7 +567,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		
 		// Admin page content
 		$html = '<div id="jb_options"><div id="error" style="display:none"></div><h2>'.$this->getTitle().'</h2>
-				<form method="post" name="configform" action="'.$this->getConfigLink().'" enctype="multipart/form-data>
+				<form method="post" name="configform" action="'.$this->getConfigLink().'" enctype="multipart/form-data">
 					<input type="hidden" name="save" value="1">'.WT_Filter::getCsrf().'
 					<div class="block_left">
 						<div id="treetitle" class="field">
@@ -595,19 +591,19 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						</div>
 						<div id="header_title" class="field">
 							<label class="label">'.WT_I18N::translate('Current header-image').'</label>';
-							$filename = WT_DATA_DIR.$this->options('headerimg');
+							$filename = WT_DATA_DIR.$this->options('image');
 							if(file_exists($filename)){
-								$image = getimagesize($file); $type = $image['mime'];
+								$image = @getimagesize($filename); $type = $image['mime'];
 			$html .= '			<a class="gallery" type="'.$type.'" href="'.$filename.'">
-									<span class="current_headerimg">'.$this->options['headerimg'].'</span>
+									<span class="current_headerimg">'.$this->options('image').'</span>
 								</a>';																			
 							} else {
-			$html .= '			<span class="current_headerimg">'.$this->options('headerimg').'</span>';
+			$html .= '			<span class="current_headerimg">'.$this->options('image').'</span>';
 							}
 			$html .= '	</div>
 						<div id="upload" class="field">
 							<label class="label">'.WT_I18N::translate('Upload a (new) custom header image').'</label>
-							<input type="file" name="NEW_JB_OPTIONS[HEADERIMG]" /><br/>'.
+							<input type="file" name="NEW_JB_IMAGE" /><br/>'.
 							checkbox('resize', false, 'id="resize"').'<label for="resize">'.WT_I18N::translate('Resize (800x150px)').'</label>
 						</div>
 						<div id="header_height" class="field">
