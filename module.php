@@ -325,11 +325,11 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			$serverFileName = WT_DATA_DIR.'justblack_'.$image['name'];
 			if(WT_Filter::postBool('resize') == true)	$this->resizeHeader($image['tmp_name'], $type, '800', '150');
 			
-			if (move_uploaded_file($image['tmp_name'], $serverFileName)) {
+			if (@move_uploaded_file($image['tmp_name'], $serverFileName)) {
+				foreach (glob(WT_DATA_DIR.'justblack*.*') as $filename) {
+					if($filename != $serverFileName) @unlink($filename);
+				}
 				return true;
-				
-				// remove old header images from the server							
-				//$this->deleteCustomHeader($path, $type); //$type here is the extension to keep.
 			}
 		}
 	}
@@ -388,16 +388,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				return imagepng($thumb,$imgSrc,0);
 				break;
 		}
-	}
-		
-	private function deleteCustomHeader($path, $kExt = '') { // $kExt = extension to keep. If not set delete all custom headers regardless extension.		
-		$exts = array('png','jpg', 'gif');		
-		
-		foreach($exts as $ext) {
-			if($ext != $kExt && file_exists($path.'custom_header.'.$ext)){
-				@unlink($path.'custom_header.'.$ext);									
-			}
-		}	
 	}
 	
 	private function addMessage($controller, $type, $msg) {
