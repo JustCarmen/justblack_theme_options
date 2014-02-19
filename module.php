@@ -420,7 +420,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	private function jb_reset() {
 		WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
 		AddToLog($this->getTitle().' reset to default values', 'config');
-		$controller->addInlineJavascript('jQuery("option.default").prop("selected", true); jQuery(".upload").hide()');
 	}
 	
 	private function config() {
@@ -626,7 +625,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						</div>														
 						<div id="buttons">
 							<input type="submit" name="update" value="'.WT_I18N::translate('Save').'" />&nbsp;&nbsp;
-							<input type="submit" name="reset" value="'.WT_I18N::translate('Reset').'" />
+							<input type="reset" value="'.WT_I18N::translate('Reset').'" onclick="if (confirm(\''.WT_I18N::translate('The settings will be reset to default. Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';">
 						</div>
 					</div>
 					<div class="block_right">';
