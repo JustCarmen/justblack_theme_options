@@ -62,7 +62,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	private function setDefault($key) {
 		$JB_DEFAULT = array(
 			'TREETITLE'				=> '1',
-			'TITLEPOS'				=> array('110', WT_I18N::translate('left'), '52'),
+			'TITLEPOS'				=> array('110', '0', '52'),
 			'TITLESIZE'				=> '20',
 			'HEADER'				=> 'default',
 			'IMAGE'					=> WT_I18N::translate('no custom header image set'),
