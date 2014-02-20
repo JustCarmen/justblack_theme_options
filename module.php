@@ -544,13 +544,13 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			
 			//-- update the order numbers after drag-n-drop sorting is complete
 			jQuery("#sortMenu").bind("sortupdate", function(event, ui) {
-				jQuery("#"+jQuery(this).attr("id")+" input[id*=sort]").each(
+				jQuery("#"+jQuery(this).attr("id")+" input[name*=sort]").each(
 					function (index, value) {
 						value.value = index+1;
 					}
 				);
-				jQuery("#trashMenu input[id*=sort]").attr("value", "0");
-			}); 
+				jQuery("#trashMenu input[name*=sort]").attr("value", "0");
+			});
 		');
 		
 		// Admin page content
@@ -634,25 +634,28 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							foreach($menulist as $menu) {																		
 								$menu['sort'] == 0 ? $trashMenu[] = $menu : $activeMenu[] = $menu;
 							}
+							$i=0;
 							if (isset($activeMenu)) {
 			$html .= '			<ul id="sortMenu">';
-								foreach ($activeMenu as $mkey => $menu) {
+								foreach ($activeMenu as $menu) {
 									$html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
 									foreach ($menu as $key => $val) {
-										$html .= '<input type="hidden" id="jb_menu['.$mkey.']['.$key.']" name="NEW_JB_MENU['.$mkey.']['.$key.']" value="'.$val.'"/>';
+										$html .= '<input type="hidden" name="NEW_JB_MENU['.$i.']['.$key.']" value="'.$val.'"/>';
 									}
 			$html .= '				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';
+									$i++;
 								}								
 			$html .= '			</ul>';
 							}
 							if (isset($trashMenu)) {
 			$html .= '			<ul id="trashMenu">'; // trashcan for toggling the compact menu.
-								foreach ($trashMenu as $mkey => $menu) {
+								foreach ($trashMenu as $menu) {
 									$html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
 									foreach ($menu as $key => $val) {
-										$html .= '<input type="hidden" id="jb_menu['.$mkey.']['.$key.']" name="NEW_JB_MENU['.$mkey.']['.$key.']" value="'.$val.'"/>';
+										$html .= '<input type="hidden" name="NEW_JB_MENU['.$i.']['.$key.']" value="'.$val.'"/>';
 									}
 			$html .= '				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';	
+									$i++;
 								}			
 			$html .= '			</ul>';
 							}
