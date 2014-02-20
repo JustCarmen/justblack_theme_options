@@ -71,7 +71,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			'COMPACT_MENU'			=> '0',
 			'COMPACT_MENU_REPORTS'	=> '1',
 			'MEDIA_MENU'			=> '0',
-			'MEDIA_LINK'			=> WT_I18N::translate('Media'),
+			'MEDIA_LINK'			=> '/',
 			'GVIEWER_PDF'			=> '0'
 		);
 		return $JB_DEFAULT[$key];
@@ -195,18 +195,12 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		global $controller, $SEARCH_SPIDER, $MEDIA_DIRECTORY;
 		
 		if ($SEARCH_SPIDER) return null;
+		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($this->options('media_link')).'&amp;sortby=title&amp;subdirs=off&amp;max=20&amp;columns=2', 'menu-media');
 		
-		$menulink = $this->getSettings('media_menu_link');
-		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($menulink), 'menu-media');		
-		
-		$folders = array_values(WT_Query_Media::folderList());
+		$folders = $this->getFolderList();
 		foreach ($folders as $key => $folder) {
-			$medialist = WT_Query_Media::mediaList($folder, 'exclude', 'file', '');
-			if(count($medialist) > 0) {
-				$name = substr($folder, 0, -1);
-				if(empty($name)) $name = WT_I18N::translate('Media');
-				$title = ucfirst(WT_I18N::translate($name));
-				$submenu = new WT_Menu($title, 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($folder), 'menu-media-folder-'.$key);
+			if($key > 0) {
+				$submenu = new WT_Menu($folder, 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($folder.'/').'&amp;sortby=title&amp;subdirs=on&amp;max=20&amp;columns=2', 'menu-media-folder-'.$key);
 				$menu->addSubmenu($submenu);
 			}
 		};	
@@ -258,12 +252,17 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	}
 	
 	private function getFolderList() {
+		global $MEDIA_DIRECTORY;
 		$folders = WT_Query_Media::folderList();
 		foreach ($folders as $key => $value) {
 			if($key == null && empty($value)) {
-				$folderlist[WT_I18N::translate('Media')] = strtoupper(WT_I18N::translate('Media'));
+				$folderlist[] = strtoupper(WT_I18N::translate(substr($MEDIA_DIRECTORY,0,-1)));
 			} else {
-				$folderlist[$key] = substr($value, 0, -1);
+				if (count(glob(WT_DATA_DIR.$MEDIA_DIRECTORY.$value.'*')) > 0 ) {
+					$folder = array_filter(explode("/", $value));
+					// only list first level folders
+					if(!array_search($folder[0], $folderlist)) $folderlist[] = WT_I18N::translate($folder[0]);
+				}
 			}
 		}
 		return $folderlist;	
