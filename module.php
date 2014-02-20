@@ -79,7 +79,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	}
 	
 	// Get module options
-	private function options($key) {
+	public function options($key) {
 		$JB_OPTIONS = unserialize(get_module_setting($this->getName(), 'JB_OPTIONS'));
 		
 		$key = strtoupper($key);
@@ -154,7 +154,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	}	
 	
 	// get our own Compact Menu
-	private function getCompactMenu() {
+	public function getCompactMenu() {
 		global $controller, $SEARCH_SPIDER;
 		
 		if ($SEARCH_SPIDER) return null;
@@ -191,7 +191,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	
 	// get the media Menu as Main menu item with folders as submenu-items
 	// needs refactoring. This function is causing a huge amount of queries.
-	private function getMediaMenu() {
+	public function getMediaMenu() {
 		global $controller, $SEARCH_SPIDER, $MEDIA_DIRECTORY;
 		
 		if ($SEARCH_SPIDER) return null;
@@ -226,7 +226,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	}
 	
 	// function to check if a module menu is still active (after options are set)
-	private function checkModule($menulist) {
+	public function checkModule($menulist) {
 		$lastItem = end($menulist);
 		$sort = $lastItem['sort'] + 1;
 		$modules=$this->getActiveMenu($sort);
