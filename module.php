@@ -62,7 +62,10 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	private function setDefault($key) {
 		$JB_DEFAULT = array(
 			'TREETITLE'				=> '1',
-			'TITLEPOS'				=> array('110', '0', '52'),
+			'TITLEPOS'				=> array(
+											'V' => array('size'=>'110', 'fmt'=>'px'),
+											'H' => array('size'=>'52', 'fmt'=>'%', 'pos'=>'left')
+										), 
 			'TITLESIZE'				=> '20',
 			'HEADER'				=> 'default',
 			'IMAGE'					=> '',
@@ -570,9 +573,11 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						<div id="titlepos" class="field">
 							<label class="label">'.WT_I18N::translate('Position of the Family tree title').help_link('treetitle_position', $this->getName()).'</label>';
 							$titlepos = $this->options('titlepos');
-			$html .= '		<span>'.WT_I18N::Translate('top').' </span><input type="text" name="NEW_JB_OPTIONS[TITLEPOS][0]" size="2" value="'.$titlepos[0].'">px<br>'.
-							select_edit_control('NEW_JB_OPTIONS[TITLEPOS][1]', array(WT_I18N::translate('left'), WT_I18N::translate('right')), null, $titlepos[1]).'
-							<input type="text" name="NEW_JB_OPTIONS[TITLEPOS][2]" size="2" value="'.$titlepos[2].'">%		
+			$html .= '		<span>'.WT_I18N::Translate('top').' </span><input type="text" name="NEW_JB_OPTIONS[TITLEPOS][V][size]" size="3" value="'.$titlepos['V']['size'].'">'.
+							select_edit_control('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', array('px'=>'px', '%'=>'%'), null, $titlepos['V']['fmt']).'<br>'.
+							select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][pos]', array('left' => WT_I18N::translate('left'), 'right' => WT_I18N::translate('right')), null, $titlepos['H']['pos']).'
+							<input type="text" name="NEW_JB_OPTIONS[TITLEPOS][H][size]" size="3" value="'.$titlepos['H']['size'].'">'.
+							select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][fmt]',  array('px'=>'px', '%'=>'%'), null, $titlepos['H']['fmt']).'		
 						</div>
 						<div id="titlesize" class="field">
 							<label class="label">'.WT_I18N::translate('Size of the Family tree title').'</label>
