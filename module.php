@@ -190,19 +190,21 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	}
 	
 	// get the media Menu as Main menu item with folders as submenu-items
-	// needs refactoring. This function is causing a huge amount of queries.
 	public function getMediaMenu() {
 		global $controller, $SEARCH_SPIDER, $MEDIA_DIRECTORY;
 		
 		if ($SEARCH_SPIDER) return null;
-		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($this->options('media_link')).'&amp;sortby=title&amp;subdirs=off&amp;max=20&amp;columns=2', 'menu-media');
 		
-		$folders = $this->getFolderList();
+		$mainfolder = $this->options('media_link') == $MEDIA_DIRECTORY ? '' : '&'.rawurlencode($this->options('media_link'));
+		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=no'.$mainfolder.'&amp;sortby=title&amp;subdirs=off&amp;max=20&amp;columns=2', 'menu-media');
+		
+		$folders = $this->getFolderList(); $i=0;
 		foreach ($folders as $key => $folder) {
-			if($key > 0) {
-				$submenu = new WT_Menu($folder, 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($folder.'/').'&amp;sortby=title&amp;subdirs=on&amp;max=20&amp;columns=2', 'menu-media-folder-'.$key);
+			if($key !== $MEDIA_DIRECTORY) {
+				$submenu = new WT_Menu($folder, 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($folder).'&amp;sortby=title&amp;subdirs=on&amp;max=20&amp;columns=2', 'menu-media-'.$i);
 				$menu->addSubmenu($submenu);
 			}
+			$i++;
 		};	
 		return $menu;
 	}
@@ -256,12 +258,12 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		$folders = WT_Query_Media::folderList();
 		foreach ($folders as $key => $value) {
 			if($key == null && empty($value)) {
-				$folderlist[] = strtoupper(WT_I18N::translate(substr($MEDIA_DIRECTORY,0,-1)));
+				$folderlist[$MEDIA_DIRECTORY] = strtoupper(WT_I18N::translate(substr($MEDIA_DIRECTORY,0,-1)));
 			} else {
 				if (count(glob(WT_DATA_DIR.$MEDIA_DIRECTORY.$value.'*')) > 0 ) {
 					$folder = array_filter(explode("/", $value));
 					// only list first level folders
-					if(!array_search($folder[0], $folderlist)) $folderlist[] = WT_I18N::translate($folder[0]);
+					if(!array_search($folder[0], $folderlist)) $folderlist[$folder[0].'/'] = WT_I18N::translate($folder[0]);
 				}
 			}
 		}
@@ -620,7 +622,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						</div>	
 						<div class="field">
 							<label class="label">'.WT_I18N::translate('Use Google Docs Viewer for pdf\'s?').help_link('gviewer', $this->getName()).'</label>'.
-							two_state_checkbox('NEW_JB_OPTIONS[GVIEWER_PDF]', $this->options('gviewer_pdf')).'
+							two_state_checkbox('NEW_JB_OPTIONS[GVIEWER]', $this->options('gviewer')).'
 						</div>														
 						<div id="buttons">
 							<input type="submit" name="update" value="'.WT_I18N::translate('Save').'" />&nbsp;&nbsp;
