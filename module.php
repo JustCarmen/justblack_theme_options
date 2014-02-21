@@ -71,8 +71,8 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			'COMPACT_MENU'			=> '0',
 			'COMPACT_MENU_REPORTS'	=> '1',
 			'MEDIA_MENU'			=> '0',
-			'MEDIA_LINK'			=> '/',
-			'GVIEWER_PDF'			=> '0'
+			'MEDIA_LINK'			=> '',
+			'GVIEWER'				=> '0'
 		);
 		return $JB_DEFAULT[$key];
 	
@@ -194,7 +194,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		global $controller, $SEARCH_SPIDER, $MEDIA_DIRECTORY;
 		
 		if ($SEARCH_SPIDER) return null;
-		
 		$mainfolder = $this->options('media_link') == $MEDIA_DIRECTORY ? '' : '&'.rawurlencode($this->options('media_link'));
 		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=no'.$mainfolder.'&amp;sortby=title&amp;subdirs=off&amp;max=20&amp;columns=2', 'menu-media');
 		
