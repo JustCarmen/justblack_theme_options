@@ -436,8 +436,9 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			$NEW_JB_OPTIONS = WT_Filter::postArray('NEW_JB_OPTIONS');
 			$NEW_JB_OPTIONS['MENU'] = $this->sortArray(WT_Filter::postArray('NEW_JB_MENU'), 'sort');
+			$NEW_JB_OPTIONS['IMAGE'] = WT_Filter::post('JB_IMAGE');
 			$error = false;
-			if($NEW_JB_OPTIONS['HEADER'] == 1) {
+			if($NEW_JB_OPTIONS['HEADER'] == 1 && !empty($_FILES['NEW_JB_IMAGE']['name'])) {
 				if($this->upload($_FILES['NEW_JB_IMAGE'])) {			
 					$NEW_JB_OPTIONS['IMAGE'] = 'justblack_'.$_FILES['NEW_JB_IMAGE']['name'];
 					$this->addMessage($controller, 'success', WT_I18N::translate('Your custom header image is succesfully saved.'));
@@ -486,7 +487,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			}		
 			
 			toggleFields("#treetitle", "#titlepos, #titlesize");
-			toggleFields("#resize", "#headerheight", true);
 			toggleFields("#compact_menu", "#reports");
 			toggleFields("#media_menu", "#media_link");
 								
@@ -496,17 +496,32 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				}						
 			});
 			
+			jQuery("#upload").hide();
 			jQuery("#header select").each(function(){
-				if(jQuery(this).val() == 1) jQuery("#header_title, #upload").show();
-				else jQuery("#header_title, #upload").hide();
+				if(jQuery(this).val() == 1) {
+					if(jQuery("#header-image").length > 0) jQuery("#header-image, #resize").show();
+					else jQuery("#upload, #resize").show();
+				}
+				else jQuery("#header-image, #upload, #resize").hide();
 				if(jQuery(this).val() > 0) jQuery("#header_height").show();
 				else jQuery("#header_height").hide();		
 			});
 			jQuery("#header select").change(function(){
-				if(jQuery(this).val() == 1) jQuery("#header_title, #upload").show();
-				else jQuery("#header_title, #upload").hide();
+				if(jQuery(this).val() == 1) {
+					if(jQuery("#header-image").length > 0) jQuery("#header-image, #resize").show();
+					else jQuery("#upload, #resize").show();
+				}
+				else jQuery("#header-image, #upload, #resize").hide();
 				if(jQuery(this).val() > 0) jQuery("#header_height").show();
 				else jQuery("#header_height").hide();						
+			});			
+			
+			jQuery("#edit-image").click(function(){
+				jQuery("#upload").toggle();
+			});
+			
+			jQuery("#upload").on("change", "input[type=file]", function(){
+				jQuery("#resize input[type=checkbox]").prop("checked", true);
 			});
 				
 			jQuery("#compact_menu input[type=checkbox]").click(function() {
@@ -589,19 +604,21 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						</div>';
 						$image = WT_DATA_DIR.$this->options('image');
 						if($this->options('image') && file_exists($image)) {
-			$html .= '		<div id="header_title" class="field">
+			$html .= '		<div id="header-image" class="field">
+								<input type="hidden" name="JB_IMAGE" value="'.$this->options('image').'">
 								<label class="label">'.WT_I18N::translate('Current header-image').'</label>';		
 								$bg = file_get_contents($image);					
 								$type = @getimagesize($image);
 			$html .= '			<a class="gallery" type="'.$type['mime'].'" href="data:'.$type['mime'].';base64,'.base64_encode($bg).'">
 									<span class="image">'.$this->options('image').'</span>
-								</a>
+								</a><span id="edit-image">('.WT_I18N::translate('edit image').')</span>
 							</div>';
 						}
 			$html .= '	<div id="upload" class="field">
-							<label class="label">'.WT_I18N::translate('Upload a (new) custom header image').'</label>
-							<input type="file" name="NEW_JB_IMAGE" /><br/>'.
-							checkbox('resize', false, 'id="resize"').'<label for="resize">'.WT_I18N::translate('Resize (800x150px)').'</label>
+							<label class="label">'.WT_I18N::translate('Upload a (new) custom header image').'</label><input type="file" name="NEW_JB_IMAGE" />
+						</div>
+						<div id="resize" class="field">
+							<label class="label">'.WT_I18N::translate('Resize header image (800x150px)').'</label>'.checkbox('resize', false).'
 						</div>
 						<div id="header_height" class="field">
 							<label class="label">'.WT_I18N::translate('Height of the header area').'</label>
