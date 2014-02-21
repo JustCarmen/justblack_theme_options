@@ -587,12 +587,13 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<label class="label">'.WT_I18N::translate('Use header image?').'</label>'.
 							select_edit_control('NEW_JB_OPTIONS[HEADER]', array(WT_I18N::translate('Default'), WT_I18N::translate('Custom'), WT_I18N::translate('None')), null, $this->options('header')).'
 						</div>';
-						$filename = WT_DATA_DIR.$this->options('image');
-						if($this->options('image') && file_exists($filename)) {
+						$image = WT_DATA_DIR.$this->options('image');
+						if($this->options('image') && file_exists($image)) {
 			$html .= '		<div id="header_title" class="field">
-								<label class="label">'.WT_I18N::translate('Current header-image').'</label>';							
-								$image = @getimagesize($filename); $type = $image['mime'];
-			$html .= '			<a class="gallery" type="'.$type.'" href="'.$filename.'">
+								<label class="label">'.WT_I18N::translate('Current header-image').'</label>';		
+								$bg = file_get_contents($image);					
+								$type = @getimagesize($image);
+			$html .= '			<a class="gallery" type="'.$type['mime'].'" href="data:'.$type['mime'].';base64,'.base64_encode($bg).'">
 									<span class="image">'.$this->options('image').'</span>
 								</a>
 							</div>';
