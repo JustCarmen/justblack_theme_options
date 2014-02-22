@@ -385,6 +385,12 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		}
 	}
 	
+	private function delete() {
+		foreach (glob(WT_DATA_DIR.'justblack*.*') as $file) {
+			@unlink($file);
+		}
+	}
+	
 	// Extend WT_Module_Config
 	public function modAction($mod_action) {
 		switch($mod_action) {
@@ -403,6 +409,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	// Reset all settings to default
 	private function jb_reset() {
 		WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
+		$this->delete();
 		AddToLog($this->getTitle().' reset to default values', 'config');
 	}
 	
@@ -414,7 +421,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			$NEW_JB_OPTIONS['IMAGE'] = WT_Filter::post('JB_IMAGE');
 			$error = false;
 			if($NEW_JB_OPTIONS['HEADER'] == 1 && !empty($_FILES['NEW_JB_IMAGE']['name'])) {
-				if($this->upload($_FILES['NEW_JB_IMAGE'])) {			
+				if($this->upload($_FILES['NEW_JB_IMAGE'])) {
 					$NEW_JB_OPTIONS['IMAGE'] = 'justblack_'.$_FILES['NEW_JB_IMAGE']['name'];
 					WT_FlashMessages::addMessage(WT_I18N::translate('Your custom header image is succesfully saved.'));
 				}
