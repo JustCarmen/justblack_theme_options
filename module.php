@@ -75,6 +75,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			'COMPACT_MENU_REPORTS'	=> '1',
 			'MEDIA_MENU'			=> '0',
 			'MEDIA_LINK'			=> '',
+			'SUBFOLDERS'			=> '1',
 			'GVIEWER'				=> '0'
 		);
 		return $JB_DEFAULT[$key];
@@ -197,13 +198,14 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		global $controller, $SEARCH_SPIDER, $MEDIA_DIRECTORY;
 		
 		if ($SEARCH_SPIDER) return null;
-		$mainfolder = $this->options('media_link') == $MEDIA_DIRECTORY ? '' : '&'.rawurlencode($this->options('media_link'));
-		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=no'.$mainfolder.'&amp;sortby=title&amp;subdirs=on&amp;max=20&amp;columns=2', 'menu-media');
+		$mainfolder = $this->options('media_link') == $MEDIA_DIRECTORY ? '' : '&amp;folder='.rawurlencode($this->options('media_link'));
+		$subfolders = $this->options('subfolders') ? '&amp;subdirs=on' : '';
+		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=no'.$mainfolder.'&amp;sortby=title&amp;'.$subfolders.'&amp;max=20&amp;columns=2', 'menu-media');
 		
 		$folders = $this->getFolderList(); $i=0;
 		foreach ($folders as $key => $folder) {
 			if($key !== $MEDIA_DIRECTORY) {
-				$submenu = new WT_Menu(ucfirst($folder), 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($folder).'&amp;sortby=title&amp;subdirs=on&amp;max=20&amp;columns=2', 'menu-media-'.$i);
+				$submenu = new WT_Menu(ucfirst($folder), 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($key).'&amp;sortby=title&amp;'.$subfolders.'&amp;max=20&amp;columns=2', 'menu-media-'.$i);
 				$menu->addSubmenu($submenu);
 			}
 			$i++;
@@ -487,7 +489,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			
 			toggleFields("#treetitle", "#titlepos, #titlesize");
 			toggleFields("#compact_menu", "#reports");
-			toggleFields("#media_menu", "#media_link");
+			toggleFields("#media_menu", "#media_link, #subfolders");
 								
 			jQuery("#header option").each(function() {
 				if(jQuery(this).val() == "'.$this->options('header').'") {
@@ -651,6 +653,10 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						<div id="media_link" class="field">								
 							<label>'.WT_I18N::translate('Choose a folder as default for the main menu link').help_link('media_folder', $this->getName()).'</label>'.								
 							select_edit_control('NEW_JB_OPTIONS[MEDIA_LINK]', $this->getFolderList(), null, $this->options('media_link')).'						
+						</div>
+						<div id="subfolders" class="field">								
+							<label>'.WT_I18N::translate('Include subfolders').help_link('subfolders', $this->getName()).'</label>'.								
+							two_state_checkbox('NEW_JB_OPTIONS[SUBFOLDERS]', $this->options('subfolders')).'						
 						</div>	
 						<div class="field">
 							<label>'.WT_I18N::translate('Use Google Docs Viewer for pdf\'s?').help_link('gviewer', $this->getName()).'</label>'.
