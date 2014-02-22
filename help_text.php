@@ -36,7 +36,7 @@ case 'treetitle':
 	
 case 'treetitle_position':
 	$title=WT_I18N::translate('Position of the Family tree title');
-	$text=WT_I18N::translate('<p>Here you can choose the location for the Family tree title in the header. Enter the values clockwise (Top, Right, Bottom, Left), separated by a comma.</p>');
+	$text=WT_I18N::translate('<p>Here you can choose the location for the Family tree title in the header.</p>');
 	break;
 
 case 'flags':
@@ -46,12 +46,16 @@ case 'flags':
 	break;
 case 'media_menu':
 	$title=WT_I18N::translate('Media icon in topmenu');
-	$text=WT_I18N::translate('<p>If this option is set the Media Menu will be moved to the topmenu. The names of the media folders will appear as submenu of the new Media Menu.</p>'.
-                            '<p>Warning: these submenu links are not translated automatically. If you want your submenu\'s to be translated you will have to do it manually with the instructions in the webrees WIKI.</p>');
+	$text=WT_I18N::translate('<p>If this option is set the Media Menu will be moved to the topmenu. The names of first level media folders will appear as submenu of the new Media Menu.</p>'.
+                            '<p>Warning: these menu links are not translated automatically. If you want your menus to be translated you will have to do it manually with the instructions in the webrees WIKI.</p>');
 	break;
 case 'media_folder':
 	$title=WT_I18N::translate('Choose a default media folder');
 	$text=WT_I18N::translate('<p>The default media folder will be used as link on the main media menu icon. If you click on this icon the medialist page for this folder appears.</p>');
+	break;
+case 'subfolders':
+	$title=WT_I18N::translate('Subfolders');
+	$text=WT_I18N::translate('<p>If you set this option the results on the media list page will include subfolders.</p>');
 	break;
 case 'gviewer':
 	$title=WT_I18N::translate('Use the Google Docs Viewer');
