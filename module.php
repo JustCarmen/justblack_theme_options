@@ -321,26 +321,19 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	
 	private function upload($image) {
 		// Check if we are dealing with a valid image
-		if (empty($image['name']) || !preg_match('/^image\/(png|gif|jpeg)/', $image['type'])){
-			return false;
-		}
-		else { // process image
-			$type = strtolower(substr(strrchr($image['name'], '.'), 1));
+		if (!empty($image['name']) && preg_match('/^image\/(png|gif|jpeg)/', $image['type'])){
 			$serverFileName = WT_DATA_DIR.'justblack_'.$image['name'];
-			if(WT_Filter::postBool('resize') == true)	$this->resizeHeader($image['tmp_name'], $type, '800', '150');
-			
-			if (@move_uploaded_file($image['tmp_name'], $serverFileName)) {
-				foreach (glob(WT_DATA_DIR.'justblack*.*') as $filename) {
-					if($filename != $serverFileName) @unlink($filename);
-				}
-				return true;
-			}
+			if(WT_Filter::postBool('resize') == true)	$this->resize($image['tmp_name'], $image['type'], '800', '150');			
+			@move_uploaded_file($image['tmp_name'], $serverFileName);
+			return true;
+		} else{
+			return false;
 		}
 	}
 	
-	private function resizeHeader($imgSrc, $type, $thumbwidth, $thumbheight) {
+	private function resize($imgSrc, $type, $thumbwidth, $thumbheight) {
 		//getting the image dimensions 
-		list($width_orig, $height_orig) = getimagesize($imgSrc);  		
+		list($width_orig, $height_orig) = @getimagesize($imgSrc);
 		$ratio_orig = $width_orig/$height_orig;
 		
 		if (($width_orig > $height_orig && $width_orig < $thumbwidth) || ($height_orig > $width_orig && $height_orig < $thumbheight)) return false;
@@ -358,17 +351,15 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		
 		// return resized header image	
 		switch ($type) {		
-			case 'jpg':
-			case 'jpeg':
+			case 'image/jpeg':
 				$image = @imagecreatefromjpeg($imgSrc);
 				$thumb = @imagecreatetruecolor(round($new_width), $thumbheight);	   
 				
 				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid-($thumbheight/2)), $new_width, $new_height, $width_orig, $height_orig);
 				imagedestroy($image);
-				
 				return imagejpeg($thumb,$imgSrc,100);
 				break;
-			case 'gif':
+			case 'image/gif':
 				$image = @imagecreatefromgif($imgSrc);
 				$thumb = @imagecreatetruecolor(round($new_width), $thumbheight);					
 				
@@ -378,7 +369,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				
 				return imagegif($thumb,$imgSrc,100);
 				break;
-			case 'png':
+			case 'image/png':
 				$image = @imagecreatefrompng($imgSrc);
 				@imagealphablending($image, false);				
 				
@@ -431,7 +422,15 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 					WT_FlashMessages::addMessage(WT_I18N::translate('Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved.'));
 					$error = true;
 				}
-			}	
+			} else {
+				if(WT_Filter::postBool('resize') == true) {
+					$file = WT_DATA_DIR.$this->options('image');
+					if($this->options('image') && file_exists($file)) {
+						$image = @getimagesize($file);
+						$this->resize($file, $image['mime'], '800', '150');		
+					}							
+				}
+			}
 			if(!$error) {
 				set_module_setting($this->getName(), 'JB_OPTIONS',  serialize($NEW_JB_OPTIONS));
 				AddToLog($this->getTitle().' config updated', 'config');
@@ -601,15 +600,15 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<label>'.WT_I18N::translate('Use header image?').'</label>'.
 							select_edit_control('NEW_JB_OPTIONS[HEADER]', array(WT_I18N::translate('Default'), WT_I18N::translate('Custom'), WT_I18N::translate('None')), null, $this->options('header')).'
 						</div>';
-						$image = WT_DATA_DIR.$this->options('image');
-						if($this->options('image') && file_exists($image)) {
-							list($width, $height, $type) = @getimagesize($image);
-							$bg = file_get_contents($image);
+						$file = WT_DATA_DIR.$this->options('image');
+						if($this->options('image') && file_exists($file)) {
+							$image = @getimagesize($file);
+							$bg = file_get_contents($file);
 			$html .= '		<div id="header-image" class="field">
 								<input type="hidden" name="JB_IMAGE" value="'.$this->options('image').'">								
-								<label class="label">'.WT_I18N::translate('Current header-image').' ('.$width.' x '.$height.'px)</label>
+								<label class="label">'.WT_I18N::translate('Current header-image').' ('.$image[0].' x '.$image[1].'px)</label>
 								
-								<a class="gallery" type="'.$type.'" href="data:'.$type.';base64,'.base64_encode($bg).'">
+								<a class="gallery" type="'.$image['mime'].'" href="data:'.$image['mime'].';base64,'.base64_encode($bg).'">
 									<span class="image">'.$this->options('image').'</span>
 								</a><i id="edit-image" class="icon-edit"></i><i class="icon-delete"></i>
 							</div>';
