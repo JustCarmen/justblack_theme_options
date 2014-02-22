@@ -198,12 +198,12 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		
 		if ($SEARCH_SPIDER) return null;
 		$mainfolder = $this->options('media_link') == $MEDIA_DIRECTORY ? '' : '&'.rawurlencode($this->options('media_link'));
-		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=no'.$mainfolder.'&amp;sortby=title&amp;subdirs=off&amp;max=20&amp;columns=2', 'menu-media');
+		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=no'.$mainfolder.'&amp;sortby=title&amp;subdirs=on&amp;max=20&amp;columns=2', 'menu-media');
 		
 		$folders = $this->getFolderList(); $i=0;
 		foreach ($folders as $key => $folder) {
 			if($key !== $MEDIA_DIRECTORY) {
-				$submenu = new WT_Menu($folder, 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($folder).'&amp;sortby=title&amp;subdirs=on&amp;max=20&amp;columns=2', 'menu-media-'.$i);
+				$submenu = new WT_Menu(ucfirst($folder), 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($folder).'&amp;sortby=title&amp;subdirs=on&amp;max=20&amp;columns=2', 'menu-media-'.$i);
 				$menu->addSubmenu($submenu);
 			}
 			$i++;
@@ -528,12 +528,13 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				else var menu_extended = jQuery(".menu_extended:not(.menu_reports)");
 				
 				if (this.checked) {
-					jQuery(menu_extended).appendTo(jQuery("#trashMenu")).hide();
-					jQuery(".menu_compact").insertAfter(jQuery(".ui-state-disabled:last")).show();
+					jQuery(".menu_compact").insertAfter(jQuery(".menu_extended:last")).show();
+					jQuery(menu_extended).appendTo(jQuery("#trashMenu")).hide();					
 				}
 				else {
+					jQuery(menu_extended).insertAfter(jQuery(".menu_compact")).show();
 					jQuery(".menu_compact").appendTo(jQuery("#trashMenu")).hide();
-					jQuery(menu_extended).insertAfter(jQuery(".ui-state-disabled:last")).show();
+					
 				}
 				jQuery("#sortMenu, #trashMenu").trigger("sortupdate")					
 			});
