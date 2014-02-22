@@ -12,6 +12,7 @@
 #jb_options #titlepos span {margin-left:4px}
 #jb_options select {margin:4px}
 #jb_options input[type=file] {background:none;border:none;margin:0}
+#jb_options input[type=file]:hover {color:red}
 #jb_options #buttons {margin-top:25px}
 #jb_options #buttons input {margin-left:0}
 #jb_options h3 {margin:0 5px 10px}
@@ -21,5 +22,6 @@
 #jb_options li span {position:absolute;margin-left:-1.3em}
 #jb_options .clearfloat{clear:both}
 #jb_options .icon-edit {cursor:pointer; margin:0 5px}
+#flash-messages .ui-state-highlight{padding:5px}
 
 

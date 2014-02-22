@@ -394,17 +394,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		}
 	}
 	
-	private function addMessage($controller, $type, $msg) {
-		if ($type == "success") $class = "ui-state-highlight";
-		if ($type == "error") $class = "ui-state-error";		
-		$controller->addInlineJavaScript('
-			jQuery("#error").text("'.$msg.'").addClass("'.$class.'").show("normal");
-			setTimeout(function() {
-				jQuery("#error").hide("normal");
-			}, 10000);		
-		');	
-	}
-	
 	// Extend WT_Module_Config
 	public function modAction($mod_action) {
 		switch($mod_action) {
@@ -427,12 +416,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	}
 	
 	private function config() {
-		require WT_ROOT.'includes/functions/functions_edit.php';				
-		$controller=new WT_Controller_Page;
-		$controller
-			->requireAdminLogin()
-			->setPageTitle(WT_I18N::translate('Options for the JustBlack theme'))
-			->pageHeader();
 		
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			$NEW_JB_OPTIONS = WT_Filter::postArray('NEW_JB_OPTIONS');
@@ -442,10 +425,10 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			if($NEW_JB_OPTIONS['HEADER'] == 1 && !empty($_FILES['NEW_JB_IMAGE']['name'])) {
 				if($this->upload($_FILES['NEW_JB_IMAGE'])) {			
 					$NEW_JB_OPTIONS['IMAGE'] = 'justblack_'.$_FILES['NEW_JB_IMAGE']['name'];
-					$this->addMessage($controller, 'success', WT_I18N::translate('Your custom header image is succesfully saved.'));
+					WT_FlashMessages::addMessage(WT_I18N::translate('Your custom header image is succesfully saved.'));
 				}
 				else {			
-					$this->addMessage($controller, 'error', WT_I18N::translate('Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved.'));
+					WT_FlashMessages::addMessage(WT_I18N::translate('Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved.'));
 					$error = true;
 				}
 			}	
@@ -454,6 +437,13 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				AddToLog($this->getTitle().' config updated', 'config');
 			}
 		}
+		
+		require WT_ROOT.'includes/functions/functions_edit.php';				
+		$controller=new WT_Controller_Page;
+		$controller
+			->requireAdminLogin()
+			->setPageTitle(WT_I18N::translate('Options for the JustBlack theme'))
+			->pageHeader();
 		
 		$controller->addInlineJavaScript ('
 			function include_css(css_file) {
