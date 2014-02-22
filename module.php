@@ -582,70 +582,78 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 					<input type="hidden" name="save" value="1">'.WT_Filter::getCsrf().'
 					<div class="block_left">
 						<div id="treetitle" class="field">
-							<label class="label">'.WT_I18N::translate('Use the Family tree title in the header?').help_link('treetitle', $this->getName()).'</label>'.
+							<label>'.WT_I18N::translate('Use the Family tree title in the header?').help_link('treetitle', $this->getName()).'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[TREETITLE]', $this->options('treetitle')).'
 						</div>
 						<div id="titlepos" class="field">
-							<label class="label">'.WT_I18N::translate('Position of the Family tree title').help_link('treetitle_position', $this->getName()).'</label>';
+							<label>'.WT_I18N::translate('Position of the Family tree title').help_link('treetitle_position', $this->getName()).'</label>';
 							$titlepos = $this->options('titlepos');
-			$html .= '		<span>'.WT_I18N::Translate('top').' </span><input type="text" name="NEW_JB_OPTIONS[TITLEPOS][V][size]" size="3" value="'.$titlepos['V']['size'].'">'.
-							select_edit_control('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', array('px'=>'px', '%'=>'%'), null, $titlepos['V']['fmt']).'<br>'.
-							select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][pos]', array('left' => WT_I18N::translate('left'), 'right' => WT_I18N::translate('right')), null, $titlepos['H']['pos']).'
-							<input type="text" name="NEW_JB_OPTIONS[TITLEPOS][H][size]" size="3" value="'.$titlepos['H']['size'].'">'.
-							select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][fmt]',  array('px'=>'px', '%'=>'%'), null, $titlepos['H']['fmt']).'		
+			$html .= '		<div class="block_right">
+								<div class="field">
+									<span>'.WT_I18N::Translate('top').' </span>
+									<input type="text" name="NEW_JB_OPTIONS[TITLEPOS][V][size]" size="3" value="'.$titlepos['V']['size'].'">'.
+									select_edit_control('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', array('px'=>'px', '%'=>'%'), null, $titlepos['V']['fmt']).'
+								</div>
+								<div class="field">'.
+									select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][pos]', array('left' => WT_I18N::translate('left'), 'right' => WT_I18N::translate('right')), null, $titlepos['H']['pos']).'
+									<input type="text" name="NEW_JB_OPTIONS[TITLEPOS][H][size]" size="3" value="'.$titlepos['H']['size'].'">'.
+									select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][fmt]',  array('px'=>'px', '%'=>'%'), null, $titlepos['H']['fmt']).'
+								</div>
+							</div>		
 						</div>
-						<div id="titlesize" class="field">
-							<label class="label">'.WT_I18N::translate('Size of the Family tree title').'</label>
+						<div id="titlesize" class="field clearfloat">
+							<label>'.WT_I18N::translate('Size of the Family tree title').'</label>
 							<input type="text" name="NEW_JB_OPTIONS[TITLESIZE]" size="2" value="'.$this->options('titlesize').'"> px								
 						</div>
 						<div id="header" class="field">
-							<label class="label">'.WT_I18N::translate('Use header image?').'</label>'.
+							<label>'.WT_I18N::translate('Use header image?').'</label>'.
 							select_edit_control('NEW_JB_OPTIONS[HEADER]', array(WT_I18N::translate('Default'), WT_I18N::translate('Custom'), WT_I18N::translate('None')), null, $this->options('header')).'
 						</div>';
 						$image = WT_DATA_DIR.$this->options('image');
 						if($this->options('image') && file_exists($image)) {
+							list($width, $height, $type) = @getimagesize($image);
+							$bg = file_get_contents($image);
 			$html .= '		<div id="header-image" class="field">
-								<input type="hidden" name="JB_IMAGE" value="'.$this->options('image').'">
-								<label class="label">'.WT_I18N::translate('Current header-image').'</label>';		
-								$bg = file_get_contents($image);					
-								$type = @getimagesize($image);
-			$html .= '			<a class="gallery" type="'.$type['mime'].'" href="data:'.$type['mime'].';base64,'.base64_encode($bg).'">
+								<input type="hidden" name="JB_IMAGE" value="'.$this->options('image').'">								
+								<label class="label">'.WT_I18N::translate('Current header-image').' ('.$width.' x '.$height.'px)</label>
+								
+								<a class="gallery" type="'.$type.'" href="data:'.$type.';base64,'.base64_encode($bg).'">
 									<span class="image">'.$this->options('image').'</span>
-								</a><span id="edit-image">('.WT_I18N::translate('edit image').')</span>
+								</a><i id="edit-image" class="icon-edit"></i><i class="icon-delete"></i>
 							</div>';
 						}
 			$html .= '	<div id="upload" class="field">
-							<label class="label">'.WT_I18N::translate('Upload a (new) custom header image').'</label><input type="file" name="NEW_JB_IMAGE" />
+							<label>'.WT_I18N::translate('Upload a (new) custom header image').'</label><input type="file" name="NEW_JB_IMAGE" />
 						</div>
 						<div id="resize" class="field">
-							<label class="label">'.WT_I18N::translate('Resize header image (800x150px)').'</label>'.checkbox('resize', false).'
+							<label>'.WT_I18N::translate('Resize header image (800 x 150px)').'</label>'.checkbox('resize', false).'
 						</div>
 						<div id="header_height" class="field">
-							<label class="label">'.WT_I18N::translate('Height of the header area').'</label>
+							<label>'.WT_I18N::translate('Height of the header area').'</label>
 							<input type="text" name="NEW_JB_OPTIONS[HEADERHEIGHT]" size="2" value="'.$this->options('headerheight').'" /> px
 						</div>
 						<div class="field">
-							<label class="label">'.WT_I18N::translate('Use flags in header bar as language menu?').help_link('flags', $this->getName()).'</label>'.
+							<label>'.WT_I18N::translate('Use flags in header bar as language menu?').help_link('flags', $this->getName()).'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[FLAGS]', $this->options('flags')).'
 						</div>
 						<div id="compact_menu" class="field">
-							<label class="label">'.WT_I18N::translate('Use a compact menu?').'</label>'.
+							<label>'.WT_I18N::translate('Use a compact menu?').'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[COMPACT_MENU]', $this->options('compact_menu')).'
 						</div>
 						<div id="reports" class="field">
-							<label class="label">'.WT_I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?').'</label>'.
+							<label>'.WT_I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?').'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', $this->options('compact_menu_reports')).'
 						</div>	
 						<div id="media_menu" class="field">
-							<label class="label">'.WT_I18N::translate('Media menu in topmenu?').help_link('media_menu', $this->getName()).'</label>'.
+							<label>'.WT_I18N::translate('Media menu in topmenu?').help_link('media_menu', $this->getName()).'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu')).'
 						</div>
 						<div id="media_link" class="field">								
-							<label class="label">'.WT_I18N::translate('Choose a folder as default for the main menu link').help_link('media_folder', $this->getName()).'</label>'.								
+							<label>'.WT_I18N::translate('Choose a folder as default for the main menu link').help_link('media_folder', $this->getName()).'</label>'.								
 							select_edit_control('NEW_JB_OPTIONS[MEDIA_LINK]', $this->getFolderList(), null, $this->options('media_link')).'						
 						</div>	
 						<div class="field">
-							<label class="label">'.WT_I18N::translate('Use Google Docs Viewer for pdf\'s?').help_link('gviewer', $this->getName()).'</label>'.
+							<label>'.WT_I18N::translate('Use Google Docs Viewer for pdf\'s?').help_link('gviewer', $this->getName()).'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[GVIEWER]', $this->options('gviewer')).'
 						</div>														
 						<div id="buttons">
@@ -653,39 +661,38 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<input type="reset" value="'.WT_I18N::translate('Reset').'" onclick="if (confirm(\''.WT_I18N::translate('The settings will be reset to default. Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';">
 						</div>
 					</div>
-					<div class="block_right">';
-			$html .= '	<div class="block_left">
-							<h3>'.WT_I18N::translate('Sort Topmenu items').help_link('sort_topmenu', $this->getName()).'</h3>';
-							$menulist 	= $this->checkModule($this->options('menu'));
-							foreach($menulist as $menu) {																		
-								$menu['sort'] == 0 ? $trashMenu[] = $menu : $activeMenu[] = $menu;
-							}
-							$i=0;
-							if (isset($activeMenu)) {
-			$html .= '			<ul id="sortMenu">';
-								foreach ($activeMenu as $menu) {
-									$html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
-									foreach ($menu as $key => $val) {
-										$html .= '<input type="hidden" name="NEW_JB_MENU['.$i.']['.$key.']" value="'.$val.'"/>';
-									}
-			$html .= '				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';
-									$i++;
-								}								
-			$html .= '			</ul>';
-							}
-							if (isset($trashMenu)) {
-			$html .= '			<ul id="trashMenu">'; // trashcan for toggling the compact menu.
-								foreach ($trashMenu as $menu) {
-									$html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
-									foreach ($menu as $key => $val) {
-										$html .= '<input type="hidden" name="NEW_JB_MENU['.$i.']['.$key.']" value="'.$val.'"/>';
-									}
-			$html .= '				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';	
-									$i++;
-								}			
-			$html .= '			</ul>';
-							}
-			$html .= '</div>				
+					<div class="block_right">
+						<h3>'.WT_I18N::translate('Sort Topmenu items').help_link('sort_topmenu', $this->getName()).'</h3>';
+						$menulist 	= $this->checkModule($this->options('menu'));
+						foreach($menulist as $menu) {																		
+							$menu['sort'] == 0 ? $trashMenu[] = $menu : $activeMenu[] = $menu;
+						}
+						$i=0;
+						if (isset($activeMenu)) {
+		$html .= '			<ul id="sortMenu">';
+							foreach ($activeMenu as $menu) {
+								$html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
+								foreach ($menu as $key => $val) {
+									$html .= '<input type="hidden" name="NEW_JB_MENU['.$i.']['.$key.']" value="'.$val.'"/>';
+								}
+		$html .= '				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';
+								$i++;
+							}								
+		$html .= '			</ul>';
+						}
+						if (isset($trashMenu)) {
+		$html .= '			<ul id="trashMenu">'; // trashcan for toggling the compact menu.
+							foreach ($trashMenu as $menu) {
+								$html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
+								foreach ($menu as $key => $val) {
+									$html .= '<input type="hidden" name="NEW_JB_MENU['.$i.']['.$key.']" value="'.$val.'"/>';
+								}
+		$html .= '				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';	
+								$i++;
+							}			
+		$html .= '			</ul>';
+						}
+		$html .= '	</div>				
 				</form>
 			</div>';               
 			
