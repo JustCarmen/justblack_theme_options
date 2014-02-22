@@ -216,17 +216,16 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		$fakeMenus 	= array('custom_js', 'fancy_imagebar', 'fancy_branches');
 		
 		foreach ($modules as $module) {
-			if(!in_array($module->getName(), $fakeMenus)) {
-				$menulist[] = array(					
-					'title'		=> $module->getTitle(),
-					'label'		=> $module->getName(),
-					'sort' 		=> $sort,
-					'function' 	=> 'getModuleMenu'
-				);
-				$sort++;	
-			}
-		}		
-		return $menulist;
+			$msort = in_array($module->getName(), $fakeMenus) ? 99 : $sort;
+			$menulist[] = array(					
+				'title'		=> $module->getTitle(),
+				'label'		=> $module->getName(),
+				'sort' 		=> $msort,
+				'function' 	=> 'getModuleMenu'
+			);
+			$sort++;
+		}
+		return $this->sortArray($menulist, 'sort');
 	}
 	
 	// function to check if a module menu is still active (after options are set)
@@ -569,7 +568,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			jQuery("#sortMenu").bind("sortupdate", function(event, ui) {
 				jQuery("#"+jQuery(this).attr("id")+" input[name*=sort]").each(
 					function (index, value) {
-						value.value = index+1;
+						if(value.value < 99) value.value = index+1;
 					}
 				);
 				jQuery("#trashMenu input[name*=sort]").attr("value", "0");
@@ -671,11 +670,11 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						if (isset($activeMenu)) {
 		$html .= '			<ul id="sortMenu">';
 							foreach ($activeMenu as $menu) {
-								$html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
+								if($menu['sort'] < 99) $html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
 								foreach ($menu as $key => $val) {
 									$html .= '<input type="hidden" name="NEW_JB_MENU['.$i.']['.$key.']" value="'.$val.'"/>';
 								}
-		$html .= '				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';
+								if($menu['sort'] < 99) $html .= '<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';
 								$i++;
 							}								
 		$html .= '			</ul>';
