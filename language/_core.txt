@@ -14,6 +14,10 @@ msgstr ""
 msgid "View"
 msgstr ""
 
+#: modules_v3/justblack_theme_options/module.php:121
+msgid "Home page"
+msgstr ""
+
 #: modules_v3/justblack_theme_options/module.php:191
 msgid "My page"
 msgstr ""
@@ -50,10 +54,19 @@ msgstr ""
 msgid "None"
 msgstr ""
 
+#: modules_v3/justblack_theme_options/module.php:662
+msgid "Include subfolders"
+msgstr ""
+
 #: modules_v3/justblack_theme_options/module.php:687
 msgid "Save"
 msgstr ""
 
 #: modules_v3/justblack_theme_options/module.php:688
 msgid "Reset"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:115
+#: modules_v3/justblack_theme_options/module.php:211
+msgid "Media"
 msgstr ""
