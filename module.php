@@ -621,7 +621,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							$bg = file_get_contents($file);
 			$html .= '		<div id="header-image" class="field">
 								<input type="hidden" name="JB_IMAGE" value="'.$this->options('image').'">								
-								<label class="label">'.WT_I18N::translate('Current header-image').' ('.$image[0].' x '.$image[1].'px)</label>
+								<label class="label">'.WT_I18N::translate('Current header image').' ('.$image[0].' x '.$image[1].'px)</label>
 								
 								<a class="gallery" type="'.$image['mime'].'" href="data:'.$image['mime'].';base64,'.base64_encode($bg).'">
 									<span class="image">'.$this->options('image').'</span>

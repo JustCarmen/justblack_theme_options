@@ -45,7 +45,7 @@ case 'flags':
 								'<p>You can remove unused languages from the folder languages in your webtrees installation.</p>');
 	break;
 case 'media_menu':
-	$title=WT_I18N::translate('Media icon in topmenu');
+	$title=WT_I18N::translate('Media menu in topmenu');
 	$text=WT_I18N::translate('<p>If this option is set the Media Menu will be moved to the topmenu. The names of first level media folders will appear as submenu of the new Media Menu.</p>'.
                             '<p>Warning: these menu links are not translated automatically. If you want your menus to be translated you will have to do it manually with the instructions in the webrees WIKI.</p>');
 	break;
