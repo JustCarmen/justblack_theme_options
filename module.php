@@ -596,7 +596,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							$titlepos = $this->options('titlepos');
 			$html .= '		<div class="block_right">
 								<div class="field">
-									<span>'.WT_I18N::Translate('top').' </span>
+									<span>'.WT_I18N::translate('top').' </span>
 									<input type="text" name="NEW_JB_OPTIONS[TITLEPOS][V][size]" size="3" value="'.$titlepos['V']['size'].'">'.
 									select_edit_control('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', array('px'=>'px', '%'=>'%'), null, $titlepos['V']['fmt']).'
 								</div>

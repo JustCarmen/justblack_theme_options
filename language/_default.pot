@@ -167,3 +167,7 @@ msgstr ""
 #: modules_v3/justblack_theme_options/module.php:604
 msgid "right"
 msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:599
+msgid "top"
+msgstr ""

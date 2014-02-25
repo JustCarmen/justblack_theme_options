@@ -165,3 +165,7 @@ msgstr "links"
 #: modules_v3/justblack_theme_options/module.php:604
 msgid "right"
 msgstr "rechts"
+
+#: modules_v3/justblack_theme_options/module.php:599
+msgid "top"
+msgstr "top"
