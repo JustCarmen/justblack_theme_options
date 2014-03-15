@@ -24,12 +24,15 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// Update database for version 1.5
-try {
-	WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 1);
-} catch (PDOException $ex) {
-	// The schema update scripts should never fail.  If they do, there is no clean recovery.
-	die($ex);
+// Update database for version 1.5.2.1
+// Version 1 update only if the admin has logged in. A message will be shown to tell him all settings are reset to default. Old db-entries will be removed then.
+if(WT_USER_IS_ADMIN) {
+	try {
+		WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 1);
+	} catch (PDOException $ex) {
+		// The schema update scripts should never fail.  If they do, there is no clean recovery.
+		die($ex);
+	}
 }
 
 class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_Config {
