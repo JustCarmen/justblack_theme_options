@@ -1,5 +1,10 @@
 GOTO HTTP://WWW.JUSTCARMEN.NL/HELP FOR INSTALLATION AND UPGRADE INSTRUCTIONS
 
+15-03-2014 Version 1.5.2.1 or webtrees 1.5.2
+* Module rewritten to solve some problems with the custom image and the media menu and to simplify code.
+Note: when using this version for the first time all previous database settings are reset to default. You can update the settings on the config page.
+
+=========================================================================================================
 10-02-2014 Version 1.5.2 for webtrees 1.5.2
 * Changes made to the function for adding module translations due to compatibility with webtrees 1.5.2
 
