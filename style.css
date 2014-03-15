@@ -8,7 +8,7 @@
 #jb_options .field {margin-bottom:5px}
 #jb_options label, #jb_options input {display:inline-block;vertical-align:baseline}
 #jb_options label {width: 350px}
-#jb_options #titlepos label {float:left}
+#jb_options #titlepos label {float:left;margin-top:5px}
 #jb_options #titlepos span {margin-left:4px}
 #jb_options select {margin:4px}
 #jb_options input[type=file] {background:none;border:none;margin:0}
