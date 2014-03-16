@@ -29,9 +29,12 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
-AddToLog(WT_I18N::translate('JustBlack Theme Options').' reset to default values due to changes in database scheme', 'config');
-WT_FlashMessages::addMessage(WT_I18N::translate('All JustBlack Theme options are reset to default due to changes in this version of the module. Click <a href="module.php?mod=justblack_theme_options&mod_action=admin_config">HERE</a> to update the settings to your needs.'));
+$rows = WT_DB::prepare("SELECT * FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute()->fetchAll();
+if(count($rows) > 0) {
+	WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
+	AddToLog(WT_I18N::translate('JustBlack Theme Options').' reset to default values due to changes in database scheme', 'config');
+	WT_FlashMessages::addMessage(WT_I18N::translate('All JustBlack Theme options are reset to default due to changes in this version of the module. Click <a href="module.php?mod=justblack_theme_options&mod_action=admin_config">HERE</a> to update the settings to your needs.'));
+}
 
 // Update the version to indicate success
 WT_Site::preference($schema_name, $next_version);
