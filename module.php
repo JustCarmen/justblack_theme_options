@@ -90,7 +90,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			'GVIEWER'				=> '0'
 		);
 		return $JB_DEFAULT[$key];
-
 	}
 
 	// Get module options
