@@ -27,12 +27,12 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 }
 
 switch ($help) {
-	
+
 case 'treetitle':
 	$title=WT_I18N::translate('Family tree title');
 	$text=WT_I18N::translate('<p>Uncheck this box if you already use the Family tree title in the header image. Otherwise leave the checkbox checked.</p>');
 	break;
-	
+
 case 'treetitle_position':
 	$title=WT_I18N::translate('Position of the Family tree title');
 	$text=WT_I18N::translate('<p>Here you can choose the location for the Family tree title in the header.</p>');
