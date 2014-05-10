@@ -100,15 +100,14 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 		$key = strtoupper($key);
 		if(empty($JB_OPTIONS) || (is_array($JB_OPTIONS) && !array_key_exists($key, $JB_OPTIONS))) {
-			$key == 'MENU' ? $value = $this->getMenu() : $value = $this->setDefault($key);
-			return $value;
+			return $key === 'MENU' ? $this->getMenu() : $this->setDefault($key);
 		} else {
 			return $JB_OPTIONS[$key];
 		}
 	}
 
 	private function getMenu() {
-		$menulist = array(
+		$list = array(
 			array(
 				'title'		=> WT_I18N::translate('View'),
 				'label'		=> 'compact',
@@ -165,7 +164,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			),
 		);
 
-		$menulist = array_merge($menulist, $this->getActiveMenu(8));
+		$menulist = array_merge($list, $this->getActiveMenu(8));
 		return $menulist;
 	}
 
@@ -173,7 +172,9 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	public function getCompactMenu() {
 		global $controller, $SEARCH_SPIDER;
 
-		if ($SEARCH_SPIDER) return null;
+		if ($SEARCH_SPIDER) {
+			return null;
+		}
 
 		$indi_xref=$controller->getSignificantIndividual()->getXref();
 		$menu = new WT_Menu(WT_I18N::translate('View'), 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-view');
@@ -201,15 +202,18 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			$submenu->id = $new_id;
 			$submenu->label = '<span>'.$submenu->label.'</span>';
 			$menu->addSubmenu($submenu);
-		};
+		}
 		return $menu;
 	}
 
 	// get the media Menu as Main menu item with folders as submenu-items
 	public function getMediaMenu() {
-		global $controller, $SEARCH_SPIDER, $MEDIA_DIRECTORY;
+		global $SEARCH_SPIDER, $MEDIA_DIRECTORY;
 
-		if ($SEARCH_SPIDER) return null;
+		if ($SEARCH_SPIDER) {
+			return null;
+		}
+		
 		$mainfolder = $this->options('media_link') == $MEDIA_DIRECTORY ? '' : '&amp;folder='.rawurlencode($this->options('media_link'));
 		$subfolders = $this->options('subfolders') ? '&amp;subdirs=on' : '';
 		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=no'.$mainfolder.'&amp;sortby=title&amp;'.$subfolders.'&amp;max=20&amp;columns=2', 'menu-media');
@@ -221,7 +225,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				$menu->addSubmenu($submenu);
 			}
 			$i++;
-		};
+		}
 		return $menu;
 	}
 
@@ -278,7 +282,9 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				if (count(glob(WT_DATA_DIR.$MEDIA_DIRECTORY.$value.'*')) > 0 ) {
 					$folder = array_filter(explode("/", $value));
 					// only list first level folders
-					if(!array_search($folder[0], $folderlist)) $folderlist[$folder[0].'/'] = WT_I18N::translate($folder[0]);
+					if (!array_search($folder[0], $folderlist)) {
+						$folderlist[$folder[0] . '/'] = WT_I18N::translate($folder[0]);
+					}
 				}
 			}
 		}
@@ -289,10 +295,12 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	private function searchArray($array, $key, $value) {
 		$results = array();
 		if (is_array($array)) {
-			if (isset($array[$key]) && $array[$key] == $value)
+			if (isset($array[$key]) && $array[$key] == $value) {
 				$results[] = $array;
-			foreach ($array as $subarray)
+			}
+			foreach ($array as $subarray) {
 				$results = array_merge($results, $this->searchArray($subarray, $key, $value));
+			}
 		}
 		return $results;
 	}
@@ -303,7 +311,8 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			$tmp_array[$pos] = $val[$sort_by];
 		}
 		asort($tmp_array);
-
+		
+		$return_array = array();
 		foreach ($tmp_array as $pos =>  $val){
 			$return_array[$pos]['title'] = $array[$pos]['title'];
 			$return_array[$pos]['label'] = $array[$pos]['label'];
@@ -335,8 +344,10 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		// Check if we are dealing with a valid image
 		if (!empty($image['name']) && preg_match('/^image\/(png|gif|jpeg)/', $image['type'])){
 			$serverFileName = WT_DATA_DIR.'justblack_'.$image['name'];
-			if(WT_Filter::postBool('resize') == true)	$this->resize($image['tmp_name'], $image['type'], '800', '150');
-			@move_uploaded_file($image['tmp_name'], $serverFileName);
+			if (WT_Filter::postBool('resize') == true) {
+				$this->resize($image['tmp_name'], $image['type'], '800', '150');
+			}
+			move_uploaded_file($image['tmp_name'], $serverFileName);
 			return true;
 		} else{
 			return false;
@@ -345,10 +356,12 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 	private function resize($imgSrc, $type, $thumbwidth, $thumbheight) {
 		//getting the image dimensions
-		list($width_orig, $height_orig) = @getimagesize($imgSrc);
+		list($width_orig, $height_orig) = getimagesize($imgSrc);
 		$ratio_orig = $width_orig/$height_orig;
 
-		if (($width_orig > $height_orig && $width_orig < $thumbwidth) || ($height_orig > $width_orig && $height_orig < $thumbheight)) return false;
+		if (($width_orig > $height_orig && $width_orig < $thumbwidth) || ($height_orig > $width_orig && $height_orig < $thumbheight)) {
+			return false;
+		}
 
 		if ($thumbwidth/$thumbheight > $ratio_orig) {
 		   $new_height = $thumbwidth/$ratio_orig;
@@ -364,36 +377,33 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		// return resized header image
 		switch ($type) {
 			case 'image/jpeg':
-				$image = @imagecreatefromjpeg($imgSrc);
-				$thumb = @imagecreatetruecolor(round($new_width), $thumbheight);
+				$image = imagecreatefromjpeg($imgSrc);
+				$thumb = imagecreatetruecolor(round($new_width), $thumbheight);
 
-				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid-($thumbheight/2)), $new_width, $new_height, $width_orig, $height_orig);
+				imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid-($thumbheight/2)), $new_width, $new_height, $width_orig, $height_orig);
 				imagedestroy($image);
 				return imagejpeg($thumb,$imgSrc,100);
-				break;
 			case 'image/gif':
-				$image = @imagecreatefromgif($imgSrc);
-				$thumb = @imagecreatetruecolor(round($new_width), $thumbheight);
+				$image = imagecreatefromgif($imgSrc);
+				$thumb = imagecreatetruecolor(round($new_width), $thumbheight);
 
-				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid-($thumbheight/2)), $new_width, $new_height, $width_orig, $height_orig);
-				@imagecolortransparent($thumb, @imagecolorallocate($thumb, 0, 0, 0));
+				imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid-($thumbheight/2)), $new_width, $new_height, $width_orig, $height_orig);
+				imagecolortransparent($thumb, imagecolorallocate($thumb, 0, 0, 0));
 				imagedestroy($image);
 
 				return imagegif($thumb,$imgSrc,100);
-				break;
 			case 'image/png':
-				$image = @imagecreatefrompng($imgSrc);
-				@imagealphablending($image, false);
+				$image = imagecreatefrompng($imgSrc);
+				imagealphablending($image, false);
 
-				$thumb = @imagecreatetruecolor(round($new_width), $thumbheight);
-				@imagealphablending($thumb, false);
-				@imagesavealpha($thumb, true);
+				$thumb = imagecreatetruecolor(round($new_width), $thumbheight);
+				imagealphablending($thumb, false);
+				imagesavealpha($thumb, true);
 
-				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid-($thumbheight/2)), $new_width, $new_height, $width_orig, $height_orig);
+				imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid-($thumbheight/2)), $new_width, $new_height, $width_orig, $height_orig);
 				imagedestroy($image);
 
 				return imagepng($thumb,$imgSrc,0);
-				break;
 		}
 	}
 
@@ -445,7 +455,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				if(WT_Filter::postBool('resize') == true) {
 					$file = WT_DATA_DIR.$this->options('image');
 					if($this->options('image') && file_exists($file)) {
-						$image = @getimagesize($file);
+						$image = getimagesize($file);
 						$this->resize($file, $image['mime'], '800', '150');
 					}
 				}
@@ -621,7 +631,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						</div>';
 						$file = WT_DATA_DIR.$this->options('image');
 						if($this->options('image') && file_exists($file)) {
-							$image = @getimagesize($file);
+							$image = getimagesize($file);
 							$bg = file_get_contents($file);
 			$html .= '		<div id="header-image" class="field">
 								<input type="hidden" name="JB_IMAGE" value="'.$this->options('image').'">
@@ -685,11 +695,15 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						if (isset($activeMenu)) {
 		$html .= '			<ul id="sortMenu">';
 							foreach ($activeMenu as $menu) {
-								if($menu['sort'] < 99) $html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
+								if ($menu['sort'] < 99) {
+									$html .= '<li class="ui-state-default' . $this->getStatus($menu['label']) . '">';
+								}
 								foreach ($menu as $key => $val) {
 									$html .= '<input type="hidden" name="NEW_JB_MENU['.$i.']['.$key.']" value="'.$val.'"/>';
 								}
-								if($menu['sort'] < 99) $html .= '<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';
+								if ($menu['sort'] < 99) {
+									$html .= '<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>' . $menu['title'] . '</li>';
+								}
 								$i++;
 							}
 		$html .= '			</ul>';
