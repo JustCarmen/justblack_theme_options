@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 
 // Update database for version 1.5.2.1
 // Version 1 update only if the admin has logged in. A message will be shown to tell him all settings are reset to default. Old db-entries will be removed then.
-if(WT_USER_IS_ADMIN) {
+if(\WT\Auth::isAdmin()) {
 	try {
 		WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 1);
 	} catch (PDOException $ex) {
@@ -422,7 +422,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	private function jb_reset() {
 		WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
 		$this->delete();
-		AddToLog($this->getTitle().' reset to default values', 'config');
+		\WT\Log::addConfigurationLog($this->getTitle().' reset to default values');
 	}
 
 	private function config() {
@@ -452,14 +452,14 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			}
 			if(!$error) {
 				set_module_setting($this->getName(), 'JB_OPTIONS',  serialize($NEW_JB_OPTIONS));
-				AddToLog($this->getTitle().' config updated', 'config');
+				\WT\Log::addConfigurationLog($this->getTitle().' config updated');
 			}
 		}
 
 		require WT_ROOT.'includes/functions/functions_edit.php';
 		$controller=new WT_Controller_Page;
 		$controller
-			->requireAdminLogin()
+			->restrictAccess(\WT\Auth::isAdmin())
 			->setPageTitle(WT_I18N::translate('Options for the JustBlack theme'))
 			->pageHeader();
 
