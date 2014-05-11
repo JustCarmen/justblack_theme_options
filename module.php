@@ -107,7 +107,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	}
 
 	private function getMenu() {
-		$list = array(
+		$menulist = array(
 			array(
 				'title'		=> WT_I18N::translate('View'),
 				'label'		=> 'compact',
@@ -163,9 +163,14 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				'function' 	=> 'getSearchMenu'
 			),
 		);
-
-		$menulist = array_merge($list, $this->getActiveMenu(8));
-		return $menulist;
+		
+		$modules = $this->getActiveMenu(8);
+		if ($modules) {
+			return array_merge($menulist, $modules);
+		}
+		else {
+			return $menulist;
+		}
 	}
 
 	// get our own Compact Menu
