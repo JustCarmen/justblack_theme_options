@@ -231,19 +231,22 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 	private function getActiveMenu($sort) {
 		$modules=WT_Module::getActiveMenus();
-		$fakeMenus 	= array('custom_js', 'fancy_imagebar', 'fancy_branches');
+		
+		if ( count($modules) > 0) {
+			$fakeMenus 	= array('custom_js', 'fancy_imagebar', 'fancy_branches');
 
-		foreach ($modules as $module) {
-			$msort = in_array($module->getName(), $fakeMenus) ? 99 : $sort;
-			$menulist[] = array(
-				'title'		=> $module->getTitle(),
-				'label'		=> $module->getName(),
-				'sort' 		=> $msort,
-				'function' 	=> 'getModuleMenu'
-			);
-			$sort++;
+			foreach ($modules as $module) {
+				$msort = in_array($module->getName(), $fakeMenus) ? 99 : $sort;
+				$menulist[] = array(
+					'title'		=> $module->getTitle(),
+					'label'		=> $module->getName(),
+					'sort' 		=> $msort,
+					'function' 	=> 'getModuleMenu'
+				);
+				$sort++;
+			}
+			return $this->sortArray($menulist, 'sort');
 		}
-		return $this->sortArray($menulist, 'sort');
 	}
 
 	// function to check if a module menu is still active (after options are set)
@@ -251,22 +254,23 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		$lastItem = end($menulist);
 		$sort = $lastItem['sort'] + 1;
 		$modules=$this->getActiveMenu($sort);
-
+		
 		// delete deactivated modules from the list
 		foreach ($menulist as $menu) {
-			if	($menu['function'] == 'getModuleMenu') {
-				if ($this->searchArray($modules, 'label', $menu['label'])) {
-					$new_list[] = $menu;
-				}
-			} else {
+			if	($menu['function'] !== 'getModuleMenu') {
+				$new_list[] = $menu;
+			}
+			if	($modules && $menu['function'] == 'getModuleMenu' && $this->searchArray($modules, 'label', $menu['label'])) {
 				$new_list[] = $menu;
 			}
 		}
 
 		// add newly activated modules to the list
-		foreach ($modules as $module) {
-			if(!$this->searchArray($menulist, 'label', $module['label'])) {
-				$new_list[] = $module;
+		if($modules) {
+			foreach ($modules as $module) {
+				if(!$this->searchArray($menulist, 'label', $module['label'])) {
+					$new_list[] = $module;
+				}
 			}
 		}
 		return $new_list;
