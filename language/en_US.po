@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: justblack theme options 1.5.0\n"
-"POT-Creation-Date: 2014-02-23 09:20+0100\n"
+"POT-Creation-Date: 2014-05-11 12:55+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
@@ -14,158 +14,165 @@ msgstr ""
 "X-Generator: Poedit 1.6.4\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
-#: modules_v3/justblack_theme_options/help_text.php:68
+#: modules_v3/justblack_theme_options/help_text.php:67
 msgid "<p>Click a row, then drag-and-drop to re-order the topmenu items. Then click the 'save' button.</p>"
 msgstr "<p>Click a row, then drag-and-drop to re-order the topmenu items. Then click the 'save' button.</p>"
 
-#: modules_v3/justblack_theme_options/help_text.php:39
+#: modules_v3/justblack_theme_options/help_text.php:38
 msgid "<p>Here you can choose the location for the Family tree title in the header.</p>"
 msgstr "<p>Here you can choose the location for the Family tree title in the header.</p>"
 
-#: modules_v3/justblack_theme_options/help_text.php:49
+#: modules_v3/justblack_theme_options/help_text.php:48
 msgid "<p>If this option is set the Media Menu will be moved to the topmenu. The names of first level media folders will appear as submenu of the new Media Menu.</p><p>Warning: these menu links are not translated automatically. If you want your menus to be translated you will have to do it manually with the instructions in the webrees WIKI.</p>"
 msgstr "<p>If this option is set the Media Menu will be moved to the topmenu. The names of first level media folders will appear as submenu of the new Media Menu.</p><p>Warning: these menu links are not translated automatically. If you want your menus to be translated you will have to do it manually with the instructions in the webrees WIKI.</p>"
 
-#: modules_v3/justblack_theme_options/help_text.php:58
+#: modules_v3/justblack_theme_options/help_text.php:57
 msgid "<p>If you set this option the results on the media list page will include subfolders.</p>"
 msgstr "<p>If you set this option the results on the media list page will include subfolders.</p>"
 
-#: modules_v3/justblack_theme_options/help_text.php:62
+#: modules_v3/justblack_theme_options/help_text.php:61
 msgid "<p>The Google Docs Viewer is a way to present pdf files in a consistant way across all browsers. You are no longer dependent on the user's own PDF viewer.</p><p>A second advantage of using the Google Docs Viewer is that it now is possible to place watermarks on pdf files. If you have set the option to use watermarks for images in your tree settings, the watermarks will now be placed on pdf-files too.</p><p>You and your users don't need a google account to use the Google Docs Viewer.</p>"
 msgstr "<p>The Google Docs Viewer is a way to present pdf files in a consistant way across all browsers. You are no longer dependent on the user's own PDF viewer.</p><p>A second advantage of using the Google Docs Viewer is that it now is possible to place watermarks on pdf files. If you have set the option to use watermarks for images in your tree settings, the watermarks will now be placed on pdf-files too.</p><p>You and your users don't need a google account to use the Google Docs Viewer.</p>"
 
-#: modules_v3/justblack_theme_options/help_text.php:54
+#: modules_v3/justblack_theme_options/help_text.php:53
 msgid "<p>The default media folder will be used as link on the main media menu icon. If you click on this icon the medialist page for this folder appears.</p>"
 msgstr "<p>The default media folder will be used as link on the main media menu icon. If you click on this icon the medialist page for this folder appears.</p>"
 
-#: modules_v3/justblack_theme_options/help_text.php:34
+#: modules_v3/justblack_theme_options/help_text.php:33
 msgid "<p>Uncheck this box if you already use the Family tree title in the header image. Otherwise leave the checkbox checked.</p>"
 msgstr "<p>Uncheck this box if you already use the Family tree title in the header image. Otherwise leave the checkbox checked.</p>"
 
-#: modules_v3/justblack_theme_options/help_text.php:44
+#: modules_v3/justblack_theme_options/help_text.php:43
 msgid "<p>You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed.</p><p>You can remove unused languages from the folder languages in your webtrees installation.</p>"
 msgstr "<p>You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed.</p><p>You can remove unused languages from the folder languages in your webtrees installation.</p>"
 
-#: modules_v3/justblack_theme_options/help_text.php:53
+#: modules_v3/justblack_theme_options/db_schema/db_schema_0_1.php:36
+msgid "All JustBlack Theme options are reset to default due to changes in this version of the module. Click <a href=\"module.php?mod=justblack_theme_options&mod_action=admin_config\">HERE</a> to update the settings to your needs."
+msgstr ""
+
+#: modules_v3/justblack_theme_options/help_text.php:52
 msgid "Choose a default media folder"
 msgstr "Choose a default media folder"
 
-#: modules_v3/justblack_theme_options/module.php:658
+#: modules_v3/justblack_theme_options/module.php:681
 msgid "Choose a folder as default for the main menu link"
 msgstr "Choose a folder as default for the main menu link"
 
-#: modules_v3/justblack_theme_options/module.php:624
+#: modules_v3/justblack_theme_options/module.php:647
 msgid "Current header image"
 msgstr "Current header image"
 
-#: modules_v3/justblack_theme_options/module.php:437
+#: modules_v3/justblack_theme_options/module.php:460
 msgid "Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved."
 msgstr "Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved."
 
-#: modules_v3/justblack_theme_options/help_text.php:43
+#: modules_v3/justblack_theme_options/help_text.php:42
 msgid "Flags"
 msgstr "Flags"
 
-#: modules_v3/justblack_theme_options/module.php:638
+#: modules_v3/justblack_theme_options/module.php:661
 msgid "Height of the header area"
 msgstr "Height of the header area"
 
-#: modules_v3/justblack_theme_options/module.php:650
+#: modules_v3/justblack_theme_options/module.php:673
 msgid "Include the reports topmenu in the compact 'View' topmenu?"
 msgstr "Include the reports topmenu in the compact 'View' topmenu?"
 
 #. I18N: Name of a module
-#: modules_v3/justblack_theme_options/db_schema/db_schema_0_1.php:37
-#: modules_v3/justblack_theme_options/module.php:61
+#: modules_v3/justblack_theme_options/db_schema/db_schema_0_1.php:35
+#: modules_v3/justblack_theme_options/module.php:66
 msgid "JustBlack Theme Options"
 msgstr "JustBlack Theme Options"
 
-#: modules_v3/justblack_theme_options/module.php:654
+#: modules_v3/justblack_theme_options/help_text.php:47
+msgid "Media menu in topmenu"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:677
 msgid "Media menu in topmenu?"
 msgstr "Media menu in topmenu?"
 
-#: modules_v3/justblack_theme_options/module.php:459
+#: modules_v3/justblack_theme_options/module.php:482
 msgid "Options for the JustBlack theme"
 msgstr "Options for the JustBlack theme"
 
-#: modules_v3/justblack_theme_options/help_text.php:38
-#: modules_v3/justblack_theme_options/module.php:595
+#: modules_v3/justblack_theme_options/help_text.php:37
+#: modules_v3/justblack_theme_options/module.php:618
 msgid "Position of the Family tree title"
 msgstr "Position of the Family tree title"
 
-#: modules_v3/justblack_theme_options/module.php:635
+#: modules_v3/justblack_theme_options/module.php:658
 msgid "Resize header image (800 x 150px)"
 msgstr "Resize header image (800 x 150px)"
 
 #. I18N: Description of the module
-#: modules_v3/justblack_theme_options/module.php:66
+#: modules_v3/justblack_theme_options/module.php:71
 msgid "Set options for the JustBlack theme within the admin interface"
 msgstr "Set options for the JustBlack theme within the admin interface"
 
-#: modules_v3/justblack_theme_options/module.php:611
+#: modules_v3/justblack_theme_options/module.php:634
 msgid "Size of the Family tree title"
 msgstr "Size of the Family tree title"
 
-#: modules_v3/justblack_theme_options/module.php:675
+#: modules_v3/justblack_theme_options/module.php:698
 msgid "Sort Topmenu items"
 msgstr "Sort Topmenu items"
 
-#: modules_v3/justblack_theme_options/help_text.php:67
+#: modules_v3/justblack_theme_options/help_text.php:66
 msgid "Sorting the topmenu"
 msgstr "Sorting the topmenu"
 
-#: modules_v3/justblack_theme_options/help_text.php:57
+#: modules_v3/justblack_theme_options/help_text.php:56
 msgid "Subfolders"
 msgstr "Subfolders"
 
-#: modules_v3/justblack_theme_options/module.php:671
+#: modules_v3/justblack_theme_options/module.php:694
 msgid "The settings will be reset to default. Are you sure you want to do this?"
 msgstr "The settings will be reset to default. Are you sure you want to do this?"
 
-#: modules_v3/justblack_theme_options/module.php:632
+#: modules_v3/justblack_theme_options/module.php:655
 msgid "Upload a (new) custom header image"
 msgstr "Upload a (new) custom header image"
 
-#: modules_v3/justblack_theme_options/module.php:666
+#: modules_v3/justblack_theme_options/module.php:689
 msgid "Use Google Docs Viewer for pdf's?"
 msgstr "Use Google Docs Viewer for pdf's?"
 
-#: modules_v3/justblack_theme_options/module.php:646
+#: modules_v3/justblack_theme_options/module.php:669
 msgid "Use a compact menu?"
 msgstr "Use a compact menu?"
 
-#: modules_v3/justblack_theme_options/module.php:642
+#: modules_v3/justblack_theme_options/module.php:665
 msgid "Use flags in header bar as language menu?"
 msgstr "Use flags in header bar as language menu?"
 
-#: modules_v3/justblack_theme_options/module.php:615
+#: modules_v3/justblack_theme_options/module.php:638
 msgid "Use header image?"
 msgstr "Use header image?"
 
-#: modules_v3/justblack_theme_options/module.php:591
+#: modules_v3/justblack_theme_options/module.php:614
 msgid "Use the Family tree title in the header?"
 msgstr "Use the Family tree title in the header?"
 
-#: modules_v3/justblack_theme_options/help_text.php:61
+#: modules_v3/justblack_theme_options/help_text.php:60
 msgid "Use the Google Docs Viewer"
 msgstr "Use the Google Docs Viewer"
 
-#: modules_v3/justblack_theme_options/module.php:434
+#: modules_v3/justblack_theme_options/module.php:457
 msgid "Your custom header image is succesfully saved."
 msgstr "Your custom header image is succesfully saved."
 
-#: modules_v3/justblack_theme_options/db_schema/db_schema_0_1.php:38
-msgid "Your settings are reset to default due to changes in this version of the module. Please update the settings to your needs."
-msgstr "Your settings are reset to default due to changes in this version of the module. Please update the settings to your needs."
-
-#: modules_v3/justblack_theme_options/module.php:604
+#: modules_v3/justblack_theme_options/module.php:627
 msgid "left"
 msgstr "left"
 
-#: modules_v3/justblack_theme_options/module.php:604
+#: modules_v3/justblack_theme_options/module.php:627
 msgid "right"
 msgstr "right"
 
-#: modules_v3/justblack_theme_options/module.php:599
+#: modules_v3/justblack_theme_options/module.php:622
 msgid "top"
 msgstr "top"
+
+#~ msgid "Your settings are reset to default due to changes in this version of the module. Please update the settings to your needs."
+#~ msgstr "Your settings are reset to default due to changes in this version of the module. Please update the settings to your needs."
