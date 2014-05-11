@@ -163,8 +163,13 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			),
 		);
 
-		$menulist = array_merge($menulist, $this->getActiveMenu(8));
-		return $menulist;
+		$modules = $this->getActiveMenu(8);
+		if ($modules) {
+			return array_merge($menulist, $modules);
+		}
+		else {
+			return $menulist;
+		}
 	}
 
 	// get our own Compact Menu
