@@ -1,8 +1,14 @@
 GOTO HTTP://WWW.JUSTCARMEN.NL/HELP FOR INSTALLATION AND UPGRADE INSTRUCTIONS
 
+11-05-2014 version 1.5.3.1 for webtrees 1.5.3
+Bugfix: error occurs when there are no module menus available.
+Bugfix: Bugfix: Removing custom header image with delete icon not functioning.
+
+=========================================================================================================
 04-05-2014 version 1.5.3 for webtrees 1.5.3
 No changes in the theme options module. All changes are made within the JustBlack theme.
 
+=========================================================================================================
 15-03-2014 Version 1.5.2.1 or webtrees 1.5.2
 * Module rewritten to solve some problems with the custom image and the media menu and to simplify code.
 Note: when using this version for the first time all previous database settings are reset to default. You can update the settings on the config page.
