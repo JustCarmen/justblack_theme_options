@@ -429,8 +429,12 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			$this->config();
 			break;
 		case 'admin_reset':
-			$this->jb_reset();
+			$this->delete();
+			$this->jb_reset();			
 			$this->config();
+			break;
+		case 'remove_image':
+			$this->delete();
 			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
@@ -440,7 +444,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	// Reset all settings to default
 	private function jb_reset() {
 		WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
-		$this->delete();
 		\WT\Log::addConfigurationLog($this->getTitle().' reset to default values');
 	}
 
@@ -451,7 +454,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			$NEW_JB_OPTIONS['MENU'] = $this->sortArray(WT_Filter::postArray('NEW_JB_MENU'), 'sort');
 			$NEW_JB_OPTIONS['IMAGE'] = WT_Filter::post('JB_IMAGE');
 			$error = false;
-			if($NEW_JB_OPTIONS['HEADER'] == 1 && !empty($_FILES['NEW_JB_IMAGE']['name'])) {
+			if($NEW_JB_OPTIONS['HEADER'] == 1 && isset($_FILES['NEW_JB_IMAGE']['name'])) {
 				if($this->upload($_FILES['NEW_JB_IMAGE'])) {
 					$NEW_JB_OPTIONS['IMAGE'] = 'justblack_'.$_FILES['NEW_JB_IMAGE']['name'];
 					WT_FlashMessages::addMessage(WT_I18N::translate('Your custom header image is succesfully saved.'));
@@ -471,6 +474,9 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			}
 			if(!$error) {
 				set_module_setting($this->getName(), 'JB_OPTIONS',  serialize($NEW_JB_OPTIONS));
+				if(WT_Filter::postBool('remove-image')) {
+					WT_FlashMessages::addMessage(WT_I18N::translate('Your custom header image is succesfully removed.'));
+				}
 				\WT\Log::addConfigurationLog($this->getTitle().' config updated');
 			}
 		}
@@ -547,6 +553,14 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			jQuery("#edit-image").click(function(){
 				jQuery("#upload").toggle();
 			});
+			
+			jQuery("#delete-image").click(function(){
+				jQuery.get("module.php?mod='.$this->getName().'&mod_action=remove_image", function(){
+					jQuery("input[name=remove-image]").val(1);
+					jQuery("#header select").val(0);
+					jQuery("#jb-options-form").submit();
+				});
+			});
 
 			jQuery("#upload").on("change", "input[type=file]", function(){
 				jQuery("#resize input[type=checkbox]").prop("checked", true);
@@ -607,8 +621,9 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 		// Admin page content
 		$html = '<div id="jb_options"><div id="error" style="display:none"></div><h2>'.$this->getTitle().'</h2>
-				<form method="post" name="configform" action="'.$this->getConfigLink().'" enctype="multipart/form-data">
+				<form id="jb-options-form" method="post" name="configform" action="'.$this->getConfigLink().'" enctype="multipart/form-data">
 					<input type="hidden" name="save" value="1">'.WT_Filter::getCsrf().'
+					<input type="hidden" name="remove-image" value="0">
 					<div class="block_left">
 						<div id="treetitle" class="field">
 							<label>'.WT_I18N::translate('Use the Family tree title in the header?').help_link('treetitle', $this->getName()).'</label>'.
@@ -648,7 +663,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 								<a class="gallery" type="'.$image['mime'].'" href="data:'.$image['mime'].';base64,'.base64_encode($bg).'">
 									<span class="image">'.$this->options('image').'</span>
-								</a><i id="edit-image" class="icon-edit"></i><i class="icon-delete"></i>
+								</a><i id="edit-image" class="icon-edit"></i><i id="delete-image" class="icon-delete"></i>
 							</div>';
 						}
 			$html .= '	<div id="upload" class="field">

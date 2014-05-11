@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: justblack theme options 1.5.2\n"
-"POT-Creation-Date: 2014-05-11 12:55+0100\n"
+"POT-Creation-Date: 2014-05-11 18:50+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
 "Language-Team: \n"
@@ -55,15 +55,15 @@ msgstr ""
 msgid "Choose a default media folder"
 msgstr "Wählen Sie den Standard-Medienordner"
 
-#: modules_v3/justblack_theme_options/module.php:681
+#: modules_v3/justblack_theme_options/module.php:696
 msgid "Choose a folder as default for the main menu link"
 msgstr "Wählen Sie einen Ordner als Standardeintrag für den Link im Hauptmenü"
 
-#: modules_v3/justblack_theme_options/module.php:647
+#: modules_v3/justblack_theme_options/module.php:662
 msgid "Current header image"
 msgstr "Aktuelle Titelgrafik im Kopfbereich"
 
-#: modules_v3/justblack_theme_options/module.php:460
+#: modules_v3/justblack_theme_options/module.php:463
 msgid "Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved."
 msgstr "Fehler:  Entweder wurde kein Bild hochgeladen oder das hochgeladene Bild hat nicht das richtige Dateiformat! Ihre Einstellungen wurden nicht gesichert."
 
@@ -71,11 +71,11 @@ msgstr "Fehler:  Entweder wurde kein Bild hochgeladen oder das hochgeladene Bild
 msgid "Flags"
 msgstr "Fahnen"
 
-#: modules_v3/justblack_theme_options/module.php:661
+#: modules_v3/justblack_theme_options/module.php:676
 msgid "Height of the header area"
 msgstr "Höhe des Kopfbereiches"
 
-#: modules_v3/justblack_theme_options/module.php:673
+#: modules_v3/justblack_theme_options/module.php:688
 msgid "Include the reports topmenu in the compact 'View' topmenu?"
 msgstr "Verschieben der Liste der Berichte aus dem Hauptmenü in ein Untermenü von \"Zeige\"?"
 
@@ -89,20 +89,20 @@ msgstr "JustBlack: Optionen für das Thema"
 msgid "Media menu in topmenu"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:677
+#: modules_v3/justblack_theme_options/module.php:692
 msgid "Media menu in topmenu?"
 msgstr "Medienmenü im Hauptmenü anzeigen?"
 
-#: modules_v3/justblack_theme_options/module.php:482
+#: modules_v3/justblack_theme_options/module.php:488
 msgid "Options for the JustBlack theme"
 msgstr "Optionen für das Anzeigethema JustBlack"
 
 #: modules_v3/justblack_theme_options/help_text.php:37
-#: modules_v3/justblack_theme_options/module.php:618
+#: modules_v3/justblack_theme_options/module.php:633
 msgid "Position of the Family tree title"
 msgstr "Position des Stammbaumtitels"
 
-#: modules_v3/justblack_theme_options/module.php:658
+#: modules_v3/justblack_theme_options/module.php:673
 msgid "Resize header image (800 x 150px)"
 msgstr "Titelgrafik auf (800px mal 150px) vereinheitlichen?"
 
@@ -111,11 +111,11 @@ msgstr "Titelgrafik auf (800px mal 150px) vereinheitlichen?"
 msgid "Set options for the JustBlack theme within the admin interface"
 msgstr "Setzen der Optionen des Anzeigethemas JustBlack im Verwaltungsbereich"
 
-#: modules_v3/justblack_theme_options/module.php:634
+#: modules_v3/justblack_theme_options/module.php:649
 msgid "Size of the Family tree title"
 msgstr "Größe des Stammbaumtitels"
 
-#: modules_v3/justblack_theme_options/module.php:698
+#: modules_v3/justblack_theme_options/module.php:713
 msgid "Sort Topmenu items"
 msgstr "Einträge im Hauptmenü sortieren"
 
@@ -127,31 +127,31 @@ msgstr "Umsortieren des Hauptmenüs"
 msgid "Subfolders"
 msgstr "Unterordner"
 
-#: modules_v3/justblack_theme_options/module.php:694
+#: modules_v3/justblack_theme_options/module.php:709
 msgid "The settings will be reset to default. Are you sure you want to do this?"
 msgstr "Die Einstellungen werden auf die Standardwerte zurückgesetzt. Wollen Sie das wirklich?"
 
-#: modules_v3/justblack_theme_options/module.php:655
+#: modules_v3/justblack_theme_options/module.php:670
 msgid "Upload a (new) custom header image"
 msgstr "Hochladen einer (neuen) Grafik für den Kopfbereich"
 
-#: modules_v3/justblack_theme_options/module.php:689
+#: modules_v3/justblack_theme_options/module.php:704
 msgid "Use Google Docs Viewer for pdf's?"
 msgstr "Google Docs Viewer zur Anzeige von PDFs verwenden?"
 
-#: modules_v3/justblack_theme_options/module.php:669
+#: modules_v3/justblack_theme_options/module.php:684
 msgid "Use a compact menu?"
 msgstr "Kompaktes Menü für Diagramme, Listen etc. verwenden?"
 
-#: modules_v3/justblack_theme_options/module.php:665
+#: modules_v3/justblack_theme_options/module.php:680
 msgid "Use flags in header bar as language menu?"
 msgstr "Fahnen zur Sprachauswahl im Kopfbereich verwenden?"
 
-#: modules_v3/justblack_theme_options/module.php:638
+#: modules_v3/justblack_theme_options/module.php:653
 msgid "Use header image?"
 msgstr "Eine Titelgrafik im Kopfbereich verwenden?"
 
-#: modules_v3/justblack_theme_options/module.php:614
+#: modules_v3/justblack_theme_options/module.php:629
 msgid "Use the Family tree title in the header?"
 msgstr "Den Stammbaumtitel im Kopfbereich verwenden?"
 
@@ -159,19 +159,23 @@ msgstr "Den Stammbaumtitel im Kopfbereich verwenden?"
 msgid "Use the Google Docs Viewer"
 msgstr "Google Docs Viewer einsetzen"
 
-#: modules_v3/justblack_theme_options/module.php:457
+#: modules_v3/justblack_theme_options/module.php:478
+msgid "Your custom header image is succesfully removed."
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:460
 msgid "Your custom header image is succesfully saved."
 msgstr "Ihre Grafik für den Kopfbereich wurde gesichert."
 
-#: modules_v3/justblack_theme_options/module.php:627
+#: modules_v3/justblack_theme_options/module.php:642
 msgid "left"
 msgstr "von links"
 
-#: modules_v3/justblack_theme_options/module.php:627
+#: modules_v3/justblack_theme_options/module.php:642
 msgid "right"
 msgstr "von rechts"
 
-#: modules_v3/justblack_theme_options/module.php:622
+#: modules_v3/justblack_theme_options/module.php:637
 msgid "top"
 msgstr ""
 
