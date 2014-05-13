@@ -177,28 +177,32 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	public function getCompactMenu() {
 		global $controller, $SEARCH_SPIDER;
 
-		if ($SEARCH_SPIDER) {
-			return null;
-		}
-
-		$indi_xref=$controller->getSignificantIndividual()->getXref();
-		$menu = new WT_Menu(WT_I18N::translate('View'), 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-view');
-
-		$active_reports=WT_Module::getActiveReports();
-		if ($this->options('compact_menu_reports') == 1 && $active_reports) {
+		if ($SEARCH_SPIDER || !WT_GED_ID) {
+			$menu = new WT_Menu(WT_I18N::translate('View'), 'pedigree.php', 'menu-view');
 			$submenu_items = array(
-				WT_MenuBar::getChartsMenu(),
-				WT_MenuBar::getListsMenu(),
-				WT_MenuBar::getReportsMenu(),
-				WT_MenuBar::getCalendarMenu()
-			);
-		}
-		else {
-			$submenu_items = array(
-				WT_MenuBar::getChartsMenu(),
 				WT_MenuBar::getListsMenu(),
 				WT_MenuBar::getCalendarMenu()
 			);
+		} else {
+			$indi_xref=$controller->getSignificantIndividual()->getXref();
+			$menu = new WT_Menu(WT_I18N::translate('View'), 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-view');
+
+			$active_reports=WT_Module::getActiveReports();
+			if ($this->options('compact_menu_reports') == 1 && $active_reports) {
+				$submenu_items = array(
+					WT_MenuBar::getChartsMenu(),
+					WT_MenuBar::getListsMenu(),
+					WT_MenuBar::getReportsMenu(),
+					WT_MenuBar::getCalendarMenu()
+				);
+			}
+			else {
+				$submenu_items = array(
+					WT_MenuBar::getChartsMenu(),
+					WT_MenuBar::getListsMenu(),
+					WT_MenuBar::getCalendarMenu()
+				);
+			}
 		}
 
 		foreach ($submenu_items as $submenu) {
@@ -215,7 +219,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	public function getMediaMenu() {
 		global $SEARCH_SPIDER, $MEDIA_DIRECTORY;
 
-		if ($SEARCH_SPIDER) {
+		if ($SEARCH_SPIDER || !WT_GED_ID) {
 			return null;
 		}
 		
