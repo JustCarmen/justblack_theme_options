@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: justblack theme options 1.5.0\n"
-"POT-Creation-Date: 2014-05-11 18:50+0100\n"
+"POT-Creation-Date: 2014-07-17 13:19+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.6.6\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
-#: modules_v3/justblack_theme_options/help_text.php:67
+#: modules_v3/justblack_theme_options/help_text.php:71
 msgid "<p>Click a row, then drag-and-drop to re-order the topmenu items. Then click the 'save' button.</p>"
 msgstr "<p>Klik op een rij, sleep en laat los om de volgorde van de topmenu items te wijzigen. Klik daarna op de knop 'opslaan'.</p>"
 
@@ -54,15 +54,15 @@ msgstr "Alle JustBlack Thema opties zijn teruggezet naar de standaard instelling
 msgid "Choose a default media folder"
 msgstr "Kies een standaard media folder"
 
-#: modules_v3/justblack_theme_options/module.php:696
+#: modules_v3/justblack_theme_options/module.php:701
 msgid "Choose a folder as default for the main menu link"
 msgstr "Kies een standaard folder voor de hoofdmenu link"
 
-#: modules_v3/justblack_theme_options/module.php:662
+#: modules_v3/justblack_theme_options/module.php:667
 msgid "Current header image"
 msgstr "Huidige header afbeelding"
 
-#: modules_v3/justblack_theme_options/module.php:463
+#: modules_v3/justblack_theme_options/module.php:468
 msgid "Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved."
 msgstr "Fout: U hebt geen afbeelding geupload of de afbeelding die u hebt geupload is niet geldig. Uw instellingen zijn niet opgeslagen."
 
@@ -70,11 +70,16 @@ msgstr "Fout: U hebt geen afbeelding geupload of de afbeelding die u hebt geuplo
 msgid "Flags"
 msgstr "Vlaggen"
 
-#: modules_v3/justblack_theme_options/module.php:676
+#: modules_v3/justblack_theme_options/module.php:681
 msgid "Height of the header area"
 msgstr "Hoogte van het header gebied"
 
-#: modules_v3/justblack_theme_options/module.php:688
+#: modules_v3/justblack_theme_options/help_text.php:66
+#: modules_v3/justblack_theme_options/module.php:713
+msgid "Hide media facts"
+msgstr "Verberg media feiten"
+
+#: modules_v3/justblack_theme_options/module.php:693
 msgid "Include the reports topmenu in the compact 'View' topmenu?"
 msgstr "Wilt u het menu rapporten opnemen in het compacte 'Bekijk' menu?"
 
@@ -88,20 +93,20 @@ msgstr "JustBlack Thema Opties"
 msgid "Media menu in topmenu"
 msgstr "Media menu in hoofdmenu"
 
-#: modules_v3/justblack_theme_options/module.php:692
+#: modules_v3/justblack_theme_options/module.php:697
 msgid "Media menu in topmenu?"
 msgstr "Media menu in topmenu?"
 
-#: modules_v3/justblack_theme_options/module.php:488
+#: modules_v3/justblack_theme_options/module.php:493
 msgid "Options for the JustBlack theme"
 msgstr "Opties voor het JustBlack thema"
 
 #: modules_v3/justblack_theme_options/help_text.php:37
-#: modules_v3/justblack_theme_options/module.php:633
+#: modules_v3/justblack_theme_options/module.php:638
 msgid "Position of the Family tree title"
 msgstr "Positie van de stamboomtitel"
 
-#: modules_v3/justblack_theme_options/module.php:673
+#: modules_v3/justblack_theme_options/module.php:678
 msgid "Resize header image (800 x 150px)"
 msgstr "Resize header afbeelding (800 x 150px)"
 
@@ -110,15 +115,15 @@ msgstr "Resize header afbeelding (800 x 150px)"
 msgid "Set options for the JustBlack theme within the admin interface"
 msgstr "Zet opties voor het JustBlack thema vanuit de administratie interface"
 
-#: modules_v3/justblack_theme_options/module.php:649
+#: modules_v3/justblack_theme_options/module.php:654
 msgid "Size of the Family tree title"
 msgstr "Grootte van de stamboomtitel"
 
-#: modules_v3/justblack_theme_options/module.php:713
+#: modules_v3/justblack_theme_options/module.php:722
 msgid "Sort Topmenu items"
 msgstr "Topmenu items sorteren"
 
-#: modules_v3/justblack_theme_options/help_text.php:66
+#: modules_v3/justblack_theme_options/help_text.php:70
 msgid "Sorting the topmenu"
 msgstr "Het topmenu sorteren"
 
@@ -126,31 +131,31 @@ msgstr "Het topmenu sorteren"
 msgid "Subfolders"
 msgstr "Submappen"
 
-#: modules_v3/justblack_theme_options/module.php:709
+#: modules_v3/justblack_theme_options/module.php:718
 msgid "The settings will be reset to default. Are you sure you want to do this?"
 msgstr "De instellingen worden teruggezet naar de standaard instellingen. Weet u zeker dat u dit wilt?"
 
-#: modules_v3/justblack_theme_options/module.php:670
+#: modules_v3/justblack_theme_options/module.php:675
 msgid "Upload a (new) custom header image"
 msgstr "Upload een (nieuwe) zelf gekozen header afbeelding"
 
-#: modules_v3/justblack_theme_options/module.php:704
+#: modules_v3/justblack_theme_options/module.php:709
 msgid "Use Google Docs Viewer for pdf's?"
 msgstr "Gebruik Google Docs Viewer for pdf's?"
 
-#: modules_v3/justblack_theme_options/module.php:684
+#: modules_v3/justblack_theme_options/module.php:689
 msgid "Use a compact menu?"
 msgstr "Gebruik een compact menu?"
 
-#: modules_v3/justblack_theme_options/module.php:680
+#: modules_v3/justblack_theme_options/module.php:685
 msgid "Use flags in header bar as language menu?"
 msgstr "Gebruik vlaggen in de header bar als taalmenu?"
 
-#: modules_v3/justblack_theme_options/module.php:653
+#: modules_v3/justblack_theme_options/module.php:658
 msgid "Use header image?"
 msgstr "Gebruik de header afbeelding?"
 
-#: modules_v3/justblack_theme_options/module.php:629
+#: modules_v3/justblack_theme_options/module.php:634
 msgid "Use the Family tree title in the header?"
 msgstr "Gebruik de stamboomtitel in de header?"
 
@@ -158,23 +163,27 @@ msgstr "Gebruik de stamboomtitel in de header?"
 msgid "Use the Google Docs Viewer"
 msgstr "Gebruik de Google Docs Viewer"
 
-#: modules_v3/justblack_theme_options/module.php:478
+#: modules_v3/justblack_theme_options/help_text.php:67
+msgid "With this option you can hide media facts like type and image/file size from the indivial-, family- and medialist page."
+msgstr "Met deze optie kunt u media feiten, zoals soort en grootte van de afbeelding of het bestand, verbergen op de persoons-, gezins- en medialijst pagina."
+
+#: modules_v3/justblack_theme_options/module.php:483
 msgid "Your custom header image is succesfully removed."
 msgstr "Uw zelf gekozen header afbeelding is succesvol verwijderd."
 
-#: modules_v3/justblack_theme_options/module.php:460
+#: modules_v3/justblack_theme_options/module.php:465
 msgid "Your custom header image is succesfully saved."
 msgstr "Uw zelf gekozen header afbeelding is succesvol opgeslagen."
 
-#: modules_v3/justblack_theme_options/module.php:642
+#: modules_v3/justblack_theme_options/module.php:647
 msgid "left"
 msgstr "links"
 
-#: modules_v3/justblack_theme_options/module.php:642
+#: modules_v3/justblack_theme_options/module.php:647
 msgid "right"
 msgstr "rechts"
 
-#: modules_v3/justblack_theme_options/module.php:637
+#: modules_v3/justblack_theme_options/module.php:642
 msgid "top"
 msgstr "top"
 
