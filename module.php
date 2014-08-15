@@ -24,11 +24,6 @@
 use WT\Auth;
 use WT\Log;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // Update database for version 1.5.2.1
 // Version 1 update only if the admin has logged in. A message will be shown to tell him all settings are reset to default. Old db-entries will be removed then.
 if(Auth::isAdmin()) {
