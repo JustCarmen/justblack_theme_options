@@ -21,6 +21,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
+use WT\Auth;
+use WT\Log;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -28,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 
 // Update database for version 1.5.2.1
 // Version 1 update only if the admin has logged in. A message will be shown to tell him all settings are reset to default. Old db-entries will be removed then.
-if(\WT\Auth::isAdmin()) {
+if(Auth::isAdmin()) {
 	try {
 		WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 1);
 	} catch (PDOException $ex) {
@@ -449,7 +452,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	// Reset all settings to default
 	private function jb_reset() {
 		WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
-		\WT\Log::addConfigurationLog($this->getTitle().' reset to default values');
+		Log::addConfigurationLog($this->getTitle().' reset to default values');
 	}
 
 	private function config() {
@@ -482,14 +485,14 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				if(WT_Filter::postBool('remove-image')) {
 					WT_FlashMessages::addMessage(WT_I18N::translate('Your custom header image is succesfully removed.'));
 				}
-				\WT\Log::addConfigurationLog($this->getTitle().' config updated');
+				Log::addConfigurationLog($this->getTitle().' config updated');
 			}
 		}
 
 		require WT_ROOT.'includes/functions/functions_edit.php';
 		$controller=new WT_Controller_Page;
 		$controller
-			->restrictAccess(\WT\Auth::isAdmin())
+			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(WT_I18N::translate('Options for the JustBlack theme'))
 			->pageHeader();
 

@@ -24,6 +24,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+use WT\Log;
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
@@ -32,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 $rows = WT_DB::prepare("SELECT * FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute()->fetchAll();
 if(count($rows) > 0) {
 	WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
-	\WT\Log::addConfigurationLog(WT_I18N::translate('JustBlack Theme Options').' reset to default values due to changes in database scheme');
+	Log::addConfigurationLog(WT_I18N::translate('JustBlack Theme Options').' reset to default values due to changes in database scheme');
 	WT_FlashMessages::addMessage(WT_I18N::translate('All JustBlack Theme options are reset to default due to changes in this version of the module. Click <a href="module.php?mod=justblack_theme_options&mod_action=admin_config">HERE</a> to update the settings to your needs.'));
 }
 
