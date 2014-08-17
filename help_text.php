@@ -62,10 +62,6 @@ case 'gviewer':
 	                         '<p>A second advantage of using the Google Docs Viewer is that it now is possible to place watermarks on pdf files. If you have set the option to use watermarks for images in your tree settings, the watermarks will now be placed on pdf-files too.</p>'.
 							 '<p>You and your users don\'t need a google account to use the Google Docs Viewer.</p>');
 	break;
-case 'hide_media_facts':
-	$title=WT_I18N::translate('Hide media facts');
-	$text=WT_I18N::translate('With this option you can hide media facts like type and image/file size from the indivial-, family- and medialist page.');
-	break;
 case 'sort_topmenu':
 	$title=WT_I18N::translate('Sorting the topmenu');
 	$text=WT_I18N::translate('<p>Click a row, then drag-and-drop to re-order the topmenu items. Then click the \'save\' button.</p>');

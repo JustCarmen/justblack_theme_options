@@ -87,8 +87,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			'MEDIA_MENU'			=> '0',
 			'MEDIA_LINK'			=> '',
 			'SUBFOLDERS'			=> '1',
-			'GVIEWER'				=> '0',
-			'HIDE_MEDIA_FACTS'		=> '0'
+			'GVIEWER'				=> '0'
 		);
 		return $JB_DEFAULT[$key];
 	}
@@ -706,10 +705,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						<div class="field">
 							<label>'.WT_I18N::translate('Use Google Docs Viewer for pdf\'s?').help_link('gviewer', $this->getName()).'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[GVIEWER]', $this->options('gviewer')).'
-						</div>
-						<div class="field">
-							<label>'.WT_I18N::translate('Hide media facts').help_link('hide_media_facts', $this->getName()).'</label>'.
-							two_state_checkbox('NEW_JB_OPTIONS[HIDE_MEDIA_FACTS]', $this->options('hide_media_facts')).'
 						</div>
 						<div id="buttons">
 							<input type="submit" name="update" value="'.WT_I18N::translate('Save').'" />&nbsp;&nbsp;
