@@ -74,11 +74,6 @@ msgstr "Flags"
 msgid "Height of the header area"
 msgstr "Height of the header area"
 
-#: modules_v3/justblack_theme_options/help_text.php:66
-#: modules_v3/justblack_theme_options/module.php:713
-msgid "Hide media facts"
-msgstr "Hide media facts"
-
 #: modules_v3/justblack_theme_options/module.php:693
 msgid "Include the reports topmenu in the compact 'View' topmenu?"
 msgstr "Include the reports topmenu in the compact 'View' topmenu?"
@@ -90,12 +85,9 @@ msgid "JustBlack Theme Options"
 msgstr "JustBlack Theme Options"
 
 #: modules_v3/justblack_theme_options/help_text.php:47
+#: modules_v3/justblack_theme_options/module.php:697
 msgid "Media menu in topmenu"
 msgstr "Media menu in topmenu"
-
-#: modules_v3/justblack_theme_options/module.php:697
-msgid "Media menu in topmenu?"
-msgstr "Media menu in topmenu?"
 
 #: modules_v3/justblack_theme_options/module.php:493
 msgid "Options for the JustBlack theme"
@@ -163,10 +155,6 @@ msgstr "Use the Family tree title in the header?"
 msgid "Use the Google Docs Viewer"
 msgstr "Use the Google Docs Viewer"
 
-#: modules_v3/justblack_theme_options/help_text.php:67
-msgid "With this option you can hide media facts like type and image/file size from the indivial-, family- and medialist page."
-msgstr "With this option you can hide media facts like type and image/file size from the indivial-, family- and medialist page."
-
 #: modules_v3/justblack_theme_options/module.php:483
 msgid "Your custom header image is succesfully removed."
 msgstr "Your custom header image is succesfully removed."
@@ -186,6 +174,15 @@ msgstr "right"
 #: modules_v3/justblack_theme_options/module.php:642
 msgid "top"
 msgstr "top"
+
+#~ msgid "Hide media facts"
+#~ msgstr "Hide media facts"
+
+#~ msgid "Media menu in topmenu?"
+#~ msgstr "Media menu in topmenu?"
+
+#~ msgid "With this option you can hide media facts like type and image/file size from the indivial-, family- and medialist page."
+#~ msgstr "With this option you can hide media facts like type and image/file size from the indivial-, family- and medialist page."
 
 #~ msgid "Your settings are reset to default due to changes in this version of the module. Please update the settings to your needs."
 #~ msgstr "Your settings are reset to default due to changes in this version of the module. Please update the settings to your needs."

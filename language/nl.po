@@ -74,11 +74,6 @@ msgstr "Vlaggen"
 msgid "Height of the header area"
 msgstr "Hoogte van het header gebied"
 
-#: modules_v3/justblack_theme_options/help_text.php:66
-#: modules_v3/justblack_theme_options/module.php:713
-msgid "Hide media facts"
-msgstr "Verberg media feiten"
-
 #: modules_v3/justblack_theme_options/module.php:693
 msgid "Include the reports topmenu in the compact 'View' topmenu?"
 msgstr "Wilt u het menu rapporten opnemen in het compacte 'Bekijk' menu?"
@@ -90,12 +85,9 @@ msgid "JustBlack Theme Options"
 msgstr "JustBlack Thema Opties"
 
 #: modules_v3/justblack_theme_options/help_text.php:47
+#: modules_v3/justblack_theme_options/module.php:697
 msgid "Media menu in topmenu"
 msgstr "Media menu in hoofdmenu"
-
-#: modules_v3/justblack_theme_options/module.php:697
-msgid "Media menu in topmenu?"
-msgstr "Media menu in topmenu?"
 
 #: modules_v3/justblack_theme_options/module.php:493
 msgid "Options for the JustBlack theme"
@@ -163,10 +155,6 @@ msgstr "Gebruik de stamboomtitel in de header?"
 msgid "Use the Google Docs Viewer"
 msgstr "Gebruik de Google Docs Viewer"
 
-#: modules_v3/justblack_theme_options/help_text.php:67
-msgid "With this option you can hide media facts like type and image/file size from the indivial-, family- and medialist page."
-msgstr "Met deze optie kunt u media feiten, zoals soort en grootte van de afbeelding of het bestand, verbergen op de persoons-, gezins- en medialijst pagina."
-
 #: modules_v3/justblack_theme_options/module.php:483
 msgid "Your custom header image is succesfully removed."
 msgstr "Uw zelf gekozen header afbeelding is succesvol verwijderd."
@@ -186,6 +174,15 @@ msgstr "rechts"
 #: modules_v3/justblack_theme_options/module.php:642
 msgid "top"
 msgstr "top"
+
+#~ msgid "Hide media facts"
+#~ msgstr "Verberg media feiten"
+
+#~ msgid "Media menu in topmenu?"
+#~ msgstr "Media menu in topmenu?"
+
+#~ msgid "With this option you can hide media facts like type and image/file size from the indivial-, family- and medialist page."
+#~ msgstr "Met deze optie kunt u media feiten, zoals soort en grootte van de afbeelding of het bestand, verbergen op de persoons-, gezins- en medialijst pagina."
 
 #~ msgid "Your settings are reset to default due to changes in this version of the module. Please update the settings to your needs."
 #~ msgstr "Uw instellingen zijn teruggezet naar de standaard instellingen als gevolg van wijzigingen in deze versie van de module. Werk de instellingen bij naar de door u gewenste instellingen. "

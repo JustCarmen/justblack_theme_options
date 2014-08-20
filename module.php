@@ -691,7 +691,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							two_state_checkbox('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', $this->options('compact_menu_reports')).'
 						</div>
 						<div id="media_menu" class="field">
-							<label>'.WT_I18N::translate('Media menu in topmenu?').help_link('media_menu', $this->getName()).'</label>'.
+							<label>'.WT_I18N::translate('Media menu in topmenu').help_link('media_menu', $this->getName()).'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu')).'
 						</div>
 						<div id="media_link" class="field">

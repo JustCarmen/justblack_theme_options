@@ -76,11 +76,6 @@ msgstr ""
 msgid "Height of the header area"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/help_text.php:66
-#: modules_v3/justblack_theme_options/module.php:713
-msgid "Hide media facts"
-msgstr ""
-
 #: modules_v3/justblack_theme_options/module.php:693
 msgid "Include the reports topmenu in the compact 'View' topmenu?"
 msgstr ""
@@ -92,11 +87,8 @@ msgid "JustBlack Theme Options"
 msgstr ""
 
 #: modules_v3/justblack_theme_options/help_text.php:47
-msgid "Media menu in topmenu"
-msgstr ""
-
 #: modules_v3/justblack_theme_options/module.php:697
-msgid "Media menu in topmenu?"
+msgid "Media menu in topmenu"
 msgstr ""
 
 #: modules_v3/justblack_theme_options/module.php:493
@@ -163,10 +155,6 @@ msgstr ""
 
 #: modules_v3/justblack_theme_options/help_text.php:60
 msgid "Use the Google Docs Viewer"
-msgstr ""
-
-#: modules_v3/justblack_theme_options/help_text.php:67
-msgid "With this option you can hide media facts like type and image/file size from the indivial-, family- and medialist page."
 msgstr ""
 
 #: modules_v3/justblack_theme_options/module.php:483
