@@ -94,7 +94,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 	// Get module options
 	public function options($key) {
-		$JB_OPTIONS = unserialize(get_module_setting($this->getName(), 'JB_OPTIONS'));
+		$JB_OPTIONS = unserialize($this->getSetting('JB_OPTIONS'));
 
 		$key = strtoupper($key);
 		if(empty($JB_OPTIONS) || (is_array($JB_OPTIONS) && !array_key_exists($key, $JB_OPTIONS))) {
@@ -475,7 +475,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				}
 			}
 			if(!$error) {
-				set_module_setting($this->getName(), 'JB_OPTIONS',  serialize($NEW_JB_OPTIONS));
+				$this->setSetting('JB_OPTIONS',  serialize($NEW_JB_OPTIONS));
 				if(WT_Filter::postBool('remove-image')) {
 					WT_FlashMessages::addMessage(WT_I18N::translate('Your custom header image is succesfully removed.'));
 				}
