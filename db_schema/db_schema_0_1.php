@@ -39,4 +39,4 @@ if(count($rows) > 0) {
 }
 
 // Update the version to indicate success
-WT_Site::getPreference($schema_name, $next_version);
+WT_Site::setPreference($schema_name, $next_version);
