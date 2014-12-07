@@ -20,7 +20,6 @@ On the JustBlack Theme Options configuration page you can set the following opti
 * Opt for flags as language menu or use the default dropdown menu. Advice is not to use this option if you have more then 10 languages installed; Remove the languages you won't need from the language folder of your webtrees installation.
 * Use a compact 'View' menu. In the compact version of the topmenu the menu-items Charts, Lists, Calendar and Reports (optional) will be put together in one mainmenu-item.
 * Move the media menu link to the topmenu.
-* Use Google Docs Viewer for pdf display.
 * Order the main menu items. Ordering menu items here is more flexible then the sort option webtrees offers by default. Here you can shuffle ALL main menu items (except the homepage and my page menu). 
 
 Installation, upgrading and translations

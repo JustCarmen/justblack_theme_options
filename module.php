@@ -86,8 +86,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			'COMPACT_MENU_REPORTS'	=> '1',
 			'MEDIA_MENU'			=> '0',
 			'MEDIA_LINK'			=> '',
-			'SUBFOLDERS'			=> '1',
-			'GVIEWER'				=> '0'
+			'SUBFOLDERS'			=> '1'
 		);
 		return $JB_DEFAULT[$key];
 	}
@@ -701,10 +700,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 						<div id="subfolders" class="field">
 							<label>'.WT_I18N::translate('Include subfolders').help_link('subfolders', $this->getName()).'</label>'.
 							two_state_checkbox('NEW_JB_OPTIONS[SUBFOLDERS]', $this->options('subfolders')).'
-						</div>
-						<div class="field">
-							<label>'.WT_I18N::translate('Use Google Docs Viewer for pdf\'s?').help_link('gviewer', $this->getName()).'</label>'.
-							two_state_checkbox('NEW_JB_OPTIONS[GVIEWER]', $this->options('gviewer')).'
 						</div>
 						<div id="buttons">
 							<input type="submit" name="update" value="'.WT_I18N::translate('Save').'" />&nbsp;&nbsp;
