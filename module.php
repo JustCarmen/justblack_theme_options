@@ -172,36 +172,27 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 	// get our own Compact Menu
 	public function getCompactMenu() {
-		global $controller, $SEARCH_SPIDER;
+		global $controller;
+		
+		$indi_xref=$controller->getSignificantIndividual()->getXref();
+		$menu = new WT_Menu(WT_I18N::translate('View'), 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-view');
 
-		if ($SEARCH_SPIDER || !WT_GED_ID) {
-			$menu = new WT_Menu(WT_I18N::translate('View'), 'pedigree.php', 'menu-view');
+		$active_reports=WT_Module::getActiveReports();
+		if ($this->options('compact_menu_reports') == 1 && $active_reports) {
 			$submenu_items = array(
+				WT_MenuBar::getChartsMenu(),
+				WT_MenuBar::getListsMenu(),
+				WT_MenuBar::getReportsMenu(),
+				WT_MenuBar::getCalendarMenu()
+			);
+		}
+		else {
+			$submenu_items = array(
+				WT_MenuBar::getChartsMenu(),
 				WT_MenuBar::getListsMenu(),
 				WT_MenuBar::getCalendarMenu()
 			);
-		} else {
-			$indi_xref=$controller->getSignificantIndividual()->getXref();
-			$menu = new WT_Menu(WT_I18N::translate('View'), 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-view');
-
-			$active_reports=WT_Module::getActiveReports();
-			if ($this->options('compact_menu_reports') == 1 && $active_reports) {
-				$submenu_items = array(
-					WT_MenuBar::getChartsMenu(),
-					WT_MenuBar::getListsMenu(),
-					WT_MenuBar::getReportsMenu(),
-					WT_MenuBar::getCalendarMenu()
-				);
-			}
-			else {
-				$submenu_items = array(
-					WT_MenuBar::getChartsMenu(),
-					WT_MenuBar::getListsMenu(),
-					WT_MenuBar::getCalendarMenu()
-				);
-			}
 		}
-
 		foreach ($submenu_items as $submenu) {
 			$id = explode("-", $submenu->id);
 			$new_id = implode("-", array($id[0], 'view', $id[1]));
@@ -214,11 +205,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 	// get the media Menu as Main menu item with folders as submenu-items
 	public function getMediaMenu() {
-		global $SEARCH_SPIDER, $MEDIA_DIRECTORY;
-
-		if ($SEARCH_SPIDER || !WT_GED_ID) {
-			return null;
-		}
+		global $MEDIA_DIRECTORY;
 		
 		$mainfolder = $this->options('media_link') == $MEDIA_DIRECTORY ? '' : '&amp;folder='.rawurlencode($this->options('media_link'));
 		$subfolders = $this->options('subfolders') ? '&amp;subdirs=on' : '';
