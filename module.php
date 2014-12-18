@@ -194,12 +194,13 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			);
 		}
 		foreach ($submenu_items as $submenu) {
-			$id = explode("-", $submenu->id);
+			$id = explode("-", $submenu->getId());
 			$new_id = implode("-", array($id[0], 'view', $id[1]));
-			$submenu->id = $new_id;
-			$submenu->label = '<span>'.$submenu->label.'</span>';
-			$menu->addSubmenu($submenu);
+			$submenu->setId($new_id);
+			$submenu->setLabel($submenu->getLabel());
+			$menulist[] = $submenu;
 		}
+		$menu->setSubmenus($menulist);
 		return $menu;
 	}
 
