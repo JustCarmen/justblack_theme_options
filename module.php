@@ -24,7 +24,7 @@
 use WT\Auth;
 use WT\Log;
 
-// Update database for version 1.5.2.1
+// Update database when updating from a version prior then version 1.5.2.1
 // Version 1 update only if the admin has logged in. A message will be shown to tell him all settings are reset to default. Old db-entries will be removed then.
 if(Auth::isAdmin()) {
 	try {
