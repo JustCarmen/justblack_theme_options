@@ -5,6 +5,14 @@
 #Note: the line number may be different from the current line number in the file justblack_theme_options/module.php
 ===============================================================================================================
 
+#: modules_v3/justblack_theme_options/module.php:549
+msgid "Administration"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:550
+msgid "Module administration"
+msgstr ""
+
 #: modules_v3/justblack_theme_options/help_text.php:34
 msgid "Family tree title"
 msgstr ""
@@ -52,6 +60,14 @@ msgstr ""
 
 #: modules_v3/justblack_theme_options/module.php:631
 msgid "None"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:362
+msgid "no"
+msgstr ""
+
+#: modules_v3/justblack_theme_options/module.php:363
+msgid "yes"
 msgstr ""
 
 #: modules_v3/justblack_theme_options/module.php:662

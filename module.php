@@ -26,9 +26,9 @@ use WT\Log;
 
 // Update database when updating from a version prior then version 1.5.2.1
 // Version 1 update only if the admin has logged in. A message will be shown to tell him all settings are reset to default. Old db-entries will be removed then.
-if(Auth::isAdmin()) {
+if (Auth::isAdmin()) {
 	try {
-		WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 1);
+		WT_DB::updateSchema(WT_ROOT . WT_MODULES_DIR . 'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 1);
 	} catch (PDOException $ex) {
 		// The schema update scripts should never fail.  If they do, there is no clean recovery.
 		die($ex);
@@ -40,20 +40,20 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	public function __construct() {
 		parent::__construct();
 		// Load any local user translations
-		if (is_dir(WT_MODULES_DIR.$this->getName().'/language')) {
-			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.mo')) {
+		if (is_dir(WT_MODULES_DIR . $this->getName() . '/language')) {
+			if (file_exists(WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.mo')) {
 				WT_I18N::addTranslation(
-					new Zend_Translate('gettext', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.mo', WT_LOCALE)
+					new Zend_Translate('gettext', WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.mo', WT_LOCALE)
 				);
 			}
-			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php')) {
+			if (file_exists(WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.php')) {
 				WT_I18N::addTranslation(
-					new Zend_Translate('array', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php', WT_LOCALE)
+					new Zend_Translate('array', WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.php', WT_LOCALE)
 				);
 			}
-			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.csv')) {
+			if (file_exists(WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.csv')) {
 				WT_I18N::addTranslation(
-					new Zend_Translate('csv', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.csv', WT_LOCALE)
+					new Zend_Translate('csv', WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.csv', WT_LOCALE)
 				);
 			}
 		}
@@ -72,212 +72,145 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	// Set default module options
 	private function setDefault($key) {
 		$JB_DEFAULT = array(
-			'TREETITLE'				=> '1',
-			'TITLEPOS'				=> array(
-											'V' => array('size'=>'110', 'fmt'=>'px'),
-											'H' => array('size'=>'52', 'fmt'=>'%', 'pos'=>'left')
-										),
-			'TITLESIZE'				=> '20',
-			'HEADER'				=> 'default',
-			'IMAGE'					=> '',
-			'HEADERHEIGHT'			=> '150',
-			'FLAGS'					=> '0',
-			'COMPACT_MENU'			=> '0',
-			'COMPACT_MENU_REPORTS'	=> '1',
-			'MEDIA_MENU'			=> '0',
-			'MEDIA_LINK'			=> '',
-			'SUBFOLDERS'			=> '1'
+			'TREETITLE'				 => '1',
+			'TITLEPOS'				 => array(
+				'V'	 => array('size' => '110', 'fmt' => 'px', 'pos' => 'top'),
+				'H'	 => array('size' => '52', 'fmt' => '%', 'pos' => 'left')
+			),
+			'TITLESIZE'				 => '20',
+			'HEADER'				 => 'default',
+			'IMAGE'					 => '',
+			'HEADERHEIGHT'			 => '150',
+			'FLAGS'					 => '0',
+			'COMPACT_MENU'			 => '0',
+			'COMPACT_MENU_REPORTS'	 => '1',
+			'MEDIA_MENU'			 => '0',
+			'MEDIA_LINK'			 => '',
+			'SUBFOLDERS'			 => '1'
 		);
 		return $JB_DEFAULT[$key];
 	}
 
 	// Get module options
 	public function options($key) {
-		$JB_OPTIONS = unserialize($this->getSetting('JB_OPTIONS'));
-
-		$key = strtoupper($key);
-		if(empty($JB_OPTIONS) || (is_array($JB_OPTIONS) && !array_key_exists($key, $JB_OPTIONS))) {
-			return $key === 'MENU' ? $this->getMenu() : $this->setDefault($key);
+		if ($key === 'css') {
+			return WT_MODULES_DIR . $this->getName() . '/css/style.css';
+		} elseif ($key === 'mediafolders') {
+			return $this->listMediaFolders();
 		} else {
-			return $JB_OPTIONS[$key];
+			$JB_OPTIONS = unserialize($this->getSetting('JB_OPTIONS'));
+			$key = strtoupper($key);
+			if (empty($JB_OPTIONS) || (is_array($JB_OPTIONS) && !array_key_exists($key, $JB_OPTIONS))) {
+				return $key === 'MENU' ? $this->getDefaultMenu() : $this->setDefault($key);
+			} else {
+				return $key === 'MENU' ? $this->menuJustBlack($JB_OPTIONS['MENU']) : $JB_OPTIONS[$key];
+			}
 		}
 	}
 
-	private function getMenu() {
+	private function getDefaultMenu() {
 		$menulist = array(
-			array(
-				'title'		=> WT_I18N::translate('View'),
-				'label'		=> 'compact',
-				'sort' 		=> '0',
-				'function' 	=> 'getCompactMenu'
+			'compact'	 => array(
+				'title'		 => WT_I18N::translate('View'),
+				'label'		 => 'compact',
+				'sort'		 => '0',
+				'function'	 => 'menuCompact'
 			),
-			array(
-				'title'		=> WT_I18N::translate('Media'),
-				'label'		=> 'media',
-				'sort' 		=> '0',
-				'function' 	=> 'getMediaMenu'
+			'media'		 => array(
+				'title'		 => WT_I18N::translate('Media'),
+				'label'		 => 'media',
+				'sort'		 => '0',
+				'function'	 => 'menuMedia'
 			),
-			array(
-				'title'		=> WT_I18N::translate('Home page'),
-				'label'		=> 'homepage',
-				'sort' 		=> '1',
-				'function' 	=> 'getGedcomMenu'
+			'homepage'	 => array(
+				'title'		 => WT_I18N::translate('Home page'),
+				'label'		 => 'homepage',
+				'sort'		 => '1',
+				'function'	 => 'menuHomePage'
 			),
-			array(
-				'title'		=> WT_I18N::translate('My page'),
-				'label'		=> 'mypage',
-				'sort' 		=> '2',
-				'function' 	=> 'getMyPageMenu'
+			'mymenu'	 => array(
+				'title'		 => WT_I18N::translate('My page'),
+				'label'		 => 'mymenu',
+				'sort'		 => '2',
+				'function'	 => 'menuMyMenu'
 			),
-			array(
-				'title'		=> WT_I18N::translate('Charts'),
-				'label'		=> 'charts',
-				'sort' 		=> '3',
-				'function' 	=> 'getChartsMenu'
+			'charts'	 => array(
+				'title'		 => WT_I18N::translate('Charts'),
+				'label'		 => 'charts',
+				'sort'		 => '3',
+				'function'	 => 'menuChart'
 			),
-			array(
-				'title'		=> WT_I18N::translate('Lists'),
-				'label'		=> 'lists',
-				'sort' 		=> '4',
-				'function' 	=> 'getListsMenu'
+			'lists'		 => array(
+				'title'		 => WT_I18N::translate('Lists'),
+				'label'		 => 'lists',
+				'sort'		 => '4',
+				'function'	 => 'menuLists'
 			),
-			array(
-				'title'		=>	WT_I18N::translate('Calendar'),
-				'label'		=> 'calendar',
-				'sort' 		=> '5',
-				'function' 	=> 'getCalendarMenu'
+			'calendar'	 => array(
+				'title'		 => WT_I18N::translate('Calendar'),
+				'label'		 => 'calendar',
+				'sort'		 => '5',
+				'function'	 => 'menuCalendar'
 			),
-			array(
-				'title'		=> WT_I18N::translate('Reports'),
-				'label'		=> 'reports',
-				'sort' 		=> '6',
-				'function' 	=> 'getReportsMenu'
+			'reports'	 => array(
+				'title'		 => WT_I18N::translate('Reports'),
+				'label'		 => 'reports',
+				'sort'		 => '6',
+				'function'	 => 'menuReports'
 			),
-			array(
-				'title'		=> WT_I18N::translate('Search'),
-				'label'		=> 'search',
-				'sort' 		=> '7',
-				'function' 	=> 'getSearchMenu'
+			'search'	 => array(
+				'title'		 => WT_I18N::translate('Search'),
+				'label'		 => 'search',
+				'sort'		 => '7',
+				'function'	 => 'menuSearch'
 			),
 		);
-		
-		$modules = $this->getActiveMenu(8);
-		if ($modules) {
-			return array_merge($menulist, $modules);
-		}
-		else {
-			return $menulist;
-		}
+		return $this->menuJustBlack($menulist);
 	}
 
-	// get our own Compact Menu
-	public function getCompactMenu() {
-		global $controller;
-		
-		$indi_xref=$controller->getSignificantIndividual()->getXref();
-		$menu = new WT_Menu(WT_I18N::translate('View'), 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-view');
-
-		$active_reports=WT_Module::getActiveReports();
-		if ($this->options('compact_menu_reports') == 1 && $active_reports) {
-			$submenu_items = array(
-				WT_MenuBar::getChartsMenu(),
-				WT_MenuBar::getListsMenu(),
-				WT_MenuBar::getReportsMenu(),
-				WT_MenuBar::getCalendarMenu()
-			);
-		}
-		else {
-			$submenu_items = array(
-				WT_MenuBar::getChartsMenu(),
-				WT_MenuBar::getListsMenu(),
-				WT_MenuBar::getCalendarMenu()
-			);
-		}
-		foreach ($submenu_items as $submenu) {
-			$id = explode("-", $submenu->getId());
-			$new_id = implode("-", array($id[0], 'view', $id[1]));
-			$submenu->setId($new_id);
-			$submenu->setLabel($submenu->getLabel());
-			$menulist[] = $submenu;
-		}
-		$menu->setSubmenus($menulist);
-		return $menu;
-	}
-
-	// get the media Menu as Main menu item with folders as submenu-items
-	public function getMediaMenu() {
-		global $MEDIA_DIRECTORY;
-		
-		$mainfolder = $this->options('media_link') == $MEDIA_DIRECTORY ? '' : '&amp;folder='.rawurlencode($this->options('media_link'));
-		$subfolders = $this->options('subfolders') ? '&amp;subdirs=on' : '';
-		$menu = new WT_Menu(WT_I18N::translate('Media'), 'medialist.php?action=filter&amp;search=no'.$mainfolder.'&amp;sortby=title&amp;'.$subfolders.'&amp;max=20&amp;columns=2', 'menu-media');
-
-		$folders = $this->getFolderList(); $i=0;
-		foreach ($folders as $key => $folder) {
-			if($key !== $MEDIA_DIRECTORY) {
-				$submenu = new WT_Menu(ucfirst($folder), 'medialist.php?action=filter&amp;search=no&amp;folder='.rawurlencode($key).'&amp;sortby=title&amp;'.$subfolders.'&amp;max=20&amp;columns=2', 'menu-media-'.$i);
-				$menu->addSubmenu($submenu);
-			}
-			$i++;
-		}
-		return $menu;
-	}
-
-	private function getActiveMenu($sort) {
-		$modules=WT_Module::getActiveMenus();
-		
-		if ( count($modules) > 0) {
-			$fakeMenus 	= array('custom_js', 'fancy_imagebar', 'fancy_branches');
-
-			foreach ($modules as $module) {
-				$msort = in_array($module->getName(), $fakeMenus) ? 99 : $sort;
-				$menulist[] = array(
-					'title'		=> $module->getTitle(),
-					'label'		=> $module->getName(),
-					'sort' 		=> $msort,
-					'function' 	=> 'getModuleMenu'
+	public function menuJustBlack($menulist) {
+		$modules = WT_Module::getActiveMenus();
+		// add newly activated modules to the menu
+		$sort = count($menulist) + 1;
+		foreach ($modules as $module) {
+			if ($module->getMenu() && !array_key_exists($module->getName(), $menulist)) {
+				$menulist[$module->getName()] = array(
+					'title'		 => $module->getTitle(),
+					'label'		 => $module->getName(),
+					'sort'		 => $sort++,
+					'function'	 => 'menuModules'
 				);
-				$sort++;
 			}
-			return $this->sortArray($menulist, 'sort');
 		}
+		// delete deactivated modules from the menu
+		foreach ($menulist as $label => $menu) {
+			if ($menu['function'] === 'menuModules' && !array_key_exists($label, $modules)) {
+				unset($menulist[$label]);
+			}
+		}
+		return $menulist;
 	}
 
-	// function to check if a module menu is still active (after options are set)
-	public function checkModule($menulist) {
-		$lastItem = end($menulist);
-		$sort = $lastItem['sort'] + 1;
-		$modules=$this->getActiveMenu($sort);
-		
-		// delete deactivated modules from the list
-		foreach ($menulist as $menu) {
-			if	($menu['function'] !== 'getModuleMenu') {
-				$new_list[] = $menu;
+	private function listMenuJustBlack($menulist) {
+		$html = '';
+		foreach ($menulist as $label => $menu) {
+			$html .= '<li class="list-group-item' . $this->getStatus($label) . '">';
+			foreach ($menu as $key => $val) {
+				$html .= '<input type="hidden" name="NEW_JB_MENU[' . $label . '][' . $key . ']" value="' . $val . '"/>';
 			}
-			if	($modules && $menu['function'] == 'getModuleMenu' && $this->searchArray($modules, 'label', $menu['label'])) {
-				$new_list[] = $menu;
-			}
+			$html .= $menu['title'] . '</li>';
 		}
-
-		// add newly activated modules to the list
-		if($modules) {
-			foreach ($modules as $module) {
-				if(!$this->searchArray($menulist, 'label', $module['label'])) {
-					$new_list[] = $module;
-				}
-			}
-		}
-		return $new_list;
+		return $html;
 	}
 
-	private function getFolderList() {
+	private function listMediaFolders() {
 		global $MEDIA_DIRECTORY;
 		$folders = WT_Query_Media::folderList();
 		foreach ($folders as $key => $value) {
-			if($key == null && empty($value)) {
-				$folderlist[$MEDIA_DIRECTORY] = strtoupper(WT_I18N::translate(substr($MEDIA_DIRECTORY,0,-1)));
+			if ($key == null && empty($value)) {
+				$folderlist[$MEDIA_DIRECTORY] = strtoupper(WT_I18N::translate(substr($MEDIA_DIRECTORY, 0, -1)));
 			} else {
-				if (count(glob(WT_DATA_DIR.$MEDIA_DIRECTORY.$value.'*')) > 0 ) {
+				if (count(glob(WT_DATA_DIR . $MEDIA_DIRECTORY . $value . '*')) > 0) {
 					$folder = array_filter(explode("/", $value));
 					// only list first level folders
 					if (!empty($folder) && !array_search($folder[0], $folderlist)) {
@@ -289,49 +222,35 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		return $folderlist;
 	}
 
-	// Search within a multiple dimensional array
-	private function searchArray($array, $key, $value) {
-		$results = array();
-		if (is_array($array)) {
-			if (isset($array[$key]) && $array[$key] == $value) {
-				$results[] = $array;
-			}
-			foreach ($array as $subarray) {
-				$results = array_merge($results, $this->searchArray($subarray, $key, $value));
-			}
-		}
-		return $results;
-	}
-
 	// Sort the array according to the $key['SORT'] input.
-	private function sortArray($array, $sort_by){
-		foreach ($array as $pos =>  $val) {
+	private function sortArray($array, $sort_by) {
+		foreach ($array as $pos => $val) {
 			$tmp_array[$pos] = $val[$sort_by];
 		}
 		asort($tmp_array);
-		
+
 		$return_array = array();
-		foreach ($tmp_array as $pos =>  $val){
+		foreach ($tmp_array as $pos => $val) {
 			$return_array[$pos]['title'] = $array[$pos]['title'];
 			$return_array[$pos]['label'] = $array[$pos]['label'];
 			$return_array[$pos]['sort'] = $array[$pos]['sort'];
 			$return_array[$pos]['function'] = $array[$pos]['function'];
 		}
 		return $return_array;
-    }
+	}
 
 	// set an extra class for some menuitems
 	private function getStatus($label) {
-		if ($label == 'homepage' || $label == 'mypage') {
-		 	$status = ' ui-state-disabled';
+		if ($label == 'homepage' || $label == 'mymenu') {
+			$status = ' disabled';
 		} elseif ($label == 'charts' || $label == 'lists' || $label == 'calendar') {
-			$status = ' menu_extended';
+			$status = ' menu-extended';
 		} elseif ($label == 'reports') {
-			$status = ' menu_extended menu_reports';
+			$status = ' menu-extended menu-reports';
 		} elseif ($label == 'compact') {
-			$status = ' menu_compact';
+			$status = ' menu-compact';
 		} elseif ($label == 'media') {
-			$status = ' menu_media';
+			$status = ' menu-media';
 		} else {
 			$status = '';
 		}
@@ -340,14 +259,15 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 	private function upload($image) {
 		// Check if we are dealing with a valid image
-		if (!empty($image['name']) && preg_match('/^image\/(png|gif|jpeg)/', $image['type'])){
-			$serverFileName = WT_DATA_DIR.'justblack_'.$image['name'];
+		if (!empty($image['name']) && preg_match('/^image\/(png|gif|jpeg)/', $image['type'])) {
+			$serverFileName = WT_DATA_DIR . 'justblack_' . $image['name'];
 			if (WT_Filter::postBool('resize') == true) {
 				$this->resize($image['tmp_name'], $image['type'], '800', '150');
 			}
-			@move_uploaded_file($image['tmp_name'], $serverFileName);
+			$this->delete(); // delete the old image from the server.
+			move_uploaded_file($image['tmp_name'], $serverFileName);
 			return true;
-		} else{
+		} else {
 			return false;
 		}
 	}
@@ -355,22 +275,21 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	private function resize($imgSrc, $type, $thumbwidth, $thumbheight) {
 		//getting the image dimensions
 		list($width_orig, $height_orig) = @getimagesize($imgSrc);
-		$ratio_orig = $width_orig/$height_orig;
+		$ratio_orig = $width_orig / $height_orig;
 
 		if (($width_orig > $height_orig && $width_orig < $thumbwidth) || ($height_orig > $width_orig && $height_orig < $thumbheight)) {
 			return false;
 		}
 
-		if ($thumbwidth/$thumbheight > $ratio_orig) {
-		   $new_height = $thumbwidth/$ratio_orig;
-		   $new_width = $thumbwidth;
-
+		if ($thumbwidth / $thumbheight > $ratio_orig) {
+			$new_height = $thumbwidth / $ratio_orig;
+			$new_width = $thumbwidth;
 		} else {
-		   $new_width = $thumbheight*$ratio_orig;
-		   $new_height = $thumbheight;
+			$new_width = $thumbheight * $ratio_orig;
+			$new_height = $thumbheight;
 		}
 
-		$y_mid = $new_height/2;
+		$y_mid = $new_height / 2;
 
 		// return resized header image
 		switch ($type) {
@@ -378,18 +297,18 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				$image = @imagecreatefromjpeg($imgSrc);
 				$thumb = @imagecreatetruecolor(round($new_width), $thumbheight);
 
-				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid-($thumbheight/2)), $new_width, $new_height, $width_orig, $height_orig);
+				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
 				@imagedestroy($image);
-				return @imagejpeg($thumb,$imgSrc,100);
+				return @imagejpeg($thumb, $imgSrc, 100);
 			case 'image/gif':
 				$image = @imagecreatefromgif($imgSrc);
 				$thumb = @imagecreatetruecolor(round($new_width), $thumbheight);
 
-				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid-($thumbheight/2)), $new_width, $new_height, $width_orig, $height_orig);
+				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
 				@imagecolortransparent($thumb, @imagecolorallocate($thumb, 0, 0, 0));
 				@imagedestroy($image);
 
-				return @imagegif($thumb,$imgSrc,100);
+				return @imagegif($thumb, $imgSrc, 100);
 			case 'image/png':
 				$image = @imagecreatefrompng($imgSrc);
 				@imagealphablending($image, false);
@@ -398,42 +317,52 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				@imagealphablending($thumb, false);
 				@imagesavealpha($thumb, true);
 
-				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid-($thumbheight/2)), $new_width, $new_height, $width_orig, $height_orig);
+				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
 				@imagedestroy($image);
 
-				return @imagepng($thumb,$imgSrc,0);
+				return @imagepng($thumb, $imgSrc, 0);
 		}
 	}
 
 	private function delete() {
-		foreach (glob(WT_DATA_DIR.'justblack*.*') as $file) {
+		foreach (glob(WT_DATA_DIR . 'justblack*.*') as $file) {
 			@unlink($file);
 		}
 	}
 
 	// Extend WT_Module_Config
 	public function modAction($mod_action) {
-		switch($mod_action) {
-		case 'admin_config':
-			$this->config();
-			break;
-		case 'admin_reset':
-			$this->delete();
-			$this->jb_reset();			
-			$this->config();
-			break;
-		case 'remove_image':
-			$this->delete();
-			break;
-		default:
-			header('HTTP/1.0 404 Not Found');
+		switch ($mod_action) {
+			case 'admin_config':
+				$this->config();
+				break;
+			case 'admin_reset':
+				$this->delete();
+				$this->jb_reset();
+				$this->config();
+				break;
+			case 'remove_image':
+				$this->delete();
+				break;
+			default:
+				header('HTTP/1.0 404 Not Found');
 		}
 	}
 
 	// Reset all settings to default
 	private function jb_reset() {
 		WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
-		Log::addConfigurationLog($this->getTitle().' reset to default values');
+		Log::addConfigurationLog($this->getTitle() . ' reset to default values');
+	}
+
+	// Radio buttons
+	private function radio_buttons($name, $selected) {
+		$values = array(
+			0	 => WT_I18N::translate('no'),
+			1	 => WT_I18N::translate('yes'),
+		);
+
+		return radio_buttons($name, $values, $selected, 'class="radio-inline"');
 	}
 
 	private function config() {
@@ -443,41 +372,40 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			$NEW_JB_OPTIONS['MENU'] = $this->sortArray(WT_Filter::postArray('NEW_JB_MENU'), 'sort');
 			$NEW_JB_OPTIONS['IMAGE'] = WT_Filter::post('JB_IMAGE');
 			$error = false;
-			if($NEW_JB_OPTIONS['HEADER'] == 1 && isset($_FILES['NEW_JB_IMAGE']['name'])) {
-				if($this->upload($_FILES['NEW_JB_IMAGE'])) {
-					$NEW_JB_OPTIONS['IMAGE'] = 'justblack_'.$_FILES['NEW_JB_IMAGE']['name'];
-					WT_FlashMessages::addMessage(WT_I18N::translate('Your custom header image is succesfully saved.'));
-				}
-				else {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved.'));
+			if ($NEW_JB_OPTIONS['HEADER'] == 1 && !empty($_FILES['NEW_JB_IMAGE']['name'])) {
+				if ($this->upload($_FILES['NEW_JB_IMAGE'])) {
+					$NEW_JB_OPTIONS['IMAGE'] = 'justblack_' . $_FILES['NEW_JB_IMAGE']['name'];
+					WT_FlashMessages::addMessage(WT_I18N::translate('Your custom header image is succesfully saved.'), 'success');
+				} else {
+					WT_FlashMessages::addMessage(WT_I18N::translate('Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved.'), 'warning');
 					$error = true;
 				}
 			} else {
-				if(WT_Filter::postBool('resize') == true) {
-					$file = WT_DATA_DIR.$this->options('image');
-					if($this->options('image') && file_exists($file)) {
+				if (WT_Filter::postBool('resize') == true) {
+					$file = WT_DATA_DIR . $this->options('image');
+					if ($this->options('image') && file_exists($file)) {
 						$image = getimagesize($file);
 						$this->resize($file, $image['mime'], '800', '150');
 					}
 				}
 			}
-			if(!$error) {
-				$this->setSetting('JB_OPTIONS',  serialize($NEW_JB_OPTIONS));
-				if(WT_Filter::postBool('remove-image')) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Your custom header image is succesfully removed.'));
+			if (!$error) {
+				$this->setSetting('JB_OPTIONS', serialize($NEW_JB_OPTIONS));
+				if (WT_Filter::postBool('remove-image')) {
+					WT_FlashMessages::addMessage(WT_I18N::translate('Your custom header image is succesfully removed.'), 'success');
 				}
-				Log::addConfigurationLog($this->getTitle().' config updated');
+				Log::addConfigurationLog($this->getTitle() . ' config updated');
 			}
 		}
 
-		require WT_ROOT.'includes/functions/functions_edit.php';
-		$controller=new WT_Controller_Page;
+		require WT_ROOT . 'includes/functions/functions_edit.php';
+		$controller = new WT_Controller_Page;
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(WT_I18N::translate('Options for the JustBlack theme'))
 			->pageHeader();
 
-		$controller->addInlineJavaScript ('
+		$controller->addInlineJavaScript('
 			function include_css(css_file) {
 				var html_doc = document.getElementsByTagName("head")[0];
 				var css = document.createElement("link");
@@ -486,261 +414,413 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				css.setAttribute("href", css_file);
 				html_doc.appendChild(css);
 			}
-			include_css("'.WT_MODULES_DIR.$this->getName().'/style.css");
-
-			function toggleFields(checkbox, field, reverse) {
-				var checkbox = jQuery(checkbox).find("input[type=checkbox]");
-				var field = jQuery(field)
-				if(!reverse) {
-					if ((checkbox).is(":checked")) field.show("slow");
-					else field.hide("slow");
-					checkbox.click(function(){
-						if (this.checked) field.show("slow");
-						else field.hide("slow");
-					});
+			include_css("' . WT_MODULES_DIR . $this->getName() . '/css/admin.css");
+				
+			function toggleFields(id, target) {
+				var selected = jQuery(id).find("input[type=radio]:checked");
+				var field = jQuery(target)
+				if (selected.val() == "1") {
+					field.show();
+				} else {
+					field.hide();
 				}
-				else {
-					if ((checkbox).is(":checked")) field.hide("slow");
-					else field.show("slow");
-					checkbox.click(function(){
-						if (this.checked) field.hide("slow");
-						else field.show("slow");
-					});
-				}
+				jQuery(id).on("change", "input[type=radio]", function(){
+					if (jQuery(this).val() == "1") {
+						field.show();
+					} else {
+						field.hide();
+					}
+				});
 			}
+			
+			toggleFields("#tree-title", "#title-pos, #title-size");
+			toggleFields("#compact-menu", "#reports");
+			toggleFields("#media-menu", "#medialist, #subfolders");
 
-			toggleFields("#treetitle", "#titlepos, #titlesize");
-			toggleFields("#compact_menu", "#reports");
-			toggleFields("#media_menu", "#media_link, #subfolders");
-
-			jQuery("#header option").each(function() {
-				if(jQuery(this).val() == "'.$this->options('header').'") {
+			jQuery("#header-image option").each(function() {
+				if(jQuery(this).val() == "' . $this->options('header') . '") {
 					jQuery(this).prop("selected", true);
 				}
 			});
 
-			jQuery("#upload").hide();
-			jQuery("#header select").each(function(){
+			jQuery("#upload-image").hide();
+			jQuery("#header-image select").each(function(){
 				if(jQuery(this).val() == 1) {
-					if(jQuery("#header-image").length > 0) jQuery("#header-image, #resize").show();
-					else jQuery("#upload, #resize").show();
+					if(jQuery("#custom-image").length > 0) {
+						jQuery("#custom-image, #resize-image").show();
+					} else {
+						jQuery("#upload-image, #resize-image").show();
+					}
+				} else {
+					jQuery("#custom-image, #upload-image, #resize-image").hide();
+					if(jQuery(this).val() > 0) {
+						jQuery("#header-height").show();
+					} else {
+						jQuery("#header-height").hide();
+					}
 				}
-				else jQuery("#header-image, #upload, #resize").hide();
-				if(jQuery(this).val() > 0) jQuery("#header_height").show();
-				else jQuery("#header_height").hide();
 			});
-			jQuery("#header select").change(function(){
+			jQuery("#header-image select").change(function(){
 				if(jQuery(this).val() == 1) {
-					if(jQuery("#header-image").length > 0) jQuery("#header-image, #resize").show();
-					else jQuery("#upload, #resize").show();
+					if(jQuery("#custom-image").length > 0) {
+						jQuery("#custom-image, #resize-image").show();
+					} else {
+						jQuery("#upload-image, #resize-image").show();
+					}
+				} else {
+					jQuery("#custom-image, #upload-image, #resize-image").hide();
 				}
-				else jQuery("#header-image, #upload, #resize").hide();
-				if(jQuery(this).val() > 0) jQuery("#header_height").show();
-				else jQuery("#header_height").hide();
+				if(jQuery(this).val() > 0) {
+					jQuery("#header-height").show();
+				} else {
+					jQuery("#header-height").hide();
+				}
 			});
 
 			jQuery("#edit-image").click(function(){
-				jQuery("#upload").toggle();
+				jQuery("#upload-image").toggle();
 			});
-			
+
 			jQuery("#delete-image").click(function(){
-				jQuery.get("module.php?mod='.$this->getName().'&mod_action=remove_image", function(){
+				jQuery.get("module.php?mod=' . $this->getName() . '&mod_action=remove_image", function(){
 					jQuery("input[name=remove-image]").val(1);
-					jQuery("#header select").val(0);
-					jQuery("#jb-options-form").submit();
+					jQuery("#header-image select").val(0);
+					jQuery("form").submit();
 				});
 			});
 
-			jQuery("#upload").on("change", "input[type=file]", function(){
-				jQuery("#resize input[type=checkbox]").prop("checked", true);
+			jQuery("#compact-menu").on("change", "input[type=radio]", function() {
+				var reports = jQuery("#reports").find("input[type=radio]:checked");
+				if (reports.val() == "1") {
+					var menuExtended = jQuery(".menu-extended");
+				} else {
+					var menuExtended = jQuery(".menu-extended:not(.menu-reports)");
+				}
+
+				if (jQuery(this).val() == "1") {
+					jQuery(".menu-compact").insertAfter(jQuery(".menu-extended:last"));
+					jQuery(menuExtended).appendTo(jQuery("#trash-menu"));
+				} else {
+					jQuery(menuExtended).insertAfter(jQuery(".menu-compact"));
+					jQuery(".menu-compact").appendTo(jQuery("#trash-menu"));
+				}
+				jQuery("#sort-menu, #trash-menu").trigger("sortupdate")
 			});
 
-			jQuery("#compact_menu input[type=checkbox]").click(function() {
-				if (jQuery("#reports input[type=checkbox]").is(":checked")) var menu_extended = jQuery(".menu_extended");
-				else var menu_extended = jQuery(".menu_extended:not(.menu_reports)");
-
-				if (this.checked) {
-					jQuery(".menu_compact").insertAfter(jQuery(".menu_extended:last")).show();
-					jQuery(menu_extended).appendTo(jQuery("#trashMenu")).hide();
+			jQuery("#reports").on("change", "input[type=radio]", function() {
+				if (jQuery(this).val() == "1") {
+					jQuery(".menu-reports").appendTo(jQuery("#trash-menu"));
+				} else {
+					jQuery(".menu-reports").insertAfter(jQuery(".menu-compact"));
 				}
-				else {
-					jQuery(menu_extended).insertAfter(jQuery(".menu_compact")).show();
-					jQuery(".menu_compact").appendTo(jQuery("#trashMenu")).hide();
-
-				}
-				jQuery("#sortMenu, #trashMenu").trigger("sortupdate")
+				jQuery("#sort-menu, #trash-menu").trigger("sortupdate")
 			});
 
-			jQuery("#reports input[type=checkbox]").click(function() {
-				if (this.checked) jQuery(".menu_reports").appendTo(jQuery("#trashMenu")).hide();
-				else jQuery(".menu_reports").insertAfter(jQuery(".menu_compact")).show();
-				jQuery("#sortMenu, #trashMenu").trigger("sortupdate")
+			jQuery("#media-menu").on("change", "input[type=radio]", function() {
+				if (jQuery(this).val() == "1") {
+					jQuery(".menu-media").appendTo(jQuery("#sort-menu"));
+				} else {
+					jQuery(".menu-media").appendTo(jQuery("#trash-menu"));
+				}
+				jQuery("#sort-menu, #trash-menu").trigger("sortupdate")
 			});
 
-			jQuery("#media_menu input[type=checkbox]").click(function() {
-				if (this.checked) {
-					jQuery(".menu_media").appendTo(jQuery("#sortMenu")).show();
-				}
-				else {
-					jQuery(".menu_media").appendTo(jQuery("#trashMenu")).hide();
-				}
-				jQuery("#sortMenu, #trashMenu").trigger("sortupdate")
-			});
-
-			jQuery("#media_link select").each(function() {
-				if(jQuery(this).val() == "'.$this->options('media_link').'") {
+			jQuery("#medialist select").each(function() {
+				if(jQuery(this).val() == "' . $this->options('media_link') . '") {
 					jQuery(this).prop("selected", true);
 				}
 			});
-
-			 jQuery("#sortMenu").sortable({
-				items: "li:not(.ui-state-disabled)"
-			}).disableSelection();
-
+			
+			 jQuery("#sort-menu").sortable({
+				items: "li:not(.disabled)",
+				cursor: "move",
+				update: function(event, ui) {
+					jQuery("#sort-menu, #trash-menu").trigger("sortupdate")
+				}
+			});			
+			jQuery("#sort-menu li, #trash-menu li").not(".disabled").css("cursor", "move");
+			
 			//-- update the order numbers after drag-n-drop sorting is complete
-			jQuery("#sortMenu").bind("sortupdate", function(event, ui) {
+			jQuery("#sort-menu").bind("sortupdate", function(event, ui) {
 				jQuery("#"+jQuery(this).attr("id")+" input[name*=sort]").each(
-					function (index, value) {
-						if(value.value < 99) value.value = index+1;
+					function (index, element) {
+						element.value = index + 1;
 					}
 				);
-				jQuery("#trashMenu input[name*=sort]").attr("value", "0");
+				jQuery("#trash-menu input[name*=sort]").attr("value", "0");
 			});
 		');
+		?>
 
-		// Admin page content
-		$html = '<div id="jb_options"><div id="error" style="display:none"></div><h2>'.$this->getTitle().'</h2>
-				<form id="jb-options-form" method="post" name="configform" action="'.$this->getConfigLink().'" enctype="multipart/form-data">
-					<input type="hidden" name="save" value="1">'.WT_Filter::getCsrf().'
-					<input type="hidden" name="remove-image" value="0">
-					<div class="block_left">
-						<div id="treetitle" class="field">
-							<label>'.WT_I18N::translate('Use the Family tree title in the header?').help_link('treetitle', $this->getName()).'</label>'.
-							two_state_checkbox('NEW_JB_OPTIONS[TREETITLE]', $this->options('treetitle')).'
-						</div>
-						<div id="titlepos" class="field">
-							<label>'.WT_I18N::translate('Position of the Family tree title').help_link('treetitle_position', $this->getName()).'</label>';
-							$titlepos = $this->options('titlepos');
-			$html .= '		<div class="block_right">
-								<div class="field">
-									<span>'.WT_I18N::translate('top').' </span>
-									<input type="text" name="NEW_JB_OPTIONS[TITLEPOS][V][size]" size="3" value="'.$titlepos['V']['size'].'">'.
-									select_edit_control('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', array('px'=>'px', '%'=>'%'), null, $titlepos['V']['fmt']).'
+		<!-- ADMIN PAGE CONTENT -->
+		<ol class="breadcrumb small">
+			<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+			<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
+			<li class="active"><?php echo $this->getTitle(); ?></li>
+		</ol>
+		<h2><?php echo $this->getTitle(); ?></h2>
+		<form action="<?php echo $this->getConfigLink(); ?>" enctype="multipart/form-data" name="configform" method="post" class="form-horizontal">
+			<input type="hidden" value="1" name="save">
+			<?php echo WT_Filter::getCsrf(); ?>
+			<input type="hidden" value="0" name="remove-image">
+			<div id="accordion" class="panel-group">
+				<div id="panel1" class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a href="#collapseOne" data-target="#collapseOne" data-toggle="collapse"><?php echo WT_I18N::translate('Options'); ?></a>
+						</h4>
+					</div>
+					<div class="panel-collapse collapse in" id="collapseOne">
+						<div class="panel-body">
+							<!-- TREE TITLE -->
+							<div id="tree-title" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Use the Family tree title in the header?'); ?>
+								</label>
+								<div class="col-sm-8">
+									<?php echo $this->radio_buttons('NEW_JB_OPTIONS[TREETITLE]', $this->options('treetitle')); ?>
+									<p class="small text-muted"><?php echo WT_I18N::translate('Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”.'); ?></p>
 								</div>
-								<div class="field">'.
-									select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][pos]', array('left' => WT_I18N::translate('left'), 'right' => WT_I18N::translate('right')), null, $titlepos['H']['pos']).'
-									<input type="text" name="NEW_JB_OPTIONS[TITLEPOS][H][size]" size="3" value="'.$titlepos['H']['size'].'">'.
-									select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][fmt]',  array('px'=>'px', '%'=>'%'), null, $titlepos['H']['fmt']).'
+							</div>
+							<!-- TITLE POSITION -->
+							<?php $titlepos = $this->options('titlepos'); ?>
+							<div id="title-pos" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Position of the Family tree title'); ?>
+								</label>
+								<div class="col-sm-8">
+									<div class="row">
+										<div class="col-xs-2">
+											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][V][pos]', array('top' => WT_I18N::translate('top'), 'bottom' => WT_I18N::translate('bottom')), null, $titlepos['V']['pos'], 'class="form-control"'); ?>
+										</div>
+										<div class="col-xs-2">
+											<input
+												type="text" 
+												value="<?php echo $titlepos['V']['size']; ?>" 
+												size="3" 
+												name="NEW_JB_OPTIONS[TITLEPOS][V][size]" 
+												class="form-control"
+												>
+										</div>
+										<div class="col-xs-2">
+											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', array('px' => 'px', '%' => '%'), null, $titlepos['V']['fmt'], 'class="form-control"'); ?>																				
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-2">
+											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][pos]', array('left' => WT_I18N::translate('left'), 'right' => WT_I18N::translate('right')), null, $titlepos['H']['pos'], 'class="form-control"'); ?>
+										</div>
+										<div class="col-xs-2">
+											<input 
+												type="text" 
+												value="<?php echo $titlepos['H']['size']; ?>" 
+												size="3" 
+												name="NEW_JB_OPTIONS[TITLEPOS][H][size]" 
+												class="form-control"
+												>
+										</div>
+										<div class="col-xs-2">											
+											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][fmt]', array('px' => 'px', '%' => '%'), null, $titlepos['H']['fmt'], 'class="form-control"'); ?>
+										</div>
+									</div>
+									<p class="small text-muted"><?php echo WT_I18N::translate('Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin.'); ?></p>
+								</div>
+							</div>
+							<!-- TITLE SIZE -->
+							<div id="title-size" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Size of the Family tree title'); ?>
+								</label>
+								<div class="col-sm-8 row">
+									<div class="col-xs-2">
+										<input 
+											type="text" 
+											value="<?php echo $this->options('titlesize'); ?>"
+											size="2" 
+											name="NEW_JB_OPTIONS[TITLESIZE]"
+											class="form-control"
+											>										
+									</div>
+									<div class="form-control-static">px</div>
+								</div>
+							</div>
+							<!-- HEADER IMAGE -->
+							<div id="header-image" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Use header image?'); ?>
+								</label>
+								<div class="col-sm-2">
+									<?php echo select_edit_control('NEW_JB_OPTIONS[HEADER]', array(WT_I18N::translate('Default'), WT_I18N::translate('Custom'), WT_I18N::translate('None')), null, $this->options('header'), 'class="form-control"'); ?>
+								</div>
+							</div>
+							<!-- CURRENT CUSTOM IMAGE -->
+							<?php $file = WT_DATA_DIR . $this->options('image'); ?>
+							<?php if ($this->options('image') && file_exists($file)): ?>
+								<?php $image = getimagesize($file); ?>
+								<?php $bg = file_get_contents($file); ?>
+								<div id="custom-image" class="form-group form-group-sm">
+									<label class="control-label col-sm-4">
+										<?php echo WT_I18N::translate('Current header image') . ' (' . $image[0] . ' x ' . $image[1] . 'px)'; ?>
+									</label>
+									<div class="col-sm-8">
+										<input
+											type="hidden"
+											name="JB_IMAGE"
+											value="<?php echo $this->options('image'); ?>"
+											>
+										<div class="form-control-static">
+											<a class="gallery" type="<?php echo $image['mime']; ?>" href="<?php echo 'data:' . $image['mime'] . ';base64,' . base64_encode($bg); ?>">
+												<?php echo $this->options('image'); ?>
+											</a>
+											<i id="edit-image" class="icon-edit"></i>
+											<i id="delete-image" class="icon-delete"></i>
+										</div>
+									</div>
+								</div>
+							<?php endif; ?>
+							<!-- UPLOAD CUSSTOM IMAGE -->
+							<div id="upload-image" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Upload a (new) custom header image'); ?>
+								</label>
+								<div class="col-sm-8">
+									<input 
+										type="file" 
+										name="NEW_JB_IMAGE" 
+										class="form-control-static file"
+										>
+								</div>							
+							</div>
+							<!-- RESIZE IMAGE -->
+							<div id="resize-image" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Resize header image (800 x 150px)'); ?>
+								</label>
+								<div class="col-sm-8">
+									<?php echo $this->radio_buttons('resize', false); ?>
+								</div>
+							</div>
+							<!-- HEADER HEIGHT -->
+							<div id="header-height" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Height of the header area'); ?>
+								</label>
+								<div class="col-sm-8 row">
+									<div class="col-xs-2">
+										<input 
+											type="text" 
+											value="<?php echo $this->options('headerheight'); ?>" 
+											size="2" 
+											name="NEW_JB_OPTIONS[HEADERHEIGHT]" 
+											class="form-control"
+											>
+									</div>
+									<div class="form-control-static">px</div>
+								</div>
+							</div>
+							<!-- FLAGS -->
+							<div id="flags" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Use flags in header bar as language menu?'); ?>
+								</label>
+								<div class="col-sm-8">
+									<?php echo $this->radio_buttons('NEW_JB_OPTIONS[FLAGS]', $this->options('flags')); ?>
+									<p class="small text-muted"><?php echo WT_I18N::translate('You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation.'); ?></p>
+								</div>
+							</div>
+							<!-- COMPACT MENU -->
+							<div id="compact-menu" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Use a compact menu?'); ?>
+								</label>
+								<div class="col-sm-8">
+									<?php echo $this->radio_buttons('NEW_JB_OPTIONS[COMPACT_MENU]', $this->options('compact_menu')); ?>
+									<p class="small text-muted"><?php echo WT_I18N::translate('In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together.'); ?></p>
+								</div>
+							</div>
+							<!-- REPORTS -->
+							<div id="reports" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?'); ?>
+								</label>
+								<div class="col-sm-8">
+									<?php echo $this->radio_buttons('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', $this->options('compact_menu_reports')); ?>
+								</div>
+							</div>
+							<!-- MEDIA MENU -->
+							<div id="media-menu" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Media menu in topmenu'); ?>
+								</label>
+								<div class="col-sm-8">
+									<?php echo $this->radio_buttons('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu')); ?>
+									<p class="small text-muted"><?php echo WT_I18N::translate('If this option is set the media menu will be moved to the topmenu. The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information.'); ?></p>
+								</div>
+							</div>
+							<!-- MEDIA FOLDER LIST -->
+							<div id="medialist" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Choose a folder as default for the main menu link'); ?>
+								</label>
+								<div class="col-sm-2">
+									<?php echo select_edit_control('NEW_JB_OPTIONS[MEDIA_LINK]', $this->options('mediafolders'), null, $this->options('media_link'), 'class="form-control"'); ?>									
+								</div>
+								<div class="col-sm-8"><p class="small text-muted"><?php echo WT_I18N::translate('The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder.'); ?></p></div>
+							</div>
+							<!-- SUBFOLDERS -->
+							<div id="subfolders" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo WT_I18N::translate('Include subfolders'); ?>
+								</label>
+								<div class="col-sm-8">
+									<?php echo $this->radio_buttons('NEW_JB_OPTIONS[SUBFOLDERS]', $this->options('subfolders')); ?>
+									<p class="small text-muted"><?php echo WT_I18N::translate('If you set this option the results on the media list page will include subfolders.'); ?></p>
 								</div>
 							</div>
 						</div>
-						<div id="titlesize" class="field clearfloat">
-							<label>'.WT_I18N::translate('Size of the Family tree title').'</label>
-							<input type="text" name="NEW_JB_OPTIONS[TITLESIZE]" size="2" value="'.$this->options('titlesize').'"> px
-						</div>
-						<div id="header" class="field">
-							<label>'.WT_I18N::translate('Use header image?').'</label>'.
-							select_edit_control('NEW_JB_OPTIONS[HEADER]', array(WT_I18N::translate('Default'), WT_I18N::translate('Custom'), WT_I18N::translate('None')), null, $this->options('header')).'
-						</div>';
-						$file = WT_DATA_DIR.$this->options('image');
-						if($this->options('image') && file_exists($file)) {
-							$image = getimagesize($file);
-							$bg = file_get_contents($file);
-			$html .= '		<div id="header-image" class="field">
-								<input type="hidden" name="JB_IMAGE" value="'.$this->options('image').'">
-								<label class="label">'.WT_I18N::translate('Current header image').' ('.$image[0].' x '.$image[1].'px)</label>
-
-								<a class="gallery" type="'.$image['mime'].'" href="data:'.$image['mime'].';base64,'.base64_encode($bg).'">
-									<span class="image">'.$this->options('image').'</span>
-								</a><i id="edit-image" class="icon-edit"></i><i id="delete-image" class="icon-delete"></i>
-							</div>';
-						}
-			$html .= '	<div id="upload" class="field">
-							<label>'.WT_I18N::translate('Upload a (new) custom header image').'</label><input type="file" name="NEW_JB_IMAGE" />
-						</div>
-						<div id="resize" class="field">
-							<label>'.WT_I18N::translate('Resize header image (800 x 150px)').'</label>'.checkbox('resize', false).'
-						</div>
-						<div id="header_height" class="field">
-							<label>'.WT_I18N::translate('Height of the header area').'</label>
-							<input type="text" name="NEW_JB_OPTIONS[HEADERHEIGHT]" size="2" value="'.$this->options('headerheight').'" /> px
-						</div>
-						<div class="field">
-							<label>'.WT_I18N::translate('Use flags in header bar as language menu?').help_link('flags', $this->getName()).'</label>'.
-							two_state_checkbox('NEW_JB_OPTIONS[FLAGS]', $this->options('flags')).'
-						</div>
-						<div id="compact_menu" class="field">
-							<label>'.WT_I18N::translate('Use a compact menu?').'</label>'.
-							two_state_checkbox('NEW_JB_OPTIONS[COMPACT_MENU]', $this->options('compact_menu')).'
-						</div>
-						<div id="reports" class="field">
-							<label>'.WT_I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?').'</label>'.
-							two_state_checkbox('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', $this->options('compact_menu_reports')).'
-						</div>
-						<div id="media_menu" class="field">
-							<label>'.WT_I18N::translate('Media menu in topmenu').help_link('media_menu', $this->getName()).'</label>'.
-							two_state_checkbox('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu')).'
-						</div>
-						<div id="media_link" class="field">
-							<label>'.WT_I18N::translate('Choose a folder as default for the main menu link').help_link('media_folder', $this->getName()).'</label>'.
-							select_edit_control('NEW_JB_OPTIONS[MEDIA_LINK]', $this->getFolderList(), null, $this->options('media_link')).'
-						</div>
-						<div id="subfolders" class="field">
-							<label>'.WT_I18N::translate('Include subfolders').help_link('subfolders', $this->getName()).'</label>'.
-							two_state_checkbox('NEW_JB_OPTIONS[SUBFOLDERS]', $this->options('subfolders')).'
-						</div>
-						<div id="buttons">
-							<input type="submit" name="update" value="'.WT_I18N::translate('Save').'" />
-							<input type="reset" value="'.WT_I18N::translate('Reset').'" onclick="if (confirm(\''.WT_I18N::translate('The settings will be reset to default. Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';">
+					</div>						
+				</div>
+				<div id="panel2" class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a class="collapsed" href="#collapseTwo" data-target="#collapseTwo" data-toggle="collapse">
+								<?php echo WT_I18N::translate('Sort Topmenu items'); ?>
+							</a>
+						</h4>
+					</div>
+					<div class="panel-collapse collapse" id="collapseTwo">
+						<div class="panel-heading">
+							<?php echo WT_I18N::translate('Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button.'); ?>					
+						</div>							
+						<div class="panel-body">
+							<?php
+							$menulist = $this->options('menu');
+							foreach ($menulist as $label => $menu) {
+								$menu['sort'] == 0 ? $trashMenu[$label] = $menu : $activeMenu[$label] = $menu;
+							}
+							?>
+							<?php if (isset($activeMenu)): ?>
+								<ul id="sort-menu" class="list-group"><?php echo $this->listMenuJustBlack($activeMenu); ?></ul>
+							<?php endif; ?>
+							<?php if (isset($trashMenu)): // trashcan for toggling the compact menu.  ?>
+								<ul id="trash-menu" class="sr-only"><?php echo $this->listMenuJustBlack($trashMenu); ?></ul>
+							<?php endif; ?>
 						</div>
 					</div>
-					<div class="block_right">
-						<h3>'.WT_I18N::translate('Sort Topmenu items').help_link('sort_topmenu', $this->getName()).'</h3>';
-						$menulist 	= $this->checkModule($this->options('menu'));
-						foreach($menulist as $menu) {
-							$menu['sort'] == 0 ? $trashMenu[] = $menu : $activeMenu[] = $menu;
-						}
-						$i=0;
-						if (isset($activeMenu)) {
-		$html .= '			<ul id="sortMenu">';
-							foreach ($activeMenu as $menu) {
-								if ($menu['sort'] < 99) {
-									$html .= '<li class="ui-state-default' . $this->getStatus($menu['label']) . '">';
-								}
-								foreach ($menu as $key => $val) {
-									$html .= '<input type="hidden" name="NEW_JB_MENU['.$i.']['.$key.']" value="'.$val.'"/>';
-								}
-								if ($menu['sort'] < 99) {
-									$html .= '<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>' . $menu['title'] . '</li>';
-								}
-								$i++;
-							}
-		$html .= '			</ul>';
-						}
-						if (isset($trashMenu)) {
-		$html .= '			<ul id="trashMenu">'; // trashcan for toggling the compact menu.
-							foreach ($trashMenu as $menu) {
-								$html .= '<li class="ui-state-default'.$this->getStatus($menu['label']).'">';
-								foreach ($menu as $key => $val) {
-									$html .= '<input type="hidden" name="NEW_JB_MENU['.$i.']['.$key.']" value="'.$val.'"/>';
-								}
-		$html .= '				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>'.$menu['title'].'</li>';
-								$i++;
-							}
-		$html .= '			</ul>';
-						}
-		$html .= '	</div>
-				</form>
-			</div>';
-
-		// output
-		ob_start();
-		$html .= ob_get_clean();
-		echo $html;
+				</div>
+			</div>
+			<button class="btn btn-primary" type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
+			<button class="btn btn-primary" type="reset" onclick="if (confirm('<?php echo WT_I18N::translate('The settings will be reset to default. Are you sure you want to do this?'); ?>'))
+								window.location.href = 'module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_reset';">
+					<?php echo WT_I18N::translate('Reset'); ?>
+			</button>
+		</form>
+		<?php
 	}
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
+		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
+
 }

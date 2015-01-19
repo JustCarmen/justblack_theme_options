@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: justblack theme options\n"
-"POT-Creation-Date: 2014-12-21 20:32+0100\n"
+"POT-Creation-Date: 2015-01-20 23:16+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
@@ -11,66 +11,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.7.3\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-
-#: modules_v3/justblack_theme_options/help_text.php:61
-msgid "<p>Click a row, then drag-and-drop to re-order the topmenu items. Then click the 'save' button.</p>"
-msgstr "<p>Klik op een rij, sleep en laat los om de volgorde van de topmenu items te wijzigen. Klik daarna op de knop 'opslaan'.</p>"
-
-#: modules_v3/justblack_theme_options/help_text.php:38
-msgid "<p>Here you can choose the location for the Family tree title in the header.</p>"
-msgstr "<p>Hier kunt u de locatie van de stamboomtitel in de header bepalen.</p>"
-
-#: modules_v3/justblack_theme_options/help_text.php:48
-msgid "<p>If this option is set the Media Menu will be moved to the topmenu. The names of first level media folders will appear as submenu of the new Media Menu.</p><p>Warning: these menu links are not translated automatically. If you want your menus to be translated you will have to do it manually with the instructions in the webrees WIKI.</p>"
-msgstr "<p>Wanneer deze optie wordt ingesteld, verhuist het Media Menu naar het topmenu. De namen van eerste niveau media folders verschijnen als submenu van het nieuwe Media Menu.</p><p>Waarschuwing: deze submenu linken worden niet automatisch vertaald. Als u deze submenu's wilt vertalen moet u dat handmatig doen met de instructies uit de webtrees WIKI.</p>"
-
-#: modules_v3/justblack_theme_options/help_text.php:57
-msgid "<p>If you set this option the results on the media list page will include subfolders.</p>"
-msgstr "<p>Wanneer u deze optie instelt worden de resultaten op de media pagina getoond inclusief submappen.</p>"
-
-#: modules_v3/justblack_theme_options/help_text.php:53
-msgid "<p>The default media folder will be used as link on the main media menu icon. If you click on this icon the medialist page for this folder appears.</p>"
-msgstr "<p>De standaard media folder wordt gebruikt als link voor het hoofd media menu icoon. Wanneer u op dit icoon klikt verschijnt de medialist pagina voor deze folder.</p>"
-
-#: modules_v3/justblack_theme_options/help_text.php:33
-msgid "<p>Uncheck this box if you already use the Family tree title in the header image. Otherwise leave the checkbox checked.</p>"
-msgstr "<p>Vink deze optie niet aan wanneer u de stamboomtitel al gebruikt in de header afbeelding. Is dat niet het geval, laat dan de checkbox aangevinkt.</p>"
-
-#: modules_v3/justblack_theme_options/help_text.php:43
-msgid "<p>You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed.</p><p>You can remove unused languages from the folder languages in your webtrees installation.</p>"
-msgstr "<p>U kunt vlaggen gebruiken in de balk boven het topmenu in de header. Deze vlaggen vervangen het standaard dropdown menu. Wij adviseren u om deze optie niet in te schakelen wanneer u meer dan tien talgen heeft geïnstalleerd.</p><p>U kunt ongebruikte talen verwijderen uit de folder languages in uw webtrees installatie.</p>"
 
 #: modules_v3/justblack_theme_options/db_schema/db_schema_0_1.php:38
 msgid "All JustBlack Theme options are reset to default due to changes in this version of the module. Click <a href=\"module.php?mod=justblack_theme_options&mod_action=admin_config\">HERE</a> to update the settings to your needs."
 msgstr "Alle JustBlack Thema opties zijn teruggezet naar de standaard instellingen als gevolg van wijzigingen in deze versie van de module. Klik <a href=\"module.php?mod=justblack_theme_options&mod_action=admin_config\">HIER</a> om de instellingen aan te passen."
 
-#: modules_v3/justblack_theme_options/help_text.php:52
-msgid "Choose a default media folder"
-msgstr "Kies een standaard media folder"
-
-#: modules_v3/justblack_theme_options/module.php:685
+#: modules_v3/justblack_theme_options/module.php:763
 msgid "Choose a folder as default for the main menu link"
 msgstr "Kies een standaard folder voor de hoofdmenu link"
 
-#: modules_v3/justblack_theme_options/module.php:651
+#: modules_v3/justblack_theme_options/module.php:582
+msgid "Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”."
+msgstr "Kies “nee” wanneer u de stamboomtitel al gebruikt in de header afbeelding. Laat de waarde anders op “ja” staan."
+
+#: modules_v3/justblack_theme_options/module.php:793
+msgid "Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button."
+msgstr "Klik op een rij, sleep en laat los om de volgorde van de topmenu items te wijzigen. Klik daarna op de knop 'opslaan'."
+
+#: modules_v3/justblack_theme_options/module.php:663
 msgid "Current header image"
 msgstr "Huidige header afbeelding"
 
-#: modules_v3/justblack_theme_options/module.php:452
+#: modules_v3/justblack_theme_options/module.php:380
 msgid "Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved."
 msgstr "Fout: U hebt geen afbeelding geupload of de afbeelding die u hebt geupload is niet geldig. Uw instellingen zijn niet opgeslagen."
 
-#: modules_v3/justblack_theme_options/help_text.php:42
-msgid "Flags"
-msgstr "Vlaggen"
-
-#: modules_v3/justblack_theme_options/module.php:665
+#: modules_v3/justblack_theme_options/module.php:706
 msgid "Height of the header area"
 msgstr "Hoogte van het header gebied"
 
-#: modules_v3/justblack_theme_options/module.php:677
+#: modules_v3/justblack_theme_options/module.php:626
+#, php-format
+msgid "Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin."
+msgstr "Hier kunt u de locatie van de stamboomtitel instellen. Pas de waarden aan uw wensen aan. Als u wilt dat de titel in de header afbeelding verschijnt, zijn de juiste waarden afhankelijk van de lengte van de stamboomtitel. De positie is de absolute positie van de titel in relatie tot het header gebied. Bijvoorbeeld: kies “Top: 0px; Links: 0px” voor de linkerbovenhoek van het header gebied of “Top: 50%%; Rechts: 10px” om de titel aan de rechterkant in het midden van het header gebied te plaatsen met een marge van 10px."
+
+#: modules_v3/justblack_theme_options/module.php:757
+msgid "If this option is set the media menu will be moved to the topmenu. The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
+msgstr "Met deze optie verplaatst u het media menu naar het hoofdmenu. De namen van de mappen direct onder de hoofdmap van uw media map op de server, worden gebruikt als submenu items in het nieuwe media menu. Waarschuwing: deze submenu items worden niet automatisch vertaald. Gebruik een aangepast taalbestand om uw menu items te vertalen. Lees de webtrees WIKI voor meer informatie."
+
+#: modules_v3/justblack_theme_options/module.php:777
+msgid "If you set this option the results on the media list page will include subfolders."
+msgstr "Wanneer u deze optie instelt worden de resultaten op de media pagina getoond inclusief submappen."
+
+#: modules_v3/justblack_theme_options/module.php:738
+msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together."
+msgstr "In het compacte “Bekijk”-menu worden de menu's voor Diagrammen, Lijsten, Kalender en (optioneel) Rapporten, samengevoegd."
+
+#: modules_v3/justblack_theme_options/module.php:744
 msgid "Include the reports topmenu in the compact 'View' topmenu?"
 msgstr "Wilt u het menu rapporten opnemen in het compacte 'Bekijk' menu?"
 
@@ -80,21 +69,23 @@ msgstr "Wilt u het menu rapporten opnemen in het compacte 'Bekijk' menu?"
 msgid "JustBlack Theme Options"
 msgstr "JustBlack Thema Opties"
 
-#: modules_v3/justblack_theme_options/help_text.php:47
-#: modules_v3/justblack_theme_options/module.php:681
+#: modules_v3/justblack_theme_options/module.php:753
 msgid "Media menu in topmenu"
 msgstr "Media menu in hoofdmenu"
 
-#: modules_v3/justblack_theme_options/module.php:477
+#: modules_v3/justblack_theme_options/module.php:570
+msgid "Options"
+msgstr "Opties"
+
+#: modules_v3/justblack_theme_options/module.php:405
 msgid "Options for the JustBlack theme"
 msgstr "Opties voor het JustBlack thema"
 
-#: modules_v3/justblack_theme_options/help_text.php:37
-#: modules_v3/justblack_theme_options/module.php:622
+#: modules_v3/justblack_theme_options/module.php:589
 msgid "Position of the Family tree title"
 msgstr "Positie van de stamboomtitel"
 
-#: modules_v3/justblack_theme_options/module.php:662
+#: modules_v3/justblack_theme_options/module.php:697
 msgid "Resize header image (800 x 150px)"
 msgstr "Resize header afbeelding (800 x 150px)"
 
@@ -103,62 +94,66 @@ msgstr "Resize header afbeelding (800 x 150px)"
 msgid "Set options for the JustBlack theme within the admin interface"
 msgstr "Zet opties voor het JustBlack thema vanuit de administratie interface"
 
-#: modules_v3/justblack_theme_options/module.php:638
+#: modules_v3/justblack_theme_options/module.php:632
 msgid "Size of the Family tree title"
 msgstr "Grootte van de stamboomtitel"
 
-#: modules_v3/justblack_theme_options/module.php:698
+#: modules_v3/justblack_theme_options/module.php:787
 msgid "Sort Topmenu items"
 msgstr "Topmenu items sorteren"
 
-#: modules_v3/justblack_theme_options/help_text.php:60
-msgid "Sorting the topmenu"
-msgstr "Het topmenu sorteren"
+#: modules_v3/justblack_theme_options/module.php:768
+msgid "The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder."
+msgstr "De media map die u hier kiest wordt gebruikt als standaard map voor de media menu koppeling in het hoofdmenu. Wanneer u op de media koppeling of op het media icoon klikt in het hoofdmenu, opent de pagina met de media items uit deze map."
 
-#: modules_v3/justblack_theme_options/help_text.php:56
-msgid "Subfolders"
-msgstr "Submappen"
-
-#: modules_v3/justblack_theme_options/module.php:694
+#: modules_v3/justblack_theme_options/module.php:813
 msgid "The settings will be reset to default. Are you sure you want to do this?"
 msgstr "De instellingen worden teruggezet naar de standaard instellingen. Weet u zeker dat u dit wilt?"
 
-#: modules_v3/justblack_theme_options/module.php:659
+#: modules_v3/justblack_theme_options/module.php:684
 msgid "Upload a (new) custom header image"
 msgstr "Upload een (nieuwe) zelf gekozen header afbeelding"
 
-#: modules_v3/justblack_theme_options/module.php:673
+#: modules_v3/justblack_theme_options/module.php:734
 msgid "Use a compact menu?"
 msgstr "Gebruik een compact menu?"
 
-#: modules_v3/justblack_theme_options/module.php:669
+#: modules_v3/justblack_theme_options/module.php:724
 msgid "Use flags in header bar as language menu?"
 msgstr "Gebruik vlaggen in de header bar als taalmenu?"
 
-#: modules_v3/justblack_theme_options/module.php:642
+#: modules_v3/justblack_theme_options/module.php:650
 msgid "Use header image?"
 msgstr "Gebruik de header afbeelding?"
 
-#: modules_v3/justblack_theme_options/module.php:618
+#: modules_v3/justblack_theme_options/module.php:578
 msgid "Use the Family tree title in the header?"
 msgstr "Gebruik de stamboomtitel in de header?"
 
-#: modules_v3/justblack_theme_options/module.php:467
+#: modules_v3/justblack_theme_options/module.php:728
+msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
+msgstr "U kunt vlaggen gebruiken in de balk boven het topmenu in de header. Deze vlaggen vervangen het standaard dropdown menu. Wij adviseren u om deze optie niet in te schakelen wanneer u meer dan tien talen heeft geïnstalleerd. U kunt ongebruikte talen verwijderen uit de folder languages in uw webtrees installatie."
+
+#: modules_v3/justblack_theme_options/module.php:395
 msgid "Your custom header image is succesfully removed."
 msgstr "Uw zelf gekozen header afbeelding is succesvol verwijderd."
 
-#: modules_v3/justblack_theme_options/module.php:449
+#: modules_v3/justblack_theme_options/module.php:378
 msgid "Your custom header image is succesfully saved."
 msgstr "Uw zelf gekozen header afbeelding is succesvol opgeslagen."
 
-#: modules_v3/justblack_theme_options/module.php:631
+#: modules_v3/justblack_theme_options/module.php:594
+msgid "bottom"
+msgstr "onder"
+
+#: modules_v3/justblack_theme_options/module.php:611
 msgid "left"
 msgstr "links"
 
-#: modules_v3/justblack_theme_options/module.php:631
+#: modules_v3/justblack_theme_options/module.php:611
 msgid "right"
 msgstr "rechts"
 
-#: modules_v3/justblack_theme_options/module.php:626
+#: modules_v3/justblack_theme_options/module.php:594
 msgid "top"
-msgstr "top"
+msgstr "boven"
