@@ -128,12 +128,6 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 				'sort'		 => '1',
 				'function'	 => 'menuHomePage'
 			),
-			'mymenu'	 => array(
-				'title'		 => WT_I18N::translate('My page'),
-				'label'		 => 'mymenu',
-				'sort'		 => '2',
-				'function'	 => 'menuMyMenu'
-			),
 			'charts'	 => array(
 				'title'		 => WT_I18N::translate('Charts'),
 				'label'		 => 'charts',
@@ -241,7 +235,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 	// set an extra class for some menuitems
 	private function getStatus($label) {
-		if ($label == 'homepage' || $label == 'mymenu') {
+		if ($label == 'homepage') {
 			$status = ' disabled';
 		} elseif ($label == 'charts' || $label == 'lists' || $label == 'calendar') {
 			$status = ' menu-extended';
