@@ -1,72 +1,69 @@
 <?php
-/*
- * JustBlack Theme Options Module
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2014 webtrees development team.
- * Copyright (C) 2014 JustCarmen.
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * Copyright (C) 2015 JustCarmen
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use WT\Auth;
-use WT\Log;
+use Zend_Translate;
 
 // Update database when updating from a version prior then version 1.5.2.1
 // Version 1 update only if the admin has logged in. A message will be shown to tell him all settings are reset to default. Old db-entries will be removed then.
 if (Auth::isAdmin()) {
 	try {
-		WT_DB::updateSchema(WT_ROOT . WT_MODULES_DIR . 'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 1);
+		Database::updateSchema(WT_ROOT . WT_MODULES_DIR . 'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 1);
 	} catch (PDOException $ex) {
 		// The schema update scripts should never fail.  If they do, there is no clean recovery.
-		die($ex);
+		FlashMessages::addMessage($ex->getMessage(), 'danger');
+		header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
+		throw $ex;
 	}
 }
 
-class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_Config {
+class justblack_theme_options_WT_Module extends Module implements ModuleConfigInterface {
 
 	public function __construct() {
 		parent::__construct();
 		// Load any local user translations
 		if (is_dir(WT_MODULES_DIR . $this->getName() . '/language')) {
 			if (file_exists(WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.mo')) {
-				WT_I18N::addTranslation(
+				I18N::addTranslation(
 					new Zend_Translate('gettext', WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.mo', WT_LOCALE)
 				);
 			}
 			if (file_exists(WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.php')) {
-				WT_I18N::addTranslation(
+				I18N::addTranslation(
 					new Zend_Translate('array', WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.php', WT_LOCALE)
 				);
 			}
 			if (file_exists(WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.csv')) {
-				WT_I18N::addTranslation(
+				I18N::addTranslation(
 					new Zend_Translate('csv', WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.csv', WT_LOCALE)
 				);
 			}
 		}
 	}
 
-	// Extend WT_Module
+	// Extend Module
 	public function getTitle() {
-		return /* I18N: Name of a module  */ WT_I18N::translate('JustBlack Theme Options');
+		return /* I18N: Name of a module  */ I18N::translate('JustBlack Theme Options');
 	}
 
-	// Extend WT_Module
+	// Extend Module
 	public function getDescription() {
-		return /* I18N: Description of the module */ WT_I18N::translate('Set options for the JustBlack theme within the admin interface');
+		return /* I18N: Description of the module */ I18N::translate('Set options for the JustBlack theme within the admin interface');
 	}
 
 	// Set default module options
@@ -111,49 +108,49 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	private function getDefaultMenu() {
 		$menulist = array(
 			'compact'	 => array(
-				'title'		 => WT_I18N::translate('View'),
+				'title'		 => I18N::translate('View'),
 				'label'		 => 'compact',
 				'sort'		 => '0',
 				'function'	 => 'menuCompact'
 			),
 			'media'		 => array(
-				'title'		 => WT_I18N::translate('Media'),
+				'title'		 => I18N::translate('Media'),
 				'label'		 => 'media',
 				'sort'		 => '0',
 				'function'	 => 'menuMedia'
 			),
 			'homepage'	 => array(
-				'title'		 => WT_I18N::translate('Home page'),
+				'title'		 => I18N::translate('Home page'),
 				'label'		 => 'homepage',
 				'sort'		 => '1',
 				'function'	 => 'menuHomePage'
 			),
 			'charts'	 => array(
-				'title'		 => WT_I18N::translate('Charts'),
+				'title'		 => I18N::translate('Charts'),
 				'label'		 => 'charts',
 				'sort'		 => '3',
 				'function'	 => 'menuChart'
 			),
 			'lists'		 => array(
-				'title'		 => WT_I18N::translate('Lists'),
+				'title'		 => I18N::translate('Lists'),
 				'label'		 => 'lists',
 				'sort'		 => '4',
 				'function'	 => 'menuLists'
 			),
 			'calendar'	 => array(
-				'title'		 => WT_I18N::translate('Calendar'),
+				'title'		 => I18N::translate('Calendar'),
 				'label'		 => 'calendar',
 				'sort'		 => '5',
 				'function'	 => 'menuCalendar'
 			),
 			'reports'	 => array(
-				'title'		 => WT_I18N::translate('Reports'),
+				'title'		 => I18N::translate('Reports'),
 				'label'		 => 'reports',
 				'sort'		 => '6',
 				'function'	 => 'menuReports'
 			),
 			'search'	 => array(
-				'title'		 => WT_I18N::translate('Search'),
+				'title'		 => I18N::translate('Search'),
 				'label'		 => 'search',
 				'sort'		 => '7',
 				'function'	 => 'menuSearch'
@@ -163,7 +160,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 	}
 
 	public function menuJustBlack($menulist) {
-		$modules = WT_Module::getActiveMenus();
+		$modules = Module::getActiveMenus();
 		// add newly activated modules to the menu
 		$sort = count($menulist) + 1;
 		foreach ($modules as $module) {
@@ -202,13 +199,13 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		$folders = WT_Query_Media::folderList();
 		foreach ($folders as $key => $value) {
 			if ($key == null && empty($value)) {
-				$folderlist[$MEDIA_DIRECTORY] = strtoupper(WT_I18N::translate(substr($MEDIA_DIRECTORY, 0, -1)));
+				$folderlist[$MEDIA_DIRECTORY] = strtoupper(I18N::translate(substr($MEDIA_DIRECTORY, 0, -1)));
 			} else {
 				if (count(glob(WT_DATA_DIR . $MEDIA_DIRECTORY . $value . '*')) > 0) {
 					$folder = array_filter(explode("/", $value));
 					// only list first level folders
 					if (!empty($folder) && !array_search($folder[0], $folderlist)) {
-						$folderlist[$folder[0] . '/'] = WT_I18N::translate($folder[0]);
+						$folderlist[$folder[0] . '/'] = I18N::translate($folder[0]);
 					}
 				}
 			}
@@ -255,7 +252,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		// Check if we are dealing with a valid image
 		if (!empty($image['name']) && preg_match('/^image\/(png|gif|jpeg)/', $image['type'])) {
 			$serverFileName = WT_DATA_DIR . 'justblack_' . $image['name'];
-			if (WT_Filter::postBool('resize') == true) {
+			if (Filter::postBool('resize') == true) {
 				$this->resize($image['tmp_name'], $image['type'], '800', '150');
 			}
 			$this->delete(); // delete the old image from the server.
@@ -324,7 +321,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 		}
 	}
 
-	// Extend WT_Module_Config
+	// Extend ModuleConfigInterface
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 			case 'admin_config':
@@ -345,15 +342,15 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 	// Reset all settings to default
 	private function jb_reset() {
-		WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
+		Database::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
 		Log::addConfigurationLog($this->getTitle() . ' reset to default values');
 	}
 
 	// Radio buttons
 	private function radio_buttons($name, $selected) {
 		$values = array(
-			0	 => WT_I18N::translate('no'),
-			1	 => WT_I18N::translate('yes'),
+			0	 => I18N::translate('no'),
+			1	 => I18N::translate('yes'),
 		);
 
 		return radio_buttons($name, $values, $selected, 'class="radio-inline"');
@@ -361,21 +358,21 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 	private function config() {
 
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			$NEW_JB_OPTIONS = WT_Filter::postArray('NEW_JB_OPTIONS');
-			$NEW_JB_OPTIONS['MENU'] = $this->sortArray(WT_Filter::postArray('NEW_JB_MENU'), 'sort');
-			$NEW_JB_OPTIONS['IMAGE'] = WT_Filter::post('JB_IMAGE');
+		if (Filter::postBool('save') && Filter::checkCsrf()) {
+			$NEW_JB_OPTIONS = Filter::postArray('NEW_JB_OPTIONS');
+			$NEW_JB_OPTIONS['MENU'] = $this->sortArray(Filter::postArray('NEW_JB_MENU'), 'sort');
+			$NEW_JB_OPTIONS['IMAGE'] = Filter::post('JB_IMAGE');
 			$error = false;
 			if ($NEW_JB_OPTIONS['HEADER'] == 1 && !empty($_FILES['NEW_JB_IMAGE']['name'])) {
 				if ($this->upload($_FILES['NEW_JB_IMAGE'])) {
 					$NEW_JB_OPTIONS['IMAGE'] = 'justblack_' . $_FILES['NEW_JB_IMAGE']['name'];
-					WT_FlashMessages::addMessage(WT_I18N::translate('Your custom header image is succesfully saved.'), 'success');
+					FlashMessages::addMessage(I18N::translate('Your custom header image is succesfully saved.'), 'success');
 				} else {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved.'), 'warning');
+					FlashMessages::addMessage(I18N::translate('Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved.'), 'warning');
 					$error = true;
 				}
 			} else {
-				if (WT_Filter::postBool('resize') == true) {
+				if (Filter::postBool('resize') == true) {
 					$file = WT_DATA_DIR . $this->options('image');
 					if ($this->options('image') && file_exists($file)) {
 						$image = getimagesize($file);
@@ -385,18 +382,17 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			}
 			if (!$error) {
 				$this->setSetting('JB_OPTIONS', serialize($NEW_JB_OPTIONS));
-				if (WT_Filter::postBool('remove-image')) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('Your custom header image is succesfully removed.'), 'success');
+				if (Filter::postBool('remove-image')) {
+					FlashMessages::addMessage(I18N::translate('Your custom header image is succesfully removed.'), 'success');
 				}
 				Log::addConfigurationLog($this->getTitle() . ' config updated');
 			}
 		}
 
-		require WT_ROOT . 'includes/functions/functions_edit.php';
-		$controller = new WT_Controller_Page;
+		$controller = new PageController;
 		$controller
 			->restrictAccess(Auth::isAdmin())
-			->setPageTitle(WT_I18N::translate('Options for the JustBlack theme'))
+			->setPageTitle(I18N::translate('Options for the JustBlack theme'))
 			->pageHeader();
 
 		$controller->addInlineJavaScript('
@@ -548,20 +544,20 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 
 		<!-- ADMIN PAGE CONTENT -->
 		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
-			<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
+			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
 			<li class="active"><?php echo $this->getTitle(); ?></li>
 		</ol>
 		<h2><?php echo $this->getTitle(); ?></h2>
 		<form action="<?php echo $this->getConfigLink(); ?>" enctype="multipart/form-data" name="configform" method="post" class="form-horizontal">
 			<input type="hidden" value="1" name="save">
-			<?php echo WT_Filter::getCsrf(); ?>
+			<?php echo Filter::getCsrf(); ?>
 			<input type="hidden" value="0" name="remove-image">
 			<div id="accordion" class="panel-group">
 				<div id="panel1" class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							<a href="#collapseOne" data-target="#collapseOne" data-toggle="collapse"><?php echo WT_I18N::translate('Options'); ?></a>
+							<a href="#collapseOne" data-target="#collapseOne" data-toggle="collapse"><?php echo I18N::translate('Options'); ?></a>
 						</h4>
 					</div>
 					<div class="panel-collapse collapse in" id="collapseOne">
@@ -569,23 +565,23 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<!-- TREE TITLE -->
 							<div id="tree-title" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Use the Family tree title in the header?'); ?>
+									<?php echo I18N::translate('Use the Family tree title in the header?'); ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo $this->radio_buttons('NEW_JB_OPTIONS[TREETITLE]', $this->options('treetitle')); ?>
-									<p class="small text-muted"><?php echo WT_I18N::translate('Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”.'); ?></p>
+									<p class="small text-muted"><?php echo I18N::translate('Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”.'); ?></p>
 								</div>
 							</div>
 							<!-- TITLE POSITION -->
 							<?php $titlepos = $this->options('titlepos'); ?>
 							<div id="title-pos" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Position of the Family tree title'); ?>
+									<?php echo I18N::translate('Position of the Family tree title'); ?>
 								</label>
 								<div class="col-sm-8">
 									<div class="row">
 										<div class="col-xs-2">
-											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][V][pos]', array('top' => WT_I18N::translate('top'), 'bottom' => WT_I18N::translate('bottom')), null, $titlepos['V']['pos'], 'class="form-control"'); ?>
+											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][V][pos]', array('top' => I18N::translate('top'), 'bottom' => I18N::translate('bottom')), null, $titlepos['V']['pos'], 'class="form-control"'); ?>
 										</div>
 										<div class="col-xs-2">
 											<input
@@ -602,7 +598,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 									</div>
 									<div class="row">
 										<div class="col-xs-2">
-											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][pos]', array('left' => WT_I18N::translate('left'), 'right' => WT_I18N::translate('right')), null, $titlepos['H']['pos'], 'class="form-control"'); ?>
+											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][pos]', array('left' => I18N::translate('left'), 'right' => I18N::translate('right')), null, $titlepos['H']['pos'], 'class="form-control"'); ?>
 										</div>
 										<div class="col-xs-2">
 											<input 
@@ -617,13 +613,13 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][fmt]', array('px' => 'px', '%' => '%'), null, $titlepos['H']['fmt'], 'class="form-control"'); ?>
 										</div>
 									</div>
-									<p class="small text-muted"><?php echo WT_I18N::translate('Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin.'); ?></p>
+									<p class="small text-muted"><?php echo I18N::translate('Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin.'); ?></p>
 								</div>
 							</div>
 							<!-- TITLE SIZE -->
 							<div id="title-size" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Size of the Family tree title'); ?>
+									<?php echo I18N::translate('Size of the Family tree title'); ?>
 								</label>
 								<div class="col-sm-8 row">
 									<div class="col-xs-2">
@@ -641,10 +637,10 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<!-- HEADER IMAGE -->
 							<div id="header-image" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Use header image?'); ?>
+									<?php echo I18N::translate('Use header image?'); ?>
 								</label>
 								<div class="col-sm-2">
-									<?php echo select_edit_control('NEW_JB_OPTIONS[HEADER]', array(WT_I18N::translate('Default'), WT_I18N::translate('Custom'), WT_I18N::translate('None')), null, $this->options('header'), 'class="form-control"'); ?>
+									<?php echo select_edit_control('NEW_JB_OPTIONS[HEADER]', array(I18N::translate('Default'), I18N::translate('Custom'), I18N::translate('None')), null, $this->options('header'), 'class="form-control"'); ?>
 								</div>
 							</div>
 							<!-- CURRENT CUSTOM IMAGE -->
@@ -654,7 +650,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 								<?php $bg = file_get_contents($file); ?>
 								<div id="custom-image" class="form-group form-group-sm">
 									<label class="control-label col-sm-4">
-										<?php echo WT_I18N::translate('Current header image') . ' (' . $image[0] . ' x ' . $image[1] . 'px)'; ?>
+										<?php echo I18N::translate('Current header image') . ' (' . $image[0] . ' x ' . $image[1] . 'px)'; ?>
 									</label>
 									<div class="col-sm-8">
 										<input
@@ -675,7 +671,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<!-- UPLOAD CUSSTOM IMAGE -->
 							<div id="upload-image" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Upload a (new) custom header image'); ?>
+									<?php echo I18N::translate('Upload a (new) custom header image'); ?>
 								</label>
 								<div class="col-sm-8">
 									<input 
@@ -688,7 +684,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<!-- RESIZE IMAGE -->
 							<div id="resize-image" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Resize header image (800 x 150px)'); ?>
+									<?php echo I18N::translate('Resize header image (800 x 150px)'); ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo $this->radio_buttons('resize', false); ?>
@@ -697,7 +693,7 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<!-- HEADER HEIGHT -->
 							<div id="header-height" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Height of the header area'); ?>
+									<?php echo I18N::translate('Height of the header area'); ?>
 								</label>
 								<div class="col-sm-8 row">
 									<div class="col-xs-2">
@@ -715,27 +711,27 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<!-- FLAGS -->
 							<div id="flags" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Use flags in header bar as language menu?'); ?>
+									<?php echo I18N::translate('Use flags in header bar as language menu?'); ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo $this->radio_buttons('NEW_JB_OPTIONS[FLAGS]', $this->options('flags')); ?>
-									<p class="small text-muted"><?php echo WT_I18N::translate('You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation.'); ?></p>
+									<p class="small text-muted"><?php echo I18N::translate('You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation.'); ?></p>
 								</div>
 							</div>
 							<!-- COMPACT MENU -->
 							<div id="compact-menu" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Use a compact menu?'); ?>
+									<?php echo I18N::translate('Use a compact menu?'); ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo $this->radio_buttons('NEW_JB_OPTIONS[COMPACT_MENU]', $this->options('compact_menu')); ?>
-									<p class="small text-muted"><?php echo WT_I18N::translate('In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together.'); ?></p>
+									<p class="small text-muted"><?php echo I18N::translate('In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together.'); ?></p>
 								</div>
 							</div>
 							<!-- REPORTS -->
 							<div id="reports" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?'); ?>
+									<?php echo I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?'); ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo $this->radio_buttons('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', $this->options('compact_menu_reports')); ?>
@@ -744,31 +740,31 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 							<!-- MEDIA MENU -->
 							<div id="media-menu" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Media menu in topmenu'); ?>
+									<?php echo I18N::translate('Media menu in topmenu'); ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo $this->radio_buttons('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu')); ?>
-									<p class="small text-muted"><?php echo WT_I18N::translate('If this option is set the media menu will be moved to the topmenu. The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information.'); ?></p>
+									<p class="small text-muted"><?php echo I18N::translate('If this option is set the media menu will be moved to the topmenu. The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information.'); ?></p>
 								</div>
 							</div>
 							<!-- MEDIA FOLDER LIST -->
 							<div id="medialist" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Choose a folder as default for the main menu link'); ?>
+									<?php echo I18N::translate('Choose a folder as default for the main menu link'); ?>
 								</label>
 								<div class="col-sm-2">
 									<?php echo select_edit_control('NEW_JB_OPTIONS[MEDIA_LINK]', $this->options('mediafolders'), null, $this->options('media_link'), 'class="form-control"'); ?>									
 								</div>
-								<div class="col-sm-8"><p class="small text-muted"><?php echo WT_I18N::translate('The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder.'); ?></p></div>
+								<div class="col-sm-8"><p class="small text-muted"><?php echo I18N::translate('The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder.'); ?></p></div>
 							</div>
 							<!-- SUBFOLDERS -->
 							<div id="subfolders" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo WT_I18N::translate('Include subfolders'); ?>
+									<?php echo I18N::translate('Include subfolders'); ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo $this->radio_buttons('NEW_JB_OPTIONS[SUBFOLDERS]', $this->options('subfolders')); ?>
-									<p class="small text-muted"><?php echo WT_I18N::translate('If you set this option the results on the media list page will include subfolders.'); ?></p>
+									<p class="small text-muted"><?php echo I18N::translate('If you set this option the results on the media list page will include subfolders.'); ?></p>
 								</div>
 							</div>
 						</div>
@@ -778,13 +774,13 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a class="collapsed" href="#collapseTwo" data-target="#collapseTwo" data-toggle="collapse">
-								<?php echo WT_I18N::translate('Sort Topmenu items'); ?>
+								<?php echo I18N::translate('Sort Topmenu items'); ?>
 							</a>
 						</h4>
 					</div>
 					<div class="panel-collapse collapse" id="collapseTwo">
 						<div class="panel-heading">
-							<?php echo WT_I18N::translate('Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button.'); ?>					
+							<?php echo I18N::translate('Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button.'); ?>					
 						</div>							
 						<div class="panel-body">
 							<?php
@@ -805,18 +801,18 @@ class justblack_theme_options_WT_Module extends WT_Module implements WT_Module_C
 			</div>
 			<button class="btn btn-primary" type="submit">
 				<i class="fa fa-check"></i>
-				<?php echo WT_I18N::translate('Save'); ?>
+				<?php echo I18N::translate('Save'); ?>
 			</button>
-			<button class="btn btn-primary" type="reset" onclick="if (confirm('<?php echo WT_I18N::translate('The settings will be reset to default. Are you sure you want to do this?'); ?>'))
+			<button class="btn btn-primary" type="reset" onclick="if (confirm('<?php echo I18N::translate('The settings will be reset to default. Are you sure you want to do this?'); ?>'))
 								window.location.href = 'module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_reset';">
 				<i class="fa fa-recycle"></i>
-				<?php echo WT_I18N::translate('Reset'); ?>
+				<?php echo I18N::translate('Reset'); ?>
 			</button>
 		</form>
 		<?php
 	}
 
-	// Implement WT_Module_Config
+	// Implement ModuleConfigInterface
 	public function getConfigLink() {
 		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
