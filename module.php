@@ -386,7 +386,7 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 			}
 			if (!$error) {
 				$this->setSetting('JB_OPTIONS', serialize($NEW_JB_OPTIONS));
-				FlashMessages::addMessage(I18N::translate('Your settings are successfully saved'), 'success');
+				FlashMessages::addMessage(I18N::translate('Your settings are successfully saved.'), 'success');
 				Log::addConfigurationLog($this->getTitle() . ' config updated');
 			}
 		}
