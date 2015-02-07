@@ -624,17 +624,17 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 								<label class="control-label col-sm-4">
 									<?php echo I18N::translate('Size of the Family tree title'); ?>
 								</label>
-								<div class="col-sm-8 row">
-									<div class="col-xs-2">
+								<div class="col-sm-2">
+									<div class="input-group">
 										<input 
 											type="text" 
 											value="<?php echo $this->options('titlesize'); ?>"
 											size="2" 
 											name="NEW_JB_OPTIONS[TITLESIZE]"
 											class="form-control"
-											>										
-									</div>
-									<div class="form-control-static">px</div>
+											>
+										<span class="input-group-addon">px</span>
+									</div>									
 								</div>
 							</div>
 							<!-- HEADER IMAGE -->
@@ -698,8 +698,8 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 								<label class="control-label col-sm-4">
 									<?php echo I18N::translate('Height of the header area'); ?>
 								</label>
-								<div class="col-sm-8 row">
-									<div class="col-xs-2">
+								<div class="col-sm-2">
+									<div class="input-group">
 										<input 
 											type="text" 
 											value="<?php echo $this->options('headerheight'); ?>" 
@@ -707,8 +707,9 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 											name="NEW_JB_OPTIONS[HEADERHEIGHT]" 
 											class="form-control"
 											>
+											<span class="input-group-addon">px</span>
 									</div>
-									<div class="form-control-static">px</div>
+									
 								</div>
 							</div>
 							<!-- FLAGS -->
