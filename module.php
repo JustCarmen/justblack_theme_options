@@ -83,7 +83,8 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 			'COMPACT_MENU_REPORTS'	 => '1',
 			'MEDIA_MENU'			 => '0',
 			'MEDIA_LINK'			 => '',
-			'SUBFOLDERS'			 => '1'
+			'SUBFOLDERS'			 => '1',
+			'SQUARE_THUMBS'			 => '1'
 		);
 		return $JB_DEFAULT[$key];
 	}
@@ -765,6 +766,16 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 								<div class="col-sm-8">
 									<?php echo $this->radioButtons('NEW_JB_OPTIONS[SUBFOLDERS]', $this->options('subfolders')); ?>
 									<p class="small text-muted"><?php echo I18N::translate('If you set this option the results on the media list page will include subfolders.'); ?></p>
+								</div>
+							</div>
+							<!-- SQUARE THUMBS -->
+							<div id="square_thumbs" class="form-group form-group-sm">
+								<label class="control-label col-sm-4">
+									<?php echo I18N::translate('Use square thumbs'); ?>
+								</label>
+								<div class="col-sm-8">
+									<?php echo $this->radioButtons('NEW_JB_OPTIONS[SQUARE_THUMBS]', $this->options('square_thumbs')); ?>
+									<p class="small text-muted"><?php echo I18N::translate('Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used'); ?></p>
 								</div>
 							</div>
 						</div>
