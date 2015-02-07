@@ -258,7 +258,7 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 			if (Filter::postBool('resize') == true) {
 				$this->resize($image['tmp_name'], $image['type'], '800', '150');
 			}
-			$this->delete(); // delete the old image from the server.
+			$this->deleteImage(); // delete the old image from the server.
 			move_uploaded_file($image['tmp_name'], $serverFileName);
 			return true;
 		} else {
@@ -318,7 +318,7 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 		}
 	}
 
-	private function delete() {
+	private function deleteImage() {
 		foreach (glob(WT_DATA_DIR . 'justblack*.*') as $file) {
 			@unlink($file);
 		}
@@ -331,12 +331,12 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 				$this->config();
 				break;
 			case 'admin_reset':
-				$this->delete();
+				$this->deleteImage();
 				$this->jb_reset();
 				$this->config();
 				break;
-			case 'remove_image':
-				$this->delete();
+			case 'delete_image':
+				$this->deleteImage();
 				break;
 			default:
 				header('HTTP/1.0 404 Not Found');
@@ -366,15 +366,15 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 			$NEW_JB_OPTIONS['MENU'] = $this->sortArray(Filter::postArray('NEW_JB_MENU'), 'sort');
 			$NEW_JB_OPTIONS['IMAGE'] = Filter::post('JB_IMAGE');
 			$error = false;
-			if ($NEW_JB_OPTIONS['HEADER'] == 1 && !empty($_FILES['NEW_JB_IMAGE']['name'])) {
-				if ($this->upload($_FILES['NEW_JB_IMAGE'])) {
-					$NEW_JB_OPTIONS['IMAGE'] = 'justblack_' . $_FILES['NEW_JB_IMAGE']['name'];
-					FlashMessages::addMessage(I18N::translate('Your custom header image is succesfully saved.'), 'success');
-				} else {
-					FlashMessages::addMessage(I18N::translate('Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved.'), 'warning');
-					$error = true;
+			if ($NEW_JB_OPTIONS['HEADER'] == 1) {
+				if (!empty($_FILES['NEW_JB_IMAGE']['name'])) {
+					if ($this->upload($_FILES['NEW_JB_IMAGE'])) {
+						$NEW_JB_OPTIONS['IMAGE'] = 'justblack_' . $_FILES['NEW_JB_IMAGE']['name'];
+					} else {
+						FlashMessages::addMessage(I18N::translate('Error: The image you have uploaded is not a valid image! Your settings are not saved.'), 'warning');
+						$error = true;
+					}
 				}
-			} else {
 				if (Filter::postBool('resize') == true) {
 					$file = WT_DATA_DIR . $this->options('image');
 					if ($this->options('image') && file_exists($file)) {
@@ -385,9 +385,6 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 			}
 			if (!$error) {
 				$this->setSetting('JB_OPTIONS', serialize($NEW_JB_OPTIONS));
-				if (Filter::postBool('remove-image')) {
-					FlashMessages::addMessage(I18N::translate('Your custom header image is succesfully removed.'), 'success');
-				}
 				Log::addConfigurationLog($this->getTitle() . ' config updated');
 			}
 		}
@@ -429,7 +426,8 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 			toggleFields("#tree-title", "#title-pos, #title-size");
 			toggleFields("#compact-menu", "#reports");
 			toggleFields("#media-menu", "#medialist, #subfolders");
-
+			
+			
 			jQuery("#header-image option").each(function() {
 				if(jQuery(this).val() == "' . $this->options('header') . '") {
 					jQuery(this).prop("selected", true);
@@ -439,13 +437,9 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 			jQuery("#upload-image").hide();
 			jQuery("#header-image select").each(function(){
 				if(jQuery(this).val() == 1) {
-					if(jQuery("#custom-image").length > 0) {
-						jQuery("#custom-image, #resize-image").show();
-					} else {
-						jQuery("#upload-image, #resize-image").show();
-					}
+					jQuery("#upload-image, #resize-image").show();
 				} else {
-					jQuery("#custom-image, #upload-image, #resize-image").hide();
+					jQuery("#upload-image, #resize-image").hide();
 					if(jQuery(this).val() > 0) {
 						jQuery("#header-height").show();
 					} else {
@@ -453,15 +447,12 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 					}
 				}
 			});
+			
 			jQuery("#header-image select").change(function(){
 				if(jQuery(this).val() == 1) {
-					if(jQuery("#custom-image").length > 0) {
-						jQuery("#custom-image, #resize-image").show();
-					} else {
-						jQuery("#upload-image, #resize-image").show();
-					}
+					jQuery("#upload-image, #resize-image").show();
 				} else {
-					jQuery("#custom-image, #upload-image, #resize-image").hide();
+					jQuery("#upload-image, #resize-image").hide();
 				}
 				if(jQuery(this).val() > 0) {
 					jQuery("#header-height").show();
@@ -470,15 +461,26 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 				}
 			});
 
-			jQuery("#edit-image").click(function(){
-				jQuery("#upload-image").toggle();
+			jQuery("#upload-image").on("click", "#file-input-btn, #file-input-text", function(){
+				jQuery("input[id=file-input]").trigger("click");
 			});
 
-			jQuery("#delete-image").click(function(){
-				jQuery.get("module.php?mod=' . $this->getName() . '&mod_action=remove_image", function(){
-					jQuery("input[name=remove-image]").val(1);
+			jQuery("input[id=file-input]").change(function() {
+				jQuery("#file-input-text").val(jQuery(this).val());
+				jQuery("#file-delete").show();
+			});
+			
+			if(!jQuery.trim(jQuery("#file-input-text").val()).length) {
+				jQuery("#file-delete").hide();
+			} else {
+				jQuery("#file-delete").show();
+			}
+
+			jQuery("#file-delete").click(function(){
+				jQuery.get("module.php?mod=' . $this->getName() . '&mod_action=delete_image", function(){
+					jQuery("input[id=file-input-text]").attr("value", "");
 					jQuery("#header-image select").val(0);
-					jQuery("form").submit();
+					jQuery("#file-delete").hide();
 				});
 			});
 
@@ -646,42 +648,35 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 									<?php echo select_edit_control('NEW_JB_OPTIONS[HEADER]', array(I18N::translate('Default'), I18N::translate('Custom'), I18N::translate('None')), null, $this->options('header'), 'class="form-control"'); ?>
 								</div>
 							</div>
-							<!-- CURRENT CUSTOM IMAGE -->
-							<?php $file = WT_DATA_DIR . $this->options('image'); ?>
-							<?php if ($this->options('image') && file_exists($file)): ?>
-								<?php $image = getimagesize($file); ?>
-								<?php $bg = file_get_contents($file); ?>
-								<div id="custom-image" class="form-group form-group-sm">
-									<label class="control-label col-sm-4">
-										<?php echo I18N::translate('Current header image') . ' (' . $image[0] . ' x ' . $image[1] . 'px)'; ?>
-									</label>
-									<div class="col-sm-8">
-										<input
-											type="hidden"
-											name="JB_IMAGE"
-											value="<?php echo $this->options('image'); ?>"
-											>
-										<div class="form-control-static">
-											<a class="gallery" type="<?php echo $image['mime']; ?>" href="<?php echo 'data:' . $image['mime'] . ';base64,' . base64_encode($bg); ?>">
-												<?php echo $this->options('image'); ?>
-											</a>
-											<i id="edit-image" class="icon-edit"></i>
-											<i id="delete-image" class="icon-delete"></i>
-										</div>
-									</div>
-								</div>
-							<?php endif; ?>
-							<!-- UPLOAD CUSSTOM IMAGE -->
+							<!-- IMAGE UPLOAD FIELD -->
 							<div id="upload-image" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
 									<?php echo I18N::translate('Upload a (new) custom header image'); ?>
 								</label>
-								<div class="col-sm-8">
+								<div class="col-sm-4">
 									<input
-										type="file"
+										id="file-input"
 										name="NEW_JB_IMAGE"
-										class="form-control-static file"
+										type="file"
+										class="sr-only"
 										>
+									<div class="input-group">
+										<input
+											id="file-input-text"
+											class="form-control"
+											name="JB_IMAGE"
+											type="text"
+											value="<?php echo $this->options('image'); ?>"
+											readonly
+											onfocus="this.blur()"
+											>
+										<span id="file-input-btn" class="btn btn-default input-group-addon">
+											<?php echo I18N::translate('Browse'); ?>
+										</span>
+										<span id="file-delete" class="btn input-group-addon">
+											<i class="fa fa-trash"></i>
+										</span>
+									</div>
 								</div>
 							</div>
 							<!-- RESIZE IMAGE -->
@@ -707,7 +702,7 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 											name="NEW_JB_OPTIONS[HEADERHEIGHT]"
 											class="form-control"
 											>
-											<span class="input-group-addon">px</span>
+										<span class="input-group-addon">px</span>
 									</div>
 
 								</div>

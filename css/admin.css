@@ -23,3 +23,8 @@
 .panel-heading a.collapsed:after {
 	content:"\f054";
 }
+
+#file-input-text {
+	background: #fff;
+	cursor: pointer;
+}
