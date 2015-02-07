@@ -651,7 +651,7 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 							<!-- IMAGE UPLOAD FIELD -->
 							<div id="upload-image" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Upload a (new) custom header image'); ?>
+									<?php echo I18N::translate('Upload a custom header image'); ?>
 								</label>
 								<div class="col-sm-4">
 									<input
@@ -682,7 +682,7 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 							<!-- RESIZE IMAGE -->
 							<div id="resize-image" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Resize header image (800 x 150px)'); ?>
+									<?php echo I18N::translate('Resize image (800 x 150px)'); ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo $this->radioButtons('resize', '0'); ?>
