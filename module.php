@@ -196,10 +196,10 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 
 	private function listMediaFolders() {
 		global $WT_TREE;
-		
+
 		$MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
 		$folders = WT_Query_Media::folderList();
-		
+
 		foreach ($folders as $key => $value) {
 			if ($key == null && empty($value)) {
 				$folderlist[$MEDIA_DIRECTORY] = strtoupper(I18N::translate(substr($MEDIA_DIRECTORY, 0, -1)));
@@ -408,7 +408,7 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 				html_doc.appendChild(css);
 			}
 			include_css("' . WT_MODULES_DIR . $this->getName() . '/css/admin.css");
-				
+
 			function toggleFields(id, target) {
 				var selected = jQuery(id).find("input[type=radio]:checked");
 				var field = jQuery(target)
@@ -425,7 +425,7 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 					}
 				});
 			}
-			
+
 			toggleFields("#tree-title", "#title-pos, #title-size");
 			toggleFields("#compact-menu", "#reports");
 			toggleFields("#media-menu", "#medialist, #subfolders");
@@ -523,16 +523,16 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 					jQuery(this).prop("selected", true);
 				}
 			});
-			
+
 			 jQuery("#sort-menu").sortable({
 				items: "li:not(.disabled)",
 				cursor: "move",
 				update: function(event, ui) {
 					jQuery("#sort-menu, #trash-menu").trigger("sortupdate")
 				}
-			});			
+			});
 			jQuery("#sort-menu li, #trash-menu li").not(".disabled").css("cursor", "move");
-			
+
 			//-- update the order numbers after drag-n-drop sorting is complete
 			jQuery("#sort-menu").bind("sortupdate", function(event, ui) {
 				jQuery("#"+jQuery(this).attr("id")+" input[name*=sort]").each(
@@ -588,15 +588,15 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 										</div>
 										<div class="col-xs-2">
 											<input
-												type="text" 
-												value="<?php echo $titlepos['V']['size']; ?>" 
-												size="3" 
-												name="NEW_JB_OPTIONS[TITLEPOS][V][size]" 
+												type="text"
+												value="<?php echo $titlepos['V']['size']; ?>"
+												size="3"
+												name="NEW_JB_OPTIONS[TITLEPOS][V][size]"
 												class="form-control"
 												>
 										</div>
 										<div class="col-xs-2">
-											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', array('px' => 'px', '%' => '%'), null, $titlepos['V']['fmt'], 'class="form-control"'); ?>																				
+											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', array('px' => 'px', '%' => '%'), null, $titlepos['V']['fmt'], 'class="form-control"'); ?>
 										</div>
 									</div>
 									<div class="row">
@@ -604,15 +604,15 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][pos]', array('left' => I18N::translate('left'), 'right' => I18N::translate('right')), null, $titlepos['H']['pos'], 'class="form-control"'); ?>
 										</div>
 										<div class="col-xs-2">
-											<input 
-												type="text" 
-												value="<?php echo $titlepos['H']['size']; ?>" 
-												size="3" 
-												name="NEW_JB_OPTIONS[TITLEPOS][H][size]" 
+											<input
+												type="text"
+												value="<?php echo $titlepos['H']['size']; ?>"
+												size="3"
+												name="NEW_JB_OPTIONS[TITLEPOS][H][size]"
 												class="form-control"
 												>
 										</div>
-										<div class="col-xs-2">											
+										<div class="col-xs-2">
 											<?php echo select_edit_control('NEW_JB_OPTIONS[TITLEPOS][H][fmt]', array('px' => 'px', '%' => '%'), null, $titlepos['H']['fmt'], 'class="form-control"'); ?>
 										</div>
 									</div>
@@ -626,15 +626,15 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 								</label>
 								<div class="col-sm-2">
 									<div class="input-group">
-										<input 
-											type="text" 
+										<input
+											type="text"
 											value="<?php echo $this->options('titlesize'); ?>"
-											size="2" 
+											size="2"
 											name="NEW_JB_OPTIONS[TITLESIZE]"
 											class="form-control"
 											>
 										<span class="input-group-addon">px</span>
-									</div>									
+									</div>
 								</div>
 							</div>
 							<!-- HEADER IMAGE -->
@@ -677,12 +677,12 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 									<?php echo I18N::translate('Upload a (new) custom header image'); ?>
 								</label>
 								<div class="col-sm-8">
-									<input 
-										type="file" 
-										name="NEW_JB_IMAGE" 
+									<input
+										type="file"
+										name="NEW_JB_IMAGE"
 										class="form-control-static file"
 										>
-								</div>							
+								</div>
 							</div>
 							<!-- RESIZE IMAGE -->
 							<div id="resize-image" class="form-group form-group-sm">
@@ -700,16 +700,16 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 								</label>
 								<div class="col-sm-2">
 									<div class="input-group">
-										<input 
-											type="text" 
-											value="<?php echo $this->options('headerheight'); ?>" 
-											size="2" 
-											name="NEW_JB_OPTIONS[HEADERHEIGHT]" 
+										<input
+											type="text"
+											value="<?php echo $this->options('headerheight'); ?>"
+											size="2"
+											name="NEW_JB_OPTIONS[HEADERHEIGHT]"
 											class="form-control"
 											>
 											<span class="input-group-addon">px</span>
 									</div>
-									
+
 								</div>
 							</div>
 							<!-- FLAGS -->
@@ -757,7 +757,7 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 									<?php echo I18N::translate('Choose a folder as default for the main menu link'); ?>
 								</label>
 								<div class="col-sm-2">
-									<?php echo select_edit_control('NEW_JB_OPTIONS[MEDIA_LINK]', $this->options('mediafolders'), null, $this->options('media_link'), 'class="form-control"'); ?>									
+									<?php echo select_edit_control('NEW_JB_OPTIONS[MEDIA_LINK]', $this->options('mediafolders'), null, $this->options('media_link'), 'class="form-control"'); ?>
 								</div>
 								<div class="col-sm-8"><p class="small text-muted"><?php echo I18N::translate('The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder.'); ?></p></div>
 							</div>
@@ -772,7 +772,7 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 								</div>
 							</div>
 						</div>
-					</div>						
+					</div>
 				</div>
 				<div id="panel2" class="panel panel-default">
 					<div class="panel-heading">
@@ -784,8 +784,8 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 					</div>
 					<div class="panel-collapse collapse" id="collapseTwo">
 						<div class="panel-heading">
-							<?php echo I18N::translate('Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button.'); ?>					
-						</div>							
+							<?php echo I18N::translate('Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button.'); ?>
+						</div>
 						<div class="panel-body">
 							<?php
 							$menulist = $this->options('menu');
