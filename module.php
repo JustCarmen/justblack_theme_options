@@ -685,7 +685,7 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 									<?php echo I18N::translate('Resize header image (800 x 150px)'); ?>
 								</label>
 								<div class="col-sm-8">
-									<?php echo $this->radio_buttons('resize', false); ?>
+									<?php echo $this->radio_buttons('resize', '0'); ?>
 								</div>
 							</div>
 							<!-- HEADER HEIGHT -->
