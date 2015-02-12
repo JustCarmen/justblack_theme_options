@@ -328,19 +328,21 @@ class justblack_theme_options_WT_Module extends Module implements ModuleConfigIn
 	// Extend ModuleConfigInterface
 	public function modAction($mod_action) {
 		switch ($mod_action) {
-			case 'admin_config':
-				$this->config();
-				break;
-			case 'admin_reset':
-				$this->deleteImage();
-				$this->resetAll();
-				$this->config();
-				break;
-			case 'delete_image':
-				$this->deleteImage();
-				break;
+		case 'admin_config':
+			$this->config();
+			break;
+		case 'admin_reset':
+			$this->deleteImage();
+			$this->resetAll();
+			$this->config();
+			break;
+		case 'delete_image':
+			$this->deleteImage();
+			break;
+		default:
 			default:
-				header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
+			break;
 		}
 	}
 
