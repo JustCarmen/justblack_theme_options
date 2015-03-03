@@ -19,23 +19,14 @@ namespace Fisharebest\Webtrees;
 
 use Zend_Translate;
 
-// Update database when updating from a version prior then version 1.5.2.1
-// Version 1 update only if the admin has logged in. A message will be shown to tell him all settings are reset to default. Old db-entries will be removed then.
-if (Auth::isAdmin()) {
-	try {
-		Database::updateSchema(WT_ROOT . WT_MODULES_DIR . 'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 1);
-	} catch (PDOException $ex) {
-		// The schema update scripts should never fail.  If they do, there is no clean recovery.
-		FlashMessages::addMessage($ex->getMessage(), 'danger');
-		header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
-		throw $ex;
-	}
-}
-
 class JustBlackThemeOptionsModule extends Module implements ModuleConfigInterface {
 
 	public function __construct() {
 		parent::__construct('justblack_theme_options');
+		
+		// update the database if neccessary
+		self::updateSchema();
+		
 		// Load any local user translations
 		if (is_dir(WT_MODULES_DIR . $this->getName() . '/language')) {
 			if (file_exists(WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.mo')) {
@@ -834,6 +825,26 @@ class JustBlackThemeOptionsModule extends Module implements ModuleConfigInterfac
 	// Implement ModuleConfigInterface
 	public function getConfigLink() {
 		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
+	}
+	
+	/**
+	 * Make sure the database structure is up-to-date.
+	 * Update database when updating from a version prior then version 1.5.2.1
+	 * Version 1 update if the admin has logged in. A message will be shown to tell him all settings are reset to default.
+	 * Old db-entries will be removed.
+	 * 
+	 */
+	protected static function updateSchema() {		
+		if (Auth::isAdmin()) {
+			try {
+				Database::updateSchema(WT_ROOT . WT_MODULES_DIR . 'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 1);
+			} catch (PDOException $ex) {
+				// The schema update scripts should never fail.  If they do, there is no clean recovery.
+				FlashMessages::addMessage($ex->getMessage(), 'danger');
+				header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
+				throw $ex;
+			}
+		}		
 	}
 
 }
