@@ -23,10 +23,10 @@ class JustBlackThemeOptionsModule extends Module implements ModuleConfigInterfac
 
 	public function __construct() {
 		parent::__construct('justblack_theme_options');
-		
+
 		// update the database if neccessary
 		self::updateSchema();
-		
+
 		// Load any local user translations
 		if (is_dir(WT_MODULES_DIR . $this->getName() . '/language')) {
 			if (file_exists(WT_MODULES_DIR . $this->getName() . '/language/' . WT_LOCALE . '.mo')) {
@@ -152,14 +152,18 @@ class JustBlackThemeOptionsModule extends Module implements ModuleConfigInterfac
 	}
 
 	public function menuJustBlack($menulist) {
-		$modules = Module::getActiveMenus();
+		$modules = array();
+		foreach (Tree::getAll() as $tree) {
+			$modules = array_merge(Module::getActiveMenus($tree), $modules);
+		}
+
 		// add newly activated modules to the menu
 		$sort = count($menulist) + 1;
-		foreach ($modules as $module) {
-			if ($module->getMenu() && !array_key_exists($module->getName(), $menulist)) {
-				$menulist[$module->getName()] = array(
+		foreach ($modules as $module_name => $module) {
+			if ($module->getMenu() && !array_key_exists($module_name, $menulist)) {
+				$menulist[$module_name] = array(
 					'title'		 => $module->getTitle(),
-					'label'		 => $module->getName(),
+					'label'		 => $module_name,
 					'sort'		 => $sort++,
 					'function'	 => 'menuModules'
 				);
@@ -826,15 +830,15 @@ class JustBlackThemeOptionsModule extends Module implements ModuleConfigInterfac
 	public function getConfigLink() {
 		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
-	
+
 	/**
 	 * Make sure the database structure is up-to-date.
 	 * Update database when updating from a version prior then version 1.5.2.1
 	 * Version 1 update if the admin has logged in. A message will be shown to tell him all settings are reset to default.
 	 * Old db-entries will be removed.
-	 * 
+	 *
 	 */
-	protected static function updateSchema() {		
+	protected static function updateSchema() {
 		if (Auth::isAdmin()) {
 			try {
 				Database::updateSchema(WT_ROOT . WT_MODULES_DIR . 'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 1);
@@ -844,7 +848,7 @@ class JustBlackThemeOptionsModule extends Module implements ModuleConfigInterfac
 				header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
 				throw $ex;
 			}
-		}		
+		}
 	}
 
 }
