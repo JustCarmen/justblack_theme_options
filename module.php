@@ -165,13 +165,13 @@ class JustBlackThemeOptionsModule extends Module implements ModuleConfigInterfac
 					'title'		 => $module->getTitle(),
 					'label'		 => $module_name,
 					'sort'		 => $sort++,
-					'function'	 => 'menuModules'
+					'function'	 => 'menuModule'
 				);
 			}
 		}
 		// delete deactivated modules from the menu
 		foreach ($menulist as $label => $menu) {
-			if ($menu['function'] === 'menuModules' && !array_key_exists($label, $modules)) {
+			if ($menu['function'] === 'menuModule' && !array_key_exists($label, $modules)) {
 				unset($menulist[$label]);
 			}
 		}
@@ -841,7 +841,7 @@ class JustBlackThemeOptionsModule extends Module implements ModuleConfigInterfac
 	protected static function updateSchema() {
 		if (Auth::isAdmin()) {
 			try {
-				Database::updateSchema(WT_ROOT . WT_MODULES_DIR . 'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 1);
+				Database::updateSchema(WT_ROOT . WT_MODULES_DIR . 'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 2);
 			} catch (PDOException $ex) {
 				// The schema update scripts should never fail.  If they do, there is no clean recovery.
 				FlashMessages::addMessage($ex->getMessage(), 'danger');
