@@ -15,78 +15,78 @@
  */
 
 /* ======== Compact menu ======= */
-li#menu-view {
+li.menu-view {
 	background-image: url(images/menu-view.png);
 	background-repeat: no-repeat;
 	background-position: center top;
 }
 
-#menu-view > ul > li > a.icon_arrow span {
+.menu-view > ul > li > a.icon_arrow span {
 	display: inline-block;
 	text-indent: 0;
 	margin-left: 0;
 	margin-right: 15px;
 }
 
-[dir=rtl] #menu-view > ul > li > a.icon_arrow {
+[dir=rtl] .menu-view > ul > li > a.icon_arrow {
 	background-position:10% -918px; // correction
 }
 
-[dir=rtl] #menu-view > ul > li > a.icon_arrow span {
+[dir=rtl] .menu-view > ul > li > a.icon_arrow span {
 	margin-left: 15px;
 	margin-right: 0;
 }
 
-#menu-view-calendar {
+.menu-calendar {
 	background-position: left -506px;
 }
 
-#menu-view-chart {
+.menu-view-chart {
 	background-position: left -230px;
 }
 
-#menu-view-list {
+.menu-view-list {
 	background-position: left -943px;
 }
 
-#menu-view-report {
+.menu-view-report {
 	background-position: left -483px;
 }
 
-#menu-view-report li {
+.menu-view-report li {
 	background-position: left -483px;
 }
 
-[dir=rtl] #menu-view-report li {
+[dir=rtl] .menu-view-report li {
 	background-position: right -483px;
 }
 
-[dir=rtl] #menu-view-calendar {
+[dir=rtl] .menu-view-calendar {
 	background-position: right -506px;
 }
 
-[dir=rtl] #menu-view-chart {
+[dir=rtl] .menu-view-chart {
 	background-position: right -230px;
 }
 
-[dir=rtl] #menu-view-list {
+[dir=rtl] .menu-view-list {
 	background-position: right -943px;
 }
 
-[dir=rtl] #menu-view-report {
+[dir=rtl] .menu-view-report {
 	background-position: right -483px;
 }
 
 /* ======== Media Menu ======= */
-#menu-media {
+.menu-media {
 	background-position: center -377px;
 }
 
-li[id^=menu-media] {
+.menu-mediafolder {
 	background-position: left -299px;
 }
 
-[dir=rtl] li[id^=menu-media] {
+[dir=rtl] .menu-mediafolder {
 	background-position: right -299px;
 }
 
@@ -129,143 +129,143 @@ li[id^=menu-media] {
 }
 
 /*Language flags (only core languages) */
-#menu-language-ar {
+.menu-language-ar {
 	background-position: 0 -15px;
 }
 
-#menu-language-bg {
+.menu-language-bg {
 	background-position: 0 -30px;
 }
 
-#menu-language-bs {
+.menu-language-bs {
 	background-position: 0 -45px;
 }
 
-#menu-language-ca {
+.menu-language-ca {
 	background-position: 0 -60px;
 }
 
-#menu-language-cs {
+.menu-language-cs {
 	background-position: 0 -75px;
 }
 
-#menu-language-da {
+.menu-language-da {
 	background-position: 0 -90px;
 }
 
-#menu-language-de {
+.menu-language-de {
 	background-position: 0 -105px;
 }
 
-#menu-language-en_GB {
+.menu-language-en_GB {
 	background-position: 0 -120px;
 }
 
-#menu-language-en_US {
+.menu-language-en_US {
 	background-position: 0 -135px;
 }
 
-#menu-language-es {
+.menu-language-es {
 	background-position: 0 -150px;
 }
 
-#menu-language-et {
+.menu-language-et {
 	background-position: 0 -165px;
 }
 
-#menu-language-fa {
+.menu-language-fa {
 	background-position: 0 -180px;
 }
 
-#menu-language-fi {
+.menu-language-fi {
 	background-position: 0 -195px;
 }
 
-#menu-language-fr {
+.menu-language-fr {
 	background-position: 0 -210px;
 }
 
-#menu-language-he {
+.menu-language-he {
 	background-position: 0 -225px;
 }
 
-#menu-language-hr {
+.menu-language-hr {
 	background-position: 0 -240px;
 }
 
-#menu-language-hu {
+.menu-language-hu {
 	background-position: 0 -255px;
 }
 
-#menu-language-is {
+.menu-language-is {
 	background-position: 0 -270px;
 }
 
-#menu-language-it {
+.menu-language-it {
 	background-position: 0 -285px;
 }
 
-#menu-language-lt {
+.menu-language-lt {
 	background-position: 0 -300px;
 }
 
-#menu-language-nb {
+.menu-language-nb {
 	background-position: 0 -315px;
 }
 
-#menu-language-nl {
+.menu-language-nl {
 	background-position: 0 -330px;
 }
 
-#menu-language-nn {
+.menu-language-nn {
 	background-position: 0 -345px;
 }
 
-#menu-language-pl {
+.menu-language-pl {
 	background-position: 0 -360px;
 }
 
-#menu-language-pt {
+.menu-language-pt {
 	background-position: 0 -375px;
 }
 
-#menu-language-pt_BR {
+.menu-language-pt_BR {
 	background-position: 0 -390px;
 }
 
-#menu-language-ru {
+.menu-language-ru {
 	background-position: 0 -405px;
 }
 
-#menu-language-sk {
+.menu-language-sk {
 	background-position: 0 -420px;
 }
 
-#menu-language-sl {
+.menu-language-sl {
 	background-position: 0 -435px;
 }
 
-#menu-language-sv {
+.menu-language-sv {
 	background-position: 0 -450px;
 }
 
-#menu-language-tr {
+.menu-language-tr {
 	background-position: 0 -465px;
 }
 
-#menu-language-tt {
+.menu-language-tt {
 	background-position: 0 -480px;
 }
 
-#menu-language-uk {
+.menu-language-uk {
 	background-position: 0 -495px;
 }
 
-#menu-language-vi {
+.menu-language-vi {
 	background-position: 0 -510px;
 }
 
-#menu-language-zh_CN {
+.menu-language-zh_CN {
 	background-position: 0 -525px;
 }
 
