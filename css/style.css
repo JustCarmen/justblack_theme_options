@@ -107,7 +107,7 @@ li.menu-view {
 }
 
 .header-flags li {
-	background-image: url(images/flags_sprite.png);
+	background-image: url(images/flags-sprite.png);
 	background-repeat: no-repeat;
 	cursor: pointer;
 	float: left;
@@ -119,153 +119,240 @@ li.menu-view {
 	opacity: 0.4;
 }
 
-.header-flags li.lang-active {
+.header-flags li.active {
 	filter: alpha(opacity=100);
 	opacity: 1;
 }
 
-.header-flags span {
-	display: none;
+/*Language flags (only core languages) */
+.menu-language-af {
+	background-position:0 -15px;
 }
 
-/*Language flags (only core languages) */
 .menu-language-ar {
-	background-position: 0 -15px;
+	background-position:0 -30px;
 }
 
 .menu-language-bg {
-	background-position: 0 -30px;
+	background-position:0 -45px;
 }
 
 .menu-language-bs {
-	background-position: 0 -45px;
+	background-position:0 -60px;
 }
 
 .menu-language-ca {
-	background-position: 0 -60px;
+	background-position:0 -75px;
 }
 
 .menu-language-cs {
-	background-position: 0 -75px;
+	background-position:0 -90px;
 }
 
 .menu-language-da {
-	background-position: 0 -90px;
+	background-position:0 -105px;
 }
 
 .menu-language-de {
-	background-position: 0 -105px;
+	background-position:0 -120px;
 }
 
-.menu-language-en_GB {
-	background-position: 0 -120px;
+.menu-language-dv {
+	background-position:0 -135px;
 }
 
-.menu-language-en_US {
-	background-position: 0 -135px;
+.menu-language-el {
+	background-position:0 -150px;
+}
+
+.menu-language-en-AU {
+	background-position:0 -165px;
+}
+
+.menu-language-en-GB {
+	background-position:0 -180px;
+}
+
+.menu-language-en-US {
+	background-position:0 -195px;
 }
 
 .menu-language-es {
-	background-position: 0 -150px;
+	background-position:0 -210px;
 }
 
 .menu-language-et {
-	background-position: 0 -165px;
+	background-position:0 -225px;
 }
 
 .menu-language-fa {
-	background-position: 0 -180px;
+	background-position:0 -240px;
 }
 
 .menu-language-fi {
-	background-position: 0 -195px;
+	background-position:0 -255px;
+}
+
+.menu-language-fo {
+	background-position:0 -270px;
+}
+
+.menu-language-fr-CA {
+	background-position:0 -285px;
 }
 
 .menu-language-fr {
-	background-position: 0 -210px;
+	background-position:0 -300px;
+}
+
+.menu-language-gl {
+	background-position:0 -315px;
 }
 
 .menu-language-he {
-	background-position: 0 -225px;
+	background-position:0 -330px;
 }
 
 .menu-language-hr {
-	background-position: 0 -240px;
+	background-position:0 -345px;
 }
 
 .menu-language-hu {
-	background-position: 0 -255px;
+	background-position:0 -360px;
+}
+
+.menu-language-id {
+	background-position:0 -375px;
 }
 
 .menu-language-is {
-	background-position: 0 -270px;
+	background-position:0 -390px;
 }
 
 .menu-language-it {
-	background-position: 0 -285px;
+	background-position:0 -405px;
+}
+
+.menu-language-ja {
+	background-position:0 -420px;
+}
+
+.menu-language-ka {
+	background-position:0 -435px;
+}
+
+.menu-language-ko {
+	background-position:0 -450px;
 }
 
 .menu-language-lt {
-	background-position: 0 -300px;
+	background-position:0 -465px;
+}
+
+.menu-language-lv {
+	background-position:0 -480px;
+}
+
+.menu-language-mi {
+	background-position:0 -495px;
+}
+
+.menu-language-mr {
+	background-position:0 -510px;
+}
+
+.menu-language-ms {
+	background-position:0 -525px;
 }
 
 .menu-language-nb {
-	background-position: 0 -315px;
+	background-position:0 -540px;
+}
+
+.menu-language-ne {
+	background-position:0 -555px;
 }
 
 .menu-language-nl {
-	background-position: 0 -330px;
+	background-position:0 -570px;
 }
 
 .menu-language-nn {
-	background-position: 0 -345px;
+	background-position:0 -585px;
+}
+
+.menu-language-oc {
+	background-position:0 -600px;
 }
 
 .menu-language-pl {
-	background-position: 0 -360px;
+	background-position:0 -615px;
 }
 
 .menu-language-pt {
-	background-position: 0 -375px;
+	background-position:0 -630px;
 }
 
 .menu-language-pt_BR {
-	background-position: 0 -390px;
+	background-position:0 -645px;
+}
+
+.menu-language-ro {
+	background-position:0 -660px;
 }
 
 .menu-language-ru {
-	background-position: 0 -405px;
+	background-position:0 -675px;
 }
 
 .menu-language-sk {
-	background-position: 0 -420px;
+	background-position:0 -690px;
 }
 
 .menu-language-sl {
-	background-position: 0 -435px;
+	background-position:0 -705px;
+}
+
+.menu-language-sr-Latn {
+	background-position:0 -720px;
+}
+
+.menu-language-sr {
+	background-position:0 -735px;
 }
 
 .menu-language-sv {
-	background-position: 0 -450px;
+	background-position:0 -750px;
+}
+
+.menu-language-ta {
+	background-position:0 -765px;
 }
 
 .menu-language-tr {
-	background-position: 0 -465px;
+	background-position:0 -780px;
 }
 
 .menu-language-tt {
-	background-position: 0 -480px;
+	background-position:0 -795px;
 }
 
 .menu-language-uk {
-	background-position: 0 -495px;
+	background-position:0 -810px;
 }
 
 .menu-language-vi {
-	background-position: 0 -510px;
+	background-position:0 -825px;
 }
 
-.menu-language-zh_CN {
-	background-position: 0 -525px;
+.menu-language-yi {
+	background-position:0 -840px;
 }
 
+.menu-language-zh-Hans {
+	background-position:0 -855px;
+}
+
+.menu-language-zh-Hant {
+	background-position:0 -870px;
+}
