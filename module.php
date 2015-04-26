@@ -302,21 +302,21 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 	// Extend ModuleConfigInterface
 	public function modAction($mod_action) {
 		switch ($mod_action) {
-		case 'admin_config':
-			$this->config();
-			break;
-		case 'admin_reset':
-			$this->deleteImage();
-			$this->resetAll();
-			$this->config();
-			break;
-		case 'delete_image':
-			$this->deleteImage();
-			break;
-		default:
+			case 'admin_config':
+				$this->config();
+				break;
+			case 'admin_reset':
+				$this->deleteImage();
+				$this->resetAll();
+				$this->config();
+				break;
+			case 'delete_image':
+				$this->deleteImage();
+				break;
 			default:
-			http_response_code(404);
-			break;
+			default:
+				http_response_code(404);
+				break;
 		}
 	}
 
@@ -714,31 +714,31 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 									<?php echo edit_field_yes_no('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu'), 'class="radio-inline"'); ?>
 									<p class="small text-muted"><?php echo I18N::translate('If this option is set the media menu will be moved to the topmenu.'); ?></p>
 									<?php if (count($folders) > 1): // add extra information about subfolders ?>
-									<p class="small text-muted"><?php echo I18N::translate('The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information.'); ?></p>
+										<p class="small text-muted"><?php echo I18N::translate('The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information.'); ?></p>
 									<?php endif; ?>
 								</div>
 							</div>
 							<?php if (count($folders) > 1): // only show these options if we have subfolders ?>
-							<!-- MEDIA FOLDER LIST -->
-							<div id="medialist" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Choose a folder as default for the main menu link'); ?>
-								</label>
-								<div class="col-sm-2">
-									<?php echo select_edit_control('NEW_JB_OPTIONS[MEDIA_LINK]', $folders, null, $this->options('media_link'), 'class="form-control"'); ?>
+								<!-- MEDIA FOLDER LIST -->
+								<div id="medialist" class="form-group form-group-sm">
+									<label class="control-label col-sm-4">
+										<?php echo I18N::translate('Choose a folder as default for the main menu link'); ?>
+									</label>
+									<div class="col-sm-2">
+										<?php echo select_edit_control('NEW_JB_OPTIONS[MEDIA_LINK]', $folders, null, $this->options('media_link'), 'class="form-control"'); ?>
+									</div>
+									<div class="col-sm-8"><p class="small text-muted"><?php echo I18N::translate('The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder.'); ?></p></div>
 								</div>
-								<div class="col-sm-8"><p class="small text-muted"><?php echo I18N::translate('The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder.'); ?></p></div>
-							</div>
-							<!-- SHOW SUBFOLDERS -->
-							<div id="subfolders" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Include subfolders'); ?>
-								</label>
-								<div class="col-sm-8">
-									<?php echo edit_field_yes_no('NEW_JB_OPTIONS[SHOW_SUBFOLDERS]', $this->options('show_subfolders'), 'class="radio-inline"'); ?>
-									<p class="small text-muted"><?php echo I18N::translate('If you set this option the results on the media list page will include subfolders.'); ?></p>
+								<!-- SHOW SUBFOLDERS -->
+								<div id="subfolders" class="form-group form-group-sm">
+									<label class="control-label col-sm-4">
+										<?php echo I18N::translate('Include subfolders'); ?>
+									</label>
+									<div class="col-sm-8">
+										<?php echo edit_field_yes_no('NEW_JB_OPTIONS[SHOW_SUBFOLDERS]', $this->options('show_subfolders'), 'class="radio-inline"'); ?>
+										<p class="small text-muted"><?php echo I18N::translate('If you set this option the results on the media list page will include subfolders.'); ?></p>
+									</div>
 								</div>
-							</div>
 							<?php endif; ?>
 							<!-- SQUARE THUMBS -->
 							<div id="square_thumbs" class="form-group form-group-sm">
