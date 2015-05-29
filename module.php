@@ -808,15 +808,13 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 	 *
 	 */
 	protected static function updateSchema() {
-		if (Auth::isAdmin()) {
-			try {
-				Database::updateSchema(WT_ROOT . WT_MODULES_DIR . 'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 2);
-			} catch (PDOException $ex) {
-				// The schema update scripts should never fail.  If they do, there is no clean recovery.
-				FlashMessages::addMessage($ex->getMessage(), 'danger');
-				header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
-				throw $ex;
-			}
+		try {
+			Database::updateSchema(WT_ROOT . WT_MODULES_DIR . 'justblack_theme_options/db_schema/', 'JB_SCHEMA_VERSION', 3);
+		} catch (PDOException $ex) {
+			// The schema update scripts should never fail.  If they do, there is no clean recovery.
+			FlashMessages::addMessage($ex->getMessage(), 'danger');
+			header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
+			throw $ex;
 		}
 	}
 
