@@ -15,7 +15,12 @@ namespace Fisharebest\Webtrees;
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
+ */ 
+
+use Fisharebest\Webtrees\Module\AbstractModule;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Query\QueryMedia;
 
 class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfigInterface {
 
