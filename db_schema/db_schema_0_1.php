@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,11 +13,12 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 $rows = Database::prepare("SELECT * FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute()->fetchAll();
-if(count($rows) > 0) {
+if (count($rows) > 0) {
 	Database::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
-	Log::addConfigurationLog(I18N::translate('JustBlack Theme Options').' reset to default values due to changes in database scheme');
+	Log::addConfigurationLog(I18N::translate('JustBlack Theme Options') . ' reset to default values due to changes in database scheme');
 	FlashMessages::addMessage(I18N::translate('All JustBlack Theme options are reset to default due to changes in this version of the module. Click <a href="module.php?mod=justblack_theme_options&mod_action=admin_config">HERE</a> to update the settings to your needs.'));
 }
 

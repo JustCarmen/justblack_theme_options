@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,12 +13,13 @@ namespace Fisharebest\Webtrees;
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
+namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Module\AbstractModule;
-use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Module\AbstractModule;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Query\QueryMedia;
 
 class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfigInterface {
@@ -724,7 +723,7 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 									<?php endif; ?>
 								</div>
 							</div>
-							<?php if (count($folders) > 1): // only show these options if we have subfolders ?>
+							<?php if (count($folders) > 1): // only show these options if we have subfolders  ?>
 								<!-- MEDIA FOLDER LIST -->
 								<div id="medialist" class="form-group form-group-sm">
 									<label class="control-label col-sm-4">
@@ -781,7 +780,7 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 							<?php if (isset($activeMenu)): ?>
 								<ul id="sort-menu" class="list-group"><?php echo $this->listMenuJustBlack($activeMenu); ?></ul>
 							<?php endif; ?>
-							<?php if (isset($trashMenu)): // trashcan for toggling the compact menu.  ?>
+							<?php if (isset($trashMenu)): // trashcan for toggling the compact menu.   ?>
 								<ul id="trash-menu" class="sr-only"><?php echo $this->listMenuJustBlack($trashMenu); ?></ul>
 							<?php endif; ?>
 						</div>
@@ -793,7 +792,7 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 				<?php echo I18N::translate('Save'); ?>
 			</button>
 			<button class="btn btn-primary" type="reset" onclick="if (confirm('<?php echo I18N::translate('The settings will be reset to default. Are you sure you want to do this?'); ?>'))
-								window.location.href = 'module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_reset';">
+						window.location.href = 'module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_reset';">
 				<i class="fa fa-recycle"></i>
 				<?php echo I18N::translate('Reset'); ?>
 			</button>
