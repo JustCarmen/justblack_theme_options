@@ -16,7 +16,6 @@
 namespace JustCarmen\WebtreesAddOns\JustBlack\Schema;
 
 use Fisharebest\Webtrees\Database;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 
