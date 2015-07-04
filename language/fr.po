@@ -1,170 +1,171 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: justblack theme options\n"
-"POT-Creation-Date: 2015-01-20 23:16+0100\n"
-"PO-Revision-Date: \n"
+"Project-Id-Version: JustBlack Theme Options\n"
+"POT-Creation-Date: 2015-07-04 23:24+0200\n"
+"PO-Revision-Date: 2015-07-04 23:54+0200\n"
 "Last-Translator: phicome <phicome@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.8.2\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
-#: modules_v3/justblack_theme_options/db_schema/db_schema_0_1.php:38
-msgid "All JustBlack Theme options are reset to default due to changes in this version of the module. Click <a href=\"module.php?mod=justblack_theme_options&mod_action=admin_config\">HERE</a> to update the settings to your needs."
+#: module.php:661
+msgid "Browse"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:763
+#: module.php:744
 msgid "Choose a folder as default for the main menu link"
 msgstr "Choisir un dossier de médias comme lien du menu principal"
 
-#: modules_v3/justblack_theme_options/module.php:582
+#: module.php:564
 #, fuzzy
 msgid "Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”."
 msgstr "<p>Décochez cette case si vous utilisez déjà le titre de l'arbre dans l'image d'en-tête. Sinon, laissez la case cochée.</p>"
 
-#: modules_v3/justblack_theme_options/module.php:793
+#: module.php:785
 #, fuzzy
 msgid "Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button."
 msgstr "<p>Cliquez sur une ligne, puis faites un glisser-déposer pour réorganiser les éléments du menu. Cliquez ensuite sur le bouton Enregistrer.</p>"
 
-#: modules_v3/justblack_theme_options/module.php:663
+#: module.php:360
 #, fuzzy
-msgid "Current header image"
-msgstr "Image d'en-tête personnalisée"
-
-#: modules_v3/justblack_theme_options/module.php:380
-msgid "Error: You have not uploaded an image or the image you have uploaded is not a valid image! Your settings are not saved."
+msgid "Error: The image you have uploaded is not a valid image! Your settings are not saved."
 msgstr "Erreur : Vous n'avez pas téléchargé d'image ou l'image que vous avez téléchargée n'est pas une image valide ! Vos réglages ne sont pas sauvegardés."
 
-#: modules_v3/justblack_theme_options/module.php:706
+#: module.php:681
 msgid "Height of the header area"
 msgstr "Hauteur de la zone d'en-tête"
 
-#: modules_v3/justblack_theme_options/module.php:626
+#: module.php:608
 #, php-format
 msgid "Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin."
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:757
-#, fuzzy
-msgid "If this option is set the media menu will be moved to the topmenu. The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
-msgstr "<p>Si cette option est activée, un nouveau menu Média sera ajouté aux menus principaux. Le nom des dossiers de médias apparaitront comme sous-menu du nouveau menu Média.</p><p>Attention : Ces liens de sous-menu ne sont pas traduits automatiquement. Pour les traduire, il faut le faire manuellement (voir les instructions dans le WIKI de webtrees).</p>"
+#: module.php:734
+msgid "If this option is set the media menu will be moved to the topmenu."
+msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:777
+#: module.php:758
 msgid "If you set this option the results on the media list page will include subfolders."
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:738
+#: module.php:714
 msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together."
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:744
+#: module.php:720
 msgid "Include the reports topmenu in the compact 'View' topmenu?"
 msgstr "Inclure le menu rapports dans le menu compact ?"
 
 #. I18N: Name of a module
-#: modules_v3/justblack_theme_options/db_schema/db_schema_0_1.php:37
-#: modules_v3/justblack_theme_options/module.php:64
+#: module.php:50
 msgid "JustBlack Theme Options"
 msgstr "Options du thème JustBlack"
 
-#: modules_v3/justblack_theme_options/module.php:753
+#: module.php:730
 msgid "Media menu in topmenu"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:570
+#: module.php:552
 msgid "Options"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:405
+#: module.php:382
 msgid "Options for the JustBlack theme"
 msgstr "Options pour le thème JustBlack"
 
-#: modules_v3/justblack_theme_options/module.php:589
+#: module.php:571
 msgid "Position of the Family tree title"
 msgstr "Position du titre de l'arbre"
 
-#: modules_v3/justblack_theme_options/module.php:697
+#: module.php:672
 #, fuzzy
-msgid "Resize header image (800 x 150px)"
+msgid "Resize image (800 x 150px)"
 msgstr "Redimensionner (800x150px)"
 
 #. I18N: Description of the module
-#: modules_v3/justblack_theme_options/module.php:69
+#: module.php:55
 msgid "Set options for the JustBlack theme within the admin interface"
 msgstr "Définir les options du thème JustBlack dans l'interface d'administration"
 
-#: modules_v3/justblack_theme_options/module.php:632
+#: module.php:769
+msgid "Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used"
+msgstr ""
+
+#: module.php:614
 msgid "Size of the Family tree title"
 msgstr "Taille du titre de l'arbre"
 
-#: modules_v3/justblack_theme_options/module.php:787
+#: module.php:779
 msgid "Sort Topmenu items"
 msgstr "Tri des items du menu"
 
-#: modules_v3/justblack_theme_options/module.php:768
+#: module.php:749
 #, fuzzy
 msgid "The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder."
 msgstr "<p>Le dossier de médias par défaut sera utilisé comme lien dans le menu Média principal. Si vous cliquez sur cette icône, la page de liste des médias de ce dossier apparaîtra.</p>"
 
-#: modules_v3/justblack_theme_options/module.php:813
+#: module.php:736
+#, fuzzy
+msgid "The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
+msgstr "<p>Si cette option est activée, un nouveau menu Média sera ajouté aux menus principaux. Le nom des dossiers de médias apparaitront comme sous-menu du nouveau menu Média.</p><p>Attention : Ces liens de sous-menu ne sont pas traduits automatiquement. Pour les traduire, il faut le faire manuellement (voir les instructions dans le WIKI de webtrees).</p>"
+
+#: module.php:808
 msgid "The settings will be reset to default. Are you sure you want to do this?"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:684
-msgid "Upload a (new) custom header image"
+#: module.php:641
+#, fuzzy
+msgid "Upload a custom header image"
 msgstr "Téléverser une (nouvelle) image d'en-tête"
 
-#: modules_v3/justblack_theme_options/module.php:734
+#: module.php:710
 msgid "Use a compact menu?"
 msgstr "Utiliser le menu compact ?"
 
-#: modules_v3/justblack_theme_options/module.php:724
+#: module.php:700
 msgid "Use flags in header bar as language menu?"
 msgstr "Utiliser les drapeaux de langage dans la barre d'en-tête ?"
 
-#: modules_v3/justblack_theme_options/module.php:650
+#: module.php:632
 msgid "Use header image?"
 msgstr "Utiliser une image d'en-tête ?"
 
-#: modules_v3/justblack_theme_options/module.php:578
+#: module.php:765
+msgid "Use square thumbs"
+msgstr ""
+
+#: module.php:560
 msgid "Use the Family tree title in the header?"
 msgstr "Utiliser le nom de l'arbre dans l'en-tête ?"
 
-#: modules_v3/justblack_theme_options/module.php:728
+#: module.php:704
 #, fuzzy
 msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
 msgstr "<p>Vous pouvez utiliser les drapeaux dans la barre située au-dessus du menu. Ces drapeaux remplacent le menu déroulant par défaut. Nous vous conseillons de ne pas utiliser cette option si vous avez plus d'une dizaine de langues installées.</p><p>Vous pouvez supprimer les langues non utilisées dans le dossier 'language' de votre installation webtrees.</p>"
 
-#: modules_v3/justblack_theme_options/module.php:395
-msgid "Your custom header image is succesfully removed."
-msgstr ""
-
-#: modules_v3/justblack_theme_options/module.php:378
-msgid "Your custom header image is succesfully saved."
+#: module.php:374
+#, fuzzy
+msgid "Your settings are successfully saved."
 msgstr "Votre image d'en-tête a été sauvegardée"
 
-#: modules_v3/justblack_theme_options/module.php:594
+#: module.php:576
 msgid "bottom"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:611
+#: module.php:593
 msgid "left"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:611
+#: module.php:593
 msgid "right"
 msgstr ""
 
-#: modules_v3/justblack_theme_options/module.php:594
+#: module.php:576
 msgid "top"
 msgstr ""
-
-#, fuzzy
-#~ msgid "<p>Here you can choose the location for the Family tree title in the header.</p>"
-#~ msgstr "<p>Ici, vous pouvez choisir l'emplacement pour le titre de l'arbre dans l'en-tête. Entrez les valeurs dans le sens horaire (Haut, Droite, Bas, Gauche), séparées par une virgule.</p>"

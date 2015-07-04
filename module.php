@@ -766,7 +766,7 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 								</label>
 								<div class="col-sm-8">
 									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[SQUARE_THUMBS]', $this->options('square_thumbs'), 'class="radio-inline"'); ?>
-									<p class="small text-muted"><?php echo I18N::translate('Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used'); ?></p>
+									<p class="small text-muted"><?php echo I18N::translate('Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used.'); ?></p>
 								</div>
 							</div>
 						</div>
@@ -803,12 +803,12 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 			</div>
 			<button class="btn btn-primary" type="submit">
 				<i class="fa fa-check"></i>
-				<?php echo I18N::translate('Save'); ?>
+				<?php echo I18N::translate('save'); ?>
 			</button>
 			<button class="btn btn-primary" type="reset" onclick="if (confirm('<?php echo I18N::translate('The settings will be reset to default. Are you sure you want to do this?'); ?>'))
 						window.location.href = 'module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_reset';">
 				<i class="fa fa-recycle"></i>
-				<?php echo I18N::translate('Reset'); ?>
+				<?php echo I18N::translate('reset'); ?>
 			</button>
 		</form>
 		<?php
