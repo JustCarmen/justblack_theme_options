@@ -271,7 +271,7 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 
 	private function resize($imgSrc, $type, $thumbwidth, $thumbheight) {
 		//getting the image dimensions
-		list($width_orig, $height_orig) = @getimagesize($imgSrc);
+		list($width_orig, $height_orig) = getimagesize($imgSrc);
 		$ratio_orig = $width_orig / $height_orig;
 
 		if (($width_orig > $height_orig && $width_orig < $thumbwidth) || ($height_orig > $width_orig && $height_orig < $thumbheight)) {
@@ -291,33 +291,33 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		// return resized header image
 		switch ($type) {
 			case 'image/jpeg':
-				$image = @imagecreatefromjpeg($imgSrc);
-				$thumb = @imagecreatetruecolor(round($new_width), $thumbheight);
+				$image = imagecreatefromjpeg($imgSrc);
+				$thumb = imagecreatetruecolor(round($new_width), $thumbheight);
 
-				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
-				@imagedestroy($image);
-				return @imagejpeg($thumb, $imgSrc, 100);
+				imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
+				imagedestroy($image);
+				return imagejpeg($thumb, $imgSrc, 100);
 			case 'image/gif':
-				$image = @imagecreatefromgif($imgSrc);
-				$thumb = @imagecreatetruecolor(round($new_width), $thumbheight);
+				$image = imagecreatefromgif($imgSrc);
+				$thumb = imagecreatetruecolor(round($new_width), $thumbheight);
 
-				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
-				@imagecolortransparent($thumb, @imagecolorallocate($thumb, 0, 0, 0));
-				@imagedestroy($image);
+				imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
+				imagecolortransparent($thumb, imagecolorallocate($thumb, 0, 0, 0));
+				imagedestroy($image);
 
-				return @imagegif($thumb, $imgSrc, 100);
+				return imagegif($thumb, $imgSrc, 100);
 			case 'image/png':
-				$image = @imagecreatefrompng($imgSrc);
-				@imagealphablending($image, false);
+				$image = imagecreatefrompng($imgSrc);
+				imagealphablending($image, false);
 
-				$thumb = @imagecreatetruecolor(round($new_width), $thumbheight);
-				@imagealphablending($thumb, false);
-				@imagesavealpha($thumb, true);
+				$thumb = imagecreatetruecolor(round($new_width), $thumbheight);
+				imagealphablending($thumb, false);
+				imagesavealpha($thumb, true);
 
-				@imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
-				@imagedestroy($image);
+				imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
+				imagedestroy($image);
 
-				return @imagepng($thumb, $imgSrc, 0);
+				return imagepng($thumb, $imgSrc, 0);
 		}
 	}
 
