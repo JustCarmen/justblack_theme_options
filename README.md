@@ -3,7 +3,7 @@ JustBlack Theme Options Module
 
 Theme options module for the JustBlack theme in webtrees.
 
-This module requires [webtrees 1.6.2](https://github.com/fisharebest/webtrees). Download the latest stable release [here](https://github.com/JustCarmen/justblack_theme_options/releases/tag/1.6.2).
+This module requires [webtrees 1.7.0](https://github.com/fisharebest/webtrees). Download the latest stable release [here](https://github.com/JustCarmen/justblack_theme_options/releases/tag/1.7.0).
 
 Download the latest stable relase for webtrees 1.4.x here: https://github.com/JustCarmen/justblack_theme_options/releases/tag/1.4.4
 
@@ -17,7 +17,7 @@ On the JustBlack Theme Options configuration page you can set the following opti
 * Use the default header image, upload a custom one or opt for no header image.
 * It is possible to resize the newly uploaded header image to the default values of the JustBlack Theme (800x150px).
 * In case you choose a custom header or choose not to use a header image you can set the height of the header area (You can not use this option in conjunction with the resize option)..
-* Opt for flags as language menu or use the default dropdown menu. Advice is not to use this option if you have more then 10 languages installed; Remove the languages you won't need from the language folder of your webtrees installation.
+* Opt for flags as language menu or use the default dropdown menu. Advice is not to use this option if you have more then 10 languages enabled. Disable the languages you won't need in the Control Panel.
 * Use a compact 'View' menu. In the compact version of the topmenu the menu-items Charts, Lists, Calendar and Reports (optional) will be put together in one mainmenu-item.
 * Move the media menu link to the topmenu.
 * Order the main menu items. Ordering menu items here is more flexible then the sort option webtrees offers by default. Here you can shuffle ALL main menu items (except the homepage and my page menu). 
