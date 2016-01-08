@@ -29,7 +29,7 @@ li.menu-view {
 }
 
 [dir=rtl] .menu-view > ul > li > a.icon_arrow {
-	background-position:10% -918px; // correction
+	background-position:10% -918px; /*correction*/
 }
 
 [dir=rtl] .menu-view > ul > li > a.icon_arrow span {
