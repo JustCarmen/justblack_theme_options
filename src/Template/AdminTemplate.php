@@ -194,20 +194,20 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 		?>
 		<!-- ADMIN PAGE CONTENT -->
 		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-			<li class="active"><?php echo $this->getTitle(); ?></li>
+			<li><a href="admin.php"><?php echo I18N::translate('Control panel') ?></a></li>
+			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration') ?></a></li>
+			<li class="active"><?php echo $this->getTitle() ?></li>
 		</ol>
-		<h2><?php echo $this->getTitle(); ?></h2>
-		<form action="<?php echo $this->getConfigLink(); ?>" enctype="multipart/form-data" name="configform" method="post" class="form-horizontal">
+		<h2><?php echo $this->getTitle() ?></h2>
+		<form action="<?php echo $this->getConfigLink() ?>" enctype="multipart/form-data" name="configform" method="post" class="form-horizontal">
 			<input type="hidden" value="1" name="save">
-			<?php echo Filter::getCsrf(); ?>
+			<?php echo Filter::getCsrf() ?>
 			<input type="hidden" value="0" name="remove-image">
 			<div id="accordion" class="panel-group">
 				<div id="panel1" class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-							<a href="#collapseOne" data-target="#collapseOne" data-toggle="collapse"><?php echo I18N::translate('Options'); ?></a>
+							<a href="#collapseOne" data-target="#collapseOne" data-toggle="collapse"><?php echo I18N::translate('Options') ?></a>
 						</h4>
 					</div>
 					<div class="panel-collapse collapse in" id="collapseOne">
@@ -215,67 +215,67 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<!-- TREE TITLE -->
 							<div id="tree-title" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Use the Family tree title in the header?'); ?>
+									<?php echo I18N::translate('Use the Family tree title in the header?') ?>
 								</label>
 								<div class="col-sm-8">
-									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[TREETITLE]', $this->options('treetitle'), 'class="radio-inline"'); ?>
-									<p class="small text-muted"><?php echo I18N::translate('Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”.'); ?></p>
+									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[TREETITLE]', $this->options('treetitle'), 'class="radio-inline"') ?>
+									<p class="small text-muted"><?php echo I18N::translate('Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”.') ?></p>
 								</div>
 							</div>
 							<!-- TITLE POSITION -->
 							<?php $titlepos = $this->options('titlepos'); ?>
 							<div id="title-pos" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Position of the Family tree title'); ?>
+									<?php echo I18N::translate('Position of the Family tree title') ?>
 								</label>
 								<div class="col-sm-8">
 									<div class="row">
 										<div class="col-xs-2">
-											<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][V][pos]', array('top' => I18N::translate('top'), 'bottom' => I18N::translate('bottom')), null, $titlepos['V']['pos'], 'class="form-control"'); ?>
+											<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][V][pos]', array('top' => I18N::translate('top'), 'bottom' => I18N::translate('bottom')), null, $titlepos['V']['pos'], 'class="form-control"') ?>
 										</div>
 										<div class="col-xs-2">
 											<input
 												type="text"
-												value="<?php echo $titlepos['V']['size']; ?>"
+												value="<?php echo $titlepos['V']['size'] ?>"
 												size="3"
 												name="NEW_JB_OPTIONS[TITLEPOS][V][size]"
 												class="form-control"
 												>
 										</div>
 										<div class="col-xs-2">
-											<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', array('px' => 'px', '%' => '%'), null, $titlepos['V']['fmt'], 'class="form-control"'); ?>
+											<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', array('px' => 'px', '%' => '%'), null, $titlepos['V']['fmt'], 'class="form-control"') ?>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-xs-2">
-											<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][H][pos]', array('left' => I18N::translate('left'), 'right' => I18N::translate('right')), null, $titlepos['H']['pos'], 'class="form-control"'); ?>
+											<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][H][pos]', array('left' => I18N::translate('left'), 'right' => I18N::translate('right')), null, $titlepos['H']['pos'], 'class="form-control"') ?>
 										</div>
 										<div class="col-xs-2">
 											<input
 												type="text"
-												value="<?php echo $titlepos['H']['size']; ?>"
+												value="<?php echo $titlepos['H']['size'] ?>"
 												size="3"
 												name="NEW_JB_OPTIONS[TITLEPOS][H][size]"
 												class="form-control"
 												>
 										</div>
 										<div class="col-xs-2">
-											<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][H][fmt]', array('px' => 'px', '%' => '%'), null, $titlepos['H']['fmt'], 'class="form-control"'); ?>
+											<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][H][fmt]', array('px' => 'px', '%' => '%'), null, $titlepos['H']['fmt'], 'class="form-control"') ?>
 										</div>
 									</div>
-									<p class="small text-muted"><?php echo I18N::translate('Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin.'); ?></p>
+									<p class="small text-muted"><?php echo I18N::translate('Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin.') ?></p>
 								</div>
 							</div>
 							<!-- TITLE SIZE -->
 							<div id="title-size" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Size of the Family tree title'); ?>
+									<?php echo I18N::translate('Size of the Family tree title') ?>
 								</label>
 								<div class="col-sm-2">
 									<div class="input-group">
 										<input
 											type="text"
-											value="<?php echo $this->options('titlesize'); ?>"
+											value="<?php echo $this->options('titlesize') ?>"
 											size="2"
 											name="NEW_JB_OPTIONS[TITLESIZE]"
 											class="form-control"
@@ -287,16 +287,16 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<!-- HEADER IMAGE -->
 							<div id="header-image" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Use header image?'); ?>
+									<?php echo I18N::translate('Use header image?') ?>
 								</label>
 								<div class="col-sm-2">
-									<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[HEADER]', array(I18N::translate('Default'), I18N::translate('Custom'), I18N::translate('None')), null, $this->options('header'), 'class="form-control"'); ?>
+									<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[HEADER]', array(I18N::translate('Default'), I18N::translate('Custom'), I18N::translate('None')), null, $this->options('header'), 'class="form-control"') ?>
 								</div>
 							</div>
 							<!-- IMAGE UPLOAD FIELD -->
 							<div id="upload-image" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Upload a custom header image'); ?>
+									<?php echo I18N::translate('Upload a custom header image') ?>
 								</label>
 								<div class="col-sm-4">
 									<input
@@ -311,12 +311,12 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 											class="form-control"
 											name="JB_IMAGE"
 											type="text"
-											value="<?php echo $this->options('image'); ?>"
+											value="<?php echo $this->options('image') ?>"
 											readonly
 											onfocus="this.blur()"
 											>
 										<span id="file-input-btn" class="btn btn-default input-group-addon">
-											<?php echo I18N::translate('Browse'); ?>
+											<?php echo I18N::translate('Browse') ?>
 										</span>
 										<span id="file-delete" class="btn input-group-addon">
 											<i class="fa fa-trash"></i>
@@ -327,22 +327,22 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<!-- RESIZE IMAGE -->
 							<div id="resize-image" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Resize image (800 x 150px)'); ?>
+									<?php echo I18N::translate('Resize image (800 x 150px)') ?>
 								</label>
 								<div class="col-sm-8">
-									<?php echo FunctionsEdit::editFieldYesNo('resize', '0', 'class="radio-inline"'); ?>
+									<?php echo FunctionsEdit::editFieldYesNo('resize', '0', 'class="radio-inline"') ?>
 								</div>
 							</div>
 							<!-- HEADER HEIGHT -->
 							<div id="header-height" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Height of the header area'); ?>
+									<?php echo I18N::translate('Height of the header area') ?>
 								</label>
 								<div class="col-sm-2">
 									<div class="input-group">
 										<input
 											type="text"
-											value="<?php echo $this->options('headerheight'); ?>"
+											value="<?php echo $this->options('headerheight') ?>"
 											size="2"
 											name="NEW_JB_OPTIONS[HEADERHEIGHT]"
 											class="form-control"
@@ -355,43 +355,43 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<!-- FLAGS -->
 							<div id="flags" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Use flags in header bar as language menu?'); ?>
+									<?php echo I18N::translate('Use flags in header bar as language menu?') ?>
 								</label>
 								<div class="col-sm-8">
-									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[FLAGS]', $this->options('flags'), 'class="radio-inline"'); ?>
-									<p class="small text-muted"><?php echo I18N::translate('You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation.'); ?></p>
+									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[FLAGS]', $this->options('flags'), 'class="radio-inline"') ?>
+									<p class="small text-muted"><?php echo I18N::translate('You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation.') ?></p>
 								</div>
 							</div>
 							<!-- COMPACT MENU -->
 							<div id="compact-menu" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Use a compact menu?'); ?>
+									<?php echo I18N::translate('Use a compact menu?') ?>
 								</label>
 								<div class="col-sm-8">
-									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[COMPACT_MENU]', $this->options('compact_menu'), 'class="radio-inline"'); ?>
-									<p class="small text-muted"><?php echo I18N::translate('In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together.'); ?></p>
+									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[COMPACT_MENU]', $this->options('compact_menu'), 'class="radio-inline"') ?>
+									<p class="small text-muted"><?php echo I18N::translate('In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together.') ?></p>
 								</div>
 							</div>
 							<!-- REPORTS -->
 							<div id="reports" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?'); ?>
+									<?php echo I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?') ?>
 								</label>
 								<div class="col-sm-8">
-									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', $this->options('compact_menu_reports'), 'class="radio-inline"'); ?>
+									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', $this->options('compact_menu_reports'), 'class="radio-inline"') ?>
 								</div>
 							</div>
 							<!-- MEDIA MENU -->
 							<?php $folders = $this->options('mediafolders'); ?>
 							<div id="media-menu" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Media menu in topmenu'); ?>
+									<?php echo I18N::translate('Media menu in topmenu') ?>
 								</label>
 								<div class="col-sm-8">
-									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu'), 'class="radio-inline"'); ?>
-									<p class="small text-muted"><?php echo I18N::translate('If this option is set the media menu will be moved to the topmenu.'); ?></p>
+									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu'), 'class="radio-inline"') ?>
+									<p class="small text-muted"><?php echo I18N::translate('If this option is set the media menu will be moved to the topmenu.') ?></p>
 									<?php if (count($folders) > 1): // add extra information about subfolders ?>
-										<p class="small text-muted"><?php echo I18N::translate('The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information.'); ?></p>
+										<p class="small text-muted"><?php echo I18N::translate('The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information.') ?></p>
 									<?php endif; ?>
 								</div>
 							</div>
@@ -399,32 +399,32 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 								<!-- MEDIA FOLDER LIST -->
 								<div id="medialist" class="form-group form-group-sm">
 									<label class="control-label col-sm-4">
-										<?php echo I18N::translate('Choose a folder as default for the main menu link'); ?>
+										<?php echo I18N::translate('Choose a folder as default for the main menu link') ?>
 									</label>
 									<div class="col-sm-2">
-										<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[MEDIA_LINK]', $folders, null, $this->options('media_link'), 'class="form-control"'); ?>
+										<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[MEDIA_LINK]', $folders, null, $this->options('media_link'), 'class="form-control"') ?>
 									</div>
-									<div class="col-sm-8"><p class="small text-muted"><?php echo I18N::translate('The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder.'); ?></p></div>
+									<div class="col-sm-8"><p class="small text-muted"><?php echo I18N::translate('The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder.') ?></p></div>
 								</div>
 								<!-- SHOW SUBFOLDERS -->
 								<div id="subfolders" class="form-group form-group-sm">
 									<label class="control-label col-sm-4">
-										<?php echo I18N::translate('Include subfolders'); ?>
+										<?php echo I18N::translate('Include subfolders') ?>
 									</label>
 									<div class="col-sm-8">
-										<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[SHOW_SUBFOLDERS]', $this->options('show_subfolders'), 'class="radio-inline"'); ?>
-										<p class="small text-muted"><?php echo I18N::translate('If you set this option the results on the media list page will include subfolders.'); ?></p>
+										<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[SHOW_SUBFOLDERS]', $this->options('show_subfolders'), 'class="radio-inline"') ?>
+										<p class="small text-muted"><?php echo I18N::translate('If you set this option the results on the media list page will include subfolders.') ?></p>
 									</div>
 								</div>
 							<?php endif; ?>
 							<!-- SQUARE THUMBS -->
 							<div id="square_thumbs" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Use square thumbs'); ?>
+									<?php echo I18N::translate('Use square thumbs') ?>
 								</label>
 								<div class="col-sm-8">
-									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[SQUARE_THUMBS]', $this->options('square_thumbs'), 'class="radio-inline"'); ?>
-									<p class="small text-muted"><?php echo I18N::translate('Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used.'); ?></p>
+									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[SQUARE_THUMBS]', $this->options('square_thumbs'), 'class="radio-inline"') ?>
+									<p class="small text-muted"><?php echo I18N::translate('Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used.') ?></p>
 								</div>
 							</div>
 						</div>
@@ -434,13 +434,13 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a class="collapsed" href="#collapseTwo" data-target="#collapseTwo" data-toggle="collapse">
-								<?php echo I18N::translate('Sort Topmenu items'); ?>
+								<?php echo I18N::translate('Sort Topmenu items') ?>
 							</a>
 						</h4>
 					</div>
 					<div class="panel-collapse collapse" id="collapseTwo">
 						<div class="panel-heading">
-							<?php echo I18N::translate('Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button.'); ?>
+							<?php echo I18N::translate('Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button.') ?>
 						</div>
 						<div class="panel-body">
 							<?php
@@ -450,10 +450,10 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							}
 							?>
 							<?php if (isset($activeMenu)): ?>
-								<ul id="sort-menu" class="list-group"><?php echo $this->listMenuJustBlack($activeMenu); ?></ul>
+								<ul id="sort-menu" class="list-group"><?php echo $this->listMenuJustBlack($activeMenu) ?></ul>
 							<?php endif; ?>
 							<?php if (isset($trashMenu)): // trashcan for toggling the compact menu.   ?>
-								<ul id="trash-menu" class="sr-only"><?php echo $this->listMenuJustBlack($trashMenu); ?></ul>
+								<ul id="trash-menu" class="sr-only"><?php echo $this->listMenuJustBlack($trashMenu) ?></ul>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -461,12 +461,12 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 			</div>
 			<button class="btn btn-primary" type="submit">
 				<i class="fa fa-check"></i>
-				<?php echo I18N::translate('save'); ?>
+				<?php echo I18N::translate('save') ?>
 			</button>
-			<button class="btn btn-primary" type="reset" onclick="if (confirm('<?php echo I18N::translate('The settings will be reset to default. Are you sure you want to do this?'); ?>'))
-						window.location.href = 'module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_reset';">
+			<button class="btn btn-primary" type="reset" onclick="if (confirm('<?php echo I18N::translate('The settings will be reset to default. Are you sure you want to do this?') ?>'))
+						window.location.href = 'module.php?mod=<?php echo $this->getName() ?>&amp;mod_action=admin_reset';">
 				<i class="fa fa-recycle"></i>
-				<?php echo I18N::translate('reset'); ?>
+				<?php echo I18N::translate('reset') ?>
 			</button>
 		</form>
 		<?php
