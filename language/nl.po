@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
-"POT-Creation-Date: 2015-07-04 23:24+0200\n"
-"PO-Revision-Date: 2015-07-04 23:54+0200\n"
+"POT-Creation-Date: 2016-03-20 22:12+0100\n"
+"PO-Revision-Date: 2016-03-20 22:16+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -11,153 +11,152 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
-#: module.php:661
+#: src/Template/AdminTemplate.php:319
 msgid "Browse"
 msgstr "Blader"
 
-#: module.php:744
+#: src/Template/AdminTemplate.php:402
 msgid "Choose a folder as default for the main menu link"
 msgstr "Kies een standaard folder voor de hoofdmenu link"
 
-#: module.php:564
+#: src/Template/AdminTemplate.php:222
 msgid "Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”."
 msgstr "Kies “nee” wanneer u de stamboomtitel al gebruikt in de header afbeelding. Laat de waarde anders op “ja” staan."
 
-#: module.php:785
+#: src/Template/AdminTemplate.php:443
 msgid "Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button."
 msgstr "Klik op een rij, sleep en laat los om de volgorde van de topmenu items te wijzigen. Klik daarna op de knop 'opslaan'."
 
-#: module.php:360
+#: src/JustBlackThemeOptionsClass.php:59
 msgid "Error: The image you have uploaded is not a valid image! Your settings are not saved."
 msgstr "Fout: De afbeelding die u hebt geupload is niet geldig! Uw instellingen zijn niet opgeslagen."
 
-#: module.php:681
+#: src/Template/AdminTemplate.php:339
 msgid "Height of the header area"
 msgstr "Hoogte van het header gebied"
 
-#: module.php:608
+#: src/Template/AdminTemplate.php:266
 #, php-format
 msgid "Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin."
 msgstr "Hier kunt u de locatie van de stamboomtitel instellen. Pas de waarden aan uw wensen aan. Als u wilt dat de titel in de header afbeelding verschijnt, zijn de juiste waarden afhankelijk van de lengte van de stamboomtitel. De positie is de absolute positie van de titel in relatie tot het header gebied. Bijvoorbeeld: kies “Top: 0px; Links: 0px” voor de linkerbovenhoek van het header gebied of “Top: 50%%; Rechts: 10px” om de titel aan de rechterkant in het midden van het header gebied te plaatsen met een marge van 10px."
 
-#: module.php:734
+#: src/Template/AdminTemplate.php:392
 msgid "If this option is set the media menu will be moved to the topmenu."
 msgstr "Als deze optie is ingeschakeld, wordt het media menu verplaatst naar het topmenu."
 
-#: module.php:758
+#: src/Template/AdminTemplate.php:416
 msgid "If you set this option the results on the media list page will include subfolders."
 msgstr "Wanneer u deze optie instelt worden de resultaten op de media pagina getoond inclusief submappen."
 
-#: module.php:714
+#: src/Template/AdminTemplate.php:372
 msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together."
 msgstr "In het compacte “Bekijk”-menu worden de menu's voor Diagrammen, Lijsten, Kalender en (optioneel) Rapporten, samengevoegd."
 
-#: module.php:720
+#: src/Template/AdminTemplate.php:378
 msgid "Include the reports topmenu in the compact 'View' topmenu?"
 msgstr "Wilt u het menu rapporten opnemen in het compacte 'Bekijk' menu?"
 
 #. I18N: Name of a module
-#: module.php:50
+#: module.php:62
 msgid "JustBlack Theme Options"
 msgstr "JustBlack Thema Opties"
 
-#: module.php:730
+#: src/Template/AdminTemplate.php:388
 msgid "Media menu in topmenu"
 msgstr "Media menu in hoofdmenu"
 
-#: module.php:552
+#: src/Template/AdminTemplate.php:210
 msgid "Options"
 msgstr "Opties"
 
-#: module.php:382
+#: src/Template/AdminTemplate.php:38
 msgid "Options for the JustBlack theme"
 msgstr "Opties voor het JustBlack thema"
 
-#: module.php:571
+#: src/Template/AdminTemplate.php:229
 msgid "Position of the Family tree title"
 msgstr "Positie van de stamboomtitel"
 
-#: module.php:672
+#: src/Template/AdminTemplate.php:330
 msgid "Resize image (800 x 150px)"
 msgstr "Resize afbeelding (800 x 150px)"
 
 #. I18N: Description of the module
-#: module.php:55
+#: module.php:67
 msgid "Set options for the JustBlack theme within the admin interface"
 msgstr "Zet opties voor het JustBlack thema vanuit de administratie interface"
 
-#: module.php:769
-#, fuzzy
-msgid "Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used"
+#: src/Template/AdminTemplate.php:427
+msgid "Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used."
 msgstr "Zet deze optie op \"ja\" om vierkante miniatuurplaatjes te gebruiken in persoonsboxen en diagrammen. Als u hier \"nee\" kiest worden de standaard webtrees thumbnails gebruikt."
 
-#: module.php:614
+#: src/Template/AdminTemplate.php:272
 msgid "Size of the Family tree title"
 msgstr "Grootte van de stamboomtitel"
 
-#: module.php:779
+#: src/Template/AdminTemplate.php:437
 msgid "Sort Topmenu items"
 msgstr "Topmenu items sorteren"
 
-#: module.php:749
+#: src/Template/AdminTemplate.php:407
 msgid "The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder."
 msgstr "De media map die u hier kiest wordt gebruikt als standaard map voor de media menu koppeling in het hoofdmenu. Wanneer u op de media koppeling of op het media icoon klikt in het hoofdmenu, opent de pagina met de media items uit deze map."
 
-#: module.php:736
+#: src/Template/AdminTemplate.php:394
 msgid "The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
 msgstr "De namen van de mappen direct onder de hoofdmap van uw media map op de server, worden gebruikt als submenu items in het nieuwe media menu. Waarschuwing: deze submenu items worden niet automatisch vertaald. Gebruik een aangepast taalbestand om uw menu items te vertalen. Lees de webtrees WIKI voor meer informatie."
 
-#: module.php:808
+#: src/Template/AdminTemplate.php:466
 msgid "The settings will be reset to default. Are you sure you want to do this?"
 msgstr "De instellingen worden teruggezet naar de standaard instellingen. Weet u zeker dat u dit wilt?"
 
-#: module.php:641
+#: src/Template/AdminTemplate.php:299
 msgid "Upload a custom header image"
 msgstr "Upload een aangepaste header afbeelding"
 
-#: module.php:710
+#: src/Template/AdminTemplate.php:368
 msgid "Use a compact menu?"
 msgstr "Gebruik een compact menu?"
 
-#: module.php:700
+#: src/Template/AdminTemplate.php:358
 msgid "Use flags in header bar as language menu?"
 msgstr "Gebruik vlaggen in de header bar als taalmenu?"
 
-#: module.php:632
+#: src/Template/AdminTemplate.php:290
 msgid "Use header image?"
 msgstr "Gebruik de header afbeelding?"
 
-#: module.php:765
+#: src/Template/AdminTemplate.php:423
 msgid "Use square thumbs"
 msgstr "Gebruik vierkante miniatuurplaatjes"
 
-#: module.php:560
+#: src/Template/AdminTemplate.php:218
 msgid "Use the Family tree title in the header?"
 msgstr "Gebruik de stamboomtitel in de header?"
 
-#: module.php:704
+#: src/Template/AdminTemplate.php:362
 msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
 msgstr "U kunt vlaggen gebruiken in de balk boven het topmenu in de header. Deze vlaggen vervangen het standaard dropdown menu. Wij adviseren u om deze optie niet in te schakelen wanneer u meer dan tien talen heeft geïnstalleerd. U kunt ongebruikte talen verwijderen uit de folder languages in uw webtrees installatie."
 
-#: module.php:374
+#: src/JustBlackThemeOptionsClass.php:73
 msgid "Your settings are successfully saved."
 msgstr "Uw instellingen zijn succesvol opgeslagen."
 
-#: module.php:576
+#: src/Template/AdminTemplate.php:234
 msgid "bottom"
 msgstr "onder"
 
-#: module.php:593
+#: src/Template/AdminTemplate.php:251
 msgid "left"
 msgstr "links"
 
-#: module.php:593
+#: src/Template/AdminTemplate.php:251
 msgid "right"
 msgstr "rechts"
 
-#: module.php:576
+#: src/Template/AdminTemplate.php:234
 msgid "top"
 msgstr "boven"

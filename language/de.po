@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
-"POT-Creation-Date: 2015-07-04 23:24+0200\n"
+"POT-Creation-Date: 2016-03-20 22:12+0100\n"
 "PO-Revision-Date: 2015-07-04 23:53+0200\n"
 "Last-Translator: Hermann Hartenthaler <hermann@hartenthaler.de>\n"
 "Language-Team: \n"
@@ -14,159 +14,159 @@ msgstr ""
 "X-Generator: Poedit 1.8.2\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
-#: module.php:661
+#: src/Template/AdminTemplate.php:319
 msgid "Browse"
 msgstr ""
 
-#: module.php:744
+#: src/Template/AdminTemplate.php:402
 msgid "Choose a folder as default for the main menu link"
 msgstr "Wählen Sie einen Ordner als Standardeintrag für den Link im Hauptmenü"
 
-#: module.php:564
+#: src/Template/AdminTemplate.php:222
 #, fuzzy
 msgid "Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”."
 msgstr "<p>Entfernen Sie diese Auswahl, wenn der Stammbaumtitel bereits in der Titelgrafik enthalten ist. Ansonsten lassen sie die Auswahl gesetzt.</p>"
 
-#: module.php:785
+#: src/Template/AdminTemplate.php:443
 #, fuzzy
 msgid "Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button."
 msgstr "<p>Um die Einträge im Hauptmenü umzuordnen, verschieben Sie die Zeilen mit der Maus. Vergessen Sie nicht, danach auf 'Speichern' zu klicken!</p>"
 
-#: module.php:360
+#: src/JustBlackThemeOptionsClass.php:59
 #, fuzzy
 msgid "Error: The image you have uploaded is not a valid image! Your settings are not saved."
 msgstr "Fehler:  Entweder wurde kein Bild hochgeladen oder das hochgeladene Bild hat nicht das richtige Dateiformat! Ihre Einstellungen wurden nicht gesichert."
 
-#: module.php:681
+#: src/Template/AdminTemplate.php:339
 msgid "Height of the header area"
 msgstr "Höhe des Kopfbereiches"
 
-#: module.php:608
+#: src/Template/AdminTemplate.php:266
 #, php-format
 msgid "Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin."
 msgstr ""
 
-#: module.php:734
+#: src/Template/AdminTemplate.php:392
 msgid "If this option is set the media menu will be moved to the topmenu."
 msgstr ""
 
-#: module.php:758
+#: src/Template/AdminTemplate.php:416
 #, fuzzy
 msgid "If you set this option the results on the media list page will include subfolders."
 msgstr "<p>Wenn Sie diese Option auswählen, dann wird die Medienseite auch Unterordner enthalten.<p>"
 
-#: module.php:714
+#: src/Template/AdminTemplate.php:372
 msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together."
 msgstr ""
 
-#: module.php:720
+#: src/Template/AdminTemplate.php:378
 msgid "Include the reports topmenu in the compact 'View' topmenu?"
 msgstr "Verschieben der Liste der Berichte aus dem Hauptmenü in ein Untermenü von \"Zeige\"?"
 
 #. I18N: Name of a module
-#: module.php:50
+#: module.php:62
 msgid "JustBlack Theme Options"
 msgstr "JustBlack: Optionen für das Thema"
 
-#: module.php:730
+#: src/Template/AdminTemplate.php:388
 msgid "Media menu in topmenu"
 msgstr ""
 
-#: module.php:552
+#: src/Template/AdminTemplate.php:210
 msgid "Options"
 msgstr ""
 
-#: module.php:382
+#: src/Template/AdminTemplate.php:38
 msgid "Options for the JustBlack theme"
 msgstr "Optionen für das Anzeigethema JustBlack"
 
-#: module.php:571
+#: src/Template/AdminTemplate.php:229
 msgid "Position of the Family tree title"
 msgstr "Position des Stammbaumtitels"
 
-#: module.php:672
+#: src/Template/AdminTemplate.php:330
 #, fuzzy
 msgid "Resize image (800 x 150px)"
 msgstr "Titelgrafik auf (800px mal 150px) vereinheitlichen?"
 
 #. I18N: Description of the module
-#: module.php:55
+#: module.php:67
 msgid "Set options for the JustBlack theme within the admin interface"
 msgstr "Setzen der Optionen des Anzeigethemas JustBlack im Verwaltungsbereich"
 
-#: module.php:769
-msgid "Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used"
+#: src/Template/AdminTemplate.php:427
+msgid "Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used."
 msgstr ""
 
-#: module.php:614
+#: src/Template/AdminTemplate.php:272
 msgid "Size of the Family tree title"
 msgstr "Größe des Stammbaumtitels"
 
-#: module.php:779
+#: src/Template/AdminTemplate.php:437
 msgid "Sort Topmenu items"
 msgstr "Einträge im Hauptmenü sortieren"
 
-#: module.php:749
+#: src/Template/AdminTemplate.php:407
 #, fuzzy
 msgid "The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder."
 msgstr "<p>Der Standard-Medienordner wird als Link für das Mediensymbol im Hauptmenü benutzt. Beim Klicken darauf wird die Medienliste für diesen Ordner angezeigt.</p>"
 
-#: module.php:736
+#: src/Template/AdminTemplate.php:394
 #, fuzzy
 msgid "The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
 msgstr "<p>Hiermit wird das Medienmenü ins Hauptmenü verschoben. Die Namen der Unterverzeichnisse auf der ersten Ebene erscheinen als Untermenü im neuen Menü \"Multimedia\".</p><p>Achtung: Diese Untermenüpunkte werden nicht automatisch übersetzt. Um die Einträge zu übersetzen, sollten Sie sich nach den Anweisungen im WIKI von webtrees richten.</p>"
 
-#: module.php:808
+#: src/Template/AdminTemplate.php:466
 msgid "The settings will be reset to default. Are you sure you want to do this?"
 msgstr "Die Einstellungen werden auf die Standardwerte zurückgesetzt. Wollen Sie das wirklich?"
 
-#: module.php:641
+#: src/Template/AdminTemplate.php:299
 #, fuzzy
 msgid "Upload a custom header image"
 msgstr "Hochladen einer (neuen) Grafik für den Kopfbereich"
 
-#: module.php:710
+#: src/Template/AdminTemplate.php:368
 msgid "Use a compact menu?"
 msgstr "Kompaktes Menü für Diagramme, Listen etc. verwenden?"
 
-#: module.php:700
+#: src/Template/AdminTemplate.php:358
 msgid "Use flags in header bar as language menu?"
 msgstr "Fahnen zur Sprachauswahl im Kopfbereich verwenden?"
 
-#: module.php:632
+#: src/Template/AdminTemplate.php:290
 msgid "Use header image?"
 msgstr "Eine Titelgrafik im Kopfbereich verwenden?"
 
-#: module.php:765
+#: src/Template/AdminTemplate.php:423
 msgid "Use square thumbs"
 msgstr ""
 
-#: module.php:560
+#: src/Template/AdminTemplate.php:218
 msgid "Use the Family tree title in the header?"
 msgstr "Den Stammbaumtitel im Kopfbereich verwenden?"
 
-#: module.php:704
+#: src/Template/AdminTemplate.php:362
 #, fuzzy
 msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
 msgstr "<p>Sie können statt des Auswahlmenüs für die Sprache auch Nationalflaggen im Kopfbereich über der Hauptauswahl verwenden. Bei mehr als zehn installierten Sprachen sollten Sie allerdings auf diese Möglichkeit verzichten.</p><p>Nicht genutzte oder unerwünschte Sprachen können Sie ganz einfach aus dem Ordner '/languages' im webtrees-Verzeichnis löschen.</p>"
 
-#: module.php:374
+#: src/JustBlackThemeOptionsClass.php:73
 #, fuzzy
 msgid "Your settings are successfully saved."
 msgstr "Ihre Grafik für den Kopfbereich wurde gesichert."
 
-#: module.php:576
+#: src/Template/AdminTemplate.php:234
 msgid "bottom"
 msgstr ""
 
-#: module.php:593
+#: src/Template/AdminTemplate.php:251
 msgid "left"
 msgstr "von links"
 
-#: module.php:593
+#: src/Template/AdminTemplate.php:251
 msgid "right"
 msgstr "von rechts"
 
-#: module.php:576
+#: src/Template/AdminTemplate.php:234
 msgid "top"
 msgstr ""
