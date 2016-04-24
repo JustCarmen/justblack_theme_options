@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2016-03-20 22:12+0100\n"
-"PO-Revision-Date: 2016-04-21 17:51+0000\n"
+"PO-Revision-Date: 2016-04-24 19:45+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/justcarmen/fancy-justblack-theme-options/de/>\n"
 "Language: de\n"
@@ -47,20 +47,19 @@ msgstr ""
 
 #: src/Template/AdminTemplate.php:392
 msgid "If this option is set the media menu will be moved to the topmenu."
-msgstr ""
+msgstr "Ist diese Option aktiviert, wird das Medienmenü ins Hauptmenü verschoben."
 
 #: src/Template/AdminTemplate.php:416
-#, fuzzy
 msgid "If you set this option the results on the media list page will include subfolders."
-msgstr "<p>Wenn Sie diese Option auswählen, dann wird die Medienseite auch Unterordner enthalten.<p>"
+msgstr "Wenn Sie diese Option aktivieren, werden im Hauptmenüpunkt \"Multimedia\" vorhandene Unterordner angezeigt."
 
 #: src/Template/AdminTemplate.php:372
 msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together."
-msgstr ""
+msgstr "Im kompakten Menü \"Zeige\" werden die Menüs Diagramme, Listen, Kalender und (optional) Berichte zusammen gruppiert."
 
 #: src/Template/AdminTemplate.php:378
 msgid "Include the reports topmenu in the compact 'View' topmenu?"
-msgstr "Verschieben der Liste der Berichte aus dem Hauptmenü in ein Untermenü von \"Zeige\"?"
+msgstr "Menüpunkt \"Berichte\" in das kompakten Hauptmenü \"Zeige\" als Untermenü verschieben?"
 
 #. I18N: Name of a module
 #: module.php:62
@@ -69,11 +68,11 @@ msgstr "JustBlack: Optionen für das Thema"
 
 #: src/Template/AdminTemplate.php:388
 msgid "Media menu in topmenu"
-msgstr ""
+msgstr "Medienmenü als Hauptmenü?"
 
 #: src/Template/AdminTemplate.php:210
 msgid "Options"
-msgstr ""
+msgstr "Einstellungen"
 
 #: src/Template/AdminTemplate.php:38
 msgid "Options for the JustBlack theme"
@@ -111,13 +110,12 @@ msgid "The media folder you choose here will be used as default folder for media
 msgstr "<p>Der Standard-Medienordner wird als Link für das Mediensymbol im Hauptmenü benutzt. Beim Klicken darauf wird die Medienliste für diesen Ordner angezeigt.</p>"
 
 #: src/Template/AdminTemplate.php:394
-#, fuzzy
 msgid "The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
-msgstr "<p>Hiermit wird das Medienmenü ins Hauptmenü verschoben. Die Namen der Unterverzeichnisse auf der ersten Ebene erscheinen als Untermenü im neuen Menü \"Multimedia\".</p><p>Achtung: Diese Untermenüpunkte werden nicht automatisch übersetzt. Um die Einträge zu übersetzen, sollten Sie sich nach den Anweisungen im WIKI von webtrees richten.</p>"
+msgstr "Die Namen der Unterverzeichnisse auf der ersten Ebene im Medienordner auf dem Server werden als Untermenü im neuen Menü \"Multimedia\" genutzt.<br /><br /><strong>Achtung: Diese Untermenüpunkte werden nicht automatisch übersetzt. Nutzen Sie ein eigene Sprachdatei, um die Menüpunkte zu übersetzen. Mehr Informationen dazu finden Sie im WIKI von webtrees.</strong>"
 
 #: src/Template/AdminTemplate.php:466
 msgid "The settings will be reset to default. Are you sure you want to do this?"
-msgstr "Die Einstellungen werden auf die Standardwerte zurückgesetzt. Wollen Sie das wirklich?"
+msgstr "Die Einstellungen werden auf die Standardwerte zurückgesetzt. Sind Sie sicher, dass Sie dies tun wollen?"
 
 #: src/Template/AdminTemplate.php:299
 #, fuzzy
@@ -126,7 +124,7 @@ msgstr "Hochladen einer (neuen) Grafik für den Kopfbereich"
 
 #: src/Template/AdminTemplate.php:368
 msgid "Use a compact menu?"
-msgstr "Kompaktes Menü für Diagramme, Listen etc. verwenden?"
+msgstr "Kompaktes Menü für Diagramme, Listen, Kalendar verwenden?"
 
 #: src/Template/AdminTemplate.php:358
 msgid "Use flags in header bar as language menu?"
@@ -138,7 +136,7 @@ msgstr "Eine Titelgrafik im Kopfbereich verwenden?"
 
 #: src/Template/AdminTemplate.php:423
 msgid "Use square thumbs"
-msgstr ""
+msgstr "Quadratische Vorschaubilder nutzen?"
 
 #: src/Template/AdminTemplate.php:218
 msgid "Use the Family tree title in the header?"
