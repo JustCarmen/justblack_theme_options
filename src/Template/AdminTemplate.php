@@ -472,4 +472,4 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 		<?php
 	}
 
-}ô
+}
