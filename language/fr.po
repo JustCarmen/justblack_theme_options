@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
-"POT-Creation-Date: 2016-03-20 22:12+0100\n"
+"POT-Creation-Date: 2016-04-24 21:59+0200\n"
 "PO-Revision-Date: 2015-07-04 23:54+0200\n"
 "Last-Translator: phicome <phicome@gmail.com>\n"
 "Language-Team: \n"
@@ -24,7 +24,7 @@ msgstr "Choisir un dossier de médias comme lien du menu principal"
 
 #: src/Template/AdminTemplate.php:222
 #, fuzzy
-msgid "Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”."
+msgid "Choose “no” if you have used the family tree title in your custom header image. Otherwise choose “yes”."
 msgstr "<p>Décochez cette case si vous utilisez déjà le titre de l'arbre dans l'image d'en-tête. Sinon, laissez la case cochée.</p>"
 
 #: src/Template/AdminTemplate.php:443
@@ -59,7 +59,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr ""
 
 #: src/Template/AdminTemplate.php:378
-msgid "Include the reports topmenu in the compact 'View' topmenu?"
+#, fuzzy
+msgid "Include the reports topmenu in the compact “View” topmenu?"
 msgstr "Inclure le menu rapports dans le menu compact ?"
 
 #. I18N: Name of a module
@@ -80,7 +81,8 @@ msgid "Options for the JustBlack theme"
 msgstr "Options pour le thème JustBlack"
 
 #: src/Template/AdminTemplate.php:229
-msgid "Position of the Family tree title"
+#, fuzzy
+msgid "Position of the family tree title"
 msgstr "Position du titre de l'arbre"
 
 #: src/Template/AdminTemplate.php:330
@@ -98,7 +100,8 @@ msgid "Set this option to “yes” to use square thumbnails in individual boxes
 msgstr ""
 
 #: src/Template/AdminTemplate.php:272
-msgid "Size of the Family tree title"
+#, fuzzy
+msgid "Size of the family tree title"
 msgstr "Taille du titre de l'arbre"
 
 #: src/Template/AdminTemplate.php:437
@@ -141,12 +144,13 @@ msgid "Use square thumbs"
 msgstr ""
 
 #: src/Template/AdminTemplate.php:218
-msgid "Use the Family tree title in the header?"
+#, fuzzy
+msgid "Use the family tree title in the header?"
 msgstr "Utiliser le nom de l'arbre dans l'en-tête ?"
 
 #: src/Template/AdminTemplate.php:362
 #, fuzzy
-msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
+msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
 msgstr "<p>Vous pouvez utiliser les drapeaux dans la barre située au-dessus du menu. Ces drapeaux remplacent le menu déroulant par défaut. Nous vous conseillons de ne pas utiliser cette option si vous avez plus d'une dizaine de langues installées.</p><p>Vous pouvez supprimer les langues non utilisées dans le dossier 'language' de votre installation webtrees.</p>"
 
 #: src/JustBlackThemeOptionsClass.php:73

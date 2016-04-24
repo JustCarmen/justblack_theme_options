@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
-"POT-Creation-Date: 2016-03-20 22:12+0100\n"
+"POT-Creation-Date: 2016-04-24 21:59+0200\n"
 "PO-Revision-Date: 2016-03-20 22:16+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
@@ -23,7 +23,8 @@ msgid "Choose a folder as default for the main menu link"
 msgstr "Kies een standaard folder voor de hoofdmenu link"
 
 #: src/Template/AdminTemplate.php:222
-msgid "Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”."
+#, fuzzy
+msgid "Choose “no” if you have used the family tree title in your custom header image. Otherwise choose “yes”."
 msgstr "Kies “nee” wanneer u de stamboomtitel al gebruikt in de header afbeelding. Laat de waarde anders op “ja” staan."
 
 #: src/Template/AdminTemplate.php:443
@@ -56,7 +57,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "In het compacte “Bekijk”-menu worden de menu's voor Diagrammen, Lijsten, Kalender en (optioneel) Rapporten, samengevoegd."
 
 #: src/Template/AdminTemplate.php:378
-msgid "Include the reports topmenu in the compact 'View' topmenu?"
+#, fuzzy
+msgid "Include the reports topmenu in the compact “View” topmenu?"
 msgstr "Wilt u het menu rapporten opnemen in het compacte 'Bekijk' menu?"
 
 #. I18N: Name of a module
@@ -77,7 +79,8 @@ msgid "Options for the JustBlack theme"
 msgstr "Opties voor het JustBlack thema"
 
 #: src/Template/AdminTemplate.php:229
-msgid "Position of the Family tree title"
+#, fuzzy
+msgid "Position of the family tree title"
 msgstr "Positie van de stamboomtitel"
 
 #: src/Template/AdminTemplate.php:330
@@ -94,7 +97,8 @@ msgid "Set this option to “yes” to use square thumbnails in individual boxes
 msgstr "Zet deze optie op \"ja\" om vierkante miniatuurplaatjes te gebruiken in persoonsboxen en diagrammen. Als u hier \"nee\" kiest worden de standaard webtrees thumbnails gebruikt."
 
 #: src/Template/AdminTemplate.php:272
-msgid "Size of the Family tree title"
+#, fuzzy
+msgid "Size of the family tree title"
 msgstr "Grootte van de stamboomtitel"
 
 #: src/Template/AdminTemplate.php:437
@@ -134,11 +138,13 @@ msgid "Use square thumbs"
 msgstr "Gebruik vierkante miniatuurplaatjes"
 
 #: src/Template/AdminTemplate.php:218
-msgid "Use the Family tree title in the header?"
+#, fuzzy
+msgid "Use the family tree title in the header?"
 msgstr "Gebruik de stamboomtitel in de header?"
 
 #: src/Template/AdminTemplate.php:362
-msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
+#, fuzzy
+msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
 msgstr "U kunt vlaggen gebruiken in de balk boven het topmenu in de header. Deze vlaggen vervangen het standaard dropdown menu. Wij adviseren u om deze optie niet in te schakelen wanneer u meer dan tien talen heeft geïnstalleerd. U kunt ongebruikte talen verwijderen uit de folder languages in uw webtrees installatie."
 
 #: src/JustBlackThemeOptionsClass.php:73
