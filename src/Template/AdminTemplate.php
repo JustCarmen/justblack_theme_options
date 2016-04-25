@@ -215,18 +215,18 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<!-- TREE TITLE -->
 							<div id="tree-title" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Use the Family tree title in the header?') ?>
+									<?php echo I18N::translate('Use the family tree title in the header?') ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[TREETITLE]', $this->options('treetitle'), 'class="radio-inline"') ?>
-									<p class="small text-muted"><?php echo I18N::translate('Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”.') ?></p>
+									<p class="small text-muted"><?php echo I18N::translate('Choose “no” if you have used the family tree title in your custom header image. Otherwise choose “yes”.') ?></p>
 								</div>
 							</div>
 							<!-- TITLE POSITION -->
 							<?php $titlepos = $this->options('titlepos'); ?>
 							<div id="title-pos" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Position of the Family tree title') ?>
+									<?php echo I18N::translate('Position of the family tree title') ?>
 								</label>
 								<div class="col-sm-8">
 									<div class="row">
@@ -269,7 +269,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<!-- TITLE SIZE -->
 							<div id="title-size" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Size of the Family tree title') ?>
+									<?php echo I18N::translate('Size of the family tree title') ?>
 								</label>
 								<div class="col-sm-2">
 									<div class="input-group">
@@ -359,7 +359,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 								</label>
 								<div class="col-sm-8">
 									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[FLAGS]', $this->options('flags'), 'class="radio-inline"') ?>
-									<p class="small text-muted"><?php echo I18N::translate('You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation.') ?></p>
+									<p class="small text-muted"><?php echo I18N::translate('You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation.') ?></p>
 								</div>
 							</div>
 							<!-- COMPACT MENU -->
@@ -375,7 +375,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<!-- REPORTS -->
 							<div id="reports" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Include the reports topmenu in the compact \'View\' topmenu?') ?>
+									<?php echo I18N::translate('Include the reports topmenu in the compact “View” topmenu?') ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', $this->options('compact_menu_reports'), 'class="radio-inline"') ?>
