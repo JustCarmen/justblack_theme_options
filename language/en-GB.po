@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
-"POT-Creation-Date: 2016-03-20 22:12+0100\n"
+"POT-Creation-Date: 2016-04-24 21:59+0200\n"
 "PO-Revision-Date: 2016-04-14 21:22+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (United Kingdom) <http://translate.webtrees.net/projects/justcarmen/fancy-justblack-theme-options/en-GB/>\n"
@@ -25,7 +25,8 @@ msgid "Choose a folder as default for the main menu link"
 msgstr "Choose a folder as default for the main menu link"
 
 #: src/Template/AdminTemplate.php:222
-msgid "Choose “no” if you have used the Family tree title in your custom header image. Otherwise leave value to “yes”."
+#, fuzzy
+msgid "Choose “no” if you have used the family tree title in your custom header image. Otherwise choose “yes”."
 msgstr "Choose ‘no’ if you have used the family tree title in your custom header image. Otherwise choose ‘yes’."
 
 #: src/Template/AdminTemplate.php:443
@@ -58,7 +59,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "In the compact ‘View’ menu, the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together."
 
 #: src/Template/AdminTemplate.php:378
-msgid "Include the reports topmenu in the compact 'View' topmenu?"
+#, fuzzy
+msgid "Include the reports topmenu in the compact “View” topmenu?"
 msgstr "Include the reports top-menu in the compact 'View' top-menu?"
 
 #. I18N: Name of a module
@@ -79,7 +81,8 @@ msgid "Options for the JustBlack theme"
 msgstr "Options for the JustBlack theme"
 
 #: src/Template/AdminTemplate.php:229
-msgid "Position of the Family tree title"
+#, fuzzy
+msgid "Position of the family tree title"
 msgstr "Position of the family tree title"
 
 #: src/Template/AdminTemplate.php:330
@@ -96,7 +99,8 @@ msgid "Set this option to “yes” to use square thumbnails in individual boxes
 msgstr "Set this option to ‘yes’ to use square thumbnails in individual boxes and charts. If you choose ‘no’ the default webtrees thumbnails will be used."
 
 #: src/Template/AdminTemplate.php:272
-msgid "Size of the Family tree title"
+#, fuzzy
+msgid "Size of the family tree title"
 msgstr "Size of the family tree title"
 
 #: src/Template/AdminTemplate.php:437
@@ -136,11 +140,13 @@ msgid "Use square thumbs"
 msgstr "Use square thumbs"
 
 #: src/Template/AdminTemplate.php:218
-msgid "Use the Family tree title in the header?"
+#, fuzzy
+msgid "Use the family tree title in the header?"
 msgstr "Use the family tree title in the header?"
 
 #: src/Template/AdminTemplate.php:362
-msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advice you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
+#, fuzzy
+msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
 msgstr "You can use flags in the bar above the top-menu bar in the header. These flags replace the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
 
 #: src/JustBlackThemeOptionsClass.php:73
