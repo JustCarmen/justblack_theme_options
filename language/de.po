@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2016-04-24 21:59+0200\n"
-"PO-Revision-Date: 2016-04-26 14:09+0000\n"
+"PO-Revision-Date: 2016-04-29 12:02+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/justcarmen/fancy-justblack-theme-options/de/>\n"
 "Language: de\n"
@@ -98,7 +98,6 @@ msgid "Set this option to “yes” to use square thumbnails in individual boxes
 msgstr ""
 
 #: src/Template/AdminTemplate.php:272
-#, fuzzy
 msgid "Size of the family tree title"
 msgstr "Größe des Stammbaumtitels"
 
