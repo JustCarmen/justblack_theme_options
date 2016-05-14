@@ -88,7 +88,6 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 				$this->module()->deleteImage();
 				break;
 			default:
-			default:
 				http_response_code(404);
 				break;
 		}
