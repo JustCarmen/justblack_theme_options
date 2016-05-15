@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use JustCarmen\WebtreesAddOns\JustBlack\Template\AdminTemplate;
 
-define('JBO_VERSION', '1.7.4');
+define('JBO_VERSION', '1.7.5-dev');
 
 class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfigInterface {
 	
@@ -44,7 +44,7 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 		
 		// register the namespace
 		$loader = new ClassLoader();
-		$loader->addPsr4('JustCarmen\\WebtreesAddOns\\JustBlack\\', $this->directory . '/src');
+		$loader->addPsr4('JustCarmen\\WebtreesAddOns\\JustBlack\\', $this->directory . '/app');
 		$loader->register();
 	}
 	
