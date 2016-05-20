@@ -25,9 +25,10 @@ use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use JustCarmen\WebtreesAddOns\JustBlack\Template\AdminTemplate;
 
-define('JBO_VERSION', '1.7.5-dev');
-
 class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfigInterface {
+	
+	const CUSTOM_VERSION = '1.7.5-dev';
+	const CUSTOM_WEBSITE = 'http://www.justcarmen.nl/themes/justblack/';
 	
 	// How to update the database schema for this module
 	const SCHEMA_TARGET_VERSION = 3;
@@ -64,7 +65,7 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 
 	// Extend Module
 	public function getDescription() {
-		return /* I18N: Description of the module */ I18N::translate('Set options for the JustBlack theme within the admin interface') . '<br><span class="small text-muted">' . I18N::translate('Version') . ' ' . JBO_VERSION . ' | by JustCarmen | <a href="http://www.justcarmen.nl/themes/justblack/">' . I18N::translate('Show details') . '</a></span>';
+		return /* I18N: Description of the module */ I18N::translate('Set options for the JustBlack theme within the admin interface');
 	}
 	
 	// Extend ModuleConfigInterface
