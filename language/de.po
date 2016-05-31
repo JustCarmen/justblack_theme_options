@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2016-04-24 21:59+0200\n"
-"PO-Revision-Date: 2016-05-31 19:26+0000\n"
+"PO-Revision-Date: 2016-05-31 20:01+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/de/>\n"
 "Language: de\n"
@@ -16,15 +16,15 @@ msgstr ""
 
 #: src/Template/AdminTemplate.php:319
 msgid "Browse"
-msgstr "Blättern"
+msgstr "Auswählen"
 
 #: src/Template/AdminTemplate.php:402
 msgid "Choose a folder as default for the main menu link"
-msgstr "Wählen Sie einen Ordner als Standardeintrag für den Link im Hauptmenü"
+msgstr "Wählen Sie den Standardordner für den Hauptmenüeintrag"
 
 #: src/Template/AdminTemplate.php:222
 msgid "Choose “no” if you have used the family tree title in your custom header image. Otherwise choose “yes”."
-msgstr "Wählen Sie \"nein\", wenn der Stammbaumtitel bereits in der Titelgrafik enthalten ist. Sonst wählen Sie \"ja\"."
+msgstr "Wählen Sie \"nein\", wenn der Stammbaumtitel bereits in der Titelgrafik enthalten ist."
 
 #: src/Template/AdminTemplate.php:443
 msgid "Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button."
@@ -36,12 +36,12 @@ msgstr "Fehler:  Das von Ihnen hochgeladene Bild hat nicht das richtige Dateifor
 
 #: src/Template/AdminTemplate.php:339
 msgid "Height of the header area"
-msgstr "Höhe des Kopfbereiches"
+msgstr "Höhe der Kopfzeile"
 
 #: src/Template/AdminTemplate.php:266
 #, php-format
 msgid "Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin."
-msgstr "Hier können Sie die Position des Stammbaumtitels festlegen. Passen Sie die Werte entsprechend Ihre Bedürfnisse an. Wenn der Stammbaumtitel in der Kopfzeile erscheinen soll, sind die richtigen Werte abhängig von der Länge des Stammbaumtitels. Die Position ist die absolute Position des Titels relativ zum Kopfzeilenbereich. Zum Beispiel: Geben Sie \"top: 0px\" und  \"left: 0px\" für die linke obere Ecke oder \"top: 50%\" und \"right: 10px\" für die vertikal mittige und rechtsbündige Anordnung im Kopfzeilenbereich mit 10 Punkten Randabstand ein."
+msgstr "Hier können Sie die Position des Stammbaumtitels festlegen. Passen Sie die Werte entsprechend Ihre Bedürfnisse an. Wenn der Stammbaumtitel in der Kopfzeile verwendet wird, sind die richtigen Werte abhängig von dessen Länge. Die Position ist die absolute Position des Titels relativ zum Kopfzeilenbereich. Zum Beispiel: Geben Sie \"top: 0px\" und  \"left: 0px\" für die linke obere Ecke oder \"top: 50%\" und \"right: 10px\" für die vertikal mittige Anordnung im Kopfzeilenbereich mit 10 Punkten Abstand vom rechten Rand ein."
 
 #: src/Template/AdminTemplate.php:392
 msgid "If this option is set the media menu will be moved to the topmenu."
@@ -62,7 +62,7 @@ msgstr "Das Menü \"Berichte\" aus dem Hauptmenü in \"Zeige\" als Untermenü hi
 #. I18N: Name of a module
 #: module.php:62
 msgid "JustBlack Theme Options"
-msgstr "JustBlack: Optionen für das Thema"
+msgstr "JustBlack Theme Einstellungen"
 
 #: src/Template/AdminTemplate.php:388
 msgid "Media menu in topmenu"
@@ -74,7 +74,7 @@ msgstr "Einstellungen"
 
 #: src/Template/AdminTemplate.php:38
 msgid "Options for the JustBlack theme"
-msgstr "Optionen für das Anzeigethema JustBlack"
+msgstr "Einstellungen für das JustBlack Theme"
 
 #: src/Template/AdminTemplate.php:229
 msgid "Position of the family tree title"
@@ -82,12 +82,12 @@ msgstr "Position des Stammbaumtitels"
 
 #: src/Template/AdminTemplate.php:330
 msgid "Resize image (800 x 150px)"
-msgstr "Größe der Titelgrafik anpassen (800 x 150px)?"
+msgstr "Titelgrafik auf 800 x 150px ändern?"
 
 #. I18N: Description of the module
 #: module.php:67
 msgid "Set options for the JustBlack theme within the admin interface"
-msgstr "Setzen der Optionen des Anzeigethemas JustBlack im Verwaltungsbereich"
+msgstr "Einstellungen für das JustBlack Theme setzen"
 
 #: src/Template/AdminTemplate.php:427
 msgid "Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used."
@@ -115,7 +115,7 @@ msgstr "Die Einstellungen werden auf die Standardwerte zurückgesetzt. Sind Sie 
 
 #: src/Template/AdminTemplate.php:299
 msgid "Upload a custom header image"
-msgstr "Eigene Titelgrafik hochladen"
+msgstr "Eine eigene Titelgrafik hochladen"
 
 #: src/Template/AdminTemplate.php:368
 msgid "Use a compact menu?"
@@ -123,11 +123,11 @@ msgstr "Kompaktes Menü für Diagramme, Listen, Kalendar verwenden?"
 
 #: src/Template/AdminTemplate.php:358
 msgid "Use flags in header bar as language menu?"
-msgstr "Fahnen zur Sprachauswahl im Kopfbereich verwenden?"
+msgstr "Flaggen in der Kopfzeilen zur Sprachauswahl verwenden?"
 
 #: src/Template/AdminTemplate.php:290
 msgid "Use header image?"
-msgstr "Eine Titelgrafik im Kopfbereich verwenden?"
+msgstr "Eine Titelgrafik in der Kopfzeile verwenden?"
 
 #: src/Template/AdminTemplate.php:423
 msgid "Use square thumbs"
@@ -139,7 +139,7 @@ msgstr "Den Stammbaumtitel in der Kopfzeile verwenden?"
 
 #: src/Template/AdminTemplate.php:362
 msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
-msgstr "Sie können statt des Auswahlmenüs für die Sprache auch Nationalflaggen im Kopfbereich über der Hauptauswahl verwenden. Diese Flaggen ersetzen das normale Ausklappmenü. Bei mehr als zehn installierten Sprachen sollten Sie allerdings auf diese Möglichkeit verzichten. Nicht genutzte Sprachen können Sie aus dem Ordner \"/languages\" Ihrer webtrees-Installation löschen."
+msgstr "Sie können statt des Auswahlmenüs für die Sprache auch Nationalflaggen in der Kopfzeile über der Hauptauswahl verwenden. Diese Flaggen ersetzen das normale Ausklappmenü. Bei mehr als zehn installierten Sprachen sollten Sie allerdings auf diese Möglichkeit verzichten. Nicht genutzte Sprachen können Sie aus dem Ordner \"/languages\" Ihrer webtrees-Installation löschen."
 
 #: src/JustBlackThemeOptionsClass.php:73
 msgid "Your settings are successfully saved."
