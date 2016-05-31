@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2016-04-24 21:59+0200\n"
-"PO-Revision-Date: 2016-04-29 12:02+0000\n"
+"PO-Revision-Date: 2016-05-31 19:26+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
-"Language-Team: German <https://translate.webtrees.net/projects/justcarmen/fancy-justblack-theme-options/de/>\n"
+"Language-Team: German <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,25 +16,23 @@ msgstr ""
 
 #: src/Template/AdminTemplate.php:319
 msgid "Browse"
-msgstr ""
+msgstr "Blättern"
 
 #: src/Template/AdminTemplate.php:402
 msgid "Choose a folder as default for the main menu link"
 msgstr "Wählen Sie einen Ordner als Standardeintrag für den Link im Hauptmenü"
 
 #: src/Template/AdminTemplate.php:222
-#, fuzzy
 msgid "Choose “no” if you have used the family tree title in your custom header image. Otherwise choose “yes”."
-msgstr "<p>Entfernen Sie diese Auswahl, wenn der Stammbaumtitel bereits in der Titelgrafik enthalten ist. Ansonsten lassen sie die Auswahl gesetzt.</p>"
+msgstr "Wählen Sie \"nein\", wenn der Stammbaumtitel bereits in der Titelgrafik enthalten ist. Sonst wählen Sie \"ja\"."
 
 #: src/Template/AdminTemplate.php:443
 msgid "Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button."
 msgstr "Um die Einträge im Hauptmenü neu anzuordnen, verschieben Sie die Zeilen entsprechend mit der Maus. Danach auf \"Speichern\" klicken."
 
 #: src/JustBlackThemeOptionsClass.php:59
-#, fuzzy
 msgid "Error: The image you have uploaded is not a valid image! Your settings are not saved."
-msgstr "Fehler:  Entweder wurde kein Bild hochgeladen oder das hochgeladene Bild hat nicht das richtige Dateiformat! Ihre Einstellungen wurden nicht gesichert."
+msgstr "Fehler:  Das von Ihnen hochgeladene Bild hat nicht das richtige Dateiformat! Ihre Einstellungen wurden nicht gesichert."
 
 #: src/Template/AdminTemplate.php:339
 msgid "Height of the header area"
@@ -43,7 +41,7 @@ msgstr "Höhe des Kopfbereiches"
 #: src/Template/AdminTemplate.php:266
 #, php-format
 msgid "Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin."
-msgstr ""
+msgstr "Hier können Sie die Position des Stammbaumtitels festlegen. Passen Sie die Werte entsprechend Ihre Bedürfnisse an. Wenn der Stammbaumtitel in der Kopfzeile erscheinen soll, sind die richtigen Werte abhängig von der Länge des Stammbaumtitels. Die Position ist die absolute Position des Titels relativ zum Kopfzeilenbereich. Zum Beispiel: Geben Sie \"top: 0px\" und  \"left: 0px\" für die linke obere Ecke oder \"top: 50%\" und \"right: 10px\" für die vertikal mittige und rechtsbündige Anordnung im Kopfzeilenbereich mit 10 Punkten Randabstand ein."
 
 #: src/Template/AdminTemplate.php:392
 msgid "If this option is set the media menu will be moved to the topmenu."
@@ -79,14 +77,12 @@ msgid "Options for the JustBlack theme"
 msgstr "Optionen für das Anzeigethema JustBlack"
 
 #: src/Template/AdminTemplate.php:229
-#, fuzzy
 msgid "Position of the family tree title"
 msgstr "Position des Stammbaumtitels"
 
 #: src/Template/AdminTemplate.php:330
-#, fuzzy
 msgid "Resize image (800 x 150px)"
-msgstr "Titelgrafik auf (800px mal 150px) vereinheitlichen?"
+msgstr "Größe der Titelgrafik anpassen (800 x 150px)?"
 
 #. I18N: Description of the module
 #: module.php:67
@@ -95,7 +91,7 @@ msgstr "Setzen der Optionen des Anzeigethemas JustBlack im Verwaltungsbereich"
 
 #: src/Template/AdminTemplate.php:427
 msgid "Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used."
-msgstr ""
+msgstr "Um quadratische Vorschaubilder auf Personenseiten oder in Diagrammen zu nutzen, wählen Sie \"ja\". Wenn Sie \"nein\" wählen, werden die Standardvorschaubilder von webtrees genutzt."
 
 #: src/Template/AdminTemplate.php:272
 msgid "Size of the family tree title"
@@ -106,9 +102,8 @@ msgid "Sort Topmenu items"
 msgstr "Einträge im Hauptmenü sortieren"
 
 #: src/Template/AdminTemplate.php:407
-#, fuzzy
 msgid "The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder."
-msgstr "<p>Der Standard-Medienordner wird als Link für das Mediensymbol im Hauptmenü benutzt. Beim Klicken darauf wird die Medienliste für diesen Ordner angezeigt.</p>"
+msgstr "Der Standard-Medienordner wird als Link für das Mediensymbol im Hauptmenü benutzt. Beim Klicken darauf wird die Medienliste für diesen Ordner angezeigt."
 
 #: src/Template/AdminTemplate.php:394
 msgid "The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
@@ -119,9 +114,8 @@ msgid "The settings will be reset to default. Are you sure you want to do this?"
 msgstr "Die Einstellungen werden auf die Standardwerte zurückgesetzt. Sind Sie sicher, dass Sie dies tun wollen?"
 
 #: src/Template/AdminTemplate.php:299
-#, fuzzy
 msgid "Upload a custom header image"
-msgstr "Hochladen einer (neuen) Grafik für den Kopfbereich"
+msgstr "Eigene Titelgrafik hochladen"
 
 #: src/Template/AdminTemplate.php:368
 msgid "Use a compact menu?"
@@ -140,23 +134,20 @@ msgid "Use square thumbs"
 msgstr "Quadratische Vorschaubilder nutzen?"
 
 #: src/Template/AdminTemplate.php:218
-#, fuzzy
 msgid "Use the family tree title in the header?"
-msgstr "Den Stammbaumtitel im Kopfbereich verwenden?"
+msgstr "Den Stammbaumtitel in der Kopfzeile verwenden?"
 
 #: src/Template/AdminTemplate.php:362
-#, fuzzy
 msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
-msgstr "<p>Sie können statt des Auswahlmenüs für die Sprache auch Nationalflaggen im Kopfbereich über der Hauptauswahl verwenden. Bei mehr als zehn installierten Sprachen sollten Sie allerdings auf diese Möglichkeit verzichten.</p><p>Nicht genutzte oder unerwünschte Sprachen können Sie ganz einfach aus dem Ordner '/languages' im webtrees-Verzeichnis löschen.</p>"
+msgstr "Sie können statt des Auswahlmenüs für die Sprache auch Nationalflaggen im Kopfbereich über der Hauptauswahl verwenden. Diese Flaggen ersetzen das normale Ausklappmenü. Bei mehr als zehn installierten Sprachen sollten Sie allerdings auf diese Möglichkeit verzichten. Nicht genutzte Sprachen können Sie aus dem Ordner \"/languages\" Ihrer webtrees-Installation löschen."
 
 #: src/JustBlackThemeOptionsClass.php:73
-#, fuzzy
 msgid "Your settings are successfully saved."
-msgstr "Ihre Grafik für den Kopfbereich wurde gesichert."
+msgstr "Ihre Einstellungen wurden erfolgreich gesichert."
 
 #: src/Template/AdminTemplate.php:234
 msgid "bottom"
-msgstr ""
+msgstr "von unten"
 
 #: src/Template/AdminTemplate.php:251
 msgid "left"
@@ -168,4 +159,4 @@ msgstr "von rechts"
 
 #: src/Template/AdminTemplate.php:234
 msgid "top"
-msgstr ""
+msgstr "von oben"
