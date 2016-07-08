@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2016-07-08 09:10+0200\n"
-"PO-Revision-Date: 2016-07-08 07:20+0000\n"
+"PO-Revision-Date: 2016-07-08 08:03+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/nl/>\n"
 "Language: nl\n"
@@ -28,7 +28,7 @@ msgstr "Kies “nee” wanneer u de stamboomtitel al gebruikt in de header afbee
 
 #: app/Template/AdminTemplate.php:443
 msgid "Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button."
-msgstr "Klik op een rij, sleep en laat los om de volgorde van de topmenu items te wijzigen. Klik daarna op de knop 'opslaan'."
+msgstr "Klik op een rij, sleep en laat los om de volgorde van de top menu items te wijzigen. Klik daarna op de knop 'opslaan'."
 
 #: app/JustBlackThemeOptionsClass.php:59
 msgid "Error: The image you have uploaded is not a valid image! Your settings are not saved."
@@ -45,7 +45,7 @@ msgstr "Hier kunt u de locatie van de stamboomtitel instellen. Pas de waarden aa
 
 #: app/Template/AdminTemplate.php:392
 msgid "If this option is set the media menu will be moved to the topmenu."
-msgstr "Als deze optie is ingeschakeld, wordt het media menu verplaatst naar het topmenu."
+msgstr "Als deze optie is ingeschakeld, wordt het media menu verplaatst naar het top menu."
 
 #: app/Template/AdminTemplate.php:416
 msgid "If you set this option the results on the media list page will include subfolders."
@@ -57,7 +57,7 @@ msgstr "In het compacte “Bekijk”-menu worden de menu's voor Diagrammen, Lijs
 
 #: app/Template/AdminTemplate.php:378
 msgid "Include the reports topmenu in the compact “View” topmenu?"
-msgstr "Wilt u het menu rapporten opnemen in het compacte 'Bekijk' menu?"
+msgstr "Wilt u het menu rapporten opnemen in het compacte “Bekijk” menu?"
 
 #. I18N: Name of a module
 #: module.php:63
@@ -99,7 +99,7 @@ msgstr "Grootte van de stamboom titel"
 
 #: app/Template/AdminTemplate.php:437
 msgid "Sort Topmenu items"
-msgstr "Topmenu items sorteren"
+msgstr "Top menu items sorteren"
 
 #: app/Template/AdminTemplate.php:407
 msgid "The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder."
