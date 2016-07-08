@@ -1,13 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2016-03-20 22:12+0100\n"
-"PO-Revision-Date: 2016-04-24 19:40+0000\n"
-=======
 "POT-Creation-Date: 2016-04-24 21:59+0200\n"
 "PO-Revision-Date: 2016-03-20 22:16+0100\n"
->>>>>>> b1f69c9e84a4d4fac0432598368c04ddf656a971
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/justcarmen/fancy-justblack-theme-options/nl/>\n"
 "Language: nl\n"
