@@ -404,7 +404,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 									<div class="col-sm-2">
 										<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[MEDIA_LINK]', $folders, null, $this->options('media_link'), 'class="form-control"') ?>
 									</div>
-									<div class="col-sm-8"><p class="small text-muted"><?php echo I18N::translate('The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder.') ?></p></div>
+									<div class="col-sm-8 col-sm-offset-4"><p class="small text-muted"><?php echo I18N::translate('The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder.') ?></p></div>
 								</div>
 								<!-- SHOW SUBFOLDERS -->
 								<div id="subfolders" class="form-group form-group-sm">
