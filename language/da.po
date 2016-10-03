@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2016-07-08 09:10+0200\n"
-"PO-Revision-Date: 2015-07-04 23:25+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2016-10-03 19:46+0000\n"
+"Last-Translator: Patrick Kongshammer <patrickkongshammer@gmail.com>\n"
+"Language-Team: Danish <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Weblate 2.8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -18,27 +18,27 @@ msgstr ""
 
 #: app/Template/AdminTemplate.php:319
 msgid "Browse"
-msgstr ""
+msgstr "Gennemse"
 
 #: app/Template/AdminTemplate.php:402
 msgid "Choose a folder as default for the main menu link"
-msgstr ""
+msgstr "Vælg en mappe som standardmappe for linket til hovedmenuen"
 
 #: app/Template/AdminTemplate.php:222
 msgid "Choose “no” if you have used the family tree title in your custom header image. Otherwise choose “yes”."
-msgstr ""
+msgstr "Vælg \"nej\" hvis du har brugt overskriften for dit stamtræ i dit hovedbillede. Ellers, vælg \"ja\"."
 
 #: app/Template/AdminTemplate.php:443
 msgid "Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button."
-msgstr ""
+msgstr "Klik på en række, og brug derefter \"Træk-og-slip\" for at sortere menupunkterne. Klik derefter på knappen \"gem\"."
 
 #: app/JustBlackThemeOptionsClass.php:59
 msgid "Error: The image you have uploaded is not a valid image! Your settings are not saved."
-msgstr ""
+msgstr "Fejl: Billedet du har uploadet er ikke et gyldigt billede! Dine indstillinger er ikke gemt."
 
 #: app/Template/AdminTemplate.php:339
 msgid "Height of the header area"
-msgstr ""
+msgstr "Højden på sidehovedet"
 
 #: app/Template/AdminTemplate.php:266
 #, php-format
@@ -47,19 +47,19 @@ msgstr ""
 
 #: app/Template/AdminTemplate.php:392
 msgid "If this option is set the media menu will be moved to the topmenu."
-msgstr ""
+msgstr "Hvis denne indstilling er valgt vil medie menuen blive flyttet til topmenuen."
 
 #: app/Template/AdminTemplate.php:416
 msgid "If you set this option the results on the media list page will include subfolders."
-msgstr ""
+msgstr "Hvis du vælger denne indstillinger vil resultaterne på siden med medier inkludere undermapper."
 
 #: app/Template/AdminTemplate.php:372
 msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together."
-msgstr ""
+msgstr "Diagrammer, lister, kalender og (valgfrit) rapporter vil blive lagt sammen i den kompakte \"Vis\"-menu"
 
 #: app/Template/AdminTemplate.php:378
 msgid "Include the reports topmenu in the compact “View” topmenu?"
-msgstr ""
+msgstr "Inkludér rapportmenuen i den kompakte \"Vis\" menu?"
 
 #. I18N: Name of a module
 #: module.php:63
@@ -68,11 +68,11 @@ msgstr ""
 
 #: app/Template/AdminTemplate.php:388
 msgid "Media menu in topmenu"
-msgstr ""
+msgstr "Medie menu i topmenuen"
 
 #: app/Template/AdminTemplate.php:210
 msgid "Options"
-msgstr ""
+msgstr "Indstillinger"
 
 #: app/Template/AdminTemplate.php:38
 msgid "Options for the JustBlack theme"
@@ -97,11 +97,11 @@ msgstr ""
 
 #: app/Template/AdminTemplate.php:272
 msgid "Size of the family tree title"
-msgstr ""
+msgstr "Størrelse på familietræets titel"
 
 #: app/Template/AdminTemplate.php:437
 msgid "Sort Topmenu items"
-msgstr ""
+msgstr "Sortér Topmenuerne"
 
 #: app/Template/AdminTemplate.php:407
 msgid "The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder."
