@@ -215,7 +215,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<!-- TREE TITLE -->
 							<div id="tree-title" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Use the family tree title in the header?') ?>
+									<?php echo I18N::translate('Use the family tree title in the header') ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[TREETITLE]', $this->options('treetitle'), 'class="radio-inline"') ?>
@@ -287,7 +287,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<!-- HEADER IMAGE -->
 							<div id="header-image" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Use header image?') ?>
+									<?php echo I18N::translate('Use header image') ?>
 								</label>
 								<div class="col-sm-2">
 									<?php echo FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[HEADER]', array(I18N::translate('Default'), I18N::translate('Custom'), I18N::translate('None')), null, $this->options('header'), 'class="form-control"') ?>
@@ -355,7 +355,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<!-- FLAGS -->
 							<div id="flags" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Use flags in header bar as language menu?') ?>
+									<?php echo I18N::translate('Use flags in header bar as language menu') ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[FLAGS]', $this->options('flags'), 'class="radio-inline"') ?>
@@ -365,7 +365,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<!-- COMPACT MENU -->
 							<div id="compact-menu" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Use a compact menu?') ?>
+									<?php echo I18N::translate('Use a compact menu') ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[COMPACT_MENU]', $this->options('compact_menu'), 'class="radio-inline"') ?>
@@ -375,7 +375,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<!-- REPORTS -->
 							<div id="reports" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
-									<?php echo I18N::translate('Include the reports topmenu in the compact “View” topmenu?') ?>
+									<?php echo I18N::translate('Include the reports topmenu in the compact “View” topmenu') ?>
 								</label>
 								<div class="col-sm-8">
 									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', $this->options('compact_menu_reports'), 'class="radio-inline"') ?>
