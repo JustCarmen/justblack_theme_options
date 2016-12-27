@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2016-12-26 16:41+0100\n"
-"PO-Revision-Date: 2016-05-31 20:01+0000\n"
+"PO-Revision-Date: 2016-12-27 09:21+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/de/>\n"
 "Language: de\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.8\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
@@ -56,9 +56,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "Im kompakten Menü \"Zeige\" werden die Menüs Diagramme, Listen, Kalender und (optional) Berichte zusammen gruppiert."
 
 #: app/Template/AdminTemplate.php:378
-#, fuzzy
 msgid "Include the reports topmenu in the compact “View” topmenu"
-msgstr "Das Menü \"Berichte\" aus dem Hauptmenü in \"Zeige\" als Untermenü hinzufügen?"
+msgstr "Menüpunkt \"Berichte\" dem gemeinsamen Menü \"Zeige\" als Untermenü hinzufügen?"
 
 #. I18N: Name of a module
 #: module.php:63
@@ -119,17 +118,14 @@ msgid "Upload a custom header image"
 msgstr "Eine eigene Titelgrafik hochladen"
 
 #: app/Template/AdminTemplate.php:368
-#, fuzzy
 msgid "Use a compact menu"
-msgstr "Kompaktes Menü für Diagramme, Listen, Kalendar verwenden?"
+msgstr "Gemeinsames Menü für Diagramme, Listen und Kalendar verwenden?"
 
 #: app/Template/AdminTemplate.php:358
-#, fuzzy
 msgid "Use flags in header bar as language menu"
 msgstr "Flaggen in der Kopfzeilen zur Sprachauswahl verwenden?"
 
 #: app/Template/AdminTemplate.php:290
-#, fuzzy
 msgid "Use header image"
 msgstr "Eine Titelgrafik in der Kopfzeile verwenden?"
 
@@ -138,7 +134,6 @@ msgid "Use square thumbs"
 msgstr "Quadratische Vorschaubilder nutzen?"
 
 #: app/Template/AdminTemplate.php:218
-#, fuzzy
 msgid "Use the family tree title in the header"
 msgstr "Den Stammbaumtitel in der Kopfzeile verwenden?"
 
