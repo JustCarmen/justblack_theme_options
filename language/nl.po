@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2016-12-26 16:41+0100\n"
-"PO-Revision-Date: 2016-07-08 08:03+0000\n"
+"PO-Revision-Date: 2016-12-27 06:58+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/nl/>\n"
 "Language: nl\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5\n"
+"X-Generator: Weblate 2.8\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
@@ -56,9 +56,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "In het compacte “Bekijk”-menu worden de menu's voor Diagrammen, Lijsten, Kalender en (optioneel) Rapporten, samengevoegd."
 
 #: app/Template/AdminTemplate.php:378
-#, fuzzy
 msgid "Include the reports topmenu in the compact “View” topmenu"
-msgstr "Wilt u het menu rapporten opnemen in het compacte “Bekijk” menu?"
+msgstr "Wilt u het menu rapporten opnemen in het compacte “Bekijk” menu"
 
 #. I18N: Name of a module
 #: module.php:63
@@ -119,28 +118,24 @@ msgid "Upload a custom header image"
 msgstr "Upload een aangepaste header afbeelding"
 
 #: app/Template/AdminTemplate.php:368
-#, fuzzy
 msgid "Use a compact menu"
-msgstr "Gebruik een compact menu?"
+msgstr "Gebruik een compact menu"
 
 #: app/Template/AdminTemplate.php:358
-#, fuzzy
 msgid "Use flags in header bar as language menu"
-msgstr "Gebruik vlaggen in de header bar als taalmenu?"
+msgstr "Gebruik vlaggen in de header bar als taalmenu"
 
 #: app/Template/AdminTemplate.php:290
-#, fuzzy
 msgid "Use header image"
-msgstr "Gebruik de header afbeelding?"
+msgstr "Gebruik de header afbeelding"
 
 #: app/Template/AdminTemplate.php:423
 msgid "Use square thumbs"
 msgstr "Gebruik vierkante miniatuurplaatjes"
 
 #: app/Template/AdminTemplate.php:218
-#, fuzzy
 msgid "Use the family tree title in the header"
-msgstr "Gebruik de stamboom titel in de header?"
+msgstr "Gebruik de stamboom titel in de header"
 
 #: app/Template/AdminTemplate.php:362
 msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
