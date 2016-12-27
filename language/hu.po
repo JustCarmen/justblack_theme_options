@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
-"POT-Creation-Date: 2016-07-08 09:10+0200\n"
+"POT-Creation-Date: 2016-12-26 16:41+0100\n"
 "PO-Revision-Date: 2016-12-10 18:52+0000\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/hu/>\n"
@@ -58,7 +58,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "A tömörített “Megtekintés” menübe lesznek az Ábra, Lista, Naptár és (választhatóan) a Jelentés menük összevonva."
 
 #: app/Template/AdminTemplate.php:378
-msgid "Include the reports topmenu in the compact “View” topmenu?"
+#, fuzzy
+msgid "Include the reports topmenu in the compact “View” topmenu"
 msgstr "Tartalmazza az tömörített “Megtekintés” főmenü a Jelentések menüt?"
 
 #. I18N: Name of a module
@@ -120,15 +121,18 @@ msgid "Upload a custom header image"
 msgstr "Saját fejléckép feltöltése"
 
 #: app/Template/AdminTemplate.php:368
-msgid "Use a compact menu?"
+#, fuzzy
+msgid "Use a compact menu"
 msgstr "Használjunk tömörített menüt?"
 
 #: app/Template/AdminTemplate.php:358
-msgid "Use flags in header bar as language menu?"
+#, fuzzy
+msgid "Use flags in header bar as language menu"
 msgstr "Használjunk zászlókat a fejlécsávban nyelv menüként?"
 
 #: app/Template/AdminTemplate.php:290
-msgid "Use header image?"
+#, fuzzy
+msgid "Use header image"
 msgstr "használjunk fejlécképet?"
 
 #: app/Template/AdminTemplate.php:423
@@ -136,7 +140,8 @@ msgid "Use square thumbs"
 msgstr "Négyzetkép használat"
 
 #: app/Template/AdminTemplate.php:218
-msgid "Use the family tree title in the header?"
+#, fuzzy
+msgid "Use the family tree title in the header"
 msgstr "Használjunk családfanevet a fejlécben?"
 
 #: app/Template/AdminTemplate.php:362

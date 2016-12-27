@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
-"POT-Creation-Date: 2016-07-08 09:10+0200\n"
+"POT-Creation-Date: 2016-12-26 16:41+0100\n"
 "PO-Revision-Date: 2016-10-04 03:37+0000\n"
 "Last-Translator: Jamie Jaconelli <jamie@jaconelli.dk>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/da/>\n"
@@ -58,7 +58,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "Diagrammer, lister, kalender og (valgfrit) rapporter vil blive lagt sammen i den kompakte \"Vis\"-menu"
 
 #: app/Template/AdminTemplate.php:378
-msgid "Include the reports topmenu in the compact “View” topmenu?"
+#, fuzzy
+msgid "Include the reports topmenu in the compact “View” topmenu"
 msgstr "Inkludér rapportmenuen i den kompakte \"Vis\" menu?"
 
 #. I18N: Name of a module
@@ -120,15 +121,15 @@ msgid "Upload a custom header image"
 msgstr ""
 
 #: app/Template/AdminTemplate.php:368
-msgid "Use a compact menu?"
+msgid "Use a compact menu"
 msgstr ""
 
 #: app/Template/AdminTemplate.php:358
-msgid "Use flags in header bar as language menu?"
+msgid "Use flags in header bar as language menu"
 msgstr ""
 
 #: app/Template/AdminTemplate.php:290
-msgid "Use header image?"
+msgid "Use header image"
 msgstr ""
 
 #: app/Template/AdminTemplate.php:423
@@ -136,8 +137,9 @@ msgid "Use square thumbs"
 msgstr "Brug lodrette miniaturer"
 
 #: app/Template/AdminTemplate.php:218
-msgid "Use the family tree title in the header?"
-msgstr ""
+#, fuzzy
+msgid "Use the family tree title in the header"
+msgstr "Størrelse på familietræets titel"
 
 #: app/Template/AdminTemplate.php:362
 msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
