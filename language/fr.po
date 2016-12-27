@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2016-12-26 16:41+0100\n"
-"PO-Revision-Date: 2016-12-24 15:33+0000\n"
+"PO-Revision-Date: 2016-12-27 06:38+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/fr/>\n"
 "Language: fr\n"
@@ -56,9 +56,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "Dans le menu compact le menu « Afficher » regroupe les menus « Diagrammes », « Listes », « Calendrier » et (en option) « Rapports »."
 
 #: app/Template/AdminTemplate.php:378
-#, fuzzy
 msgid "Include the reports topmenu in the compact “View” topmenu"
-msgstr "Inclure le menu « Rapports » dans le menu « Afficher » dans le menu compact ?"
+msgstr "Inclure le menu « Rapports » dans le menu « Afficher » dans le menu compact"
 
 #. I18N: Name of a module
 #: module.php:63
@@ -119,28 +118,24 @@ msgid "Upload a custom header image"
 msgstr "Téléverser une image d'en-tête personnalisé"
 
 #: app/Template/AdminTemplate.php:368
-#, fuzzy
 msgid "Use a compact menu"
-msgstr "Utiliser le menu compact ?"
+msgstr "Utiliser le menu compact"
 
 #: app/Template/AdminTemplate.php:358
-#, fuzzy
 msgid "Use flags in header bar as language menu"
-msgstr "Utiliser les drapeaux dans la barre d'en-tête du menu des langues ?"
+msgstr "Utiliser les drapeaux dans la barre d'en-tête du menu des langues"
 
 #: app/Template/AdminTemplate.php:290
-#, fuzzy
 msgid "Use header image"
-msgstr "Utiliser une image d'en-tête ?"
+msgstr "Utiliser une image d'en-tête"
 
 #: app/Template/AdminTemplate.php:423
 msgid "Use square thumbs"
 msgstr "Utiliser les vignettes carrées ?"
 
 #: app/Template/AdminTemplate.php:218
-#, fuzzy
 msgid "Use the family tree title in the header"
-msgstr "Utiliser le nom de l'arbre généalogique dans l'en-tête ?"
+msgstr "Utiliser le nom de l'arbre généalogique dans l'en-tête"
 
 #: app/Template/AdminTemplate.php:362
 msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
