@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2016-12-26 16:41+0100\n"
-"PO-Revision-Date: 2016-12-10 18:52+0000\n"
+"PO-Revision-Date: 2016-12-28 16:43+0000\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/hu/>\n"
 "Language: hu\n"
@@ -58,9 +58,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "A tömörített “Megtekintés” menübe lesznek az Ábra, Lista, Naptár és (választhatóan) a Jelentés menük összevonva."
 
 #: app/Template/AdminTemplate.php:378
-#, fuzzy
 msgid "Include the reports topmenu in the compact “View” topmenu"
-msgstr "Tartalmazza az tömörített “Megtekintés” főmenü a Jelentések menüt?"
+msgstr "A Jelentések menü része a tömörített “Megtekintés” főmenünek"
 
 #. I18N: Name of a module
 #: module.php:63
@@ -121,28 +120,24 @@ msgid "Upload a custom header image"
 msgstr "Saját fejléckép feltöltése"
 
 #: app/Template/AdminTemplate.php:368
-#, fuzzy
 msgid "Use a compact menu"
-msgstr "Használjunk tömörített menüt?"
+msgstr "Tömörített menü használat"
 
 #: app/Template/AdminTemplate.php:358
-#, fuzzy
 msgid "Use flags in header bar as language menu"
-msgstr "Használjunk zászlókat a fejlécsávban nyelv menüként?"
+msgstr "Nyelv menü helyett legyenek zászlók a fejlécsávban"
 
 #: app/Template/AdminTemplate.php:290
-#, fuzzy
 msgid "Use header image"
-msgstr "használjunk fejlécképet?"
+msgstr "Fejléckép használat"
 
 #: app/Template/AdminTemplate.php:423
 msgid "Use square thumbs"
 msgstr "Négyzetkép használat"
 
 #: app/Template/AdminTemplate.php:218
-#, fuzzy
 msgid "Use the family tree title in the header"
-msgstr "Használjunk családfanevet a fejlécben?"
+msgstr "Családfanév a fejlécben"
 
 #: app/Template/AdminTemplate.php:362
 msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
