@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2017-01-01 19:44+0100\n"
-"PO-Revision-Date: 2016-12-27 09:21+0000\n"
+"PO-Revision-Date: 2017-01-01 19:13+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/de/>\n"
 "Language: de\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
@@ -27,7 +27,6 @@ msgid "Choose “no” if you have used the family tree title in your custom hea
 msgstr "Wählen Sie \"nein\", wenn der Stammbaumtitel bereits in der Titelgrafik enthalten ist."
 
 #: app/Template/AdminTemplate.php:443
-#, fuzzy
 msgid "Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button."
 msgstr "Um die Einträge im Hauptmenü neu anzuordnen, verschieben Sie die Zeilen entsprechend mit der Maus. Danach auf \"Speichern\" klicken."
 
@@ -45,9 +44,8 @@ msgid "Here you can set the location of the family tree title. Adjust the values
 msgstr "Hier können Sie die Position des Stammbaumtitels festlegen. Passen Sie die Werte entsprechend Ihre Bedürfnisse an. Wenn der Stammbaumtitel in der Kopfzeile verwendet wird, sind die richtigen Werte abhängig von dessen Länge. Die Position ist die absolute Position des Titels relativ zum Kopfzeilenbereich. Zum Beispiel: Geben Sie \"top: 0px\" und  \"left: 0px\" für die linke obere Ecke oder \"top: 50%\" und \"right: 10px\" für die vertikal mittige Anordnung im Kopfzeilenbereich mit 10 Punkten Abstand vom rechten Rand ein."
 
 #: app/Template/AdminTemplate.php:392
-#, fuzzy
 msgid "If this option is set the media menu will be moved to the main menu."
-msgstr "Ist diese Option aktiviert, wird das Medienmenü ins Hauptmenü verschoben."
+msgstr "Wenn diese Einstellung aktiviert ist, wird das Medienmenü ins Hauptmenü verschoben."
 
 #: app/Template/AdminTemplate.php:416
 msgid "If you set this option the results on the media list page will include subfolders."
@@ -58,9 +56,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "Im kompakten Menü \"Zeige\" werden die Menüs Diagramme, Listen, Kalender und (optional) Berichte zusammen gruppiert."
 
 #: app/Template/AdminTemplate.php:378
-#, fuzzy
 msgid "Include the reports menu in the compact “View” menu"
-msgstr "Menüpunkt \"Berichte\" dem gemeinsamen Menü \"Zeige\" als Untermenü hinzufügen?"
+msgstr "Menüpunkt \"Berichte\" dem gemeinsamen Menü \"Zeige\" als Untermenü hinzufügen"
 
 #. I18N: Name of a module
 #: module.php:63
@@ -68,9 +65,8 @@ msgid "JustBlack Theme Options"
 msgstr "JustBlack Theme Einstellungen"
 
 #: app/Template/AdminTemplate.php:388
-#, fuzzy
 msgid "Media menu in main menu"
-msgstr "Medienmenü als Hauptmenü?"
+msgstr "Medienmenü als Hauptmenü"
 
 #: app/Template/AdminTemplate.php:210
 msgid "Options"
@@ -102,7 +98,6 @@ msgid "Size of the family tree title"
 msgstr "Größe des Stammbaumtitels"
 
 #: app/Template/AdminTemplate.php:437
-#, fuzzy
 msgid "Sort menu items"
 msgstr "Einträge im Hauptmenü sortieren"
 
@@ -143,7 +138,6 @@ msgid "Use the family tree title in the header"
 msgstr "Den Stammbaumtitel in der Kopfzeile verwenden?"
 
 #: app/Template/AdminTemplate.php:362
-#, fuzzy
 msgid "You can use flags in the bar above the main menu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
 msgstr "Sie können statt des Auswahlmenüs für die Sprache auch Nationalflaggen in der Kopfzeile über der Hauptauswahl verwenden. Diese Flaggen ersetzen das normale Ausklappmenü. Bei mehr als zehn installierten Sprachen sollten Sie allerdings auf diese Möglichkeit verzichten. Nicht genutzte Sprachen können Sie aus dem Ordner \"/languages\" Ihrer webtrees-Installation löschen."
 
