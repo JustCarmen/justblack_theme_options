@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
-"POT-Creation-Date: 2016-12-26 16:41+0100\n"
+"POT-Creation-Date: 2017-01-01 19:44+0100\n"
 "PO-Revision-Date: 2016-12-27 06:38+0000\n"
 "Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/fr/>\n"
@@ -27,7 +27,8 @@ msgid "Choose “no” if you have used the family tree title in your custom hea
 msgstr "Sélectionnez «non» si vous avez utilisé le titre de l'arbre généalogique dans votre image d'en-tête personnalisé. Sinon choisissez « oui »."
 
 #: app/Template/AdminTemplate.php:443
-msgid "Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button."
+#, fuzzy
+msgid "Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button."
 msgstr "Cliquez sur une ligne, puis faites un glisser-déposer pour réorganiser les éléments du menu principal. Cliquez ensuite sur le bouton « enregistrer »."
 
 #: app/JustBlackThemeOptionsClass.php:59
@@ -44,7 +45,8 @@ msgid "Here you can set the location of the family tree title. Adjust the values
 msgstr "Ici, vous pouvez définir l'emplacement du titre de l'arbre généalogique. Réglez les valeurs à vos besoins. Si vous souhaitez que le titre de l'arbre apparaît dans l'image d'en-tête, les valeurs correctes dépendent de la longueur du titre de l'arbre. La position est la position absolue du titre, par rapport à la zone d'en-tête. Par exemple: choisissez « top: 0px; left: 0px; » pour le coin supérieur gauche de la zone d'en-tête ou « top: 50%%; right: 10px » pour placer le titre au droite au milieu de la zone d'en-tête avec une marge de 10px."
 
 #: app/Template/AdminTemplate.php:392
-msgid "If this option is set the media menu will be moved to the topmenu."
+#, fuzzy
+msgid "If this option is set the media menu will be moved to the main menu."
 msgstr "Si cette option est activée, le menu « Média » est déplacé dans le menu principal."
 
 #: app/Template/AdminTemplate.php:416
@@ -56,7 +58,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "Dans le menu compact le menu « Afficher » regroupe les menus « Diagrammes », « Listes », « Calendrier » et (en option) « Rapports »."
 
 #: app/Template/AdminTemplate.php:378
-msgid "Include the reports topmenu in the compact “View” topmenu"
+#, fuzzy
+msgid "Include the reports menu in the compact “View” menu"
 msgstr "Inclure le menu « Rapports » dans le menu « Afficher » dans le menu compact"
 
 #. I18N: Name of a module
@@ -65,7 +68,8 @@ msgid "JustBlack Theme Options"
 msgstr "Options du thème JustBlack"
 
 #: app/Template/AdminTemplate.php:388
-msgid "Media menu in topmenu"
+#, fuzzy
+msgid "Media menu in main menu"
 msgstr "Ajouter un menu « Média » dans le menu principal ?"
 
 #: app/Template/AdminTemplate.php:210
@@ -98,7 +102,8 @@ msgid "Size of the family tree title"
 msgstr "Taille du titre de l'arbre généalogique"
 
 #: app/Template/AdminTemplate.php:437
-msgid "Sort Topmenu items"
+#, fuzzy
+msgid "Sort menu items"
 msgstr "Trier les éléments dans le menu principal"
 
 #: app/Template/AdminTemplate.php:407
@@ -109,7 +114,7 @@ msgstr "Le dossier des médias que vous choisissez ici sera utilisé comme dossi
 msgid "The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
 msgstr "Si cette option est activée, un nouveau menu « Média » sera ajouté au menu principal. Le nom des dossiers de médias apparaitront comme sous-menu du nouveau menu « Média ». Attention : Ces sous-menus ne sont pas traduits automatiquement. Pour les traduire, il faut le faire manuellement. Voir les instructions dans le WIKI de webtrees."
 
-#: app/Template/AdminTemplate.php:466
+#: app/Template/AdminTemplate.php:468
 msgid "The settings will be reset to default. Are you sure you want to do this?"
 msgstr "Les paramètres seront réinitialisés aux valeurs par défaut. Êtes-vous sûr de vouloir faire ça ?"
 
@@ -138,7 +143,8 @@ msgid "Use the family tree title in the header"
 msgstr "Utiliser le nom de l'arbre généalogique dans l'en-tête"
 
 #: app/Template/AdminTemplate.php:362
-msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
+#, fuzzy
+msgid "You can use flags in the bar above the main menu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
 msgstr "Vous pouvez utiliser les drapeaux dans la barre située au-dessus du menu. Ces drapeaux remplacent le menu déroulant par défaut. Nous vous conseillons de ne pas utiliser cette option si vous avez plus d'une dizaine de langues installées. Vous pouvez supprimer les langues non utilisées dans le dossier « language » de votre installation webtrees."
 
 #: app/JustBlackThemeOptionsClass.php:73

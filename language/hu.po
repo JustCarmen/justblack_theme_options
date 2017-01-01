@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
-"POT-Creation-Date: 2016-12-26 16:41+0100\n"
+"POT-Creation-Date: 2017-01-01 19:44+0100\n"
 "PO-Revision-Date: 2016-12-28 16:43+0000\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/hu/>\n"
@@ -29,7 +29,8 @@ msgid "Choose “no” if you have used the family tree title in your custom hea
 msgstr "Válassza a “nem”-et, ha szeretné feltüntetni a családfa nevét az egyedi fejlécképen. Különben az “igen”-t."
 
 #: app/Template/AdminTemplate.php:443
-msgid "Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button."
+#, fuzzy
+msgid "Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button."
 msgstr "Klikk a sorra, majd egérrel fogd-és-vidd a kívánt sorrendbe. Végül klikk a “mentés” gombra."
 
 #: app/JustBlackThemeOptionsClass.php:59
@@ -46,7 +47,8 @@ msgid "Here you can set the location of the family tree title. Adjust the values
 msgstr "Itt állítható a családfa nevének elhelyezése. Állítsa be az értékeket saját szükség szerint. Ha szeretné megjeleníteni a fa nevét a fejlécképen a helyes beállítás értékei a név hosszúságától függenek. Az elhelyezés a név abszolút helyzetét jelenti a fejlécterülethez mérten. Például: “Felül: 0px; Balra: 0px” érték a fejlécterület bal felső sarkát jelenti vagy “Felül: 50%% ; Jobbra: 10px” a fejlécterület közepén jobb oldalt 10px szegéllyel lesz elhelyezve."
 
 #: app/Template/AdminTemplate.php:392
-msgid "If this option is set the media menu will be moved to the topmenu."
+#, fuzzy
+msgid "If this option is set the media menu will be moved to the main menu."
 msgstr "E lehetőség kiválasztásával a média menü a főmenübe kerül."
 
 #: app/Template/AdminTemplate.php:416
@@ -58,7 +60,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "A tömörített “Megtekintés” menübe lesznek az Ábra, Lista, Naptár és (választhatóan) a Jelentés menük összevonva."
 
 #: app/Template/AdminTemplate.php:378
-msgid "Include the reports topmenu in the compact “View” topmenu"
+#, fuzzy
+msgid "Include the reports menu in the compact “View” menu"
 msgstr "A Jelentések menü része a tömörített “Megtekintés” főmenünek"
 
 #. I18N: Name of a module
@@ -67,7 +70,8 @@ msgid "JustBlack Theme Options"
 msgstr "JustBlack Téma beállításai"
 
 #: app/Template/AdminTemplate.php:388
-msgid "Media menu in topmenu"
+#, fuzzy
+msgid "Media menu in main menu"
 msgstr "Média menü a főmenüben"
 
 #: app/Template/AdminTemplate.php:210
@@ -100,7 +104,8 @@ msgid "Size of the family tree title"
 msgstr "A családfa nevének nagysága"
 
 #: app/Template/AdminTemplate.php:437
-msgid "Sort Topmenu items"
+#, fuzzy
+msgid "Sort menu items"
 msgstr "A Főmenü elrendezése"
 
 #: app/Template/AdminTemplate.php:407
@@ -111,7 +116,7 @@ msgstr "Az itt kiválasztott médiamappa, mint alapértelmezett mappa szerepel a
 msgid "The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
 msgstr "A média menüének almenü elemei a szerveren lévő média mappa első szintű mappái neveit használja. Figyelem: Ezek az almenü elemek nincsenek automatikusan lefordítva. Használjon saját nyelvi fájlt a menü elemeinek lefordítására. Részletesebb információ a webtrees WIKI oldalán található."
 
-#: app/Template/AdminTemplate.php:466
+#: app/Template/AdminTemplate.php:468
 msgid "The settings will be reset to default. Are you sure you want to do this?"
 msgstr "A beállítások alapértékeinek visszaállítása. Biztos benne, hogy ezt akarja?"
 
@@ -140,7 +145,8 @@ msgid "Use the family tree title in the header"
 msgstr "Családfanév a fejlécben"
 
 #: app/Template/AdminTemplate.php:362
-msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
+#, fuzzy
+msgid "You can use flags in the bar above the main menu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
 msgstr "A fejléc főmenü feletti sávjában használhat zászlókat. Ezek a zászlók helyettesítik az alapértelmezett legördülő Nyelv menüt. Ezt a beállítást 10 telepített nyelven felül már nem ajánlatos használni. A webtrees telepítés languages mappájából a nem használt nyelvek eltávolíthatóak."
 
 #: app/JustBlackThemeOptionsClass.php:73

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
-"POT-Creation-Date: 2016-12-26 16:41+0100\n"
+"POT-Creation-Date: 2017-01-01 19:44+0100\n"
 "PO-Revision-Date: 2016-12-27 06:58+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/nl/>\n"
@@ -27,7 +27,8 @@ msgid "Choose “no” if you have used the family tree title in your custom hea
 msgstr "Kies “nee” wanneer u de stamboomtitel al gebruikt in de header afbeelding. Laat de waarde anders op “ja” staan."
 
 #: app/Template/AdminTemplate.php:443
-msgid "Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button."
+#, fuzzy
+msgid "Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button."
 msgstr "Klik op een rij, sleep en laat los om de volgorde van de top menu items te wijzigen. Klik daarna op de knop 'opslaan'."
 
 #: app/JustBlackThemeOptionsClass.php:59
@@ -44,7 +45,8 @@ msgid "Here you can set the location of the family tree title. Adjust the values
 msgstr "Hier kunt u de locatie van de stamboomtitel instellen. Pas de waarden aan uw wensen aan. Als u wilt dat de titel in de header afbeelding verschijnt, zijn de juiste waarden afhankelijk van de lengte van de stamboomtitel. De positie is de absolute positie van de titel in relatie tot het header gebied. Bijvoorbeeld: kies “Top: 0px; Links: 0px” voor de linkerbovenhoek van het header gebied of “Top: 50%%; Rechts: 10px” om de titel aan de rechterkant in het midden van het header gebied te plaatsen met een marge van 10px."
 
 #: app/Template/AdminTemplate.php:392
-msgid "If this option is set the media menu will be moved to the topmenu."
+#, fuzzy
+msgid "If this option is set the media menu will be moved to the main menu."
 msgstr "Als deze optie is ingeschakeld, wordt het media menu verplaatst naar het top menu."
 
 #: app/Template/AdminTemplate.php:416
@@ -56,7 +58,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "In het compacte “Bekijk”-menu worden de menu's voor Diagrammen, Lijsten, Kalender en (optioneel) Rapporten, samengevoegd."
 
 #: app/Template/AdminTemplate.php:378
-msgid "Include the reports topmenu in the compact “View” topmenu"
+#, fuzzy
+msgid "Include the reports menu in the compact “View” menu"
 msgstr "Wilt u het menu rapporten opnemen in het compacte “Bekijk” menu"
 
 #. I18N: Name of a module
@@ -65,7 +68,8 @@ msgid "JustBlack Theme Options"
 msgstr "JustBlack Thema Opties"
 
 #: app/Template/AdminTemplate.php:388
-msgid "Media menu in topmenu"
+#, fuzzy
+msgid "Media menu in main menu"
 msgstr "Media menu in hoofdmenu"
 
 #: app/Template/AdminTemplate.php:210
@@ -98,7 +102,8 @@ msgid "Size of the family tree title"
 msgstr "Grootte van de stamboom titel"
 
 #: app/Template/AdminTemplate.php:437
-msgid "Sort Topmenu items"
+#, fuzzy
+msgid "Sort menu items"
 msgstr "Top menu items sorteren"
 
 #: app/Template/AdminTemplate.php:407
@@ -109,7 +114,7 @@ msgstr "De media map die u hier kiest wordt gebruikt als standaard map voor de m
 msgid "The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
 msgstr "De namen van de mappen direct onder de hoofdmap verschijnen als submenu in het nieuwe media menu. Waarschuwing: deze submenu items worden niet automatisch vertaald. Gebruik een aangepast taalbestand om uw menu items te vertalen. Lees de webtrees WIKI voor meer informatie."
 
-#: app/Template/AdminTemplate.php:466
+#: app/Template/AdminTemplate.php:468
 msgid "The settings will be reset to default. Are you sure you want to do this?"
 msgstr "De standaardinstellingen worden teruggezet. Weet u zeker dat u dit wilt?"
 
@@ -138,7 +143,8 @@ msgid "Use the family tree title in the header"
 msgstr "Gebruik de stamboom titel in de header"
 
 #: app/Template/AdminTemplate.php:362
-msgid "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
+#, fuzzy
+msgid "You can use flags in the bar above the main menu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
 msgstr "U kunt vlaggen gebruiken in de balk boven het top menu in de header. Deze vlaggen vervangen het standaard dropdown menu. Wij adviseren u om deze optie niet in te schakelen wanneer u meer dan tien talen heeft geïnstalleerd. U kunt ongebruikte talen verwijderen uit de folder “languages” in uw webtrees installatie."
 
 #: app/JustBlackThemeOptionsClass.php:73
