@@ -36,8 +36,8 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		} elseif ($key === 'mediafolders') {
 			return $this->listMediaFolders();
 		} else {
-			$JB_OPTIONS = unserialize($this->getSetting('JB_OPTIONS'));
-			$key = strtoupper($key);
+			$JB_OPTIONS	 = unserialize($this->getSetting('JB_OPTIONS'));
+			$key		 = strtoupper($key);
 			if (empty($JB_OPTIONS) || (is_array($JB_OPTIONS) && !array_key_exists($key, $JB_OPTIONS))) {
 				return $key === 'MENU' ? $this->getDefaultMenu() : $this->setDefault($key);
 			} else {
@@ -47,10 +47,10 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 	}
 
 	protected function saveOptions() {
-		$NEW_JB_OPTIONS = Filter::postArray('NEW_JB_OPTIONS');
-		$NEW_JB_OPTIONS['MENU'] = $this->sortArray(Filter::postArray('NEW_JB_MENU'), 'sort');
+		$NEW_JB_OPTIONS			 = Filter::postArray('NEW_JB_OPTIONS');
+		$NEW_JB_OPTIONS['MENU']	 = $this->sortArray(Filter::postArray('NEW_JB_MENU'), 'sort');
 		$NEW_JB_OPTIONS['IMAGE'] = Filter::post('JB_IMAGE');
-		$error = false;
+		$error					 = false;
 		if ($NEW_JB_OPTIONS['HEADER'] == 1) {
 			if (!empty($_FILES['NEW_JB_IMAGE']['name'])) {
 				if ($this->upload($_FILES['NEW_JB_IMAGE'])) {
@@ -119,8 +119,8 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		}
 		return $html;
 	}
-	
-	/** 
+
+	/**
 	 * Check if $module->getMenu does not return null
 	 * Used on the configuration page
 	 * 
@@ -128,7 +128,7 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 	 * @param type $label
 	 * @return boolean	 * 
 	 */
-	public function isMenu ($label) {
+	public function isMenu($label) {
 		global $WT_TREE;
 		$module = Module::getModuleByName($label);
 		if (in_array($module, Module::getActiveMenus($WT_TREE))) {
@@ -139,7 +139,7 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 			}
 		} else {
 			return true;
-		}								
+		}
 	}
 
 	// Set default module options
@@ -222,11 +222,11 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 	private function listMediaFolders() {
 		global $WT_TREE;
 
-		$MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
-		$folders = QueryMedia::folderList();
-		array_shift($folders);		
-		$folderlist[$MEDIA_DIRECTORY] = strtoupper(I18N::translate(substr($MEDIA_DIRECTORY, 0, -1)));
-		
+		$MEDIA_DIRECTORY				 = $WT_TREE->getPreference('MEDIA_DIRECTORY');
+		$folders						 = QueryMedia::folderList();
+		array_shift($folders);
+		$folderlist[$MEDIA_DIRECTORY]	 = strtoupper(I18N::translate(substr($MEDIA_DIRECTORY, 0, -1)));
+
 		foreach ($folders as $key => $value) {
 			if (count(glob(WT_DATA_DIR . $MEDIA_DIRECTORY . $value . '*')) > 0) {
 				$folder = array_filter(explode("/", $value));
@@ -248,10 +248,10 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 
 		$return_array = array();
 		foreach ($tmp_array as $pos => $val) {
-			$return_array[$pos]['title'] = $array[$pos]['title'];
-			$return_array[$pos]['label'] = $array[$pos]['label'];
-			$return_array[$pos]['sort'] = $array[$pos]['sort'];
-			$return_array[$pos]['function'] = $array[$pos]['function'];
+			$return_array[$pos]['title']	 = $array[$pos]['title'];
+			$return_array[$pos]['label']	 = $array[$pos]['label'];
+			$return_array[$pos]['sort']		 = $array[$pos]['sort'];
+			$return_array[$pos]['function']	 = $array[$pos]['function'];
 		}
 		return $return_array;
 	}
@@ -299,11 +299,11 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		}
 
 		if ($thumbwidth / $thumbheight > $ratio_orig) {
-			$new_height = $thumbwidth / $ratio_orig;
-			$new_width = $thumbwidth;
+			$new_height	 = $thumbwidth / $ratio_orig;
+			$new_width	 = $thumbwidth;
 		} else {
-			$new_width = $thumbheight * $ratio_orig;
-			$new_height = $thumbheight;
+			$new_width	 = $thumbheight * $ratio_orig;
+			$new_height	 = $thumbheight;
 		}
 
 		$y_mid = $new_height / 2;
@@ -311,15 +311,15 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		// return resized header image
 		switch ($type) {
 			case 'image/jpeg':
-				$image = imagecreatefromjpeg($imgSrc);
-				$thumb = imagecreatetruecolor(round($new_width), $thumbheight);
+				$image	 = imagecreatefromjpeg($imgSrc);
+				$thumb	 = imagecreatetruecolor(round($new_width), $thumbheight);
 
 				imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
 				imagedestroy($image);
 				return imagejpeg($thumb, $imgSrc, 100);
 			case 'image/gif':
-				$image = imagecreatefromgif($imgSrc);
-				$thumb = imagecreatetruecolor(round($new_width), $thumbheight);
+				$image	 = imagecreatefromgif($imgSrc);
+				$thumb	 = imagecreatetruecolor(round($new_width), $thumbheight);
 
 				imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
 				imagecolortransparent($thumb, imagecolorallocate($thumb, 0, 0, 0));

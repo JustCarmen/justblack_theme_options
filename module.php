@@ -26,29 +26,28 @@ use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use JustCarmen\WebtreesAddOns\JustBlack\Template\AdminTemplate;
 
 class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfigInterface {
-	
-	const CUSTOM_VERSION = '1.7.8';
-	const CUSTOM_WEBSITE = 'http://www.justcarmen.nl/themes/justblack/';
-	
+
+	const CUSTOM_VERSION			 = '1.7.8';
+	const CUSTOM_WEBSITE			 = 'http://www.justcarmen.nl/themes/justblack/';
 	// How to update the database schema for this module
-	const SCHEMA_TARGET_VERSION = 3;
-	const SCHEMA_SETTING_NAME = 'JB_SCHEMA_VERSION';
-	const SCHEMA_MIGRATION_PREFIX = '\JustCarmen\WebtreesAddOns\JustBlack\Schema';
-	
+	const SCHEMA_TARGET_VERSION	 = 3;
+	const SCHEMA_SETTING_NAME		 = 'JB_SCHEMA_VERSION';
+	const SCHEMA_MIGRATION_PREFIX	 = '\JustCarmen\WebtreesAddOns\JustBlack\Schema';
+
 	/** @var string location of the JustBlack Theme Options module files */
 	var $directory;
 
 	public function __construct() {
 		parent::__construct('justblack_theme_options');
-		
+
 		$this->directory = WT_MODULES_DIR . $this->getName();
-		
+
 		// register the namespace
 		$loader = new ClassLoader();
 		$loader->addPsr4('JustCarmen\\WebtreesAddOns\\JustBlack\\', $this->directory . '/app');
 		$loader->register();
 	}
-	
+
 	/**
 	 * Get the module class.
 	 * 
@@ -67,23 +66,23 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 	public function getDescription() {
 		return /* I18N: Description of the module */ I18N::translate('Set options for the JustBlack theme within the admin interface');
 	}
-	
+
 	// Extend ModuleConfigInterface
 	public function modAction($mod_action) {
 		Database::updateSchema(self::SCHEMA_MIGRATION_PREFIX, self::SCHEMA_SETTING_NAME, self::SCHEMA_TARGET_VERSION);
-		
+
 		switch ($mod_action) {
 			case 'admin_config':
 				if (Filter::postBool('save') && Filter::checkCsrf()) {
 					$this->module()->saveOptions();
 				}
-				$template = new AdminTemplate;
+				$template	 = new AdminTemplate;
 				return $template->pageContent();
 			case 'admin_reset':
 				$this->module()->deleteImage();
 				Database::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
 				Log::addConfigurationLog($this->getTitle() . ' reset to default values');
-				$template = new AdminTemplate;
+				$template	 = new AdminTemplate;
 				return $template->pageContent();
 			case 'delete_image':
 				$this->module()->deleteImage();

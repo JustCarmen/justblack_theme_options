@@ -223,7 +223,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 								</div>
 							</div>
 							<!-- TITLE POSITION -->
-							<?php $titlepos = $this->options('titlepos'); ?>
+							<?php $titlepos	 = $this->options('titlepos'); ?>
 							<div id="title-pos" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
 									<?php echo I18N::translate('Position of the family tree title') ?>
@@ -382,7 +382,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 								</div>
 							</div>
 							<!-- MEDIA MENU -->
-							<?php $folders = $this->options('mediafolders'); ?>
+							<?php $folders	 = $this->options('mediafolders'); ?>
 							<div id="media-menu" class="form-group form-group-sm">
 								<label class="control-label col-sm-4">
 									<?php echo I18N::translate('Media menu in main menu') ?>
@@ -447,7 +447,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							$menulist = $this->options('menu');
 							foreach ($menulist as $label => $menu) {
 								if ($this->isMenu($label)) {
-									$menu['sort'] == 0 ? $trashMenu[$label] = $menu : $activeMenu[$label] = $menu;
+									$menu['sort'] == 0 ? $trashMenu[$label]	 = $menu : $activeMenu[$label]	 = $menu;
 								}
 							}
 							?>
