@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2017-01-01 19:44+0100\n"
-"PO-Revision-Date: 2017-01-01 19:13+0000\n"
+"PO-Revision-Date: 2017-01-01 19:50+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/de/>\n"
 "Language: de\n"
@@ -49,11 +49,11 @@ msgstr "Wenn diese Einstellung aktiviert ist, wird das Medienmenü ins Hauptmen�
 
 #: app/Template/AdminTemplate.php:416
 msgid "If you set this option the results on the media list page will include subfolders."
-msgstr "Wenn Sie diese Option aktivieren, werden im Hauptmenüpunkt \"Multimedia\" vorhandene Unterordner angezeigt."
+msgstr "Wenn Sie diese Einstellung aktivieren, werden im Hauptmenüpunkt \"Multimedia\" vorhandene Unterordner angezeigt."
 
 #: app/Template/AdminTemplate.php:372
 msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together."
-msgstr "Im kompakten Menü \"Zeige\" werden die Menüs Diagramme, Listen, Kalender und (optional) Berichte zusammen gruppiert."
+msgstr "Im gemeinsamen Menü \"Zeige\" werden die Menüs Diagramme, Listen, Kalender und (optional) Berichte zusammen gruppiert."
 
 #: app/Template/AdminTemplate.php:378
 msgid "Include the reports menu in the compact “View” menu"
@@ -82,7 +82,7 @@ msgstr "Position des Stammbaumtitels"
 
 #: app/Template/AdminTemplate.php:330
 msgid "Resize image (800 x 150px)"
-msgstr "Titelgrafik auf 800 x 150px ändern?"
+msgstr "Titelgrafik auf 800 x 150px ändern"
 
 #. I18N: Description of the module
 #: module.php:68
@@ -91,7 +91,7 @@ msgstr "Einstellungen für das JustBlack Theme setzen"
 
 #: app/Template/AdminTemplate.php:427
 msgid "Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used."
-msgstr "Um quadratische Vorschaubilder auf Personenseiten oder in Diagrammen zu nutzen, wählen Sie \"ja\". Wenn Sie \"nein\" wählen, werden die Standardvorschaubilder von webtrees genutzt."
+msgstr "Um quadratische Vorschaubilder auf Personenseiten oder in Diagrammen zu verwenden, wählen Sie \"ja\". Wenn Sie \"nein\" wählen, werden die Standardvorschaubilder von webtrees verwendet."
 
 #: app/Template/AdminTemplate.php:272
 msgid "Size of the family tree title"
@@ -103,11 +103,11 @@ msgstr "Einträge im Hauptmenü sortieren"
 
 #: app/Template/AdminTemplate.php:407
 msgid "The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder."
-msgstr "Der Standard-Medienordner wird als Link für das Mediensymbol im Hauptmenü benutzt. Beim Klicken darauf wird die Medienliste für diesen Ordner angezeigt."
+msgstr "Der Standard-Medienordner wird als Link für das Mediensymbol im Hauptmenü verwendet. Beim Klicken darauf wird die Medienliste für diesen Ordner angezeigt."
 
 #: app/Template/AdminTemplate.php:394
 msgid "The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
-msgstr "Die Namen der Unterverzeichnisse auf der ersten Ebene im Medienordner auf dem Server werden als Untermenü im neuen Menü \"Multimedia\" genutzt.<br /><br /><strong>Achtung: Diese Untermenüpunkte werden nicht automatisch übersetzt. Nutzen Sie ein eigene Sprachdatei, um die Menüpunkte zu übersetzen. Mehr Informationen dazu finden Sie im WIKI von webtrees.</strong>"
+msgstr "Die Namen der Unterverzeichnisse auf der ersten Ebene im Medienordner auf dem Server werden als Untermenü im neuen Menü \"Multimedia\" verwendet.<br /><br /><strong>Achtung: Diese Untermenüpunkte werden nicht automatisch übersetzt. Verweden Sie ein eigene Sprachdatei, um die Menüpunkte zu übersetzen. Mehr Informationen dazu finden Sie im WIKI von webtrees.</strong>"
 
 #: app/Template/AdminTemplate.php:468
 msgid "The settings will be reset to default. Are you sure you want to do this?"
@@ -119,23 +119,23 @@ msgstr "Eine eigene Titelgrafik hochladen"
 
 #: app/Template/AdminTemplate.php:368
 msgid "Use a compact menu"
-msgstr "Gemeinsames Menü für Diagramme, Listen und Kalendar verwenden?"
+msgstr "Gemeinsames Menü für Diagramme, Listen und Kalendar verwenden"
 
 #: app/Template/AdminTemplate.php:358
 msgid "Use flags in header bar as language menu"
-msgstr "Flaggen in der Kopfzeilen zur Sprachauswahl verwenden?"
+msgstr "Flaggen in der Kopfzeilen zur Sprachauswahl verwenden"
 
 #: app/Template/AdminTemplate.php:290
 msgid "Use header image"
-msgstr "Eine Titelgrafik in der Kopfzeile verwenden?"
+msgstr "Eine Titelgrafik in der Kopfzeile verwenden"
 
 #: app/Template/AdminTemplate.php:423
 msgid "Use square thumbs"
-msgstr "Quadratische Vorschaubilder nutzen?"
+msgstr "Quadratische Vorschaubilder verwenden"
 
 #: app/Template/AdminTemplate.php:218
 msgid "Use the family tree title in the header"
-msgstr "Den Stammbaumtitel in der Kopfzeile verwenden?"
+msgstr "Den Stammbaumtitel in der Kopfzeile verwenden"
 
 #: app/Template/AdminTemplate.php:362
 msgid "You can use flags in the bar above the main menu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
