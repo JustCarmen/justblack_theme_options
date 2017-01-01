@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2017-01-01 19:44+0100\n"
-"PO-Revision-Date: 2016-12-27 06:57+0000\n"
+"PO-Revision-Date: 2017-01-01 19:14+0000\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: English (United States) <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/en-US/>\n"
 "Language: en-US\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
@@ -27,9 +27,8 @@ msgid "Choose “no” if you have used the family tree title in your custom hea
 msgstr "Choose “no” if you have used the family tree title in your custom header image. Otherwise choose “yes”."
 
 #: app/Template/AdminTemplate.php:443
-#, fuzzy
 msgid "Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button."
-msgstr "Click a row, then drag-and-drop to re-order the topmenu items. Then click the “save” button."
+msgstr "Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button."
 
 #: app/JustBlackThemeOptionsClass.php:59
 msgid "Error: The image you have uploaded is not a valid image! Your settings are not saved."
@@ -45,9 +44,8 @@ msgid "Here you can set the location of the family tree title. Adjust the values
 msgstr "Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin."
 
 #: app/Template/AdminTemplate.php:392
-#, fuzzy
 msgid "If this option is set the media menu will be moved to the main menu."
-msgstr "If this option is set the media menu will be moved to the topmenu."
+msgstr "If this option is set the media menu will be moved to the main menu."
 
 #: app/Template/AdminTemplate.php:416
 msgid "If you set this option the results on the media list page will include subfolders."
@@ -58,9 +56,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together."
 
 #: app/Template/AdminTemplate.php:378
-#, fuzzy
 msgid "Include the reports menu in the compact “View” menu"
-msgstr "Include the reports top-menu in the compact “View” top-menu"
+msgstr "Include the reports menu in the compact “View” menu"
 
 #. I18N: Name of a module
 #: module.php:63
@@ -68,9 +65,8 @@ msgid "JustBlack Theme Options"
 msgstr "JustBlack Theme Options"
 
 #: app/Template/AdminTemplate.php:388
-#, fuzzy
 msgid "Media menu in main menu"
-msgstr "Media menu in topmenu"
+msgstr "Media menu in main menu"
 
 #: app/Template/AdminTemplate.php:210
 msgid "Options"
@@ -102,9 +98,8 @@ msgid "Size of the family tree title"
 msgstr "Size of the family tree title"
 
 #: app/Template/AdminTemplate.php:437
-#, fuzzy
 msgid "Sort menu items"
-msgstr "Sort Topmenu items"
+msgstr "Sort menu items"
 
 #: app/Template/AdminTemplate.php:407
 msgid "The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder."
@@ -143,9 +138,8 @@ msgid "Use the family tree title in the header"
 msgstr "Use the family tree title in the header"
 
 #: app/Template/AdminTemplate.php:362
-#, fuzzy
 msgid "You can use flags in the bar above the main menu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
-msgstr "You can use flags in the bar above the topmenu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
+msgstr "You can use flags in the bar above the main menu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
 
 #: app/JustBlackThemeOptionsClass.php:73
 msgid "Your settings are successfully saved."
