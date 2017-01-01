@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2017-01-01 20:18+0100\n"
-"PO-Revision-Date: 2017-01-01 19:50+0000\n"
+"PO-Revision-Date: 2017-01-02 08:37+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/de/>\n"
 "Language: de\n"
@@ -138,9 +138,8 @@ msgid "Use the family tree title in the header"
 msgstr "Den Stammbaumtitel in der Kopfzeile verwenden"
 
 #: app/Template/AdminTemplate.php:362
-#, fuzzy
 msgid "You can use flags in the bar above the main menu. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. <a href=\"admin_site_config.php?action=languages\" target=\"_blank\">Disable languages</a>."
-msgstr "Sie können statt des Auswahlmenüs für die Sprache auch Nationalflaggen in der Kopfzeile über der Hauptauswahl verwenden. Diese Flaggen ersetzen das normale Ausklappmenü. Bei mehr als zehn installierten Sprachen sollten Sie allerdings auf diese Möglichkeit verzichten. Nicht genutzte Sprachen können Sie aus dem Ordner \"/languages\" Ihrer webtrees-Installation löschen."
+msgstr "An Stelle der Sprachauswahl oberhalb des Hauptmenüs können Sie auch Flaggensymbole in der Kopfzeile verwenden. Diese Flaggen ersetzen das normale Ausklappmenü. Bei mehr als zehn aktivierten Sprachen sollten Sie allerdings auf diese Möglichkeit verzichten. Über den folgenden Link können Sie <a href=\"admin_site_config.php?action=languages\" target=\"_blank\">Sprachen deaktivieren</a>."
 
 #: app/JustBlackThemeOptionsClass.php:73
 msgid "Your settings are successfully saved."
