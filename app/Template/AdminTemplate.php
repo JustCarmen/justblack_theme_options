@@ -359,7 +359,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 								</label>
 								<div class="col-sm-8">
 									<?php echo FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[FLAGS]', $this->options('flags'), 'class="radio-inline"') ?>
-									<p class="small text-muted"><?php echo I18N::translate('You can use flags in the bar above the main menu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation.') ?></p>
+									<p class="small text-muted"><?php echo I18N::translate('You can use flags in the bar above the main menu. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. <a href="admin_site_config.php?action=languages" target="_blank">Disable languages</a>.') ?></p>
 								</div>
 							</div>
 							<!-- COMPACT MENU -->

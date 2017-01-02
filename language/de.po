@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
-"POT-Creation-Date: 2017-01-01 19:44+0100\n"
+"POT-Creation-Date: 2017-01-01 20:18+0100\n"
 "PO-Revision-Date: 2017-01-01 19:50+0000\n"
 "Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/de/>\n"
@@ -60,7 +60,7 @@ msgid "Include the reports menu in the compact “View” menu"
 msgstr "Menüpunkt \"Berichte\" dem gemeinsamen Menü \"Zeige\" als Untermenü hinzufügen"
 
 #. I18N: Name of a module
-#: module.php:63
+#: module.php:62
 msgid "JustBlack Theme Options"
 msgstr "JustBlack Theme Einstellungen"
 
@@ -85,7 +85,7 @@ msgid "Resize image (800 x 150px)"
 msgstr "Titelgrafik auf 800 x 150px ändern"
 
 #. I18N: Description of the module
-#: module.php:68
+#: module.php:67
 msgid "Set options for the JustBlack theme within the admin interface"
 msgstr "Einstellungen für das JustBlack Theme setzen"
 
@@ -138,7 +138,8 @@ msgid "Use the family tree title in the header"
 msgstr "Den Stammbaumtitel in der Kopfzeile verwenden"
 
 #: app/Template/AdminTemplate.php:362
-msgid "You can use flags in the bar above the main menu bar in the header. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. You can remove unused languages from the folder languages in your webtrees installation."
+#, fuzzy
+msgid "You can use flags in the bar above the main menu. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. <a href=\"admin_site_config.php?action=languages\" target=\"_blank\">Disable languages</a>."
 msgstr "Sie können statt des Auswahlmenüs für die Sprache auch Nationalflaggen in der Kopfzeile über der Hauptauswahl verwenden. Diese Flaggen ersetzen das normale Ausklappmenü. Bei mehr als zehn installierten Sprachen sollten Sie allerdings auf diese Möglichkeit verzichten. Nicht genutzte Sprachen können Sie aus dem Ordner \"/languages\" Ihrer webtrees-Installation löschen."
 
 #: app/JustBlackThemeOptionsClass.php:73
