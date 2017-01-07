@@ -27,7 +27,7 @@ use JustCarmen\WebtreesAddOns\JustBlack\Template\AdminTemplate;
 
 class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfigInterface {
 
-	const CUSTOM_VERSION			 = '1.7.8';
+	const CUSTOM_VERSION			 = '1.7.9';
 	const CUSTOM_WEBSITE			 = 'http://www.justcarmen.nl/themes/justblack/';
 	// How to update the database schema for this module
 	const SCHEMA_TARGET_VERSION	 = 3;
