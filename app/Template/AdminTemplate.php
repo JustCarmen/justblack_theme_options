@@ -109,7 +109,8 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 			});
 
 			jQuery("input[id=file-input]").change(function() {
-				jQuery("#file-input-text").val(jQuery(this).val());
+				var filename = jQuery(this)[0].files[0].name;
+				jQuery("#file-input-text").val(filename);
 				jQuery("#file-delete").show();
 			});
 
