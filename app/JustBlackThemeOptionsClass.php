@@ -75,12 +75,6 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		}
 	}
 
-	protected function deleteImage() {
-		foreach (glob(WT_DATA_DIR . 'justblack*.*') as $file) {
-			@unlink($file);
-		}
-	}
-
 	protected function menuJustBlack($menulist) {
 		$modules = array();
 		foreach (Tree::getAll() as $tree) {
@@ -338,6 +332,12 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 				imagedestroy($image);
 
 				return imagepng($thumb, $imgSrc, 0);
+		}
+	}
+	
+	protected function deleteImage() {
+		foreach (glob(WT_DATA_DIR . 'justblack*.*') as $file) {
+			@unlink($file);
 		}
 	}
 
