@@ -52,9 +52,14 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		$NEW_JB_OPTIONS['IMAGE'] = Filter::post('JB_IMAGE');
 		$error					 = false;
 		if ($NEW_JB_OPTIONS['HEADER'] == 1) {
-			if (!empty($_FILES['NEW_JB_IMAGE']['name'])) {
-				if ($this->upload($_FILES['NEW_JB_IMAGE'])) {
-					$NEW_JB_OPTIONS['IMAGE'] = 'justblack_' . $_FILES['NEW_JB_IMAGE']['name'];
+			
+			$image			 = $_FILES['NEW_JB_IMAGE'];
+			$filename		 = 'jb_' . $image['name'];
+			$serverFileName	 = WT_DATA_DIR . $filename;
+			
+			if (!empty($image['name'])) {
+				if ($this->upload($image, $serverFileName)) {
+					$NEW_JB_OPTIONS['IMAGE'] = $filename;
 				} else {
 					FlashMessages::addMessage(I18N::translate('Error: The image you have uploaded is not a valid image! Your settings are not saved.'), 'warning');
 					$error = true;
@@ -268,14 +273,18 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		return $status;
 	}
 
-	private function upload($image) {
+	private function upload($image, $serverFileName) {
 		// Check if we are dealing with a valid image
 		if (!empty($image['name']) && preg_match('/^image\/(png|gif|jpeg)/', $image['type'])) {
-			$serverFileName = WT_DATA_DIR . 'justblack_' . $image['name'];
+
 			if (Filter::postBool('resize') == true) {
 				$this->resize($image['tmp_name'], $image['type'], '800', '150');
 			}
-			$this->deleteImage(); // delete the old image from the server.
+
+			if ($this->options('image')) {
+				$this->deleteImage(); // delete the old image from the server.
+			}
+
 			move_uploaded_file($image['tmp_name'], $serverFileName);
 			return true;
 		} else {
@@ -334,10 +343,11 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 				return imagepng($thumb, $imgSrc, 0);
 		}
 	}
-	
+
 	protected function deleteImage() {
-		foreach (glob(WT_DATA_DIR . 'justblack*.*') as $file) {
-			@unlink($file);
+		$filename = $this->options('image');
+		if (file_exists(WT_DATA_DIR . $filename)) {
+			unlink(WT_DATA_DIR . $filename);
 		}
 	}
 
