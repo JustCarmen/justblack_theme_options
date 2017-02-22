@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2017-01-01 20:18+0100\n"
-"PO-Revision-Date: 2017-02-21 19:49+0000\n"
-"Last-Translator: Patrick Kongshammer <patrickkongshammer@gmail.com>\n"
+"PO-Revision-Date: 2017-02-22 03:57+0000\n"
+"Last-Translator: Jamie Jaconelli <jamie@jaconelli.dk>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr "Hvis du vælger denne indstillinger vil resultaterne på siden med medie
 
 #: app/Template/AdminTemplate.php:372
 msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together."
-msgstr "Diagrammer, lister, kalender og (valgfrit) rapporter vil blive lagt sammen i den kompakte \"Vis\"-menu"
+msgstr "Diagrammer, lister, kalender og (valgfrie) rapporter vil blive lagt sammen i den kompakte \"Vis\" menu."
 
 #: app/Template/AdminTemplate.php:378
 #, fuzzy
@@ -114,7 +114,7 @@ msgstr ""
 
 #: app/Template/AdminTemplate.php:394
 msgid "The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
-msgstr ""
+msgstr "Navnene på første niveau af mediemapperne fra mediemappe på din server, vil blive brugt som undermenupunkter som nye medie menuer. Advarsel: Disse undermenupunkter bliver ikke oversat automatisk. Brug derfor en brugerdefineret sprogfil til at oversætte disse menupunkter. Læs webtrees WIKI for mere information."
 
 #: app/Template/AdminTemplate.php:468
 msgid "The settings will be reset to default. Are you sure you want to do this?"
