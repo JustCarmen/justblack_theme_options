@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2017-01-01 20:18+0100\n"
-"PO-Revision-Date: 2016-12-27 06:38+0000\n"
-"Last-Translator: Michel <gustine@laposte.net>\n"
+"PO-Revision-Date: 2017-02-26 09:45+0000\n"
+"Last-Translator: Michael <mike_jpr@outlook.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
@@ -27,7 +27,6 @@ msgid "Choose “no” if you have used the family tree title in your custom hea
 msgstr "Sélectionnez «non» si vous avez utilisé le titre de l'arbre généalogique dans votre image d'en-tête personnalisé. Sinon choisissez « oui »."
 
 #: app/Template/AdminTemplate.php:443
-#, fuzzy
 msgid "Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button."
 msgstr "Cliquez sur une ligne, puis faites un glisser-déposer pour réorganiser les éléments du menu principal. Cliquez ensuite sur le bouton « enregistrer »."
 
@@ -45,7 +44,6 @@ msgid "Here you can set the location of the family tree title. Adjust the values
 msgstr "Ici, vous pouvez définir l'emplacement du titre de l'arbre généalogique. Réglez les valeurs à vos besoins. Si vous souhaitez que le titre de l'arbre apparaît dans l'image d'en-tête, les valeurs correctes dépendent de la longueur du titre de l'arbre. La position est la position absolue du titre, par rapport à la zone d'en-tête. Par exemple: choisissez « top: 0px; left: 0px; » pour le coin supérieur gauche de la zone d'en-tête ou « top: 50%%; right: 10px » pour placer le titre au droite au milieu de la zone d'en-tête avec une marge de 10px."
 
 #: app/Template/AdminTemplate.php:392
-#, fuzzy
 msgid "If this option is set the media menu will be moved to the main menu."
 msgstr "Si cette option est activée, le menu « Média » est déplacé dans le menu principal."
 
@@ -58,7 +56,6 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "Dans le menu compact le menu « Afficher » regroupe les menus « Diagrammes », « Listes », « Calendrier » et (en option) « Rapports »."
 
 #: app/Template/AdminTemplate.php:378
-#, fuzzy
 msgid "Include the reports menu in the compact “View” menu"
 msgstr "Inclure le menu « Rapports » dans le menu « Afficher » dans le menu compact"
 
@@ -68,9 +65,8 @@ msgid "JustBlack Theme Options"
 msgstr "Options du thème JustBlack"
 
 #: app/Template/AdminTemplate.php:388
-#, fuzzy
 msgid "Media menu in main menu"
-msgstr "Ajouter un menu « Média » dans le menu principal ?"
+msgstr "Ajouter un menu « Média » dans le menu principal"
 
 #: app/Template/AdminTemplate.php:210
 msgid "Options"
@@ -102,7 +98,6 @@ msgid "Size of the family tree title"
 msgstr "Taille du titre de l'arbre généalogique"
 
 #: app/Template/AdminTemplate.php:437
-#, fuzzy
 msgid "Sort menu items"
 msgstr "Trier les éléments dans le menu principal"
 
@@ -143,9 +138,8 @@ msgid "Use the family tree title in the header"
 msgstr "Utiliser le nom de l'arbre généalogique dans l'en-tête"
 
 #: app/Template/AdminTemplate.php:362
-#, fuzzy
 msgid "You can use flags in the bar above the main menu. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. <a href=\"admin_site_config.php?action=languages\" target=\"_blank\">Disable languages</a>."
-msgstr "Vous pouvez utiliser les drapeaux dans la barre située au-dessus du menu. Ces drapeaux remplacent le menu déroulant par défaut. Nous vous conseillons de ne pas utiliser cette option si vous avez plus d'une dizaine de langues installées. Vous pouvez supprimer les langues non utilisées dans le dossier « language » de votre installation webtrees."
+msgstr "Vous pouvez utiliser les drapeaux dans la barre située au-dessus du menu. Ces drapeaux remplacent le menu déroulant par défaut. Nous vous conseillons de ne pas utiliser cette option si vous avez plus d'une dizaine de langues installées. <a href=\"admin_site_config.php?action=languages\" target=\"_blank\">Supprimer les langues</a>."
 
 #: app/JustBlackThemeOptionsClass.php:73
 msgid "Your settings are successfully saved."
