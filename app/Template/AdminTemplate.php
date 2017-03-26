@@ -17,6 +17,7 @@
 namespace JustCarmen\WebtreesAddOns\JustBlack\Template;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
@@ -36,7 +37,8 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(I18N::translate('Options for the JustBlack theme'))
-			->pageHeader();
+			->pageHeader()
+			->addExternalJavascript(WT_STATIC_URL . 'packages/jquery-ui-1.11.4/js/jquery-ui.min.js');
 
 		$controller->addInlineJavaScript('
 			function include_css(css_file) {
@@ -192,49 +194,51 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 	}
 
 	private function pageBody(PageController $controller) {
+		
+		echo Bootstrap4::breadcrumbs([
+			'admin.php'			 => I18N::translate('Control panel'),
+			'admin_modules.php'	 => I18N::translate('Module administration'),
+			], $controller->getPageTitle());
 		?>
-		<!-- ADMIN PAGE CONTENT -->
-		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?= I18N::translate('Control panel') ?></a></li>
-			<li><a href="admin_modules.php"><?= I18N::translate('Module administration') ?></a></li>
-			<li class="active"><?= $this->getTitle() ?></li>
-		</ol>
-		<h2><?= $this->getTitle() ?></h2>
+
+		<h1><?= $controller->getPageTitle() ?></h1>
 		<form action="<?= $this->getConfigLink() ?>" enctype="multipart/form-data" name="configform" method="post" class="form-horizontal">
 			<input type="hidden" value="1" name="save">
 			<?= Filter::getCsrf() ?>
 			<input type="hidden" value="0" name="remove-image">
-			<div id="accordion" class="panel-group">
-				<div id="panel1" class="panel panel-default">
-					<div class="panel-heading">
-						<h4 class="panel-title">
-							<a href="#collapseOne" data-target="#collapseOne" data-toggle="collapse"><?= I18N::translate('Options') ?></a>
-						</h4>
+			<div id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="card">
+					<div class="card-header" role="tab" id="card-options-header">
+						<h5 class="mb-0">
+							<a data-toggle="collapse" data-parent="#accordion" href="#card-options-content" aria-expanded="true" aria-controls="card-options-content">
+								<?= I18N::translate('Options') ?>
+							</a>
+						</h5>
 					</div>
-					<div class="panel-collapse collapse in" id="collapseOne">
-						<div class="panel-body">
+					<div id="card-options-content" class="collapse show" role="tabpanel" aria-labelledby="card-options-header">
+						<div class="card-block">
 							<!-- TREE TITLE -->
-							<div id="tree-title" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
+							<div id="tree-title" class="row form-group">
+								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Use the family tree title in the header') ?>
 								</label>
 								<div class="col-sm-8">
-									<?= FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[TREETITLE]', $this->options('treetitle'), 'class="radio-inline"') ?>
+									<?= Bootstrap4::radioButtons('NEW_JB_OPTIONS[TREETITLE]', FunctionsEdit::optionsNoYes(), $this->options('treetitle'), true) ?>
 									<p class="small text-muted"><?= I18N::translate('Choose “no” if you have used the family tree title in your custom header image. Otherwise choose “yes”.') ?></p>
 								</div>
 							</div>
 							<!-- TITLE POSITION -->
 							<?php $titlepos	 = $this->options('titlepos'); ?>
-							<div id="title-pos" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
+							<div id="title-pos" class="row form-group">
+								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Position of the family tree title') ?>
 								</label>
 								<div class="col-sm-8">
 									<div class="row">
-										<div class="col-xs-2">
-											<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][V][pos]', ['top' => I18N::translate('top'), 'bottom' => I18N::translate('bottom')], null, $titlepos['V']['pos'], 'class="form-control"') ?>
+										<div class="col-sm-2">
+											<?= Bootstrap4::select(['top' => I18N::translate('top'), 'bottom' => I18N::translate('bottom')], $titlepos['V']['pos'], ['name' => 'NEW_JB_OPTIONS[TITLEPOS][V][pos]']) ?>
 										</div>
-										<div class="col-xs-2">
+										<div class="col-sm-2">
 											<input
 												type="text"
 												value="<?= $titlepos['V']['size'] ?>"
@@ -243,15 +247,15 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 												class="form-control"
 												>
 										</div>
-										<div class="col-xs-2">
-											<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', ['px' => 'px', '%' => '%'], null, $titlepos['V']['fmt'], 'class="form-control"') ?>
+										<div class="col-sm-2">
+											<?= Bootstrap4::select(['px' => 'px', '%' => '%'], $titlepos['V']['fmt'], ['name' => 'NEW_JB_OPTIONS[TITLEPOS][V][fmt]']) ?>
 										</div>
 									</div>
-									<div class="row">
-										<div class="col-xs-2">
-											<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][H][pos]', ['left' => I18N::translate('left'), 'right' => I18N::translate('right')], null, $titlepos['H']['pos'], 'class="form-control"') ?>
+									<div class="row form-group mt-2">
+										<div class="col-sm-2">
+											<?= Bootstrap4::select(['left' => I18N::translate('left'), 'right' => I18N::translate('right')], $titlepos['H']['pos'], ['name' => 'NEW_JB_OPTIONS[TITLEPOS][H][pos]']) ?>
 										</div>
-										<div class="col-xs-2">
+										<div class="col-sm-2">
 											<input
 												type="text"
 												value="<?= $titlepos['H']['size'] ?>"
@@ -260,16 +264,16 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 												class="form-control"
 												>
 										</div>
-										<div class="col-xs-2">
-											<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][H][fmt]', ['px' => 'px', '%' => '%'], null, $titlepos['H']['fmt'], 'class="form-control"') ?>
+										<div class="col-sm-2">
+											<?= Bootstrap4::select(['px' => 'px', '%' => '%'], $titlepos['H']['fmt'], ['name' => 'NEW_JB_OPTIONS[TITLEPOS][H][fmt]']) ?>
 										</div>
 									</div>
 									<p class="small text-muted"><?= I18N::translate('Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin.') ?></p>
 								</div>
 							</div>
 							<!-- TITLE SIZE -->
-							<div id="title-size" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
+							<div id="title-size" class="row form-group">
+								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Size of the family tree title') ?>
 								</label>
 								<div class="col-sm-2">
@@ -286,17 +290,17 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 								</div>
 							</div>
 							<!-- HEADER IMAGE -->
-							<div id="header-image" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
+							<div id="header-image" class="row form-group">
+								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Use header image') ?>
 								</label>
 								<div class="col-sm-2">
-									<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[HEADER]', [I18N::translate('Default'), I18N::translate('Custom'), I18N::translate('None')], null, $this->options('header'), 'class="form-control"') ?>
+									<?= Bootstrap4::select([I18N::translate('Default'), I18N::translate('Custom'), I18N::translate('None')], $this->options('header'), ['name' => 'NEW_JB_OPTIONS[HEADER]']) ?>
 								</div>
 							</div>
 							<!-- IMAGE UPLOAD FIELD -->
-							<div id="upload-image" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
+							<div id="upload-image" class="row form-group">
+								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Upload a custom header image') ?>
 								</label>
 								<div class="col-sm-4">
@@ -326,17 +330,17 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 								</div>
 							</div>
 							<!-- RESIZE IMAGE -->
-							<div id="resize-image" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
+							<div id="resize-image" class="row form-group">
+								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Resize image (800 x 150px)') ?>
 								</label>
 								<div class="col-sm-8">
-									<?= FunctionsEdit::editFieldYesNo('resize', '0', 'class="radio-inline"') ?>
+									<?= Bootstrap4::radioButtons('resize', FunctionsEdit::optionsNoYes(), '0', true) ?>
 								</div>
 							</div>
 							<!-- HEADER HEIGHT -->
-							<div id="header-height" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
+							<div id="header-height" class="row form-group">
+								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Height of the header area') ?>
 								</label>
 								<div class="col-sm-2">
@@ -354,42 +358,42 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 								</div>
 							</div>
 							<!-- FLAGS -->
-							<div id="flags" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
+							<div id="flags" class="row form-group">
+								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Use flags in header bar as language menu') ?>
 								</label>
 								<div class="col-sm-8">
-									<?= FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[FLAGS]', $this->options('flags'), 'class="radio-inline"') ?>
+									<?= Bootstrap4::radioButtons('NEW_JB_OPTIONS[FLAGS]', FunctionsEdit::optionsNoYes(), $this->options('flags'), true) ?>
 									<p class="small text-muted"><?= I18N::translate('You can use flags in the bar above the main menu. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. <a href="admin_site_config.php?action=languages" target="_blank">Disable languages</a>.') ?></p>
 								</div>
 							</div>
 							<!-- COMPACT MENU -->
-							<div id="compact-menu" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
+							<div id="compact-menu" class="row form-group">
+								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Use a compact menu') ?>
 								</label>
 								<div class="col-sm-8">
-									<?= FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[COMPACT_MENU]', $this->options('compact_menu'), 'class="radio-inline"') ?>
+									<?= Bootstrap4::radioButtons('NEW_JB_OPTIONS[COMPACT_MENU]', FunctionsEdit::optionsNoYes(), $this->options('compact_menu'), true) ?>
 									<p class="small text-muted"><?= I18N::translate('In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together.') ?></p>
 								</div>
 							</div>
 							<!-- REPORTS -->
-							<div id="reports" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
+							<div id="reports" class="row form-group">
+								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Include the reports menu in the compact “View” menu') ?>
 								</label>
 								<div class="col-sm-8">
-									<?= FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', $this->options('compact_menu_reports'), 'class="radio-inline"') ?>
+									<?= Bootstrap4::radioButtons('NEW_JB_OPTIONS[COMPACT_MENU_REPORTS]', FunctionsEdit::optionsNoYes(), $this->options('compact_menu_reports'), true) ?>
 								</div>
 							</div>
 							<!-- MEDIA MENU -->
 							<?php $folders	 = $this->options('mediafolders'); ?>
-							<div id="media-menu" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
+							<div id="media-menu" class="row form-group">
+								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Media menu in main menu') ?>
 								</label>
 								<div class="col-sm-8">
-									<?= FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[MEDIA_MENU]', $this->options('media_menu'), 'class="radio-inline"') ?>
+									<?= Bootstrap4::radioButtons('NEW_JB_OPTIONS[MEDIA_MENU]', FunctionsEdit::optionsNoYes(), $this->options('media_menu'), true) ?>
 									<p class="small text-muted"><?= I18N::translate('If this option is set the media menu will be moved to the main menu.') ?></p>
 									<?php if (count($folders) > 1): // add extra information about subfolders ?>
 										<p class="small text-muted"><?= I18N::translate('The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information.') ?></p>
@@ -398,52 +402,50 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							</div>
 							<?php if (count($folders) > 1): // only show these options if we have subfolders  ?>
 								<!-- MEDIA FOLDER LIST -->
-								<div id="medialist" class="form-group form-group-sm">
-									<label class="control-label col-sm-4">
+								<div id="medialist" class="row form-group">
+									<label class="col-form-label col-sm-4">
 										<?= I18N::translate('Choose a folder as default for the main menu link') ?>
 									</label>
 									<div class="col-sm-2">
-										<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[MEDIA_LINK]', $folders, null, $this->options('media_link'), 'class="form-control"') ?>
+										<?= Bootstrap4::select($folders, $this->options('media_link'), ['name' => 'NEW_JB_OPTIONS[MEDIA_LINK]']) ?>
 									</div>
-									<div class="col-sm-8 col-sm-offset-4"><p class="small text-muted"><?= I18N::translate('The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder.') ?></p></div>
+									<div class="col-sm-8 offset-sm-4"><p class="small text-muted"><?= I18N::translate('The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder.') ?></p></div>
 								</div>
 								<!-- SHOW SUBFOLDERS -->
-								<div id="subfolders" class="form-group form-group-sm">
-									<label class="control-label col-sm-4">
+								<div id="subfolders" class="row form-group">
+									<label class="col-form-label col-sm-4">
 										<?= I18N::translate('Include subfolders') ?>
 									</label>
 									<div class="col-sm-8">
-										<?= FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[SHOW_SUBFOLDERS]', $this->options('show_subfolders'), 'class="radio-inline"') ?>
+										<?= Bootstrap4::radioButtons('NEW_JB_OPTIONS[SHOW_SUBFOLDERS]', FunctionsEdit::optionsNoYes(), $this->options('show_subfolders'), true) ?>
 										<p class="small text-muted"><?= I18N::translate('If you set this option the results on the media list page will include subfolders.') ?></p>
 									</div>
 								</div>
 							<?php endif; ?>
 							<!-- SQUARE THUMBS -->
-							<div id="square_thumbs" class="form-group form-group-sm">
-								<label class="control-label col-sm-4">
+							<div id="square_thumbs" class="row form-group">
+								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Use square thumbs') ?>
 								</label>
 								<div class="col-sm-8">
-									<?= FunctionsEdit::editFieldYesNo('NEW_JB_OPTIONS[SQUARE_THUMBS]', $this->options('square_thumbs'), 'class="radio-inline"') ?>
+									<?= Bootstrap4::radioButtons('NEW_JB_OPTIONS[SQUARE_THUMBS]', FunctionsEdit::optionsNoYes(), $this->options('square_thumbs'), true) ?>
 									<p class="small text-muted"><?= I18N::translate('Set this option to “yes” to use square thumbnails in individual boxes and charts. If you choose “no” the default webtrees thumbnails will be used.') ?></p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div id="panel2" class="panel panel-default">
-					<div class="panel-heading">
-						<h4 class="panel-title">
-							<a class="collapsed" href="#collapseTwo" data-target="#collapseTwo" data-toggle="collapse">
+				<div class="card">
+					<div class="card-header" role="tab" id="card-menulist-header">
+						<h5 class="mb-0">
+							<a data-toggle="collapse" data-parent="#accordion" href="#card-menulist-content" aria-expanded="true" aria-controls="card-menulist-content">
 								<?= I18N::translate('Sort menu items') ?>
 							</a>
-						</h4>
+						</h5>
 					</div>
-					<div class="panel-collapse collapse" id="collapseTwo">
-						<div class="panel-heading">
-							<?= I18N::translate('Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button.') ?>
-						</div>
-						<div class="panel-body">
+					<div id="card-menulist-content" class="collapse" role="tabpanel" aria-labelledby="card-menulist-header">
+						<div class="card-block">
+							<h6><?= I18N::translate('Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button.') ?></h6>
 							<?php
 							$menulist = $this->options('menu');
 							foreach ($menulist as $label => $menu) {
@@ -462,15 +464,17 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 					</div>
 				</div>
 			</div>
-			<button class="btn btn-primary" type="submit">
-				<i class="fa fa-check"></i>
-				<?= I18N::translate('save') ?>
-			</button>
-			<button class="btn btn-primary" type="reset" onclick="if (confirm('<?= I18N::translate('The settings will be reset to default. Are you sure you want to do this?') ?>'))
-						window.location.href = 'module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_reset';">
-				<i class="fa fa-recycle"></i>
-				<?= I18N::translate('reset') ?>
-			</button>
+			<div class="mt-3">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-check"></i>
+					<?= I18N::translate('save') ?>
+				</button>
+				<button class="btn btn-primary" type="reset" onclick="if (confirm('<?= I18N::translate('The settings will be reset to default. Are you sure you want to do this?') ?>'))
+							window.location.href = 'module.php?mod=<?= $this->getName() ?>&amp;mod_action=admin_reset';">
+					<i class="fa fa-recycle"></i>
+					<?= I18N::translate('reset') ?>
+				</button>
+			</div>
 		</form>
 		<?php
 	}

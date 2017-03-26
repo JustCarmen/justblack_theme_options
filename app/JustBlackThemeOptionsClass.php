@@ -36,7 +36,7 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		} elseif ($key === 'mediafolders') {
 			return $this->listMediaFolders();
 		} else {
-			$JB_OPTIONS	 = unserialize($this->getSetting('JB_OPTIONS'));
+			$JB_OPTIONS	 = unserialize($this->getPreference('JB_OPTIONS'));
 			$key		 = strtoupper($key);
 			if (empty($JB_OPTIONS) || (is_array($JB_OPTIONS) && !array_key_exists($key, $JB_OPTIONS))) {
 				return $key === 'MENU' ? $this->getDefaultMenu() : $this->setDefault($key);
@@ -74,7 +74,7 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 			}
 		}
 		if (!$error) {
-			$this->setSetting('JB_OPTIONS', serialize($NEW_JB_OPTIONS));
+			$this->setPreference('JB_OPTIONS', serialize($NEW_JB_OPTIONS));
 			FlashMessages::addMessage(I18N::translate('Your settings are successfully saved.'), 'success');
 			Log::addConfigurationLog($this->getTitle() . ' config updated');
 		}

@@ -14,14 +14,23 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-.panel-heading a:after {
+.card-header a:after {
     font-family: 'FontAwesome';
     content:"\f078";
-    float: right; 
-    color: grey; 
+    float: right;
+    color: grey;
 }
-.panel-heading a.collapsed:after {
+
+[dir=rtl] .card-header a:after {
+	float: left;
+}
+
+.card-header a.collapsed:after {
 	content:"\f054";
+}
+
+[dir=rtl] .card-header a.collapsed:after {
+	content:"\f053";
 }
 
 #file-input-text {
