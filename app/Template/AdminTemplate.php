@@ -232,7 +232,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 								<div class="col-sm-8">
 									<div class="row">
 										<div class="col-xs-2">
-											<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][V][pos]', array('top' => I18N::translate('top'), 'bottom' => I18N::translate('bottom')), null, $titlepos['V']['pos'], 'class="form-control"') ?>
+											<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][V][pos]', ['top' => I18N::translate('top'), 'bottom' => I18N::translate('bottom')], null, $titlepos['V']['pos'], 'class="form-control"') ?>
 										</div>
 										<div class="col-xs-2">
 											<input
@@ -244,12 +244,12 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 												>
 										</div>
 										<div class="col-xs-2">
-											<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', array('px' => 'px', '%' => '%'), null, $titlepos['V']['fmt'], 'class="form-control"') ?>
+											<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][V][fmt]', ['px' => 'px', '%' => '%'], null, $titlepos['V']['fmt'], 'class="form-control"') ?>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-xs-2">
-											<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][H][pos]', array('left' => I18N::translate('left'), 'right' => I18N::translate('right')), null, $titlepos['H']['pos'], 'class="form-control"') ?>
+											<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][H][pos]', ['left' => I18N::translate('left'), 'right' => I18N::translate('right')], null, $titlepos['H']['pos'], 'class="form-control"') ?>
 										</div>
 										<div class="col-xs-2">
 											<input
@@ -261,7 +261,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 												>
 										</div>
 										<div class="col-xs-2">
-											<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][H][fmt]', array('px' => 'px', '%' => '%'), null, $titlepos['H']['fmt'], 'class="form-control"') ?>
+											<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[TITLEPOS][H][fmt]', ['px' => 'px', '%' => '%'], null, $titlepos['H']['fmt'], 'class="form-control"') ?>
 										</div>
 									</div>
 									<p class="small text-muted"><?= I18N::translate('Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin.') ?></p>
@@ -291,7 +291,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 									<?= I18N::translate('Use header image') ?>
 								</label>
 								<div class="col-sm-2">
-									<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[HEADER]', array(I18N::translate('Default'), I18N::translate('Custom'), I18N::translate('None')), null, $this->options('header'), 'class="form-control"') ?>
+									<?= FunctionsEdit::selectEditControl('NEW_JB_OPTIONS[HEADER]', [I18N::translate('Default'), I18N::translate('Custom'), I18N::translate('None')], null, $this->options('header'), 'class="form-control"') ?>
 								</div>
 							</div>
 							<!-- IMAGE UPLOAD FIELD -->

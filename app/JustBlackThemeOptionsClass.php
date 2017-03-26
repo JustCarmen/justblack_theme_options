@@ -81,7 +81,7 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 	}
 
 	protected function menuJustBlack($menulist) {
-		$modules = array();
+		$modules = [];
 		foreach (Tree::getAll() as $tree) {
 			$modules = array_merge(Module::getActiveMenus($tree), $modules);
 		}
@@ -90,12 +90,12 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		$sort = count($menulist) + 1;
 		foreach ($modules as $label => $module) {
 			if (!array_key_exists($label, $menulist)) {
-				$menulist[$label] = array(
+				$menulist[$label] = [
 					'title'		 => $module->getTitle(),
 					'label'		 => $label,
 					'sort'		 => $sort++,
 					'function'	 => 'menuModule'
-				);
+				];
 			}
 		}
 		// delete deactivated modules from the menu
@@ -143,12 +143,12 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 
 	// Set default module options
 	private function setDefault($key) {
-		$JB_DEFAULT = array(
+		$JB_DEFAULT = [
 			'TREETITLE'				 => '1',
-			'TITLEPOS'				 => array(
-				'V'	 => array('size' => '110', 'fmt' => 'px', 'pos' => 'top'),
-				'H'	 => array('size' => '52', 'fmt' => '%', 'pos' => 'left')
-			),
+			'TITLEPOS'				 => [
+				'V'	 => ['size' => '110', 'fmt' => 'px', 'pos' => 'top'],
+				'H'	 => ['size' => '52', 'fmt' => '%', 'pos' => 'left']
+			],
 			'TITLESIZE'				 => '20',
 			'HEADER'				 => 'default',
 			'IMAGE'					 => '',
@@ -160,61 +160,61 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 			'MEDIA_LINK'			 => '',
 			'SHOW_SUBFOLDERS'		 => '1',
 			'SQUARE_THUMBS'			 => '1'
-		);
+		];
 		return $JB_DEFAULT[$key];
 	}
 
 	private function getDefaultMenu() {
-		$menulist = array(
-			'compact'	 => array(
+		$menulist = [
+			'compact'	 => [
 				'title'		 => I18N::translate('View'),
 				'label'		 => 'compact',
 				'sort'		 => '0',
 				'function'	 => 'menuCompact'
-			),
-			'media'		 => array(
+			],
+			'media'		 => [
 				'title'		 => I18N::translate('Media'),
 				'label'		 => 'media',
 				'sort'		 => '0',
 				'function'	 => 'menuMedia'
-			),
-			'homepage'	 => array(
+			],
+			'homepage'	 => [
 				'title'		 => I18N::translate('Home page'),
 				'label'		 => 'homepage',
 				'sort'		 => '1',
 				'function'	 => 'menuHomePage'
-			),
-			'charts'	 => array(
+			],
+			'charts'	 => [
 				'title'		 => I18N::translate('Charts'),
 				'label'		 => 'charts',
 				'sort'		 => '3',
 				'function'	 => 'menuChart'
-			),
-			'lists'		 => array(
+			],
+			'lists'		 => [
 				'title'		 => I18N::translate('Lists'),
 				'label'		 => 'lists',
 				'sort'		 => '4',
 				'function'	 => 'menuLists'
-			),
-			'calendar'	 => array(
+			],
+			'calendar'	 => [
 				'title'		 => I18N::translate('Calendar'),
 				'label'		 => 'calendar',
 				'sort'		 => '5',
 				'function'	 => 'menuCalendar'
-			),
-			'reports'	 => array(
+			],
+			'reports'	 => [
 				'title'		 => I18N::translate('Reports'),
 				'label'		 => 'reports',
 				'sort'		 => '6',
 				'function'	 => 'menuReports'
-			),
-			'search'	 => array(
+			],
+			'search'	 => [
 				'title'		 => I18N::translate('Search'),
 				'label'		 => 'search',
 				'sort'		 => '7',
 				'function'	 => 'menuSearch'
-			),
-		);
+			],
+		];
 		return $this->menuJustBlack($menulist);
 	}
 
@@ -245,7 +245,7 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		}
 		asort($tmp_array);
 
-		$return_array = array();
+		$return_array = [];
 		foreach ($tmp_array as $pos => $val) {
 			$return_array[$pos]['title']	 = $array[$pos]['title'];
 			$return_array[$pos]['label']	 = $array[$pos]['label'];

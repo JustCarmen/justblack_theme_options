@@ -30,7 +30,7 @@ class Migration1 implements MigrationInterface {
 		$module_options	 = 'JB_OPTIONS';
 		$jb_options		 = Database::prepare(
 				"SELECT setting_value FROM `##module_setting` WHERE setting_name=?"
-			)->execute(array($module_options))->fetchOne();
+			)->execute([$module_options])->fetchOne();
 
 		$options = unserialize($jb_options);
 
@@ -45,7 +45,7 @@ class Migration1 implements MigrationInterface {
 
 		Database::prepare(
 			"UPDATE `##module_setting` SET setting_value=? WHERE setting_name=?"
-		)->execute(array(serialize($options), $module_options));
+		)->execute([serialize($options), $module_options]);
 	}
 
 }
