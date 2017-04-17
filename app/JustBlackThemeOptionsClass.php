@@ -346,7 +346,7 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 
 	protected function deleteImage() {
 		$filename = $this->options('image');
-		if (file_exists(WT_DATA_DIR . $filename)) {
+		if ($filename && file_exists(WT_DATA_DIR . $filename)) {
 			unlink(WT_DATA_DIR . $filename);
 		}
 	}
