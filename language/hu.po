@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2017-01-01 20:18+0100\n"
-"PO-Revision-Date: 2016-12-28 16:43+0000\n"
+"PO-Revision-Date: 2017-07-17 11:01+0000\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/hu/>\n"
 "Language: hu\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -29,9 +29,8 @@ msgid "Choose “no” if you have used the family tree title in your custom hea
 msgstr "Válassza a “nem”-et, ha szeretné feltüntetni a családfa nevét az egyedi fejlécképen. Különben az “igen”-t."
 
 #: app/Template/AdminTemplate.php:443
-#, fuzzy
 msgid "Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button."
-msgstr "Klikk a sorra, majd egérrel fogd-és-vidd a kívánt sorrendbe. Végül klikk a “mentés” gombra."
+msgstr "Sorrakattintással tartsa-és-húzza a sort a kívánt sorrendbe. Végül kattintson a “mentés” gombra."
 
 #: app/JustBlackThemeOptionsClass.php:59
 msgid "Error: The image you have uploaded is not a valid image! Your settings are not saved."
@@ -47,9 +46,8 @@ msgid "Here you can set the location of the family tree title. Adjust the values
 msgstr "Itt állítható a családfa nevének elhelyezése. Állítsa be az értékeket saját szükség szerint. Ha szeretné megjeleníteni a fa nevét a fejlécképen a helyes beállítás értékei a név hosszúságától függenek. Az elhelyezés a név abszolút helyzetét jelenti a fejlécterülethez mérten. Például: “Felül: 0px; Balra: 0px” érték a fejlécterület bal felső sarkát jelenti vagy “Felül: 50%% ; Jobbra: 10px” a fejlécterület közepén jobb oldalt 10px szegéllyel lesz elhelyezve."
 
 #: app/Template/AdminTemplate.php:392
-#, fuzzy
 msgid "If this option is set the media menu will be moved to the main menu."
-msgstr "E lehetőség kiválasztásával a média menü a főmenübe kerül."
+msgstr "E lehetőség kiválasztásával a média menü áthelyeződik a főmenübe."
 
 #: app/Template/AdminTemplate.php:416
 msgid "If you set this option the results on the media list page will include subfolders."
@@ -60,9 +58,8 @@ msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and 
 msgstr "A tömörített “Megtekintés” menübe lesznek az Ábra, Lista, Naptár és (választhatóan) a Jelentés menük összevonva."
 
 #: app/Template/AdminTemplate.php:378
-#, fuzzy
 msgid "Include the reports menu in the compact “View” menu"
-msgstr "A Jelentések menü része a tömörített “Megtekintés” főmenünek"
+msgstr "A Jelentések menü legyen része a tömörített “Megtekintés” főmenünek"
 
 #. I18N: Name of a module
 #: module.php:62
@@ -70,9 +67,8 @@ msgid "JustBlack Theme Options"
 msgstr "JustBlack Téma beállításai"
 
 #: app/Template/AdminTemplate.php:388
-#, fuzzy
 msgid "Media menu in main menu"
-msgstr "Média menü a főmenüben"
+msgstr "A Média menü legyen a főmenüben"
 
 #: app/Template/AdminTemplate.php:210
 msgid "Options"
@@ -104,9 +100,8 @@ msgid "Size of the family tree title"
 msgstr "A családfa nevének nagysága"
 
 #: app/Template/AdminTemplate.php:437
-#, fuzzy
 msgid "Sort menu items"
-msgstr "A Főmenü elrendezése"
+msgstr "A menü rendezése"
 
 #: app/Template/AdminTemplate.php:407
 msgid "The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder."
