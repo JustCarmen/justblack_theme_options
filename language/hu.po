@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2017-01-01 20:18+0100\n"
-"PO-Revision-Date: 2017-07-17 11:01+0000\n"
+"PO-Revision-Date: 2018-07-11 20:58+0000\n"
 "Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
 "Language-Team: Hungarian <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/hu/>\n"
 "Language: hu\n"
@@ -140,9 +140,8 @@ msgid "Use the family tree title in the header"
 msgstr "Családfanév a fejlécben"
 
 #: app/Template/AdminTemplate.php:362
-#, fuzzy
 msgid "You can use flags in the bar above the main menu. These flags replaces the default dropdown menu. We advise you not to use this option if you have more then ten languages installed. <a href=\"admin_site_config.php?action=languages\" target=\"_blank\">Disable languages</a>."
-msgstr "A fejléc főmenü feletti sávjában használhat zászlókat. Ezek a zászlók helyettesítik az alapértelmezett legördülő Nyelv menüt. Ezt a beállítást 10 telepített nyelven felül már nem ajánlatos használni. A webtrees telepítés languages mappájából a nem használt nyelvek eltávolíthatóak."
+msgstr "A fejléc főmenü feletti sávjában használhat zászlókat. Ezek a zászlók helyettesítik az alapértelmezett legördülő Nyelv menüt. Ezt a beállítást 10 telepített nyelven felül már nem ajánlatos használni. <a href=\"admin_site_config.php?action=languages\" target=\"_blank\">Nyelvek letiltása</a>."
 
 #: app/JustBlackThemeOptionsClass.php:73
 msgid "Your settings are successfully saved."
