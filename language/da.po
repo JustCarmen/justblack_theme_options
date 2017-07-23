@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2017-01-01 20:18+0100\n"
-"PO-Revision-Date: 2017-02-22 03:57+0000\n"
-"Last-Translator: Jamie Jaconelli <jamie@jaconelli.dk>\n"
+"PO-Revision-Date: 2017-07-21 14:19+0000\n"
+"Last-Translator: Finn Christensen <fc@winmagic.dk>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -29,9 +29,8 @@ msgid "Choose “no” if you have used the family tree title in your custom hea
 msgstr "Vælg \"nej\" hvis du har brugt overskriften for dit stamtræ i dit hovedbillede. Ellers, vælg \"ja\"."
 
 #: app/Template/AdminTemplate.php:443
-#, fuzzy
 msgid "Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button."
-msgstr "Klik på en række, og brug derefter \"Træk-og-slip\" for at sortere menupunkterne. Klik derefter på knappen \"gem\"."
+msgstr "Klik på en række og sorter menupunkter med \"Træk-og-slip\". Klik derefter på knappen \"Gem\"."
 
 #: app/JustBlackThemeOptionsClass.php:59
 msgid "Error: The image you have uploaded is not a valid image! Your settings are not saved."
@@ -47,22 +46,20 @@ msgid "Here you can set the location of the family tree title. Adjust the values
 msgstr ""
 
 #: app/Template/AdminTemplate.php:392
-#, fuzzy
 msgid "If this option is set the media menu will be moved to the main menu."
 msgstr "Hvis denne indstilling er valgt vil medie menuen blive flyttet til topmenuen."
 
 #: app/Template/AdminTemplate.php:416
 msgid "If you set this option the results on the media list page will include subfolders."
-msgstr "Hvis du vælger denne indstillinger vil resultaterne på siden med medier inkludere undermapper."
+msgstr "Hvis du vælger denne indstillinger vil listen af medier inkluderer undermapper."
 
 #: app/Template/AdminTemplate.php:372
 msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together."
-msgstr "Diagrammer, lister, kalender og (valgfrie) rapporter vil blive lagt sammen i den kompakte \"Vis\" menu."
+msgstr "Diagrammer, lister, kalender og (valgfrie) rapporter samles i den kompakte \"Vis\" menu."
 
 #: app/Template/AdminTemplate.php:378
-#, fuzzy
 msgid "Include the reports menu in the compact “View” menu"
-msgstr "Inkludér rapportmenuen i den kompakte \"Vis\" menu?"
+msgstr "Inkludér rapportmenuen i den kompakte \"Vis\" menu"
 
 #. I18N: Name of a module
 #: module.php:62
@@ -70,9 +67,8 @@ msgid "JustBlack Theme Options"
 msgstr ""
 
 #: app/Template/AdminTemplate.php:388
-#, fuzzy
 msgid "Media menu in main menu"
-msgstr "Medie menu i topmenuen"
+msgstr "Medie menu i hovedmenuen"
 
 #: app/Template/AdminTemplate.php:210
 msgid "Options"
@@ -104,9 +100,8 @@ msgid "Size of the family tree title"
 msgstr "Størrelse på familietræets titel"
 
 #: app/Template/AdminTemplate.php:437
-#, fuzzy
 msgid "Sort menu items"
-msgstr "Sortér Topmenuerne"
+msgstr "Sortér hovedmenuerne"
 
 #: app/Template/AdminTemplate.php:407
 msgid "The media folder you choose here will be used as default folder for media menu link of the main menu. If you click on the media link or icon in the main menu, the page opens with the media items from this folder."
@@ -114,11 +109,11 @@ msgstr ""
 
 #: app/Template/AdminTemplate.php:394
 msgid "The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information."
-msgstr "Navnene på første niveau af mediemapperne fra mediemappe på din server, vil blive brugt som undermenupunkter som nye medie menuer. Advarsel: Disse undermenupunkter bliver ikke oversat automatisk. Brug derfor en brugerdefineret sprogfil til at oversætte disse menupunkter. Læs webtrees WIKI for mere information."
+msgstr "Undermenupunkter som nye medie menuer tages fra navnene på det første niveau af mediemapperne fra mediemappe på din server. Advarsel: Disse undermenupunkter oversættes ikke automatisk. Anvend derfor en brugerdefineret sprogfil til at oversætte nævnte menupunkter. Læs webtrees WIKI for mere info."
 
 #: app/Template/AdminTemplate.php:468
 msgid "The settings will be reset to default. Are you sure you want to do this?"
-msgstr "Indstillingerne vil blive fabriksnulstillet. Er du sikker på du vil gøre dette?"
+msgstr "Indstillingerne resettes til default. Er du sikker på du vil gøre dette?"
 
 #: app/Template/AdminTemplate.php:299
 msgid "Upload a custom header image"
@@ -126,7 +121,7 @@ msgstr ""
 
 #: app/Template/AdminTemplate.php:368
 msgid "Use a compact menu"
-msgstr ""
+msgstr "Brug en kompakt menu"
 
 #: app/Template/AdminTemplate.php:358
 msgid "Use flags in header bar as language menu"
