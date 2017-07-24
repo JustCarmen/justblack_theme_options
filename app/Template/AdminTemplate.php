@@ -37,8 +37,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle(I18N::translate('Options for the JustBlack theme'))
-			->pageHeader()
-			->addExternalJavascript(WT_STATIC_URL . 'packages/jquery-ui-1.11.4/js/jquery-ui.min.js');
+			->pageHeader();
 
 		$controller->addInlineJavaScript('
 			function include_css(css_file) {
