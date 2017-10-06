@@ -215,7 +215,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 						</h5>
 					</div>
 					<div id="card-options-content" class="collapse show" role="tabpanel" aria-labelledby="card-options-header">
-						<div class="card-block">
+						<div class="card-body">
 							<!-- TREE TITLE -->
 							<div id="tree-title" class="row form-group">
 								<label class="col-form-label col-sm-4">
@@ -443,7 +443,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 						</h5>
 					</div>
 					<div id="card-menulist-content" class="collapse" role="tabpanel" aria-labelledby="card-menulist-header">
-						<div class="card-block">
+						<div class="card-body">
 							<h6><?= I18N::translate('Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button.') ?></h6>
 							<?php
 							$menulist = $this->options('menu');
