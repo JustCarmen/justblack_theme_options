@@ -34,5 +34,4 @@ class Migration0 implements MigrationInterface {
 			Log::addConfigurationLog('JustBlack Theme Options reset to default values due to major changes in database scheme');
 		}
 	}
-
 }

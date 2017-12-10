@@ -36,8 +36,8 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		} elseif ($key === 'mediafolders') {
 			return $this->listMediaFolders();
 		} else {
-			$JB_OPTIONS	 = unserialize($this->getPreference('JB_OPTIONS'));
-			$key		 = strtoupper($key);
+			$JB_OPTIONS = unserialize($this->getPreference('JB_OPTIONS'));
+			$key        = strtoupper($key);
 			if (empty($JB_OPTIONS) || (is_array($JB_OPTIONS) && !array_key_exists($key, $JB_OPTIONS))) {
 				return $key === 'MENU' ? $this->getDefaultMenu() : $this->setDefault($key);
 			} else {
@@ -47,15 +47,14 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 	}
 
 	protected function saveOptions() {
-		$NEW_JB_OPTIONS			 = Filter::postArray('NEW_JB_OPTIONS');
-		$NEW_JB_OPTIONS['MENU']	 = $this->sortArray(Filter::postArray('NEW_JB_MENU'), 'sort');
+		$NEW_JB_OPTIONS          = Filter::postArray('NEW_JB_OPTIONS');
+		$NEW_JB_OPTIONS['MENU']  = $this->sortArray(Filter::postArray('NEW_JB_MENU'), 'sort');
 		$NEW_JB_OPTIONS['IMAGE'] = Filter::post('JB_IMAGE');
-		$error					 = false;
+		$error                   = false;
 		if ($NEW_JB_OPTIONS['HEADER'] == 1) {
-			
-			$image			 = $_FILES['NEW_JB_IMAGE'];
-			$filename		 = 'jb_' . $image['name'];
-			$serverFileName	 = WT_DATA_DIR . $filename;
+			$image          = $_FILES['NEW_JB_IMAGE'];
+			$filename       = 'jb_' . $image['name'];
+			$serverFileName = WT_DATA_DIR . $filename;
 			
 			if (!empty($image['name'])) {
 				if ($this->upload($image, $serverFileName)) {
@@ -91,10 +90,10 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		foreach ($modules as $label => $module) {
 			if (!array_key_exists($label, $menulist)) {
 				$menulist[$label] = [
-					'title'		 => $module->getTitle(),
-					'label'		 => $label,
-					'sort'		 => $sort++,
-					'function'	 => 'menuModule'
+					'title'    => $module->getTitle(),
+					'label'    => $label,
+					'sort'     => $sort++,
+					'function' => 'menuModule'
 				];
 			}
 		}
@@ -144,75 +143,75 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 	// Set default module options
 	private function setDefault($key) {
 		$JB_DEFAULT = [
-			'TREETITLE'				 => '1',
-			'TITLEPOS'				 => [
-				'V'	 => ['size' => '110', 'fmt' => 'px', 'pos' => 'top'],
-				'H'	 => ['size' => '52', 'fmt' => '%', 'pos' => 'left']
+			'TREETITLE' => '1',
+			'TITLEPOS'  => [
+				'V' => ['size' => '110', 'fmt' => 'px', 'pos' => 'top'],
+				'H' => ['size' => '52', 'fmt' => '%', 'pos' => 'left']
 			],
-			'TITLESIZE'				 => '20',
-			'HEADER'				 => 'default',
-			'IMAGE'					 => '',
-			'HEADERHEIGHT'			 => '150',
-			'FLAGS'					 => '0',
-			'COMPACT_MENU'			 => '0',
-			'COMPACT_MENU_REPORTS'	 => '1',
-			'MEDIA_MENU'			 => '0',
-			'MEDIA_LINK'			 => '',
-			'SHOW_SUBFOLDERS'		 => '1',
-			'SQUARE_THUMBS'			 => '1'
+			'TITLESIZE'            => '20',
+			'HEADER'               => 'default',
+			'IMAGE'                => '',
+			'HEADERHEIGHT'         => '150',
+			'FLAGS'                => '0',
+			'COMPACT_MENU'         => '0',
+			'COMPACT_MENU_REPORTS' => '1',
+			'MEDIA_MENU'           => '0',
+			'MEDIA_LINK'           => '',
+			'SHOW_SUBFOLDERS'      => '1',
+			'SQUARE_THUMBS'        => '1'
 		];
 		return $JB_DEFAULT[$key];
 	}
 
 	private function getDefaultMenu() {
 		$menulist = [
-			'compact'	 => [
-				'title'		 => I18N::translate('View'),
-				'label'		 => 'compact',
-				'sort'		 => '0',
-				'function'	 => 'menuCompact'
+			'compact' => [
+				'title'    => I18N::translate('View'),
+				'label'    => 'compact',
+				'sort'     => '0',
+				'function' => 'menuCompact'
 			],
-			'media'		 => [
-				'title'		 => I18N::translate('Media'),
-				'label'		 => 'media',
-				'sort'		 => '0',
-				'function'	 => 'menuMedia'
+			'media' => [
+				'title'    => I18N::translate('Media'),
+				'label'    => 'media',
+				'sort'     => '0',
+				'function' => 'menuMedia'
 			],
-			'homepage'	 => [
-				'title'		 => I18N::translate('Home page'),
-				'label'		 => 'homepage',
-				'sort'		 => '1',
-				'function'	 => 'menuHomePage'
+			'homepage' => [
+				'title'    => I18N::translate('Home page'),
+				'label'    => 'homepage',
+				'sort'     => '1',
+				'function' => 'menuHomePage'
 			],
-			'charts'	 => [
-				'title'		 => I18N::translate('Charts'),
-				'label'		 => 'charts',
-				'sort'		 => '3',
-				'function'	 => 'menuChart'
+			'charts' => [
+				'title'    => I18N::translate('Charts'),
+				'label'    => 'charts',
+				'sort'     => '3',
+				'function' => 'menuChart'
 			],
-			'lists'		 => [
-				'title'		 => I18N::translate('Lists'),
-				'label'		 => 'lists',
-				'sort'		 => '4',
-				'function'	 => 'menuLists'
+			'lists' => [
+				'title'    => I18N::translate('Lists'),
+				'label'    => 'lists',
+				'sort'     => '4',
+				'function' => 'menuLists'
 			],
-			'calendar'	 => [
-				'title'		 => I18N::translate('Calendar'),
-				'label'		 => 'calendar',
-				'sort'		 => '5',
-				'function'	 => 'menuCalendar'
+			'calendar' => [
+				'title'    => I18N::translate('Calendar'),
+				'label'    => 'calendar',
+				'sort'     => '5',
+				'function' => 'menuCalendar'
 			],
-			'reports'	 => [
-				'title'		 => I18N::translate('Reports'),
-				'label'		 => 'reports',
-				'sort'		 => '6',
-				'function'	 => 'menuReports'
+			'reports' => [
+				'title'    => I18N::translate('Reports'),
+				'label'    => 'reports',
+				'sort'     => '6',
+				'function' => 'menuReports'
 			],
-			'search'	 => [
-				'title'		 => I18N::translate('Search'),
-				'label'		 => 'search',
-				'sort'		 => '7',
-				'function'	 => 'menuSearch'
+			'search' => [
+				'title'    => I18N::translate('Search'),
+				'label'    => 'search',
+				'sort'     => '7',
+				'function' => 'menuSearch'
 			],
 		];
 		return $this->menuJustBlack($menulist);
@@ -221,10 +220,10 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 	private function listMediaFolders() {
 		global $WT_TREE;
 
-		$MEDIA_DIRECTORY				 = $WT_TREE->getPreference('MEDIA_DIRECTORY');
-		$folders						 = QueryMedia::folderList();
+		$MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
+		$folders         = QueryMedia::folderList();
 		array_shift($folders);
-		$folderlist[$MEDIA_DIRECTORY]	 = strtoupper(I18N::translate(substr($MEDIA_DIRECTORY, 0, -1)));
+		$folderlist[$MEDIA_DIRECTORY] = strtoupper(I18N::translate(substr($MEDIA_DIRECTORY, 0, -1)));
 
 		foreach ($folders as $key => $value) {
 			if (count(glob(WT_DATA_DIR . $MEDIA_DIRECTORY . $value . '*')) > 0) {
@@ -247,10 +246,10 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 
 		$return_array = [];
 		foreach ($tmp_array as $pos => $val) {
-			$return_array[$pos]['title']	 = $array[$pos]['title'];
-			$return_array[$pos]['label']	 = $array[$pos]['label'];
-			$return_array[$pos]['sort']		 = $array[$pos]['sort'];
-			$return_array[$pos]['function']	 = $array[$pos]['function'];
+			$return_array[$pos]['title']    = $array[$pos]['title'];
+			$return_array[$pos]['label']    = $array[$pos]['label'];
+			$return_array[$pos]['sort']     = $array[$pos]['sort'];
+			$return_array[$pos]['function'] = $array[$pos]['function'];
 		}
 		return $return_array;
 	}
@@ -276,7 +275,6 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 	private function upload($image, $serverFileName) {
 		// Check if we are dealing with a valid image
 		if (!empty($image['name']) && preg_match('/^image\/(png|gif|jpeg)/', $image['type'])) {
-
 			if (Filter::postBool('resize') == true) {
 				$this->resize($image['tmp_name'], $image['type'], '800', '150');
 			}
@@ -295,18 +293,18 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 	private function resize($imgSrc, $type, $thumbwidth, $thumbheight) {
 		//getting the image dimensions
 		list($width_orig, $height_orig) = getimagesize($imgSrc);
-		$ratio_orig = $width_orig / $height_orig;
+		$ratio_orig                     = $width_orig / $height_orig;
 
 		if (($width_orig > $height_orig && $width_orig < $thumbwidth) || ($height_orig > $width_orig && $height_orig < $thumbheight)) {
 			return false;
 		}
 
 		if ($thumbwidth / $thumbheight > $ratio_orig) {
-			$new_height	 = $thumbwidth / $ratio_orig;
-			$new_width	 = $thumbwidth;
+			$new_height = $thumbwidth / $ratio_orig;
+			$new_width  = $thumbwidth;
 		} else {
-			$new_width	 = $thumbheight * $ratio_orig;
-			$new_height	 = $thumbheight;
+			$new_width  = $thumbheight * $ratio_orig;
+			$new_height = $thumbheight;
 		}
 
 		$y_mid = $new_height / 2;
@@ -314,15 +312,15 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 		// return resized header image
 		switch ($type) {
 			case 'image/jpeg':
-				$image	 = imagecreatefromjpeg($imgSrc);
-				$thumb	 = imagecreatetruecolor(round($new_width), $thumbheight);
+				$image = imagecreatefromjpeg($imgSrc);
+				$thumb = imagecreatetruecolor(round($new_width), $thumbheight);
 
 				imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
 				imagedestroy($image);
 				return imagejpeg($thumb, $imgSrc, 100);
 			case 'image/gif':
-				$image	 = imagecreatefromgif($imgSrc);
-				$thumb	 = imagecreatetruecolor(round($new_width), $thumbheight);
+				$image = imagecreatefromgif($imgSrc);
+				$thumb = imagecreatetruecolor(round($new_width), $thumbheight);
 
 				imagecopyresampled($thumb, $image, 0, 0, 0, ($y_mid - ($thumbheight / 2)), $new_width, $new_height, $width_orig, $height_orig);
 				imagecolortransparent($thumb, imagecolorallocate($thumb, 0, 0, 0));
@@ -350,5 +348,4 @@ class JustBlackThemeOptionsClass extends JustBlackThemeOptionsModule {
 			unlink(WT_DATA_DIR . $filename);
 		}
 	}
-
 }

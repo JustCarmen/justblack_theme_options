@@ -27,8 +27,8 @@ class Migration1 implements MigrationInterface {
 	/** {@inheritDoc} */
 	public function upgrade() {
 		// add menu function for modulemenus
-		$module_options	 = 'JB_OPTIONS';
-		$jb_options		 = Database::prepare(
+		$module_options = 'JB_OPTIONS';
+		$jb_options     = Database::prepare(
 				"SELECT setting_value FROM `##module_setting` WHERE setting_name=?"
 			)->execute([$module_options])->fetchOne();
 
@@ -47,5 +47,4 @@ class Migration1 implements MigrationInterface {
 			"UPDATE `##module_setting` SET setting_value=? WHERE setting_name=?"
 		)->execute([serialize($options), $module_options]);
 	}
-
 }

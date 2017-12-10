@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\I18N;
 use JustCarmen\WebtreesAddOns\JustBlack\JustBlackThemeOptionsClass;
 
 class AdminTemplate extends JustBlackThemeOptionsClass {
-
 	protected function pageContent() {
 		$controller = new PageController;
 		return
@@ -193,12 +192,10 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 	}
 
 	private function pageBody(PageController $controller) {
-		
 		echo Bootstrap4::breadcrumbs([
-			'admin.php'			 => I18N::translate('Control panel'),
-			'admin_modules.php'	 => I18N::translate('Module administration'),
-			], $controller->getPageTitle());
-		?>
+			'admin.php'         => I18N::translate('Control panel'),
+			'admin_modules.php' => I18N::translate('Module administration'),
+			], $controller->getPageTitle()); ?>
 
 		<h1><?= $controller->getPageTitle() ?></h1>
 		<form action="<?= $this->getConfigLink() ?>" enctype="multipart/form-data" name="configform" method="post" class="form-horizontal">
@@ -227,7 +224,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 								</div>
 							</div>
 							<!-- TITLE POSITION -->
-							<?php $titlepos	 = $this->options('titlepos'); ?>
+							<?php $titlepos = $this->options('titlepos'); ?>
 							<div id="title-pos" class="row form-group">
 								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Position of the family tree title') ?>
@@ -386,7 +383,7 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 								</div>
 							</div>
 							<!-- MEDIA MENU -->
-							<?php $folders	 = $this->options('mediafolders'); ?>
+							<?php $folders = $this->options('mediafolders'); ?>
 							<div id="media-menu" class="row form-group">
 								<label class="col-form-label col-sm-4">
 									<?= I18N::translate('Media menu in main menu') ?>
@@ -394,12 +391,12 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 								<div class="col-sm-8">
 									<?= Bootstrap4::radioButtons('NEW_JB_OPTIONS[MEDIA_MENU]', FunctionsEdit::optionsNoYes(), $this->options('media_menu'), true) ?>
 									<p class="small text-muted"><?= I18N::translate('If this option is set the media menu will be moved to the main menu.') ?></p>
-									<?php if (count($folders) > 1): // add extra information about subfolders ?>
+									<?php if (count($folders) > 1): // add extra information about subfolders?>
 										<p class="small text-muted"><?= I18N::translate('The names of first level media folders from your media folder on the server will be used as submenu items of the new media menu. Warning: these submenu items are not translated automatically. Use a custom language file to translate your menu items. Read the webrees WIKI for more information.') ?></p>
 									<?php endif; ?>
 								</div>
 							</div>
-							<?php if (count($folders) > 1): // only show these options if we have subfolders  ?>
+							<?php if (count($folders) > 1): // only show these options if we have subfolders?>
 								<!-- MEDIA FOLDER LIST -->
 								<div id="medialist" class="row form-group">
 									<label class="col-form-label col-sm-4">
@@ -447,16 +444,15 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 							<h6><?= I18N::translate('Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button.') ?></h6>
 							<?php
 							$menulist = $this->options('menu');
-							foreach ($menulist as $label => $menu) {
-								if ($this->isMenu($label)) {
-									$menu['sort'] == 0 ? $trashMenu[$label]	 = $menu : $activeMenu[$label]	 = $menu;
-								}
-							}
-							?>
+		foreach ($menulist as $label => $menu) {
+			if ($this->isMenu($label)) {
+				$menu['sort'] == 0 ? $trashMenu[$label] = $menu : $activeMenu[$label] = $menu;
+			}
+		} ?>
 							<?php if (isset($activeMenu)): ?>
 								<ul id="sort-menu" class="list-group"><?= $this->listMenuJustBlack($activeMenu) ?></ul>
 							<?php endif; ?>
-							<?php if (isset($trashMenu)): // trashcan for toggling the compact menu.   ?>
+							<?php if (isset($trashMenu)): // trashcan for toggling the compact menu.?>
 								<ul id="trash-menu" class="sr-only"><?= $this->listMenuJustBlack($trashMenu) ?></ul>
 							<?php endif; ?>
 						</div>
@@ -477,5 +473,4 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 		</form>
 		<?php
 	}
-
 }

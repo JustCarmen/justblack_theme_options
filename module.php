@@ -26,16 +26,15 @@ use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use JustCarmen\WebtreesAddOns\JustBlack\Template\AdminTemplate;
 
 class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfigInterface {
-
-	const CUSTOM_VERSION			 = '2.0.0-dev';
-	const CUSTOM_WEBSITE			 = 'http://www.justcarmen.nl/themes/justblack/';
+	const CUSTOM_VERSION = '2.0.0-dev';
+	const CUSTOM_WEBSITE = 'http://www.justcarmen.nl/themes/justblack/';
 	// How to update the database schema for this module
-	const SCHEMA_TARGET_VERSION	 = 3;
-	const SCHEMA_SETTING_NAME		 = 'JB_SCHEMA_VERSION';
-	const SCHEMA_MIGRATION_PREFIX	 = '\JustCarmen\WebtreesAddOns\JustBlack\Schema';
+	const SCHEMA_TARGET_VERSION   = 3;
+	const SCHEMA_SETTING_NAME     = 'JB_SCHEMA_VERSION';
+	const SCHEMA_MIGRATION_PREFIX = '\JustCarmen\WebtreesAddOns\JustBlack\Schema';
 
 	/** @var string location of the JustBlack Theme Options module files */
-	var $directory;
+	public $directory;
 
 	public function __construct() {
 		parent::__construct('justblack_theme_options');
@@ -76,13 +75,13 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 				if (Filter::postBool('save') && Filter::checkCsrf()) {
 					$this->module()->saveOptions();
 				}
-				$template	 = new AdminTemplate;
+				$template = new AdminTemplate;
 				return $template->pageContent();
 			case 'admin_reset':
 				$this->module()->deleteImage();
 				Database::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'JB%'")->execute();
 				Log::addConfigurationLog($this->getTitle() . ' reset to default values');
-				$template	 = new AdminTemplate;
+				$template = new AdminTemplate;
 				return $template->pageContent();
 			case 'delete_image':
 				$this->module()->deleteImage();
@@ -97,7 +96,6 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 	public function getConfigLink() {
 		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
-
 }
 
 return new JustBlackThemeOptionsModule;
