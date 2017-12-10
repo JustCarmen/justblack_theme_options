@@ -193,9 +193,10 @@ class AdminTemplate extends JustBlackThemeOptionsClass {
 
 	private function pageBody(PageController $controller) {
 		echo Bootstrap4::breadcrumbs([
-			'admin.php'         => I18N::translate('Control panel'),
-			'admin_modules.php' => I18N::translate('Module administration'),
-			], $controller->getPageTitle()); ?>
+			route('admin-control-panel')                                      => I18N::translate('Control panel'),
+			route('admin-modules')                                            => I18N::translate('Module administration'),
+			'module.php?mod=' . $this->getName() . '&mod_action=admin_config' => $this->getTitle(),
+		], $controller->getPageTitle()); ?>
 
 		<h1><?= $controller->getPageTitle() ?></h1>
 		<form action="<?= $this->getConfigLink() ?>" enctype="multipart/form-data" name="configform" method="post" class="form-horizontal">
