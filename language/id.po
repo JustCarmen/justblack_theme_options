@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JustBlack Theme Options\n"
 "POT-Creation-Date: 2017-01-01 20:18+0100\n"
-"PO-Revision-Date: 2015-07-04 23:25+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2018-09-21 04:01+0000\n"
+"Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
+"Language-Team: Indonesian <https://translate.webtrees.net/projects/justcarmen/justblack-theme-options/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Weblate 2.10\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -18,65 +18,65 @@ msgstr ""
 
 #: app/Template/AdminTemplate.php:319
 msgid "Browse"
-msgstr ""
+msgstr "Cari"
 
 #: app/Template/AdminTemplate.php:402
 msgid "Choose a folder as default for the main menu link"
-msgstr ""
+msgstr "Pilih folder sebagai default untuk tautan menu utama"
 
 #: app/Template/AdminTemplate.php:222
 msgid "Choose “no” if you have used the family tree title in your custom header image. Otherwise choose “yes”."
-msgstr ""
+msgstr "Pilih \"tidak\" jika Anda telah menggunakan judul hierarki keluarga di gambar header khusus Anda. Kalau tidak pilih \"ya\"."
 
 #: app/Template/AdminTemplate.php:443
 msgid "Click a row, then drag-and-drop to re-order the menu items. Then click the “save” button."
-msgstr ""
+msgstr "Klik satu baris, lalu seret-dan-lepaskan untuk mengatur ulang item menu. Kemudian klik tombol \"simpan\"."
 
 #: app/JustBlackThemeOptionsClass.php:59
 msgid "Error: The image you have uploaded is not a valid image! Your settings are not saved."
-msgstr ""
+msgstr "Kesalahan: Gambar yang Anda unggah bukanlah gambar yang valid! Pengaturan Anda tidak disimpan."
 
 #: app/Template/AdminTemplate.php:339
 msgid "Height of the header area"
-msgstr ""
+msgstr "Ketinggian area header"
 
 #: app/Template/AdminTemplate.php:266
 #, php-format
 msgid "Here you can set the location of the family tree title. Adjust the values to your needs. If you want the tree title appear in the header image, the correct values depend on the length of the tree title. The position is the absolute position of the title, relative to the header area. For example: choose “Top: 0px; Left: 0px”  for the top left corner of the header area or “Top: 50%%; Right: 10px” to place the title at the right side in the middle of the header area with a 10px margin."
-msgstr ""
+msgstr "Di sini Anda dapat mengatur lokasi judul pohon keluarga. Sesuaikan nilai dengan kebutuhan Anda. Jika Anda ingin judul pohon muncul di gambar header, nilai yang benar bergantung pada panjang judul pohon. Posisi adalah posisi absolut dari judul, relatif terhadap area header. Misalnya: pilih \"Atas: 0px; Kiri: 0px ”untuk sudut kiri atas area header atau “Atas: 50 %%; Kanan: 10px” untuk menempatkan judul di sisi kanan di tengah area header dengan margin 10px."
 
 #: app/Template/AdminTemplate.php:392
 msgid "If this option is set the media menu will be moved to the main menu."
-msgstr ""
+msgstr "Jika opsi ini diatur, menu media akan dipindahkan ke menu utama."
 
 #: app/Template/AdminTemplate.php:416
 msgid "If you set this option the results on the media list page will include subfolders."
-msgstr ""
+msgstr "Jika Anda mengatur opsi ini, hasil pada halaman daftar media akan mencakup subfolder."
 
 #: app/Template/AdminTemplate.php:372
 msgid "In the compact “View”-menu the menus for Charts, Lists, Calendar and (optionally) Reports will be merged together."
-msgstr ""
+msgstr "Dalam \"Lihat\" kompak -menu menu untuk Charts, Daftar, Kalender dan (opsional) Laporan akan digabungkan bersama."
 
 #: app/Template/AdminTemplate.php:378
 msgid "Include the reports menu in the compact “View” menu"
-msgstr ""
+msgstr "Sertakan menu laporan dalam menu \"Tampilan\" yang ringkas"
 
 #. I18N: Name of a module
 #: module.php:62
 msgid "JustBlack Theme Options"
-msgstr ""
+msgstr "Pilih Pengaturan Tema JustBlack"
 
 #: app/Template/AdminTemplate.php:388
 msgid "Media menu in main menu"
-msgstr ""
+msgstr "Menu media di menu utama"
 
 #: app/Template/AdminTemplate.php:210
 msgid "Options"
-msgstr ""
+msgstr "Pilihan"
 
 #: app/Template/AdminTemplate.php:38
 msgid "Options for the JustBlack theme"
-msgstr ""
+msgstr "Pilihan untuk tema JustBlack"
 
 #: app/Template/AdminTemplate.php:229
 msgid "Position of the family tree title"
