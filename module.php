@@ -58,12 +58,12 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 	}
 
 	// Extend Module
-	public function getTitle() {
+	public function getTitle(): string {
 		return /* I18N: Name of a module  */ I18N::translate('JustBlack Theme Options');
 	}
 
 	// Extend Module
-	public function getDescription() {
+	public function getDescription(): string {
 		return /* I18N: Description of the module */ I18N::translate('Set options for the JustBlack theme within the admin interface');
 	}
 
@@ -94,7 +94,7 @@ class JustBlackThemeOptionsModule extends AbstractModule implements ModuleConfig
 	}
 
 	/** {@inheritdoc} */
-	public function getConfigLink() {
+	public function getConfigLink(): string {
 		return Html::url('module.php', [
 			'mod'        => $this->getName(),
 			'mod_action' => 'admin_config',
